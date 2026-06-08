@@ -123,28 +123,29 @@
 \contentsline {section}{\numberline {6.4}Kierunki Dalszego Rozwoju}{65}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Podsumowanie}{65}{section.6.5}%
 \contentsline {chapter}{\numberline {A}Proof of Concept - Stan Gry}{69}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Parametry Techniczne}{69}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Zrealizowane Mechaniki}{69}{section.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}Hub Świata (Katakumby)}{69}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}Proceduralny Loch}{70}{subsection.A.2.2}%
-\contentsline {subsection}{\numberline {A.2.3}Postać Gracza}{70}{subsection.A.2.3}%
-\contentsline {subsection}{\numberline {A.2.4}Przeciwnicy}{70}{subsection.A.2.4}%
-\contentsline {subsection}{\numberline {A.2.5}Radar i Wykrywanie Niewidzialnych}{71}{subsection.A.2.5}%
-\contentsline {subsection}{\numberline {A.2.6}Minimapa}{71}{subsection.A.2.6}%
-\contentsline {subsection}{\numberline {A.2.7}Adaptacyjna AI (\texttt {EliteBrain})}{71}{subsection.A.2.7}%
-\contentsline {subsection}{\numberline {A.2.8}System Questów}{72}{subsection.A.2.8}%
-\contentsline {subsection}{\numberline {A.2.9}Mini-Gry (5 typów)}{72}{subsection.A.2.9}%
-\contentsline {subsection}{\numberline {A.2.10}System Zapisu Gry}{72}{subsection.A.2.10}%
-\contentsline {subsection}{\numberline {A.2.11}Interfejs Użytkownika}{73}{subsection.A.2.11}%
-\contentsline {subsection}{\numberline {A.2.12}Feedback Walki}{73}{subsection.A.2.12}%
-\contentsline {section}{\numberline {A.3}Galeria Zrzutów Ekranu}{73}{section.A.3}%
-\contentsline {subsection}{\numberline {A.3.1}Rozgrywka}{73}{subsection.A.3.1}%
-\contentsline {subsection}{\numberline {A.3.2}Interfejs Użytkownika}{73}{subsection.A.3.2}%
-\contentsline {subsection}{\numberline {A.3.3}Proceduralny Loch}{74}{subsection.A.3.3}%
-\contentsline {subsection}{\numberline {A.3.4}Boss, Niewidzialni, Radar i Minimapa}{76}{subsection.A.3.4}%
-\contentsline {subsection}{\numberline {A.3.5}Adaptacyjna AI - Debug HUD}{77}{subsection.A.3.5}%
-\contentsline {subsection}{\numberline {A.3.6}Mini-Gry}{78}{subsection.A.3.6}%
-\contentsline {section}{\numberline {A.4}Znane Ograniczenia}{78}{section.A.4}%
+\contentsline {section}{\numberline {A.1}Nagranie demonstracyjne rozgrywki}{69}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Parametry Techniczne}{69}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Zrealizowane Mechaniki}{70}{section.A.3}%
+\contentsline {subsection}{\numberline {A.3.1}Hub Świata (Katakumby)}{70}{subsection.A.3.1}%
+\contentsline {subsection}{\numberline {A.3.2}Proceduralny Loch}{70}{subsection.A.3.2}%
+\contentsline {subsection}{\numberline {A.3.3}Postać Gracza}{70}{subsection.A.3.3}%
+\contentsline {subsection}{\numberline {A.3.4}Przeciwnicy}{70}{subsection.A.3.4}%
+\contentsline {subsection}{\numberline {A.3.5}Radar i Wykrywanie Niewidzialnych}{71}{subsection.A.3.5}%
+\contentsline {subsection}{\numberline {A.3.6}Minimapa}{71}{subsection.A.3.6}%
+\contentsline {subsection}{\numberline {A.3.7}Adaptacyjna AI (\texttt {EliteBrain})}{71}{subsection.A.3.7}%
+\contentsline {subsection}{\numberline {A.3.8}System Questów}{72}{subsection.A.3.8}%
+\contentsline {subsection}{\numberline {A.3.9}Mini-Gry (5 typów)}{72}{subsection.A.3.9}%
+\contentsline {subsection}{\numberline {A.3.10}System Zapisu Gry}{72}{subsection.A.3.10}%
+\contentsline {subsection}{\numberline {A.3.11}Interfejs Użytkownika}{73}{subsection.A.3.11}%
+\contentsline {subsection}{\numberline {A.3.12}Feedback Walki}{73}{subsection.A.3.12}%
+\contentsline {section}{\numberline {A.4}Galeria Zrzutów Ekranu}{73}{section.A.4}%
+\contentsline {subsection}{\numberline {A.4.1}Rozgrywka}{73}{subsection.A.4.1}%
+\contentsline {subsection}{\numberline {A.4.2}Interfejs Użytkownika}{74}{subsection.A.4.2}%
+\contentsline {subsection}{\numberline {A.4.3}Proceduralny Loch}{76}{subsection.A.4.3}%
+\contentsline {subsection}{\numberline {A.4.4}Boss, Niewidzialni, Radar i Minimapa}{76}{subsection.A.4.4}%
+\contentsline {subsection}{\numberline {A.4.5}Adaptacyjna AI - Debug HUD}{77}{subsection.A.4.5}%
+\contentsline {subsection}{\numberline {A.4.6}Mini-Gry}{78}{subsection.A.4.6}%
+\contentsline {section}{\numberline {A.5}Znane Ograniczenia}{78}{section.A.5}%
 \contentsline {chapter}{\numberline {B}Wybrane Fragmenty Kodu Źródłowego}{83}{appendix.B}%
 \contentsline {section}{\numberline {B.1}Maszyna Stanów}{83}{section.B.1}%
 \contentsline {section}{\numberline {B.2}Stan Śmierci Przeciwnika}{84}{section.B.2}%

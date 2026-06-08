@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.21)  8 JUN 2026 14:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.21)  8 JUN 2026 18:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -821,18 +821,18 @@ Rozdzia\l  2.
 
 
 ]
-<images/bat-design.png, id=1039, 829.0975pt x 970.62625pt>
+<images/bat-design.png, id=1044, 829.0975pt x 970.62625pt>
 File: images/bat-design.png Graphic file (type png)
 <use images/bat-design.png>
 Package pdftex.def Info: images/bat-design.png  used on input line 41.
 (pdftex.def)             Requested size: 341.43307pt x 399.70699pt.
  [7]
-<images/labra_knight.png, id=1046, 403.00563pt x 758.33313pt>
+<images/labra_knight.png, id=1051, 403.00563pt x 758.33313pt>
 File: images/labra_knight.png Graphic file (type png)
 <use images/labra_knight.png>
 Package pdftex.def Info: images/labra_knight.png  used on input line 54.
 (pdftex.def)             Requested size: 341.43307pt x 642.46867pt.
-<../../docs/screenshots/enemie_art_skeatch.png, id=1048, 822.07124pt x 670.7559
+<../../docs/screenshots/enemie_art_skeatch.png, id=1053, 822.07124pt x 670.7559
 4pt>
 File: ../../docs/screenshots/enemie_art_skeatch.png Graphic file (type png)
 <use ../../docs/screenshots/enemie_art_skeatch.png>
@@ -840,13 +840,13 @@ Package pdftex.def Info: ../../docs/screenshots/enemie_art_skeatch.png  used on
  input line 65.
 (pdftex.def)             Requested size: 386.96027pt x 315.73637pt.
  [8 <./images/bat-design.png>] [9 <./images/labra_knight.png>]
-<images/npcs.png, id=1060, 901.86937pt x 1225.07687pt>
+<images/npcs.png, id=1065, 901.86937pt x 1225.07687pt>
 File: images/npcs.png Graphic file (type png)
 <use images/npcs.png>
 Package pdftex.def Info: images/npcs.png  used on input line 76.
 (pdftex.def)             Requested size: 341.43307pt x 463.7956pt.
  [10 <../../docs/screenshots/enemie_art_skeatch.png>] [11 <./images/npcs.png>]
-<../../docs/screenshots/07_animations/anim_player.png, id=1076, 1451.4225pt x 8
+<../../docs/screenshots/07_animations/anim_player.png, id=1081, 1451.4225pt x 8
 09.0225pt>
 File: ../../docs/screenshots/07_animations/anim_player.png Graphic file (type p
 ng)
@@ -854,7 +854,7 @@ ng)
 Package pdftex.def Info: ../../docs/screenshots/07_animations/anim_player.png  
 used on input line 100.
 (pdftex.def)             Requested size: 455.24411pt x 253.74477pt.
-<../../docs/screenshots/07_animations/anim_enemy.png, id=1077, 1435.3625pt x 80
+<../../docs/screenshots/07_animations/anim_enemy.png, id=1082, 1435.3625pt x 80
 9.0225pt>
 File: ../../docs/screenshots/07_animations/anim_enemy.png Graphic file (type pn
 g)
@@ -863,13 +863,13 @@ Package pdftex.def Info: ../../docs/screenshots/07_animations/anim_enemy.png  u
 sed on input line 107.
 (pdftex.def)             Requested size: 455.24411pt x 256.58403pt.
  [12 <../../docs/screenshots/07_animations/anim_player.png (PNG copy)>]
-<../../docs/screenshots/1st_concept_fight.jpg, id=1084, 2168.1pt x 2890.8pt>
+<../../docs/screenshots/1st_concept_fight.jpg, id=1089, 2168.1pt x 2890.8pt>
 File: ../../docs/screenshots/1st_concept_fight.jpg Graphic file (type jpg)
 <use ../../docs/screenshots/1st_concept_fight.jpg>
 Package pdftex.def Info: ../../docs/screenshots/1st_concept_fight.jpg  used on 
 input line 125.
 (pdftex.def)             Requested size: 318.66948pt x 424.86752pt.
-<../../docs/screenshots/1st_concept_gameplay_hud.jpg, id=1085, 2890.8pt x 2168.
+<../../docs/screenshots/1st_concept_gameplay_hud.jpg, id=1090, 2890.8pt x 2168.
 1pt>
 File: ../../docs/screenshots/1st_concept_gameplay_hud.jpg Graphic file (type jp
 g)
@@ -877,7 +877,7 @@ g)
 Package pdftex.def Info: ../../docs/screenshots/1st_concept_gameplay_hud.jpg  u
 sed on input line 132.
 (pdftex.def)             Requested size: 318.66948pt x 238.98798pt.
-<../../docs/screenshots/1st_concept_menu_hud.jpg, id=1086, 2168.1pt x 2890.8pt>
+<../../docs/screenshots/1st_concept_menu_hud.jpg, id=1091, 2168.1pt x 2890.8pt>
 
 File: ../../docs/screenshots/1st_concept_menu_hud.jpg Graphic file (type jpg)
 <use ../../docs/screenshots/1st_concept_menu_hud.jpg>
@@ -955,7 +955,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <14.4> not available
  [39] [40]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 120.
-<../../docs/screenshots/04_ai_debug/ai_hud_fresh.png, id=1276, 312.41719pt x 16
+<../../docs/screenshots/04_ai_debug/ai_hud_fresh.png, id=1281, 312.41719pt x 16
 4.11313pt>
 File: ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png Graphic file (type pn
 g)
@@ -963,7 +963,7 @@ g)
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png  u
 sed on input line 134.
 (pdftex.def)             Requested size: 218.51521pt x 114.78824pt.
-<../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png, id=1277, 326.72063
+<../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png, id=1282, 326.72063
 pt x 134.00063pt>
 File: ../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png Graphic file (
 type png)
@@ -988,7 +988,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 170.
 
 [42]
-<../../docs/screenshots/04_ai_debug/rl_epsilon.png, id=1299, 505.89pt x 289.08p
+<../../docs/screenshots/04_ai_debug/rl_epsilon.png, id=1304, 505.89pt x 289.08p
 t>
 File: ../../docs/screenshots/04_ai_debug/rl_epsilon.png Graphic file (type png)
 
@@ -997,14 +997,14 @@ Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/rl_epsilon.png  use
 d on input line 185.
 (pdftex.def)             Requested size: 373.3035pt x 213.32036pt.
  [43 <../../docs/screenshots/04_ai_debug/rl_epsilon.png>]
-<../../docs/screenshots/04_ai_debug/rl_reward.png, id=1307, 505.89pt x 289.08pt
+<../../docs/screenshots/04_ai_debug/rl_reward.png, id=1312, 505.89pt x 289.08pt
 >
 File: ../../docs/screenshots/04_ai_debug/rl_reward.png Graphic file (type png)
 <use ../../docs/screenshots/04_ai_debug/rl_reward.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/rl_reward.png  used
  on input line 209.
 (pdftex.def)             Requested size: 373.3035pt x 213.32036pt.
-<../../docs/screenshots/04_ai_debug/rl_qvalues.png, id=1310, 505.89pt x 289.08p
+<../../docs/screenshots/04_ai_debug/rl_qvalues.png, id=1315, 505.89pt x 289.08p
 t>
 File: ../../docs/screenshots/04_ai_debug/rl_qvalues.png Graphic file (type png)
 
@@ -1014,7 +1014,7 @@ d on input line 223.
 (pdftex.def)             Requested size: 373.3035pt x 213.32036pt.
  [44 <../../docs/screenshots/04_ai_debug/rl_reward.png>] [45 <../../docs/screen
 shots/04_ai_debug/rl_qvalues.png>]
-<../../docs/screenshots/04_ai_debug/rl_params.png, id=1322, 505.89pt x 289.08pt
+<../../docs/screenshots/04_ai_debug/rl_params.png, id=1327, 505.89pt x 289.08pt
 >
 File: ../../docs/screenshots/04_ai_debug/rl_params.png Graphic file (type png)
 <use ../../docs/screenshots/04_ai_debug/rl_params.png>
@@ -1022,7 +1022,7 @@ Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/rl_params.png  used
  on input line 254.
 (pdftex.def)             Requested size: 373.3035pt x 213.32036pt.
  [46 <../../docs/screenshots/04_ai_debug/rl_params.png>]
-<../../docs/screenshots/04_ai_debug/brain_json_example.png, id=1331, 330.48468p
+<../../docs/screenshots/04_ai_debug/brain_json_example.png, id=1336, 330.48468p
 t x 969.6225pt>
 File: ../../docs/screenshots/04_ai_debug/brain_json_example.png Graphic file (t
 ype png)
@@ -1037,7 +1037,7 @@ Overfull \hbox (6.3646pt too wide) in paragraph at lines 343--343
  []
 
 [49] [50] [51]
-<../../docs/screenshots/03_dungeon/dungeon_variant0.png, id=1379, 1454.43375pt 
+<../../docs/screenshots/03_dungeon/dungeon_variant0.png, id=1384, 1454.43375pt 
 x 851.43094pt>
 File: ../../docs/screenshots/03_dungeon/dungeon_variant0.png Graphic file (type
  png)
@@ -1045,7 +1045,7 @@ File: ../../docs/screenshots/03_dungeon/dungeon_variant0.png Graphic file (type
 Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant0.png
   used on input line 422.
 (pdftex.def)             Requested size: 204.85846pt x 119.91406pt.
-<../../docs/screenshots/03_dungeon/dungeon_variant2.png, id=1380, 1454.43375pt 
+<../../docs/screenshots/03_dungeon/dungeon_variant2.png, id=1385, 1454.43375pt 
 x 852.18375pt>
 File: ../../docs/screenshots/03_dungeon/dungeon_variant2.png Graphic file (type
  png)
@@ -1055,7 +1055,7 @@ Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant2.png
 (pdftex.def)             Requested size: 204.85846pt x 120.02008pt.
  [52 <../../docs/screenshots/03_dungeon/dungeon_variant0.png> <../../docs/scree
 nshots/03_dungeon/dungeon_variant2.png>] [53]
-<../../docs/screenshots/05_puzzles/puzzle_lockpick.png, id=1395, 1272.25313pt x
+<../../docs/screenshots/05_puzzles/puzzle_lockpick.png, id=1400, 1272.25313pt x
  584.1825pt>
 File: ../../docs/screenshots/05_puzzles/puzzle_lockpick.png Graphic file (type 
 png)
@@ -1063,7 +1063,7 @@ png)
 Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_lockpick.png 
  used on input line 485.
 (pdftex.def)             Requested size: 145.68144pt x 66.88986pt.
-<../../docs/screenshots/05_puzzles/puzzle_pipe.png, id=1396, 953.06062pt x 566.
+<../../docs/screenshots/05_puzzles/puzzle_pipe.png, id=1401, 953.06062pt x 566.
 86781pt>
 File: ../../docs/screenshots/05_puzzles/puzzle_pipe.png Graphic file (type png)
 
@@ -1071,7 +1071,7 @@ File: ../../docs/screenshots/05_puzzles/puzzle_pipe.png Graphic file (type png)
 Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_pipe.png  use
 d on input line 486.
 (pdftex.def)             Requested size: 145.68144pt x 86.64398pt.
-<../../docs/screenshots/05_puzzles/puzzle_lightsequence.png, id=1397, 1061.4656
+<../../docs/screenshots/05_puzzles/puzzle_lightsequence.png, id=1402, 1061.4656
 2pt x 584.1825pt>
 File: ../../docs/screenshots/05_puzzles/puzzle_lightsequence.png Graphic file (
 type png)
@@ -1121,298 +1121,298 @@ Dodatek A.
 [69
 
 ] [70] [71] [72]
-<../../docs/screenshots/01_gameplay/start_screen.png, id=1500, 1448.41125pt x 8
+<../../docs/screenshots/01_gameplay/start_screen.png, id=1506, 1448.41125pt x 8
 50.67813pt>
 File: ../../docs/screenshots/01_gameplay/start_screen.png Graphic file (type pn
 g)
 <use ../../docs/screenshots/01_gameplay/start_screen.png>
 Package pdftex.def Info: ../../docs/screenshots/01_gameplay/start_screen.png  u
-sed on input line 141.
+sed on input line 147.
 (pdftex.def)             Requested size: 409.71692pt x 240.62854pt.
-<../../docs/screenshots/01_gameplay/player_hub.png, id=1501, 1444.64719pt x 845
+<../../docs/screenshots/01_gameplay/player_hub.png, id=1507, 1444.64719pt x 845
 .40843pt>
 File: ../../docs/screenshots/01_gameplay/player_hub.png Graphic file (type png)
 
 <use ../../docs/screenshots/01_gameplay/player_hub.png>
 Package pdftex.def Info: ../../docs/screenshots/01_gameplay/player_hub.png  use
-d on input line 148.
+d on input line 154.
 (pdftex.def)             Requested size: 409.71692pt x 239.75711pt.
-<../../docs/screenshots/01_gameplay/player_combat.png, id=1502, 1449.91687pt x 
+<../../docs/screenshots/01_gameplay/player_combat.png, id=1508, 1449.91687pt x 
 847.66687pt>
 File: ../../docs/screenshots/01_gameplay/player_combat.png Graphic file (type p
 ng)
 <use ../../docs/screenshots/01_gameplay/player_combat.png>
 Package pdftex.def Info: ../../docs/screenshots/01_gameplay/player_combat.png  
-used on input line 155.
+used on input line 161.
 (pdftex.def)             Requested size: 409.71692pt x 239.531pt.
-<../../docs/screenshots/01_gameplay/hud_overlay.png, id=1503, 1144.275pt x 197.
+<../../docs/screenshots/01_gameplay/hud_overlay.png, id=1509, 1144.275pt x 197.
 98969pt>
 File: ../../docs/screenshots/01_gameplay/hud_overlay.png Graphic file (type png
 )
 <use ../../docs/screenshots/01_gameplay/hud_overlay.png>
 Package pdftex.def Info: ../../docs/screenshots/01_gameplay/hud_overlay.png  us
-ed on input line 162.
+ed on input line 168.
 (pdftex.def)             Requested size: 409.71692pt x 70.89255pt.
-<../../docs/screenshots/02_ui/menu_eq_empty.png, id=1504, 1333.23094pt x 756.57
+ [73]
+<../../docs/screenshots/02_ui/menu_eq_empty.png, id=1515, 1333.23094pt x 756.57
 657pt>
 File: ../../docs/screenshots/02_ui/menu_eq_empty.png Graphic file (type png)
 <use ../../docs/screenshots/02_ui/menu_eq_empty.png>
 Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_eq_empty.png  used o
-n input line 173.
+n input line 179.
 (pdftex.def)             Requested size: 218.51521pt x 123.99855pt.
-<../../docs/screenshots/02_ui/menu_eq_full.png, id=1505, 1299.35437pt x 738.509
+<../../docs/screenshots/02_ui/menu_eq_full.png, id=1516, 1299.35437pt x 738.509
 06pt>
 File: ../../docs/screenshots/02_ui/menu_eq_full.png Graphic file (type png)
 <use ../../docs/screenshots/02_ui/menu_eq_full.png>
 Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_eq_full.png  used on
- input line 174.
+ input line 180.
 (pdftex.def)             Requested size: 218.51521pt x 124.19263pt.
- [73]
-<../../docs/screenshots/02_ui/menu_quests.png, id=1511, 1332.47812pt x 743.0259
+<../../docs/screenshots/02_ui/menu_quests.png, id=1517, 1332.47812pt x 743.0259
 4pt>
 File: ../../docs/screenshots/02_ui/menu_quests.png Graphic file (type png)
 <use ../../docs/screenshots/02_ui/menu_quests.png>
 Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_quests.png  used on 
-input line 181.
+input line 187.
 (pdftex.def)             Requested size: 218.51521pt x 121.8457pt.
-<../../docs/screenshots/02_ui/menu_stats.png, id=1512, 1315.16344pt x 747.54282
+<../../docs/screenshots/02_ui/menu_stats.png, id=1518, 1315.16344pt x 747.54282
 pt>
 File: ../../docs/screenshots/02_ui/menu_stats.png Graphic file (type png)
 <use ../../docs/screenshots/02_ui/menu_stats.png>
 Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_stats.png  used on i
-nput line 182.
+nput line 188.
 (pdftex.def)             Requested size: 218.51521pt x 124.19473pt.
-<../../docs/screenshots/02_ui/menu_pages.png, id=1513, 1300.1072pt x 729.47531p
+<../../docs/screenshots/02_ui/menu_pages.png, id=1519, 1300.1072pt x 729.47531p
 t>
 File: ../../docs/screenshots/02_ui/menu_pages.png Graphic file (type png)
 <use ../../docs/screenshots/02_ui/menu_pages.png>
 Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_pages.png  used on i
-nput line 189.
+nput line 195.
 (pdftex.def)             Requested size: 218.51521pt x 122.60666pt.
-<../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png, id=1514, 1304.62407pt
+<../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png, id=1520, 1304.62407pt
  x 731.73375pt>
 File: ../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png Graphic file (typ
 e png)
 <use ../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png>
 Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_pages_unlocked_p1.pn
-g  used on input line 190.
+g  used on input line 196.
 (pdftex.def)             Requested size: 218.51521pt x 122.55081pt.
-<../../docs/screenshots/02_ui/menu_settings.png, id=1515, 1313.6578pt x 733.239
+<../../docs/screenshots/02_ui/menu_settings.png, id=1521, 1313.6578pt x 733.239
 38pt>
 File: ../../docs/screenshots/02_ui/menu_settings.png Graphic file (type png)
 <use ../../docs/screenshots/02_ui/menu_settings.png>
 Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_settings.png  used o
-n input line 197.
+n input line 203.
 (pdftex.def)             Requested size: 318.66948pt x 177.87187pt.
-<../../docs/screenshots/02_ui/toast_saved.png, id=1516, 476.53032pt x 140.02313
+<../../docs/screenshots/02_ui/toast_saved.png, id=1522, 476.53032pt x 140.02313
 pt>
 File: ../../docs/screenshots/02_ui/toast_saved.png Graphic file (type png)
 <use ../../docs/screenshots/02_ui/toast_saved.png>
 Package pdftex.def Info: ../../docs/screenshots/02_ui/toast_saved.png  used on 
-input line 204.
+input line 210.
 (pdftex.def)             Requested size: 364.19667pt x 107.0212pt.
-<../../docs/screenshots/03_dungeon/dungeon_entrance.png, id=1517, 1449.91687pt 
-x 852.18375pt>
-File: ../../docs/screenshots/03_dungeon/dungeon_entrance.png Graphic file (type
- png)
-<use ../../docs/screenshots/03_dungeon/dungeon_entrance.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_entrance.png
-  used on input line 215.
-(pdftex.def)             Requested size: 409.71692pt x 240.80737pt.
-File: ../../docs/screenshots/03_dungeon/dungeon_variant0.png Graphic file (type
- png)
-<use ../../docs/screenshots/03_dungeon/dungeon_variant0.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant0.png
-  used on input line 222.
-(pdftex.def)             Requested size: 145.68144pt x 85.278pt.
-<../../docs/screenshots/03_dungeon/dungeon_variant1.png, id=1518, 1450.6697pt x
- 851.43094pt>
-File: ../../docs/screenshots/03_dungeon/dungeon_variant1.png Graphic file (type
- png)
-<use ../../docs/screenshots/03_dungeon/dungeon_variant1.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant1.png
-  used on input line 223.
-(pdftex.def)             Requested size: 145.68144pt x 85.49886pt.
-File: ../../docs/screenshots/03_dungeon/dungeon_variant2.png Graphic file (type
- png)
-<use ../../docs/screenshots/03_dungeon/dungeon_variant2.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant2.png
-  used on input line 224.
-(pdftex.def)             Requested size: 145.68144pt x 85.3534pt.
-<../../docs/screenshots/03_dungeon/modifier_rich_coins.png, id=1519, 524.71031p
-t x 53.44969pt>
-File: ../../docs/screenshots/03_dungeon/modifier_rich_coins.png Graphic file (t
-ype png)
-<use ../../docs/screenshots/03_dungeon/modifier_rich_coins.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_rich_coins.
-png  used on input line 231.
-(pdftex.def)             Requested size: 218.51521pt x 22.25867pt.
-<../../docs/screenshots/03_dungeon/modifier_heavy_elites.png, id=1520, 740.7675
-pt x 63.23625pt>
-File: ../../docs/screenshots/03_dungeon/modifier_heavy_elites.png Graphic file 
-(type png)
-<use ../../docs/screenshots/03_dungeon/modifier_heavy_elites.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_heavy_elite
-s.png  used on input line 232.
-(pdftex.def)             Requested size: 218.51521pt x 18.65355pt.
-<../../docs/screenshots/03_dungeon/modifier_gloom.png, id=1521, 532.23843pt x 6
-4.74188pt>
-File: ../../docs/screenshots/03_dungeon/modifier_gloom.png Graphic file (type p
-ng)
-<use ../../docs/screenshots/03_dungeon/modifier_gloom.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_gloom.png  
-used on input line 239.
-(pdftex.def)             Requested size: 318.66948pt x 38.7644pt.
-<../../docs/screenshots/03_dungeon/boss_room.png, id=1522, 1458.19781pt x 855.9
-4781pt>
-File: ../../docs/screenshots/03_dungeon/boss_room.png Graphic file (type png)
-<use ../../docs/screenshots/03_dungeon/boss_room.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/boss_room.png  used 
-on input line 246.
-(pdftex.def)             Requested size: 218.51521pt x 128.25603pt.
-<../../docs/screenshots/03_dungeon/treasure_chest.png, id=1523, 746.03719pt x 5
-32.99126pt>
-File: ../../docs/screenshots/03_dungeon/treasure_chest.png Graphic file (type p
-ng)
-<use ../../docs/screenshots/03_dungeon/treasure_chest.png>
-Package pdftex.def Info: ../../docs/screenshots/03_dungeon/treasure_chest.png  
-used on input line 247.
-(pdftex.def)             Requested size: 218.51521pt x 156.10873pt.
  [74 <../../docs/screenshots/01_gameplay/start_screen.png> <../../docs/screensh
 ots/01_gameplay/player_hub.png>] [75 <../../docs/screenshots/01_gameplay/player
 _combat.png> <../../docs/screenshots/01_gameplay/hud_overlay.png> <../../docs/s
 creenshots/02_ui/menu_eq_empty.png> <../../docs/screenshots/02_ui/menu_eq_full.
 png> <../../docs/screenshots/02_ui/menu_quests.png> <../../docs/screenshots/02_
 ui/menu_stats.png>]
-<../../docs/screenshots/03_dungeon/boss_fight.png, id=1541, 1410.77063pt x 788.
+<../../docs/screenshots/03_dungeon/dungeon_entrance.png, id=1539, 1449.91687pt 
+x 852.18375pt>
+File: ../../docs/screenshots/03_dungeon/dungeon_entrance.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_entrance.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_entrance.png
+  used on input line 221.
+(pdftex.def)             Requested size: 409.71692pt x 240.80737pt.
+File: ../../docs/screenshots/03_dungeon/dungeon_variant0.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_variant0.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant0.png
+  used on input line 228.
+(pdftex.def)             Requested size: 145.68144pt x 85.278pt.
+<../../docs/screenshots/03_dungeon/dungeon_variant1.png, id=1540, 1450.6697pt x
+ 851.43094pt>
+File: ../../docs/screenshots/03_dungeon/dungeon_variant1.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_variant1.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant1.png
+  used on input line 229.
+(pdftex.def)             Requested size: 145.68144pt x 85.49886pt.
+File: ../../docs/screenshots/03_dungeon/dungeon_variant2.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_variant2.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant2.png
+  used on input line 230.
+(pdftex.def)             Requested size: 145.68144pt x 85.3534pt.
+<../../docs/screenshots/03_dungeon/modifier_rich_coins.png, id=1541, 524.71031p
+t x 53.44969pt>
+File: ../../docs/screenshots/03_dungeon/modifier_rich_coins.png Graphic file (t
+ype png)
+<use ../../docs/screenshots/03_dungeon/modifier_rich_coins.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_rich_coins.
+png  used on input line 237.
+(pdftex.def)             Requested size: 218.51521pt x 22.25867pt.
+<../../docs/screenshots/03_dungeon/modifier_heavy_elites.png, id=1542, 740.7675
+pt x 63.23625pt>
+File: ../../docs/screenshots/03_dungeon/modifier_heavy_elites.png Graphic file 
+(type png)
+<use ../../docs/screenshots/03_dungeon/modifier_heavy_elites.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_heavy_elite
+s.png  used on input line 238.
+(pdftex.def)             Requested size: 218.51521pt x 18.65355pt.
+<../../docs/screenshots/03_dungeon/modifier_gloom.png, id=1543, 532.23843pt x 6
+4.74188pt>
+File: ../../docs/screenshots/03_dungeon/modifier_gloom.png Graphic file (type p
+ng)
+<use ../../docs/screenshots/03_dungeon/modifier_gloom.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_gloom.png  
+used on input line 245.
+(pdftex.def)             Requested size: 318.66948pt x 38.7644pt.
+<../../docs/screenshots/03_dungeon/boss_room.png, id=1544, 1458.19781pt x 855.9
+4781pt>
+File: ../../docs/screenshots/03_dungeon/boss_room.png Graphic file (type png)
+<use ../../docs/screenshots/03_dungeon/boss_room.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/boss_room.png  used 
+on input line 252.
+(pdftex.def)             Requested size: 218.51521pt x 128.25603pt.
+<../../docs/screenshots/03_dungeon/treasure_chest.png, id=1545, 746.03719pt x 5
+32.99126pt>
+File: ../../docs/screenshots/03_dungeon/treasure_chest.png Graphic file (type p
+ng)
+<use ../../docs/screenshots/03_dungeon/treasure_chest.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/treasure_chest.png  
+used on input line 253.
+(pdftex.def)             Requested size: 218.51521pt x 156.10873pt.
+ [76 <../../docs/screenshots/02_ui/menu_pages.png> <../../docs/screenshots/02_u
+i/menu_pages_unlocked_p1.png> <../../docs/screenshots/02_ui/menu_settings.png> 
+<../../docs/screenshots/02_ui/toast_saved.png>]
+<../../docs/screenshots/03_dungeon/boss_fight.png, id=1555, 1410.77063pt x 788.
 9475pt>
 File: ../../docs/screenshots/03_dungeon/boss_fight.png Graphic file (type png)
 <use ../../docs/screenshots/03_dungeon/boss_fight.png>
 Package pdftex.def Info: ../../docs/screenshots/03_dungeon/boss_fight.png  used
- on input line 256.
+ on input line 262.
 (pdftex.def)             Requested size: 364.19667pt x 203.66486pt.
-<../../docs/screenshots/03_dungeon/invisible_revealed.png, id=1542, 775.39688pt
+<../../docs/screenshots/03_dungeon/invisible_revealed.png, id=1556, 775.39688pt
  x 660.21657pt>
 File: ../../docs/screenshots/03_dungeon/invisible_revealed.png Graphic file (ty
 pe png)
 <use ../../docs/screenshots/03_dungeon/invisible_revealed.png>
 Package pdftex.def Info: ../../docs/screenshots/03_dungeon/invisible_revealed.p
-ng  used on input line 258.
+ng  used on input line 264.
 (pdftex.def)             Requested size: 364.19667pt x 310.10034pt.
-<../../docs/screenshots/03_dungeon/radar_hemisphere.png, id=1543, 1234.6125pt x
+<../../docs/screenshots/03_dungeon/radar_hemisphere.png, id=1557, 1234.6125pt x
  842.39719pt>
 File: ../../docs/screenshots/03_dungeon/radar_hemisphere.png Graphic file (type
  png)
 <use ../../docs/screenshots/03_dungeon/radar_hemisphere.png>
 Package pdftex.def Info: ../../docs/screenshots/03_dungeon/radar_hemisphere.png
-  used on input line 260.
+  used on input line 266.
 (pdftex.def)             Requested size: 364.19667pt x 248.49216pt.
-<../../docs/screenshots/03_dungeon/minimap_demo.png, id=1544, 246.1697pt x 222.
+<../../docs/screenshots/03_dungeon/minimap_demo.png, id=1558, 246.1697pt x 222.
 07968pt>
 File: ../../docs/screenshots/03_dungeon/minimap_demo.png Graphic file (type png
 )
 <use ../../docs/screenshots/03_dungeon/minimap_demo.png>
 Package pdftex.def Info: ../../docs/screenshots/03_dungeon/minimap_demo.png  us
-ed on input line 262.
+ed on input line 268.
 (pdftex.def)             Requested size: 364.19667pt x 328.5711pt.
- [76 <../../docs/screenshots/02_ui/menu_pages.png> <../../docs/screenshots/02_u
-i/menu_pages_unlocked_p1.png> <../../docs/screenshots/02_ui/menu_settings.png> 
-<../../docs/screenshots/02_ui/toast_saved.png>]
+ [77 <../../docs/screenshots/03_dungeon/dungeon_entrance.png> <../../docs/scree
+nshots/03_dungeon/dungeon_variant1.png> <../../docs/screenshots/03_dungeon/modi
+fier_rich_coins.png> <../../docs/screenshots/03_dungeon/modifier_heavy_elites.p
+ng> <../../docs/screenshots/03_dungeon/modifier_gloom.png>]
 File: ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png Graphic file (type pn
 g)
 <use ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png  u
-sed on input line 270.
+sed on input line 276.
 (pdftex.def)             Requested size: 218.51521pt x 114.78824pt.
 File: ../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png Graphic file (
 type png)
 <use ../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_hud_after_fights
-.png  used on input line 271.
+.png  used on input line 277.
 (pdftex.def)             Requested size: 218.51521pt x 89.62045pt.
-<../../docs/screenshots/04_ai_debug/ai_flank_tactic.png, id=1554, 1459.70343pt 
+<../../docs/screenshots/04_ai_debug/ai_flank_tactic.png, id=1569, 1459.70343pt 
 x 858.95906pt>
 File: ../../docs/screenshots/04_ai_debug/ai_flank_tactic.png Graphic file (type
  png)
 <use ../../docs/screenshots/04_ai_debug/ai_flank_tactic.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_flank_tactic.png
-  used on input line 278.
+  used on input line 284.
 (pdftex.def)             Requested size: 145.68144pt x 85.71744pt.
-<../../docs/screenshots/04_ai_debug/ai_rush_tactic.png, id=1555, 1464.97313pt x
+<../../docs/screenshots/04_ai_debug/ai_rush_tactic.png, id=1570, 1464.97313pt x
  850.67813pt>
 File: ../../docs/screenshots/04_ai_debug/ai_rush_tactic.png Graphic file (type 
 png)
 <use ../../docs/screenshots/04_ai_debug/ai_rush_tactic.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_rush_tactic.png 
- used on input line 279.
+ used on input line 285.
 (pdftex.def)             Requested size: 145.68144pt x 84.59251pt.
-<../../docs/screenshots/04_ai_debug/ai_kite_tactic.png, id=1556, 1454.43375pt x
+<../../docs/screenshots/04_ai_debug/ai_kite_tactic.png, id=1571, 1454.43375pt x
  852.18375pt>
 File: ../../docs/screenshots/04_ai_debug/ai_kite_tactic.png Graphic file (type 
 png)
 <use ../../docs/screenshots/04_ai_debug/ai_kite_tactic.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_kite_tactic.png 
- used on input line 280.
+ used on input line 286.
 (pdftex.def)             Requested size: 145.68144pt x 85.3534pt.
-<../../docs/screenshots/04_ai_debug/ai_context_lowhp.png, id=1557, 328.97906pt 
+<../../docs/screenshots/04_ai_debug/ai_context_lowhp.png, id=1572, 328.97906pt 
 x 141.52875pt>
 File: ../../docs/screenshots/04_ai_debug/ai_context_lowhp.png Graphic file (typ
 e png)
 <use ../../docs/screenshots/04_ai_debug/ai_context_lowhp.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_context_lowhp.pn
-g  used on input line 287.
+g  used on input line 293.
 (pdftex.def)             Requested size: 218.51521pt x 94.00745pt.
-<../../docs/screenshots/04_ai_debug/ai_context_manyelites.png, id=1558, 316.181
+<../../docs/screenshots/04_ai_debug/ai_context_manyelites.png, id=1573, 316.181
 24pt x 140.77594pt>
 File: ../../docs/screenshots/04_ai_debug/ai_context_manyelites.png Graphic file
  (type png)
 <use ../../docs/screenshots/04_ai_debug/ai_context_manyelites.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_context_manyelit
-es.png  used on input line 288.
+es.png  used on input line 294.
 (pdftex.def)             Requested size: 218.51521pt x 97.2923pt.
 File: ../../docs/screenshots/04_ai_debug/brain_json_example.png Graphic file (t
 ype png)
 <use ../../docs/screenshots/04_ai_debug/brain_json_example.png>
 Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/brain_json_example.
-png  used on input line 295.
+png  used on input line 301.
 (pdftex.def)             Requested size: 131.74776pt x 386.54015pt.
 File: ../../docs/screenshots/05_puzzles/puzzle_lockpick.png Graphic file (type 
 png)
 <use ../../docs/screenshots/05_puzzles/puzzle_lockpick.png>
 Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_lockpick.png 
- used on input line 306.
+ used on input line 312.
 (pdftex.def)             Requested size: 145.68144pt x 66.88986pt.
 File: ../../docs/screenshots/05_puzzles/puzzle_pipe.png Graphic file (type png)
 
 <use ../../docs/screenshots/05_puzzles/puzzle_pipe.png>
 Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_pipe.png  use
-d on input line 307.
+d on input line 313.
 (pdftex.def)             Requested size: 145.68144pt x 86.64398pt.
 File: ../../docs/screenshots/05_puzzles/puzzle_lightsequence.png Graphic file (
 type png)
 <use ../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>
 Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_lightsequence
-.png  used on input line 308.
+.png  used on input line 314.
 (pdftex.def)             Requested size: 145.68144pt x 80.17157pt.
- [77 <../../docs/screenshots/03_dungeon/dungeon_entrance.png> <../../docs/scree
-nshots/03_dungeon/dungeon_variant1.png> <../../docs/screenshots/03_dungeon/modi
-fier_rich_coins.png> <../../docs/screenshots/03_dungeon/modifier_heavy_elites.p
-ng> <../../docs/screenshots/03_dungeon/modifier_gloom.png>]
-<../../docs/screenshots/05_puzzles/puzzle_blockfit.png, id=1568, 1239.88219pt x
+<../../docs/screenshots/05_puzzles/puzzle_blockfit.png, id=1574, 1239.88219pt x
  555.57562pt>
 File: ../../docs/screenshots/05_puzzles/puzzle_blockfit.png Graphic file (type 
 png)
 <use ../../docs/screenshots/05_puzzles/puzzle_blockfit.png>
 Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_blockfit.png 
- used on input line 315.
+ used on input line 321.
 (pdftex.def)             Requested size: 218.51521pt x 97.91385pt.
-<../../docs/screenshots/05_puzzles/puzzle_blockmaze.png, id=1569, 1181.91562pt 
+<../../docs/screenshots/05_puzzles/puzzle_blockmaze.png, id=1575, 1181.91562pt 
 x 574.39594pt>
 File: ../../docs/screenshots/05_puzzles/puzzle_blockmaze.png Graphic file (type
  png)
 <use ../../docs/screenshots/05_puzzles/puzzle_blockmaze.png>
 Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_blockmaze.png
-  used on input line 316.
+  used on input line 322.
 (pdftex.def)             Requested size: 218.51521pt x 106.19145pt.
  [78 <../../docs/screenshots/03_dungeon/boss_room.png> <../../docs/screenshots/
 03_dungeon/treasure_chest.png> <../../docs/screenshots/03_dungeon/boss_fight.pn
@@ -1478,14 +1478,14 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
 Package rerunfilecheck Info: File `MBZUAI-main.out' has not changed.
-(rerunfilecheck)             Checksum: 4CFF9C70A8C96E10F6A2D2E8DC75DF0E;28370.
+(rerunfilecheck)             Checksum: 10CB43346599F2F19E4C7E3CEFD56EEF;28598.
  )
 (\end occurred when \ifx on line 164 was incomplete) 
 Here is how much of TeX's memory you used:
- 19601 strings out of 467691
- 342103 string characters out of 5414987
+ 19603 strings out of 467691
+ 342127 string characters out of 5414987
  928158 words of memory out of 5000000
- 47439 multiletter control sequences out of 15000+600000
+ 47440 multiletter control sequences out of 15000+600000
  743443 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  129i,13n,124p,1189b,2175s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1513,10 +1513,10 @@ ograms/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/foxto/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_
-of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.pdf (113 pages, 381687
-50 bytes).
+of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.pdf (113 pages, 381701
+14 bytes).
 PDF statistics:
- 2379 PDF objects out of 2487 (max. 8388607)
- 834 named destinations out of 1000 (max. 500000)
- 1544 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2386 PDF objects out of 2487 (max. 8388607)
+ 835 named destinations out of 1000 (max. 500000)
+ 1552 words of extra memory for PDF output out of 10000 (max. 10000000)
 
