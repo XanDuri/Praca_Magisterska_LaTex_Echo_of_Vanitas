@@ -1,0 +1,1985 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.21)  2 JUN 2026 06:51
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./MBZUAI-main.tex
+(MBZUAI-main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memoir.cls
+Document Class: memoir 2025/11/04 v3.8.4b configurable book, report, article do
+cument class
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2026-03-20 L3 programming layer (loader) 
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count275
+))
+Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count276
+))
+\onelineskip=\skip49
+\lxvchars=\skip50
+\xlvchars=\skip51
+\@memcnta=\count277
+\c@@memmarkcntra=\count278
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+\trimtop=\skip52
+\trimedge=\skip53
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/memoir\mem12.clo
+File: mem12.clo 2022/07/29 v0.5 memoir class 12pt size option
+)
+\binding=\skip54
+\spinemargin=\skip55
+\foremargin=\skip56
+\uppermargin=\skip57
+\lowermargin=\skip58
+\headdrop=\skip59
+\normalrulethickness=\skip60
+\mem@maxheadheight=\skip61
+\mem@maxfootheight=\skip62
+\headwidth=\skip63
+\c@storedpagenumber=\count279
+\memPD=\dimen150
+\m@mabparskip=\skip64
+\thanksmarkwidth=\skip65
+\thanksmarksep=\skip66
+\droptitle=\skip67
+\c@book=\count280
+\c@part=\count281
+\c@chapter=\count282
+\c@section=\count283
+\c@subsection=\count284
+\c@subsubsection=\count285
+\c@paragraph=\count286
+\c@subparagraph=\count287
+\beforechapskip=\skip68
+\midchapskip=\skip69
+\afterchapskip=\skip70
+\chapindent=\skip71
+\bottomsectionskip=\skip72
+\secindent=\skip73
+\beforesecskip=\skip74
+\aftersecskip=\skip75
+\subsecindent=\skip76
+\beforesubsecskip=\skip77
+\aftersubsecskip=\skip78
+\subsubsecindent=\skip79
+\beforesubsubsecskip=\skip80
+\aftersubsubsecskip=\skip81
+\paraindent=\skip82
+\beforeparaskip=\skip83
+\afterparaskip=\skip84
+\subparaindent=\skip85
+\beforesubparaskip=\skip86
+\aftersubparaskip=\skip87
+\pfbreakskip=\skip88
+\c@@ppsavesec=\count288
+\c@@ppsaveapp=\count289
+\ragrparindent=\dimen151
+\everylistparindent=\dimen152
+\parsepi=\skip89
+\topsepi=\skip90
+\itemsepi=\skip91
+\parsepii=\skip92
+\topsepii=\skip93
+\topsepiii=\skip94
+\itemsepii=\skip95
+\itemsepiii=\skip96
+\partopsepii=\skip97
+\partopsepiii=\skip98
+\m@msavetopsep=\skip99
+\m@msavepartopsep=\skip100
+\@enLab=\toks17
+\abstitleskip=\skip101
+\absleftindent=\skip102
+\abs@leftindent=\dimen153
+\absrightindent=\skip103
+\absparindent=\skip104
+\absparsep=\skip105
+\c@vslineno=\count290
+\c@poemline=\count291
+\c@modulo@vs=\count292
+\c@memfvsline=\count293
+\vleftskip=\skip106
+\vrightskip=\skip107
+\stanzaskip=\skip108
+\versewidth=\skip109
+\vgap=\skip110
+\vindent=\skip111
+\vleftmargin=\dimen154
+\c@verse=\count294
+\c@chrsinstr=\count295
+\beforepoemtitleskip=\skip112
+\afterpoemtitleskip=\skip113
+\c@poem=\count296
+\beforePoemTitleskip=\skip114
+\midPoemTitleskip=\skip115
+\afterPoemTitleskip=\skip116
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen155
+\ar@mcellbox=\box53
+\extrarowheight=\dimen156
+\NC@list=\toks18
+\extratabsurround=\skip117
+\backup@length=\skip118
+\ar@cellbox=\box54
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.sty
+Package: dcolumn 2025/10/21 v1.06 decimal alignment package (DPC)
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\delarray.sty
+Package: delarray 2014/10/28 v1.01 array delimiter package (DPC)
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+\TX@col@width=\dimen157
+\TX@old@table=\dimen158
+\TX@old@col=\dimen159
+\TX@target=\dimen160
+\TX@delta=\dimen161
+\TX@cols=\count297
+\TX@ftn=\toks19
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen162
+\lightrulewidth=\dimen163
+\cmidrulewidth=\dimen164
+\belowrulesep=\dimen165
+\belowbottomsep=\dimen166
+\aboverulesep=\dimen167
+\abovetopsep=\dimen168
+\cmidrulesep=\dimen169
+\cmidrulekern=\dimen170
+\defaultaddspace=\dimen171
+\@cmidla=\count298
+\@cmidlb=\count299
+\@aboverulesep=\dimen172
+\@belowrulesep=\dimen173
+\@thisruleclass=\count300
+\@lastruleclass=\count301
+\@thisrulewidth=\dimen174
+)
+\ctableftskip=\skip119
+\ctabrightskip=\skip120
+\abovecolumnspenalty=\count302
+\@linestogo=\count303
+\@cellstogo=\count304
+\@cellsincolumn=\count305
+\crtok=\toks20
+\@mincolumnwidth=\dimen175
+\c@newflo@tctr=\count306
+\mem@margin@floatbox=\box55
+\@contcwidth=\skip121
+\@contindw=\skip122
+\abovecaptionskip=\skip123
+\belowcaptionskip=\skip124
+\subfloattopskip=\skip125
+\subfloatcapskip=\skip126
+\subfloatcaptopadj=\skip127
+\subfloatbottomskip=\skip128
+\subfloatlabelskip=\skip129
+\subfloatcapmargin=\dimen176
+\c@@contsubnum=\count307
+\m@mscap@capbox=\box56
+\m@mscap@fbox=\box57
+\sidecapsep=\dimen177
+\sidecapwidth=\dimen178
+\m@m@tempdima=\dimen179
+\m@mscapraise=\dimen180
+\sidecapraise=\dimen181
+\m@mscapmainwidth=\dimen182
+\m@mscaplkern=\dimen183
+\beforeepigraphskip=\skip130
+\afterepigraphskip=\skip131
+\epigraphwidth=\skip132
+\epigraphrule=\skip133
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)))
+\c@section@level=\count308
+)
+\tocentryskip=\skip134
+\tocbaseline=\skip135
+\cftparskip=\skip136
+\cftbeforebookskip=\skip137
+\cftbookindent=\dimen184
+\cftbooknumwidth=\dimen185
+\cftbeforepartskip=\skip138
+\cftpartindent=\skip139
+\cftpartnumwidth=\skip140
+\cftbeforechapterskip=\skip141
+\cftchapterindent=\skip142
+\cftchapternumwidth=\skip143
+\cftbeforesectionskip=\skip144
+\cftsectionindent=\skip145
+\cftsectionnumwidth=\skip146
+\cftbeforesubsectionskip=\skip147
+\cftsubsectionindent=\skip148
+\cftsubsectionnumwidth=\skip149
+\cftbeforesubsubsectionskip=\skip150
+\cftsubsubsectionindent=\skip151
+\cftsubsubsectionnumwidth=\skip152
+\cftbeforeparagraphskip=\skip153
+\cftparagraphindent=\skip154
+\cftparagraphnumwidth=\skip155
+\cftbeforesubparagraphskip=\skip156
+\cftsubparagraphindent=\skip157
+\cftsubparagraphnumwidth=\skip158
+\prechapterprecisshift=\dimen186
+\c@maxsecnumdepth=\count309
+\bibindent=\dimen187
+\bibitemsep=\skip159
+\indexcolsep=\skip160
+\indexrule=\skip161
+\indexmarkstyle=\toks22
+\@indexbox=\insert252
+LaTeX Info: Redefining \raggedbottom on input line 8095.
+LaTeX Info: Redefining \flushbottom on input line 8099.
+\glossarycolsep=\dimen188
+\glossaryrule=\dimen189
+\sideparvshift=\skip162
+\sideins=\insert251
+\sidebartopsep=\skip163
+\sidebarhsep=\skip164
+\sidebarvsep=\skip165
+\sidebarwidth=\skip166
+\footmarkwidth=\skip167
+\footmarksep=\skip168
+\footparindent=\skip169
+\footinsdim=\skip170
+\footinsv@r=\insert250
+\@mpfootinsv@r=\insert249
+\m@m@k=\count310
+\m@m@h=\dimen190
+\m@mipn@skip=\skip171
+\sidefootins=\insert248
+\sidefootadjust=\skip172
+\sidefootheight=\skip173
+\sidefoothsep=\skip174
+\sidefootvsep=\skip175
+\sidefootwidth=\skip176
+\m@mdownsf=\skip177
+\c@sidefootnote=\count311
+\sidefootmarkwidth=\skip178
+\sidefootmarksep=\skip179
+\sidefootparindent=\skip180
+\c@pagenote=\count312
+\c@pagenoteshadow=\count313
+\mem@pn@lastkern=\skip181
+ (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks23
+\verbatim@line=\toks24
+\verbatim@in@stream=\read2
+)
+\verbatimindent=\skip182
+\verbatim@out=\write3
+ (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\shortvrb.sty
+Package: shortvrb 2024/12/25 v3.0q Standard LaTeX documentation package V3 (FMi
+)
+)
+\bvboxsep=\skip183
+\c@memfbvline=\count314
+\c@bvlinectr=\count315
+\bvnumlength=\skip184
+\fb@frw=\dimen191
+\fb@frh=\dimen192
+\FrameRule=\dimen193
+\FrameSep=\dimen194
+\c@cp@cntr=\count316
+\c@ism@mctr=\count317
+\c@xsm@mctr=\count318
+\c@csm@mctr=\count319
+\c@ksm@mctr=\count320
+\c@xksm@mctr=\count321
+\c@cksm@mctr=\count322
+\c@msm@mctr=\count323
+\c@xmsm@mctr=\count324
+\c@cmsm@mctr=\count325
+\c@bsm@mctr=\count326
+\c@workm@mctr=\count327
+\c@sheetsequence=\count328
+\c@lastsheet=\count329
+\c@lastpage=\count330
+\c@figure=\count331
+\c@lofdepth=\count332
+\cftbeforefigureskip=\skip185
+\cftfigureindent=\skip186
+\cftfigurenumwidth=\skip187
+\c@table=\count333
+\c@lotdepth=\count334
+\cftbeforetableskip=\skip188
+\cfttableindent=\skip189
+\cfttablenumwidth=\skip190
+Package abstract [2008/07/23] emulated by memoir.
+Package appendix [2008/07/23] emulated by memoir.
+Package ccaption [2008/07/23] emulated by memoir.
+Package changepage [2008/07/23] emulated by memoir.
+Package chngcntr [2008/07/23] emulated by memoir.
+Package chngpage [2008/07/23] emulated by memoir.
+Package crop emulated by memoir.
+Package enumerate [2008/07/23] emulated by memoir.
+Package epigraph [2008/07/23] emulated by memoir.
+Package ifmtarg [2008/07/23] emulated by memoir.
+Package index [2008/07/23] emulated by memoir.
+Package makeidx [2008/07/23] emulated by memoir.
+Package moreverb [2008/07/23] emulated by memoir.
+Package needspace [2008/07/23] emulated by memoir.
+Package newfile [2008/07/23] emulated by memoir.
+Package nextpage [2008/07/23] emulated by memoir.
+Package pagenote [2008/07/23] emulated by memoir.
+Package parskip [2008/07/23] emulated by memoir.
+Package patchcmd [2008/07/23] emulated by memoir.
+Package setspace [2008/07/23] emulated by memoir.
+Package showidx [2008/07/23] emulated by memoir.
+Package titleref [2008/07/23] emulated by memoir.
+Package titling [2008/07/23] emulated by memoir.
+Package tocbibind [2008/07/23] emulated by memoir.
+Package tocloft [2008/07/23] emulated by memoir.
+Package tocvsec2 [2008/07/23] emulated by memoir.
+Package verse [2008/07/23] emulated by memoir.
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3k
+eys2e.sty
+Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count335
+\l__lipsum_a_int=\count336
+\l__lipsum_b_int=\count337
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex))
+(thesis-preamble.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks25
+\inpenc@posthook=\toks26
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2026/03/24 v26.5 The multilingual framework for LuaLaTeX, pdfLaT
+eX and XeLaTeX
+\babel@savecnt=\count338
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
+ne 2078.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
+ne 2080.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
+e 2082.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
+e 2083.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
+on input line 2084.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
+on input line 2086.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
+on input line 2111.
+\U@D=\dimen195
+\l@unhyphenated=\language79
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read3
+\bbl@dirlevel=\count339
+Package babel Info: Configuration files are deprecated, as
+(babel)             they can break document portability.
+(babel)             Reported on input line 4206.
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pl\babel
+-polish.tex)
+Package babel Info: Importing font and identification data for polish
+(babel)             from babel-pl.ini. Reported on input line 4330.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/babel-polish\polish.ldf
+Language: polish 2022/03/12 1.3 Babel support for Polish
+Package babel Info: Making " an active character on input line 101.
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count340
+\Gm@cntv=\count341
+\c@Gm@tempcnt=\count342
+\Gm@bindingoffset=\dimen196
+\Gm@wd@mp=\dimen197
+\Gm@odd@mp=\dimen198
+\Gm@even@mp=\dimen199
+\Gm@layoutwidth=\dimen256
+\Gm@layoutheight=\dimen257
+\Gm@layouthoffset=\dimen258
+\Gm@layoutvoffset=\dimen259
+\Gm@dimlist=\toks27
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2025/12/10 v3.0d eso-pic (RN)
+\ESO@tempdima=\dimen260
+\ESO@tempdimb=\dimen261
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip191
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks28
+\ex@=\dimen262
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen263
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count343
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count344
+\leftroot@=\count345
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count346
+\DOTSCASE@=\count347
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box58
+\strutbox@=\box59
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen264
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count348
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count349
+\dotsspace@=\muskip17
+\c@parentequation=\count350
+\dspbrk@lvl=\count351
+\tag@help=\toks29
+\row@=\count352
+\column@=\count353
+\maxfields@=\count354
+\andhelp@=\toks30
+\eqnshift@=\dimen265
+\alignsep@=\dimen266
+\tagshift@=\dimen267
+\tagwidth@=\dimen268
+\totwidth@=\dimen269
+\lineht@=\dimen270
+\@envbody=\toks31
+\multlinegap=\skip192
+\multlinetaggap=\skip193
+\mathdisplay@stack=\toks32
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.st
+y
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen271
+\Gin@req@width=\dimen272
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
+\LTleft=\skip194
+\LTright=\skip195
+\LTpre=\skip196
+\LTpost=\skip197
+\LTchunksize=\count355
+\LTcapwidth=\dimen273
+\LT@head=\box60
+\LT@firsthead=\box61
+\LT@foot=\box62
+\LT@lastfoot=\box63
+\LT@gbox=\box64
+\LT@cols=\count356
+\LT@rows=\count357
+\c@LT@tables=\count358
+\c@LT@chunks=\count359
+\LT@p@ftn=\toks33
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count360
+\lst@gtempboxa=\box65
+\lst@token=\toks34
+\lst@length=\count361
+\lst@currlwidth=\dimen274
+\lst@column=\count362
+\lst@pos=\count363
+\lst@lostspace=\dimen275
+\lst@width=\dimen276
+\lst@newlines=\count364
+\lst@lineno=\count365
+\lst@maxwidth=\dimen277
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count366
+\lst@skipnumbers=\count367
+\lst@framebox=\box66
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/nomentbl\nomentbl.sty
+Package: nomentbl 2006/04/14 v0.4 Nomenclature in a longtable environment
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/nomencl\nomencl.sty
+Package: nomencl 2021/11/10 v5.6 Nomenclature package
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks35
+\XKV@tempa@toks=\toks36
+)
+\XKV@depth=\count368
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\tocbasic.st
+y
+Package: tocbasic 2026/02/02 v3.49.2 KOMA-Script package (handling toc-files)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+Package: scrbase 2026/02/02 v3.49.2 KOMA-Script package (KOMA-Script-independen
+t basics and keyval usage)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.st
+y
+Package: scrlfile 2026/02/02 v3.49.2 KOMA-Script package (file load hooks)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-ho
+ok.sty
+Package: scrlfile-hook 2026/02/02 v3.49.2 KOMA-Script package (using LaTeX hook
+s)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
+Package: scrlogo 2026/02/02 v3.49.2 KOMA-Script package (logo)
+)))
+Applying: [2021/05/01] Usage of raw or classic option list on input line 254.
+Already applied: [0000/00/00] Usage of raw or classic option list on input line
+ 370.
+)
+\scr@dte@tocline@numberwidth=\skip198
+\scr@dte@tocline@numbox=\box67
+)
+Package tocbasic Info: setting babel extension for `nlo' on input line 187.
+Package tocbasic Info: setting babel extension for `nls' on input line 188.
+\nomlabelwidth=\dimen278
+\nom@tempdim=\dimen279
+\nomitemsep=\skip199
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count369
+\calc@Bcount=\count370
+\calc@Adimen=\dimen280
+\calc@Bdimen=\dimen281
+\calc@Askip=\skip256
+\calc@Bskip=\skip257
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count371
+\calc@Cskip=\skip258
+))
+\@nomenclaturefile=\write4
+\openout4 = `MBZUAI-main.nlo'.
+
+Package nomencl Info: Writing nomenclature file MBZUAI-main.nlo on input line 1
+58.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen282
+\Hy@linkcounter=\count372
+\Hy@pagecounter=\count373
+ (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count374
+ (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4468.
+LaTeX Info: Redefining \href on input line 4718.
+\c@Hy@tempcnt=\count375
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4807.
+\XeTeXLinkMargin=\dimen283
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count376
+\Field@Width=\dimen284
+\Fld@charsize=\dimen285
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring OFF on input line 6104.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count377
+\c@Item=\count378
+\c@Hfootnote=\count379
+)
+Package hyperref Info: Driver: hpdftex.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2026-01-29 v7.01p Hyperref driver for pdfTeX
+\Fld@listcount=\count380
+\c@bookmark@seq@number=\count381
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip259
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memhfixc.sty
+Package: memhfixc 2025/09/16 v1.24 hyperref package fixes for memoir class
+\c@memhycontfloat=\count382
+\c@mem@Hpagenote=\count383
+))
+(private/thesis-margins-and-spaces.tex)
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 55
+.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+No file MBZUAI-main.aux.
+\openout1 = `MBZUAI-main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+Package babel Info: 'polish' activates 'polish' shorthands.
+(babel)             Reported on input line 55.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(99.58464pt, 455.24411pt, 42.67912pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=27.31465pt
+* \evensidemargin=27.31465pt
+* \topmargin=-35.5119pt
+* \headheight=16.0pt
+* \headsep=19.8738pt
+* \topskip=12.0pt
+* \footskip=39.83385pt
+* \marginparwidth=0.0pt
+* \marginparsep=0.0pt
+* \columnsep=10.0pt
+* \skip\footins=12.0pt plus 4.0pt minus 4.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count384
+\scratchdimen=\dimen286
+\scratchbox=\box68
+\nofMPsegments=\count385
+\nofMParguments=\count386
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count387
+\MPscratchDim=\dimen287
+\MPnumerator=\count388
+\makeMPintoPDFobject=\count389
+\everyMPtoPDFconversion=\toks38
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+\c@lstlisting=\count390
+Package tocbasic Info: setting babel extension for `lol' on input line 55.
+Package hyperref Info: Link coloring OFF on input line 55.
+\@outlinefile=\write5
+\openout5 = `MBZUAI-main.out'.
+
+ (private/frontpage.tex
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
+7.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
+7.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+37.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+37.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 37.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 37.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 37.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
+
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
+
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+[1
+
+{C:/Users/foxto/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/foxt
+o/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] [2
+
+
+])
+(private/declarationpage.tex [3
+
+
+]) (Chapters/Abstract.tex
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 9
+.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [4
+
+
+{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
+]
+[5]) (Chapters/Abstract_eng.tex [6
+
+
+] [7]) (Chapters/Acknowledgements.tex
+[8
+
+
+]) (Chapters/Dedication.tex [9
+
+
+]) (private/toc-lot-lof.tex
+No file MBZUAI-main.toc.
+[10
+
+
+]
+No file MBZUAI-main.lof.
+[11
+
+
+]) (Chapters/List_of_Abbreviations.tex
+ignored: Infinite glue shrinkage found in box bein
+g split [12
+
+
+]) [13]
+\openout2 = `Chapters/Chapter_00.aux'.
+
+ (Chapters/Chapter_00.tex
+Rozdzia\l  1.
+[1
+
+
+]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+1.
+ (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+[2{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
+[3] [4]) [5]
+\openout2 = `Chapters/Chapter_01.aux'.
+
+ (Chapters/Chapter_01.tex
+Rozdzia\l  2.
+[6
+
+
+
+
+]
+<images/bat-design.png, id=110, 829.0975pt x 970.62625pt>
+File: images/bat-design.png Graphic file (type png)
+<use images/bat-design.png>
+Package pdftex.def Info: images/bat-design.png  used on input line 41.
+(pdftex.def)             Requested size: 341.43307pt x 399.70699pt.
+ [7]
+<images/labra_knight.png, id=119, 403.00563pt x 758.33313pt>
+File: images/labra_knight.png Graphic file (type png)
+<use images/labra_knight.png>
+Package pdftex.def Info: images/labra_knight.png  used on input line 54.
+(pdftex.def)             Requested size: 341.43307pt x 642.46867pt.
+
+
+LaTeX Warning: Reference `fig:enemy-sketch' on page 8 undefined on input line 6
+1.
+
+[8 <./images/bat-design.png>] [9 <./images/labra_knight.png>]
+<../../docs/screenshots/enemie_art_skeatch.png, id=135, 822.07124pt x 670.75594
+pt>
+File: ../../docs/screenshots/enemie_art_skeatch.png Graphic file (type png)
+<use ../../docs/screenshots/enemie_art_skeatch.png>
+Package pdftex.def Info: ../../docs/screenshots/enemie_art_skeatch.png  used on
+ input line 65.
+(pdftex.def)             Requested size: 386.96027pt x 315.73637pt.
+<images/npcs.png, id=136, 901.86937pt x 1225.07687pt>
+File: images/npcs.png Graphic file (type png)
+<use images/npcs.png>
+Package pdftex.def Info: images/npcs.png  used on input line 76.
+(pdftex.def)             Requested size: 341.43307pt x 463.7956pt.
+
+
+LaTeX Warning: Reference `fig:bat-design' on page 10 undefined on input line 88
+.
+
+
+LaTeX Warning: Reference `fig:labra-knight' on page 10 undefined on input line 
+88.
+
+
+LaTeX Warning: Reference `fig:npcs' on page 10 undefined on input line 88.
+
+[10 <../../docs/screenshots/enemie_art_skeatch.png>] [11 <./images/npcs.png>]
+
+LaTeX Warning: Reference `fig:anim-player' on page 12 undefined on input line 9
+6.
+
+
+LaTeX Warning: Reference `fig:anim-enemy' on page 12 undefined on input line 96
+.
+
+<../../docs/screenshots/07_animations/anim_player.png, id=152, 1451.4225pt x 80
+9.0225pt>
+File: ../../docs/screenshots/07_animations/anim_player.png Graphic file (type p
+ng)
+<use ../../docs/screenshots/07_animations/anim_player.png>
+Package pdftex.def Info: ../../docs/screenshots/07_animations/anim_player.png  
+used on input line 100.
+(pdftex.def)             Requested size: 455.24411pt x 253.74477pt.
+<../../docs/screenshots/07_animations/anim_enemy.png, id=153, 1435.3625pt x 809
+.0225pt>
+File: ../../docs/screenshots/07_animations/anim_enemy.png Graphic file (type pn
+g)
+<use ../../docs/screenshots/07_animations/anim_enemy.png>
+Package pdftex.def Info: ../../docs/screenshots/07_animations/anim_enemy.png  u
+sed on input line 107.
+(pdftex.def)             Requested size: 455.24411pt x 256.58403pt.
+[12 <../../docs/screenshots/07_animations/anim_player.png (PNG copy)>]
+
+LaTeX Warning: Reference `fig:concept-fight' on page 13 undefined on input line
+ 121.
+
+
+LaTeX Warning: Reference `fig:concept-menu' on page 13 undefined on input line 
+121.
+
+<../../docs/screenshots/1st_concept_fight.jpg, id=162, 2168.1pt x 2890.8pt>
+File: ../../docs/screenshots/1st_concept_fight.jpg Graphic file (type jpg)
+<use ../../docs/screenshots/1st_concept_fight.jpg>
+Package pdftex.def Info: ../../docs/screenshots/1st_concept_fight.jpg  used on 
+input line 125.
+(pdftex.def)             Requested size: 318.66948pt x 424.86752pt.
+<../../docs/screenshots/1st_concept_gameplay_hud.jpg, id=163, 2890.8pt x 2168.1
+pt>
+File: ../../docs/screenshots/1st_concept_gameplay_hud.jpg Graphic file (type jp
+g)
+<use ../../docs/screenshots/1st_concept_gameplay_hud.jpg>
+Package pdftex.def Info: ../../docs/screenshots/1st_concept_gameplay_hud.jpg  u
+sed on input line 132.
+(pdftex.def)             Requested size: 318.66948pt x 238.98798pt.
+<../../docs/screenshots/1st_concept_menu_hud.jpg, id=164, 2168.1pt x 2890.8pt>
+File: ../../docs/screenshots/1st_concept_menu_hud.jpg Graphic file (type jpg)
+<use ../../docs/screenshots/1st_concept_menu_hud.jpg>
+Package pdftex.def Info: ../../docs/screenshots/1st_concept_menu_hud.jpg  used 
+on input line 139.
+(pdftex.def)             Requested size: 318.66948pt x 424.86752pt.
+[13 <../../docs/screenshots/07_animations/anim_enemy.png (PNG copy)>]
+ignored: Infinite g
+lue shrinkage found in box being split [14 <../../docs/screenshots/1st_concept_
+fight.jpg>] [15{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm
+/lm-mathsy.enc}]) [16 <../../docs/screenshots/1st_concept_gameplay_hud.jpg>] [1
+7 <../../docs/screenshots/1st_concept_menu_hud.jpg>]
+\openout2 = `Chapters/Chapter_02.aux'.
+
+ (Chapters/Chapter_02.tex
+Rozdzia\l  3.
+
+LaTeX Warning: Citation `salen2004rules' on page 18 undefined on input line 14.
+
+
+
+LaTeX Warning: Citation `crawford2003chris' on page 18 undefined on input line 
+16.
+
+
+LaTeX Warning: Citation `gregory2018game' on page 18 undefined on input line 21
+.
+
+[18
+
+
+
+
+]
+
+LaTeX Warning: Citation `haas2014history' on page 19 undefined on input line 25
+.
+
+
+LaTeX Warning: Citation `sherrod2007game' on page 19 undefined on input line 29
+.
+
+
+LaTeX Warning: Citation `godot4docs' on page 19 undefined on input line 33.
+
+
+LaTeX Warning: Citation `gamma1994design' on page 19 undefined on input line 38
+.
+
+[19]
+
+LaTeX Warning: Citation `millington2009ai' on page 20 undefined on input line 4
+2.
+
+
+LaTeX Warning: Citation `gamma1994design' on page 20 undefined on input line 46
+.
+
+
+LaTeX Warning: Citation `nystrom2014game' on page 20 undefined on input line 50
+.
+
+
+LaTeX Warning: Citation `nystrom2014game' on page 20 undefined on input line 54
+.
+
+[20]
+
+LaTeX Warning: Citation `millington2009ai' on page 21 undefined on input line 5
+9.
+
+
+LaTeX Warning: Citation `sutton2018rl' on page 21 undefined on input line 78.
+
+[21{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{
+C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+
+LaTeX Warning: Citation `sutton2018rl' on page 22 undefined on input line 86.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 88.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 88.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 88.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+
+LaTeX Warning: Citation `sutton2018rl' on page 22 undefined on input line 105.
+
+[22]
+
+LaTeX Warning: Citation `sutton2018rl' on page 23 undefined on input line 113.
+
+
+LaTeX Warning: Citation `yannakakis2013playermodeling' on page 23 undefined on 
+input line 125.
+
+
+LaTeX Warning: Citation `shaker2016pcg' on page 23 undefined on input line 140.
+
+
+[23]
+
+LaTeX Warning: Citation `hunicke2005dda' on page 24 undefined on input line 157
+.
+
+
+LaTeX Warning: Citation `booth2009left4dead' on page 24 undefined on input line
+ 159.
+
+[24]
+
+LaTeX Warning: Citation `schell2008art' on page 25 undefined on input line 170.
+
+
+
+LaTeX Warning: Citation `salen2004rules' on page 25 undefined on input line 170
+.
+
+[25]
+
+LaTeX Warning: Citation `toftedahl2019taxonomy' on page 26 undefined on input l
+ine 193.
+
+) [26]
+\openout2 = `Chapters/Chapter_03.aux'.
+
+ (Chapters/Chapter_03.tex
+Rozdzia\l  4.
+[27
+
+
+
+
+] [28] [29] [30] [31] [32]) [33]
+\openout2 = `Chapters/Chapter_04.aux'.
+
+ (Chapters/Chapter_04.tex
+Rozdzia\l  5.
+[34
+
+
+
+
+] [35] [36]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 95.
+ [37] [38]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 119.
+<../../docs/screenshots/04_ai_debug/ai_hud_fresh.png, id=360, 312.41719pt x 164
+.11313pt>
+File: ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png Graphic file (type pn
+g)
+<use ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png  u
+sed on input line 133.
+(pdftex.def)             Requested size: 218.51521pt x 114.78824pt.
+<../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png, id=361, 326.72063p
+t x 134.00063pt>
+File: ../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png Graphic file (
+type png)
+<use ../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_hud_after_fights
+.png  used on input line 134.
+(pdftex.def)             Requested size: 218.51521pt x 89.62045pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 135.
+
+
+LaTeX Warning: Reference `fig:rl-epsilon' on page 39 undefined on input line 13
+5.
+
+
+LaTeX Warning: Reference `fig:rl-qvalues' on page 39 undefined on input line 13
+5.
+
+
+LaTeX Warning: Reference `fig:rl-epsilon' on page 39 undefined on input line 13
+5.
+
+
+LaTeX Warning: Reference `fig:rl-qvalues' on page 39 undefined on input line 13
+5.
+
+[39]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 169.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 169.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 169.
+
+
+LaTeX Warning: Reference `fig:rl-epsilon' on page 40 undefined on input line 18
+2.
+
+[40 <../../docs/screenshots/04_ai_debug/ai_hud_fresh.png> <../../docs/screensho
+ts/04_ai_debug/ai_hud_after_fights.png>]
+<../../docs/screenshots/04_ai_debug/rl_epsilon.png, id=385, 505.89pt x 289.08pt
+>
+File: ../../docs/screenshots/04_ai_debug/rl_epsilon.png Graphic file (type png)
+
+<use ../../docs/screenshots/04_ai_debug/rl_epsilon.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/rl_epsilon.png  use
+d on input line 184.
+(pdftex.def)             Requested size: 373.3035pt x 213.32036pt.
+
+
+LaTeX Warning: Reference `fig:rl-reward' on page 41 undefined on input line 202
+.
+
+[41 <../../docs/screenshots/04_ai_debug/rl_epsilon.png>]
+<../../docs/screenshots/04_ai_debug/rl_reward.png, id=393, 505.89pt x 289.08pt>
+
+File: ../../docs/screenshots/04_ai_debug/rl_reward.png Graphic file (type png)
+<use ../../docs/screenshots/04_ai_debug/rl_reward.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/rl_reward.png  used
+ on input line 204.
+(pdftex.def)             Requested size: 373.3035pt x 213.32036pt.
+
+
+LaTeX Warning: Reference `fig:rl-qvalues' on page 42 undefined on input line 21
+6.
+
+
+LaTeX Warning: Reference `sec:rl-analiza' on page 42 undefined on input line 21
+6.
+
+<../../docs/screenshots/04_ai_debug/rl_qvalues.png, id=394, 505.89pt x 289.08pt
+>
+File: ../../docs/screenshots/04_ai_debug/rl_qvalues.png Graphic file (type png)
+
+<use ../../docs/screenshots/04_ai_debug/rl_qvalues.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/rl_qvalues.png  use
+d on input line 218.
+(pdftex.def)             Requested size: 373.3035pt x 213.32036pt.
+[42 <../../docs/screenshots/04_ai_debug/rl_reward.png>]
+
+LaTeX Warning: Reference `fig:rl-params' on page 43 undefined on input line 247
+.
+
+[43 <../../docs/screenshots/04_ai_debug/rl_qvalues.png>]
+<../../docs/screenshots/04_ai_debug/rl_params.png, id=411, 505.89pt x 289.08pt>
+
+File: ../../docs/screenshots/04_ai_debug/rl_params.png Graphic file (type png)
+<use ../../docs/screenshots/04_ai_debug/rl_params.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/rl_params.png  used
+ on input line 249.
+(pdftex.def)             Requested size: 373.3035pt x 213.32036pt.
+ [44 <../../docs/screenshots/04_ai_debug/rl_params.png>]
+
+LaTeX Warning: Reference `fig:rl-epsilon' on page 45 undefined on input line 27
+7.
+
+
+LaTeX Warning: Reference `fig:rl-params' on page 45 undefined on input line 277
+.
+
+<../../docs/screenshots/04_ai_debug/brain_json_example.png, id=422, 330.48468pt
+ x 969.6225pt>
+File: ../../docs/screenshots/04_ai_debug/brain_json_example.png Graphic file (t
+ype png)
+<use ../../docs/screenshots/04_ai_debug/brain_json_example.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/brain_json_example.
+png  used on input line 294.
+(pdftex.def)             Requested size: 148.50998pt x 435.71948pt.
+
+LaTeX Warning: Reference `tab:brain-log-cols' on page 45 undefined on input lin
+e 295.
+
+
+LaTeX Warning: Reference `tab:brain-log-cols' on page 45 undefined on input lin
+e 295.
+
+[45]
+
+LaTeX Warning: Reference `fig:ai-hud-compare' on page 46 undefined on input lin
+e 313.
+
+
+LaTeX Warning: Reference `fig:rl-epsilon' on page 46 undefined on input line 31
+3.
+
+
+LaTeX Warning: Reference `fig:rl-params' on page 46 undefined on input line 313
+.
+
+[46 <../../docs/screenshots/04_ai_debug/brain_json_example.png>]
+
+LaTeX Warning: Reference `tab:brain-log-cols' on page 47 undefined on input lin
+e 317.
+
+
+LaTeX Warning: Reference `fig:rl-reward' on page 47 undefined on input line 332
+.
+
+
+LaTeX Warning: Reference `fig:rl-epsilon' on page 47 undefined on input line 33
+4.
+
+
+LaTeX Warning: Reference `fig:rl-qvalues' on page 47 undefined on input line 33
+6.
+
+
+Overfull \hbox (6.3646pt too wide) in paragraph at lines 338--338
+\T1/lmtt/m/n/10.95 preferred_distance\T1/lmr/m/n/10.95 ,
+ []
+
+
+LaTeX Warning: Reference `fig:rl-params' on page 47 undefined on input line 338
+.
+
+[47] [48]
+<../../docs/screenshots/03_dungeon/dungeon_variant0.png, id=465, 1454.43375pt x
+ 851.43094pt>
+File: ../../docs/screenshots/03_dungeon/dungeon_variant0.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_variant0.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant0.png
+  used on input line 413.
+(pdftex.def)             Requested size: 204.85846pt x 119.91406pt.
+<../../docs/screenshots/03_dungeon/dungeon_variant2.png, id=466, 1454.43375pt x
+ 852.18375pt>
+File: ../../docs/screenshots/03_dungeon/dungeon_variant2.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_variant2.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant2.png
+  used on input line 414.
+(pdftex.def)             Requested size: 204.85846pt x 120.02008pt.
+ [49 <../../docs/screenshots/03_dungeon/dungeon_variant0.png> <../../docs/scree
+nshots/03_dungeon/dungeon_variant2.png>] [50]
+<../../docs/screenshots/05_puzzles/puzzle_lockpick.png, id=487, 1272.25313pt x 
+584.1825pt>
+File: ../../docs/screenshots/05_puzzles/puzzle_lockpick.png Graphic file (type 
+png)
+<use ../../docs/screenshots/05_puzzles/puzzle_lockpick.png>
+Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_lockpick.png 
+ used on input line 474.
+(pdftex.def)             Requested size: 145.68144pt x 66.88986pt.
+<../../docs/screenshots/05_puzzles/puzzle_pipe.png, id=488, 953.06062pt x 566.8
+6781pt>
+File: ../../docs/screenshots/05_puzzles/puzzle_pipe.png Graphic file (type png)
+
+<use ../../docs/screenshots/05_puzzles/puzzle_pipe.png>
+Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_pipe.png  use
+d on input line 475.
+(pdftex.def)             Requested size: 145.68144pt x 86.64398pt.
+<../../docs/screenshots/05_puzzles/puzzle_lightsequence.png, id=489, 1061.46562
+pt x 584.1825pt>
+File: ../../docs/screenshots/05_puzzles/puzzle_lightsequence.png Graphic file (
+type png)
+<use ../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>
+Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_lightsequence
+.png  used on input line 476.
+(pdftex.def)             Requested size: 145.68144pt x 80.17157pt.
+ [51 <../../docs/screenshots/05_puzzles/puzzle_lockpick.png> <../../docs/screen
+shots/05_puzzles/puzzle_pipe.png> <../../docs/screenshots/05_puzzles/puzzle_lig
+htsequence.png>] [52]
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+542.
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
+File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [53]
+[54] [55]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 602.
+ [56] [57]) [58]
+\openout2 = `Chapters/Chapter_05.aux'.
+
+ (Chapters/Chapter_05.tex
+Rozdzia\l  6.
+[59
+
+
+
+
+] [60]
+
+LaTeX Warning: Reference `appA' on page 61 undefined on input line 39.
+
+[61]) [62]
+No file MBZUAI-main.bbl.
+\openout2 = `Chapters/Appendix_A.aux'.
+
+(Chapters/Appendix_A.tex [63
+
+
+
+
+
+
+
+]
+Dodatek A.
+[64
+
+] [65] [66] [67]
+<../../docs/screenshots/01_gameplay/start_screen.png, id=618, 1448.41125pt x 85
+0.67813pt>
+File: ../../docs/screenshots/01_gameplay/start_screen.png Graphic file (type pn
+g)
+<use ../../docs/screenshots/01_gameplay/start_screen.png>
+Package pdftex.def Info: ../../docs/screenshots/01_gameplay/start_screen.png  u
+sed on input line 142.
+(pdftex.def)             Requested size: 409.71692pt x 240.62854pt.
+<../../docs/screenshots/01_gameplay/player_hub.png, id=619, 1444.64719pt x 845.
+40843pt>
+File: ../../docs/screenshots/01_gameplay/player_hub.png Graphic file (type png)
+
+<use ../../docs/screenshots/01_gameplay/player_hub.png>
+Package pdftex.def Info: ../../docs/screenshots/01_gameplay/player_hub.png  use
+d on input line 149.
+(pdftex.def)             Requested size: 409.71692pt x 239.75711pt.
+<../../docs/screenshots/01_gameplay/player_combat.png, id=620, 1449.91687pt x 8
+47.66687pt>
+File: ../../docs/screenshots/01_gameplay/player_combat.png Graphic file (type p
+ng)
+<use ../../docs/screenshots/01_gameplay/player_combat.png>
+Package pdftex.def Info: ../../docs/screenshots/01_gameplay/player_combat.png  
+used on input line 156.
+(pdftex.def)             Requested size: 409.71692pt x 239.531pt.
+<../../docs/screenshots/01_gameplay/hud_overlay.png, id=621, 1144.275pt x 197.9
+8969pt>
+File: ../../docs/screenshots/01_gameplay/hud_overlay.png Graphic file (type png
+)
+<use ../../docs/screenshots/01_gameplay/hud_overlay.png>
+Package pdftex.def Info: ../../docs/screenshots/01_gameplay/hud_overlay.png  us
+ed on input line 163.
+(pdftex.def)             Requested size: 409.71692pt x 70.89255pt.
+<../../docs/screenshots/02_ui/menu_eq_empty.png, id=622, 1333.23094pt x 756.576
+57pt>
+File: ../../docs/screenshots/02_ui/menu_eq_empty.png Graphic file (type png)
+<use ../../docs/screenshots/02_ui/menu_eq_empty.png>
+Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_eq_empty.png  used o
+n input line 174.
+(pdftex.def)             Requested size: 218.51521pt x 123.99855pt.
+<../../docs/screenshots/02_ui/menu_eq_full.png, id=623, 1299.35437pt x 738.5090
+6pt>
+File: ../../docs/screenshots/02_ui/menu_eq_full.png Graphic file (type png)
+<use ../../docs/screenshots/02_ui/menu_eq_full.png>
+Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_eq_full.png  used on
+ input line 175.
+(pdftex.def)             Requested size: 218.51521pt x 124.19263pt.
+ [68]
+<../../docs/screenshots/02_ui/menu_quests.png, id=633, 1332.47812pt x 743.02594
+pt>
+File: ../../docs/screenshots/02_ui/menu_quests.png Graphic file (type png)
+<use ../../docs/screenshots/02_ui/menu_quests.png>
+Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_quests.png  used on 
+input line 182.
+(pdftex.def)             Requested size: 218.51521pt x 121.8457pt.
+<../../docs/screenshots/02_ui/menu_stats.png, id=634, 1315.16344pt x 747.54282p
+t>
+File: ../../docs/screenshots/02_ui/menu_stats.png Graphic file (type png)
+<use ../../docs/screenshots/02_ui/menu_stats.png>
+Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_stats.png  used on i
+nput line 183.
+(pdftex.def)             Requested size: 218.51521pt x 124.19473pt.
+<../../docs/screenshots/02_ui/menu_pages.png, id=635, 1300.1072pt x 729.47531pt
+>
+File: ../../docs/screenshots/02_ui/menu_pages.png Graphic file (type png)
+<use ../../docs/screenshots/02_ui/menu_pages.png>
+Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_pages.png  used on i
+nput line 190.
+(pdftex.def)             Requested size: 218.51521pt x 122.60666pt.
+<../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png, id=636, 1304.62407pt 
+x 731.73375pt>
+File: ../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png Graphic file (typ
+e png)
+<use ../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png>
+Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_pages_unlocked_p1.pn
+g  used on input line 191.
+(pdftex.def)             Requested size: 218.51521pt x 122.55081pt.
+<../../docs/screenshots/02_ui/menu_settings.png, id=637, 1313.6578pt x 733.2393
+8pt>
+File: ../../docs/screenshots/02_ui/menu_settings.png Graphic file (type png)
+<use ../../docs/screenshots/02_ui/menu_settings.png>
+Package pdftex.def Info: ../../docs/screenshots/02_ui/menu_settings.png  used o
+n input line 198.
+(pdftex.def)             Requested size: 318.66948pt x 177.87187pt.
+<../../docs/screenshots/02_ui/toast_saved.png, id=638, 476.53032pt x 140.02313p
+t>
+File: ../../docs/screenshots/02_ui/toast_saved.png Graphic file (type png)
+<use ../../docs/screenshots/02_ui/toast_saved.png>
+Package pdftex.def Info: ../../docs/screenshots/02_ui/toast_saved.png  used on 
+input line 205.
+(pdftex.def)             Requested size: 364.19667pt x 107.0212pt.
+<../../docs/screenshots/03_dungeon/dungeon_entrance.png, id=639, 1449.91687pt x
+ 852.18375pt>
+File: ../../docs/screenshots/03_dungeon/dungeon_entrance.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_entrance.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_entrance.png
+  used on input line 216.
+(pdftex.def)             Requested size: 409.71692pt x 240.80737pt.
+ [69 <../../docs/screenshots/01_gameplay/start_screen.png> <../../docs/screensh
+ots/01_gameplay/player_hub.png>] [70 <../../docs/screenshots/01_gameplay/player
+_combat.png> <../../docs/screenshots/01_gameplay/hud_overlay.png> <../../docs/s
+creenshots/02_ui/menu_eq_empty.png> <../../docs/screenshots/02_ui/menu_eq_full.
+png>] [71 <../../docs/screenshots/02_ui/menu_quests.png> <../../docs/screenshot
+s/02_ui/menu_stats.png> <../../docs/screenshots/02_ui/menu_pages.png> <../../do
+cs/screenshots/02_ui/menu_pages_unlocked_p1.png> <../../docs/screenshots/02_ui/
+menu_settings.png> <../../docs/screenshots/02_ui/toast_saved.png>]
+File: ../../docs/screenshots/03_dungeon/dungeon_variant0.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_variant0.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant0.png
+  used on input line 223.
+(pdftex.def)             Requested size: 145.68144pt x 85.278pt.
+<../../docs/screenshots/03_dungeon/dungeon_variant1.png, id=674, 1450.6697pt x 
+851.43094pt>
+File: ../../docs/screenshots/03_dungeon/dungeon_variant1.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_variant1.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant1.png
+  used on input line 224.
+(pdftex.def)             Requested size: 145.68144pt x 85.49886pt.
+File: ../../docs/screenshots/03_dungeon/dungeon_variant2.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/dungeon_variant2.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/dungeon_variant2.png
+  used on input line 225.
+(pdftex.def)             Requested size: 145.68144pt x 85.3534pt.
+<../../docs/screenshots/03_dungeon/modifier_rich_coins.png, id=675, 524.71031pt
+ x 53.44969pt>
+File: ../../docs/screenshots/03_dungeon/modifier_rich_coins.png Graphic file (t
+ype png)
+<use ../../docs/screenshots/03_dungeon/modifier_rich_coins.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_rich_coins.
+png  used on input line 232.
+(pdftex.def)             Requested size: 218.51521pt x 22.25867pt.
+<../../docs/screenshots/03_dungeon/modifier_heavy_elites.png, id=676, 740.7675p
+t x 63.23625pt>
+File: ../../docs/screenshots/03_dungeon/modifier_heavy_elites.png Graphic file 
+(type png)
+<use ../../docs/screenshots/03_dungeon/modifier_heavy_elites.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_heavy_elite
+s.png  used on input line 233.
+(pdftex.def)             Requested size: 218.51521pt x 18.65355pt.
+<../../docs/screenshots/03_dungeon/modifier_gloom.png, id=677, 532.23843pt x 64
+.74188pt>
+File: ../../docs/screenshots/03_dungeon/modifier_gloom.png Graphic file (type p
+ng)
+<use ../../docs/screenshots/03_dungeon/modifier_gloom.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/modifier_gloom.png  
+used on input line 240.
+(pdftex.def)             Requested size: 318.66948pt x 38.7644pt.
+<../../docs/screenshots/03_dungeon/boss_room.png, id=678, 1458.19781pt x 855.94
+781pt>
+File: ../../docs/screenshots/03_dungeon/boss_room.png Graphic file (type png)
+<use ../../docs/screenshots/03_dungeon/boss_room.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/boss_room.png  used 
+on input line 247.
+(pdftex.def)             Requested size: 218.51521pt x 128.25603pt.
+<../../docs/screenshots/03_dungeon/treasure_chest.png, id=679, 746.03719pt x 53
+2.99126pt>
+File: ../../docs/screenshots/03_dungeon/treasure_chest.png Graphic file (type p
+ng)
+<use ../../docs/screenshots/03_dungeon/treasure_chest.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/treasure_chest.png  
+used on input line 248.
+(pdftex.def)             Requested size: 218.51521pt x 156.10873pt.
+
+
+LaTeX Warning: Reference `ch:implementacja' on page 72 undefined on input line 
+255.
+
+[72 <../../docs/screenshots/03_dungeon/dungeon_entrance.png> <../../docs/screen
+shots/03_dungeon/dungeon_variant1.png> <../../docs/screenshots/03_dungeon/modif
+ier_rich_coins.png> <../../docs/screenshots/03_dungeon/modifier_heavy_elites.pn
+g> <../../docs/screenshots/03_dungeon/modifier_gloom.png>]
+<../../docs/screenshots/03_dungeon/boss_fight.png, id=694, 1410.77063pt x 788.9
+475pt>
+File: ../../docs/screenshots/03_dungeon/boss_fight.png Graphic file (type png)
+<use ../../docs/screenshots/03_dungeon/boss_fight.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/boss_fight.png  used
+ on input line 257.
+(pdftex.def)             Requested size: 364.19667pt x 203.66486pt.
+<../../docs/screenshots/03_dungeon/invisible_revealed.png, id=695, 775.39688pt 
+x 660.21657pt>
+File: ../../docs/screenshots/03_dungeon/invisible_revealed.png Graphic file (ty
+pe png)
+<use ../../docs/screenshots/03_dungeon/invisible_revealed.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/invisible_revealed.p
+ng  used on input line 259.
+(pdftex.def)             Requested size: 364.19667pt x 310.10034pt.
+<../../docs/screenshots/03_dungeon/radar_hemisphere.png, id=696, 1234.6125pt x 
+842.39719pt>
+File: ../../docs/screenshots/03_dungeon/radar_hemisphere.png Graphic file (type
+ png)
+<use ../../docs/screenshots/03_dungeon/radar_hemisphere.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/radar_hemisphere.png
+  used on input line 261.
+(pdftex.def)             Requested size: 364.19667pt x 248.49216pt.
+<../../docs/screenshots/03_dungeon/minimap_demo.png, id=697, 246.1697pt x 222.0
+7968pt>
+File: ../../docs/screenshots/03_dungeon/minimap_demo.png Graphic file (type png
+)
+<use ../../docs/screenshots/03_dungeon/minimap_demo.png>
+Package pdftex.def Info: ../../docs/screenshots/03_dungeon/minimap_demo.png  us
+ed on input line 263.
+(pdftex.def)             Requested size: 364.19667pt x 328.5711pt.
+
+
+LaTeX Warning: Reference `sec:rl-analiza' on page 73 undefined on input line 26
+7.
+
+[73 <../../docs/screenshots/03_dungeon/boss_room.png> <../../docs/screenshots/0
+3_dungeon/treasure_chest.png> <../../docs/screenshots/03_dungeon/boss_fight.png
+>] [74 <../../docs/screenshots/03_dungeon/invisible_revealed.png> <../../docs/s
+creenshots/03_dungeon/radar_hemisphere.png>]
+File: ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png Graphic file (type pn
+g)
+<use ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_hud_fresh.png  u
+sed on input line 271.
+(pdftex.def)             Requested size: 218.51521pt x 114.78824pt.
+File: ../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png Graphic file (
+type png)
+<use ../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_hud_after_fights
+.png  used on input line 272.
+(pdftex.def)             Requested size: 218.51521pt x 89.62045pt.
+<../../docs/screenshots/04_ai_debug/ai_flank_tactic.png, id=717, 1459.70343pt x
+ 858.95906pt>
+File: ../../docs/screenshots/04_ai_debug/ai_flank_tactic.png Graphic file (type
+ png)
+<use ../../docs/screenshots/04_ai_debug/ai_flank_tactic.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_flank_tactic.png
+  used on input line 279.
+(pdftex.def)             Requested size: 145.68144pt x 85.71744pt.
+<../../docs/screenshots/04_ai_debug/ai_rush_tactic.png, id=718, 1464.97313pt x 
+850.67813pt>
+File: ../../docs/screenshots/04_ai_debug/ai_rush_tactic.png Graphic file (type 
+png)
+<use ../../docs/screenshots/04_ai_debug/ai_rush_tactic.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_rush_tactic.png 
+ used on input line 280.
+(pdftex.def)             Requested size: 145.68144pt x 84.59251pt.
+<../../docs/screenshots/04_ai_debug/ai_kite_tactic.png, id=719, 1454.43375pt x 
+852.18375pt>
+File: ../../docs/screenshots/04_ai_debug/ai_kite_tactic.png Graphic file (type 
+png)
+<use ../../docs/screenshots/04_ai_debug/ai_kite_tactic.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_kite_tactic.png 
+ used on input line 281.
+(pdftex.def)             Requested size: 145.68144pt x 85.3534pt.
+<../../docs/screenshots/04_ai_debug/ai_context_lowhp.png, id=720, 328.97906pt x
+ 141.52875pt>
+File: ../../docs/screenshots/04_ai_debug/ai_context_lowhp.png Graphic file (typ
+e png)
+<use ../../docs/screenshots/04_ai_debug/ai_context_lowhp.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_context_lowhp.pn
+g  used on input line 288.
+(pdftex.def)             Requested size: 218.51521pt x 94.00745pt.
+<../../docs/screenshots/04_ai_debug/ai_context_manyelites.png, id=721, 316.1812
+4pt x 140.77594pt>
+File: ../../docs/screenshots/04_ai_debug/ai_context_manyelites.png Graphic file
+ (type png)
+<use ../../docs/screenshots/04_ai_debug/ai_context_manyelites.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/ai_context_manyelit
+es.png  used on input line 289.
+(pdftex.def)             Requested size: 218.51521pt x 97.2923pt.
+File: ../../docs/screenshots/04_ai_debug/brain_json_example.png Graphic file (t
+ype png)
+<use ../../docs/screenshots/04_ai_debug/brain_json_example.png>
+Package pdftex.def Info: ../../docs/screenshots/04_ai_debug/brain_json_example.
+png  used on input line 296.
+(pdftex.def)             Requested size: 131.74776pt x 386.54015pt.
+File: ../../docs/screenshots/05_puzzles/puzzle_lockpick.png Graphic file (type 
+png)
+<use ../../docs/screenshots/05_puzzles/puzzle_lockpick.png>
+Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_lockpick.png 
+ used on input line 307.
+(pdftex.def)             Requested size: 145.68144pt x 66.88986pt.
+File: ../../docs/screenshots/05_puzzles/puzzle_pipe.png Graphic file (type png)
+
+<use ../../docs/screenshots/05_puzzles/puzzle_pipe.png>
+Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_pipe.png  use
+d on input line 308.
+(pdftex.def)             Requested size: 145.68144pt x 86.64398pt.
+File: ../../docs/screenshots/05_puzzles/puzzle_lightsequence.png Graphic file (
+type png)
+<use ../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>
+Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_lightsequence
+.png  used on input line 309.
+(pdftex.def)             Requested size: 145.68144pt x 80.17157pt.
+<../../docs/screenshots/05_puzzles/puzzle_blockfit.png, id=722, 1239.88219pt x 
+555.57562pt>
+File: ../../docs/screenshots/05_puzzles/puzzle_blockfit.png Graphic file (type 
+png)
+<use ../../docs/screenshots/05_puzzles/puzzle_blockfit.png>
+Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_blockfit.png 
+ used on input line 316.
+(pdftex.def)             Requested size: 218.51521pt x 97.91385pt.
+<../../docs/screenshots/05_puzzles/puzzle_blockmaze.png, id=723, 1181.91562pt x
+ 574.39594pt>
+File: ../../docs/screenshots/05_puzzles/puzzle_blockmaze.png Graphic file (type
+ png)
+<use ../../docs/screenshots/05_puzzles/puzzle_blockmaze.png>
+Package pdftex.def Info: ../../docs/screenshots/05_puzzles/puzzle_blockmaze.png
+  used on input line 317.
+(pdftex.def)             Requested size: 218.51521pt x 106.19145pt.
+ [75 <../../docs/screenshots/03_dungeon/minimap_demo.png>] [76 <../../docs/scre
+enshots/04_ai_debug/ai_flank_tactic.png> <../../docs/screenshots/04_ai_debug/ai
+_rush_tactic.png> <../../docs/screenshots/04_ai_debug/ai_kite_tactic.png> <../.
+./docs/screenshots/04_ai_debug/ai_context_lowhp.png> <../../docs/screenshots/04
+_ai_debug/ai_context_manyelites.png>] [77 <../../docs/screenshots/05_puzzles/pu
+zzle_blockfit.png> <../../docs/screenshots/05_puzzles/puzzle_blockmaze.png>]) [
+78]
+\openout2 = `Chapters/Appendix_B.aux'.
+
+ (Chapters/Appendix_B.tex
+Dodatek B.
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 15.
+[79
+
+
+
+
+] [80] [81]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 143.
+
+[82] [83] [84] [85] [86] [87] [88]) [89] (Chapters/AI_Statement.tex [90
+
+
+
+]
+[91])
+\tf@toc=\write6
+\openout6 = `MBZUAI-main.toc'.
+
+\tf@lof=\write7
+\openout7 = `MBZUAI-main.lof'.
+
+ (MBZUAI-main.aux (Chapters/Chapter_00.aux) (Chapters/Chapter_01.aux)
+(Chapters/Chapter_02.aux) (Chapters/Chapter_03.aux) (Chapters/Chapter_04.aux)
+(Chapters/Chapter_05.aux) (Chapters/Appendix_A.aux) (Chapters/Appendix_B.aux))
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2020/03/25>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `MBZUAI-main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `MBZUAI-main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  B2598D8FF9878A9B7F886D96AB1F1908;28246.
+ )
+(\end occurred when \ifx on line 175 was incomplete) 
+Here is how much of TeX's memory you used:
+ 21811 strings out of 467691
+ 367753 string characters out of 5414987
+ 1049912 words of memory out of 5000000
+ 49670 multiletter control sequences out of 15000+600000
+ 746417 words of font info for 117 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 129i,13n,124p,1191b,2173s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/foxto/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/foxto/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/foxto/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/foxto/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/foxto/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on MBZUAI-main.pdf (104 pages, 38029520 bytes).
+PDF statistics:
+ 1545 PDF objects out of 1728 (max. 8388607)
+ 811 named destinations out of 1000 (max. 500000)
+ 256 words of extra memory for PDF output out of 10000 (max. 10000000)
+

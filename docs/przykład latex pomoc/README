@@ -1,0 +1,47 @@
+------------------------------------------------------------------------
+
+Klasa dokumentów uwmthesis dla LaTeXa 2e, wersja 0.04
+=======================================================================
+
+Copyleft 2013–2018 by Aleksander Denisiuk <denisiuk@matman.uwm.edu.pl>
+
+
+Pliki w tej paczce mogą być dystrybuowane i/lub modyfikowane na
+zasadach określonych w LaTeX Project Public License, wersja 1.2
+lub (wedle preferencji Użytkownika) dowolna późniejsza.
+Bieżąca wersja tej licencji jest dostępna pod adresem
+   http://www.latex-project.org/lppl.txt
+natomiast wersja 1.2 lub jakaś późniejsza jest częścią dystrybucji
+LaTeXa w wersji 1999/12/01 i wszystkich późniejszych.
+
+Dokumentacja znajduje się w pliku przyklad.pdf. Źródło dokumentacji,
+plik przyklad.tex może służyć szablonem do napisania pracy.
+
+Żeby korzystać z klasy uwmthesis, wystarczy umieścić plik uwmthesis.cls 
+w bieżącym katalogu. Alternatywnie można przenieść ten plik do jakiegoś 
+katalogu przeszukiwanego przez TeXa (np. ${TEXMF}/tex/latex/mwcls/, gdzie
+${TEXMF} jest korzeniem drzewa zawierającego pliki TeXowe). W typowych
+instalacjach trzeba też uaktualnić bazę danych o dostępnych plikach (zwykle
+polecenie texhash).
+
+Do poprawnej pracy potrzebne są pliki mwbk.cls oraz mwbk12.clo z paczki
+mwcls Marcina Wolińskiego. Jeżeli ta paczka nie jest zainstalowana w systemie,
+wystarczy umieścić te pliki (dołączone do dystrybucji) umieścić razem 
+z uwmthesis.cls. Całą paczkę mwcls można legalnie pobrać z adresu
+  http://marcinwolinski.pl/mwcls.html
+
+Repozytorium z projektem klasy uwmthesis:
+  https://bitbucket.org/adenisiuk/uwmthesis/
+
+Pliki:
+
+uwmthesis.cls 		klasa dokumentów uwmthesis
+mwbk12.clo 		część klady mwbk
+mwbk.cls		klasa dokumentów wmbk
+przyklad.pdf		dokumentacja
+przyklad.tex		źródło dokumentacji
+Makefile		
+README			ten plik
+
+
+------------------------------------------------------------------------

@@ -1,0 +1,993 @@
+﻿==[ pdflatex (pass 1) ]==
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex.fmt)
+ \write18 enabled.
+entering extended mode
+(MBZUAI-main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty)
+(thesis-preamble.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pl\babel
+-polish.tex)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/babel-polish\polish.ldf
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+))) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg))
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/nomentbl\nomentbl.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/nomencl\nomencl.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex)
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\tocbasic.st
+y
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.st
+y
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-ho
+ok.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
+)))))) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))) (private/thesis-margins-and-spaces.tex)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.aux
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_B.aux))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg))
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.out)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.out) (private/frontpage.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+[1{C:/Users/foxto/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/fo
+xto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] [2])
+(private/declarationpage.tex [3]) (Chapters/Abstract.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd) [4{C:/Use
+rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Use
+rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/f
+oxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [5])
+(Chapters/Abstract_eng.tex [6] [7]) (Chapters/Acknowledgements.tex [8])
+(Chapters/Dedication.tex [9]) (private/toc-lot-lof.tex
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.toc [10] [11] [12] [13]) [14]
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.lof [15]) [16]) (Chapters/List_of_Abbreviations.tex [17]) [18]
+(Chapters/Chapter_00.tex
+Rozdzia\l  1.
+[1] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+[2{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
+[3] [4]) [5] (Chapters/Chapter_01.tex
+Rozdzia\l  2.
+[6] [7] [8 <./images/bat-design.png>] [9 <./images/labra_knight.png>] [10 <../.
+./docs/screenshots/enemie_art_skeatch.png>] [11 <./images/npcs.png>] [12 <../..
+/docs/screenshots/07_animations/anim_player.png (PNG copy)>] [13 <../../docs/sc
+reenshots/07_animations/anim_enemy.png (PNG copy)>] [14]) [15] [16 <../../docs/
+screenshots/1st_concept_fight.jpg>] [17 <../../docs/screenshots/1st_concept_gam
+eplay_hud.jpg>] [18 <../../docs/screenshots/1st_concept_menu_hud.jpg>]
+(Chapters/Chapter_02.tex
+Rozdzia\l  3.
+[19] [20] [21] [22{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
+/lm/lm-mathex.enc}]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+[23] [24] [25] [26]) [27] [28] (Chapters/Chapter_03.tex
+Rozdzia\l  4.
+[29] [30] [31] [32] [33] [34]
+Overfull \hbox (9.15767pt too wide) in paragraph at lines 201--202
+[]\T1/lmr/bx/n/12 Starcie z elití \T1/lmr/m/n/12 - \T1/lmtt/m/n/12 EnemyChaseSt
+ate \T1/lmr/m/n/12 wo¬a \T1/lmtt/m/n/12 EliteBrain.NotifyEliteChaseStarted()\T1
+/lmr/m/n/12 ;
+) [35] (Chapters/Chapter_04.tex
+Rozdzia\l  5.
+[36] [37] [38] [39] [40] [41 <../../docs/screenshots/04_ai_debug/ai_hud_fresh.p
+ng> <../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 170.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 170.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 170.
+
+[42] [43 <../../docs/screenshots/04_ai_debug/rl_epsilon.png>] [44 <../../docs/s
+creenshots/04_ai_debug/rl_reward.png>] [45 <../../docs/screenshots/04_ai_debug/
+rl_qvalues.png>] [46 <../../docs/screenshots/04_ai_debug/rl_params.png>]
+[47] [48 <../../docs/screenshots/04_ai_debug/brain_json_example.png>]
+Overfull \hbox (6.3646pt too wide) in paragraph at lines 343--343
+\T1/lmtt/m/n/10.95 preferred_distance\T1/lmr/m/n/10.95 ,
+[49] [50] [51] [52 <../../docs/screenshots/03_dungeon/dungeon_variant0.png> <..
+/../docs/screenshots/03_dungeon/dungeon_variant2.png>] [53] [54 <../../docs/scr
+eenshots/05_puzzles/puzzle_lockpick.png> <../../docs/screenshots/05_puzzles/puz
+zle_pipe.png> <../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>]
+[55] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd)
+[56] [57] [58] [59] [60]) [61] (Chapters/Chapter_05.tex
+Rozdzia\l  6.
+[62] [63] [64]) [65]
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex [68]
+Dodatek A.
+[69] [70] [71] [72] [73] [74 <../../docs/screenshots/01_gameplay/start_screen.p
+ng> <../../docs/screenshots/01_gameplay/player_hub.png>] [75 <../../docs/screen
+shots/01_gameplay/player_combat.png> <../../docs/screenshots/01_gameplay/hud_ov
+erlay.png> <../../docs/screenshots/02_ui/menu_eq_empty.png> <../../docs/screens
+hots/02_ui/menu_eq_full.png> <../../docs/screenshots/02_ui/menu_quests.png> <..
+/../docs/screenshots/02_ui/menu_stats.png>] [76 <../../docs/screenshots/02_ui/m
+enu_pages.png> <../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png> <../..
+/docs/screenshots/02_ui/menu_settings.png> <../../docs/screenshots/02_ui/toast_
+saved.png>] [77 <../../docs/screenshots/03_dungeon/dungeon_entrance.png> <../..
+/docs/screenshots/03_dungeon/dungeon_variant1.png> <../../docs/screenshots/03_d
+ungeon/modifier_rich_coins.png> <../../docs/screenshots/03_dungeon/modifier_hea
+vy_elites.png> <../../docs/screenshots/03_dungeon/modifier_gloom.png>] [78 <../
+../docs/screenshots/03_dungeon/boss_room.png> <../../docs/screenshots/03_dungeo
+n/treasure_chest.png> <../../docs/screenshots/03_dungeon/boss_fight.png>]
+[79 <../../docs/screenshots/03_dungeon/invisible_revealed.png> <../../docs/scre
+enshots/03_dungeon/radar_hemisphere.png>] [80 <../../docs/screenshots/03_dungeo
+n/minimap_demo.png> <../../docs/screenshots/04_ai_debug/ai_flank_tactic.png> <.
+./../docs/screenshots/04_ai_debug/ai_rush_tactic.png> <../../docs/screenshots/0
+4_ai_debug/ai_kite_tactic.png>] [81 <../../docs/screenshots/04_ai_debug/ai_cont
+ext_lowhp.png> <../../docs/screenshots/04_ai_debug/ai_context_manyelites.png>])
+[82 <../../docs/screenshots/05_puzzles/puzzle_blockfit.png> <../../docs/screens
+hots/05_puzzles/puzzle_blockmaze.png>] (Chapters/Appendix_B.tex
+Dodatek B.
+[83] [84]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 143.
+
+[85] [86] [87] [88] [89] [90] [91] [92]) [93] (Chapters/AI_Statement.tex
+[94] [95])
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.aux
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_B.aux))
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(\end occurred when \ifx on line 164 was incomplete)
+(see the transcript file for additional information)<C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/foxto/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/foxto/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/foxto/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/foxto/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/foxto/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degre
+e_Project\build\MBZUAI-main.pdf (113 pages, 38168745 bytes).
+Transcript written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_D
+egree_Project\build\MBZUAI-main.log.
+==[ bibtex ]==
+This is BibTeX, Version 0.99e (MiKTeX 26.2)
+The top-level auxiliary file: MBZUAI-main.aux
+The style file: IEEEtran.bst
+Database file #1: bibliography/keylatex.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in haas2014history
+Warning--empty journal in toftedahl2019taxonomy
+
+Done.
+(There were 2 warnings)
+==[ makeindex (nomenclature) ]==
+makeindex : This is makeindex, version 2.18 [MiKTeX 26.2].
+At C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build-thesis.ps1:54 char:47
++ ... clature)" { makeindex "$nloPath" -s nomencl.ist -o "$buildDir/$main.n ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (This is makeind... [MiKTeX 26.2].:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Scanning style file C:/Users/foxto/AppData/Local/Programs/MiKTeX/makeindex/nomencl/nomencl.ist............done (12 
+attributes redefined, 3 ignored).
+Scanning input file build\MBZUAI-main.nlo...done (0 entries accepted, 0 rejected).
+Nothing written in build/MBZUAI-main.nls.
+Transcript written in build\MBZUAI-main.ilg.
+==[ pdflatex (pass 2) ]==
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex.fmt)
+ \write18 enabled.
+entering extended mode
+(MBZUAI-main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty)
+(thesis-preamble.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pl\babel
+-polish.tex)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/babel-polish\polish.ldf
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+))) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg))
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/nomentbl\nomentbl.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/nomencl\nomencl.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex)
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\tocbasic.st
+y
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.st
+y
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-ho
+ok.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
+)))))) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))) (private/thesis-margins-and-spaces.tex)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.aux
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_B.aux))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg))
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.out)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.out) (private/frontpage.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+[1{C:/Users/foxto/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/fo
+xto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] [2])
+(private/declarationpage.tex [3]) (Chapters/Abstract.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd) [4{C:/Use
+rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Use
+rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/f
+oxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [5])
+(Chapters/Abstract_eng.tex [6] [7]) (Chapters/Acknowledgements.tex [8])
+(Chapters/Dedication.tex [9]) (private/toc-lot-lof.tex
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.toc [10] [11] [12] [13]) [14]
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.lof [15]) [16]) (Chapters/List_of_Abbreviations.tex [17]) [18]
+(Chapters/Chapter_00.tex
+Rozdzia\l  1.
+[1] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+[2{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
+[3] [4]) [5] (Chapters/Chapter_01.tex
+Rozdzia\l  2.
+[6] [7] [8 <./images/bat-design.png>] [9 <./images/labra_knight.png>] [10 <../.
+./docs/screenshots/enemie_art_skeatch.png>] [11 <./images/npcs.png>] [12 <../..
+/docs/screenshots/07_animations/anim_player.png (PNG copy)>] [13 <../../docs/sc
+reenshots/07_animations/anim_enemy.png (PNG copy)>] [14]) [15] [16 <../../docs/
+screenshots/1st_concept_fight.jpg>] [17 <../../docs/screenshots/1st_concept_gam
+eplay_hud.jpg>] [18 <../../docs/screenshots/1st_concept_menu_hud.jpg>]
+(Chapters/Chapter_02.tex
+Rozdzia\l  3.
+[19] [20] [21] [22{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
+/lm/lm-mathex.enc}]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+[23] [24] [25] [26]) [27] [28] (Chapters/Chapter_03.tex
+Rozdzia\l  4.
+[29] [30] [31] [32] [33] [34]
+Overfull \hbox (9.15767pt too wide) in paragraph at lines 201--202
+[]\T1/lmr/bx/n/12 Starcie z elití \T1/lmr/m/n/12 - \T1/lmtt/m/n/12 EnemyChaseSt
+ate \T1/lmr/m/n/12 wo¬a \T1/lmtt/m/n/12 EliteBrain.NotifyEliteChaseStarted()\T1
+/lmr/m/n/12 ;
+) [35] (Chapters/Chapter_04.tex
+Rozdzia\l  5.
+[36] [37] [38] [39] [40] [41 <../../docs/screenshots/04_ai_debug/ai_hud_fresh.p
+ng> <../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 170.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 170.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 170.
+
+[42] [43 <../../docs/screenshots/04_ai_debug/rl_epsilon.png>] [44 <../../docs/s
+creenshots/04_ai_debug/rl_reward.png>] [45 <../../docs/screenshots/04_ai_debug/
+rl_qvalues.png>] [46 <../../docs/screenshots/04_ai_debug/rl_params.png>]
+[47] [48 <../../docs/screenshots/04_ai_debug/brain_json_example.png>]
+Overfull \hbox (6.3646pt too wide) in paragraph at lines 343--343
+\T1/lmtt/m/n/10.95 preferred_distance\T1/lmr/m/n/10.95 ,
+[49] [50] [51] [52 <../../docs/screenshots/03_dungeon/dungeon_variant0.png> <..
+/../docs/screenshots/03_dungeon/dungeon_variant2.png>] [53] [54 <../../docs/scr
+eenshots/05_puzzles/puzzle_lockpick.png> <../../docs/screenshots/05_puzzles/puz
+zle_pipe.png> <../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>]
+[55] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd)
+[56] [57] [58] [59] [60]) [61] (Chapters/Chapter_05.tex
+Rozdzia\l  6.
+[62] [63] [64]) [65]
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex [68]
+Dodatek A.
+[69] [70] [71] [72] [73] [74 <../../docs/screenshots/01_gameplay/start_screen.p
+ng> <../../docs/screenshots/01_gameplay/player_hub.png>] [75 <../../docs/screen
+shots/01_gameplay/player_combat.png> <../../docs/screenshots/01_gameplay/hud_ov
+erlay.png> <../../docs/screenshots/02_ui/menu_eq_empty.png> <../../docs/screens
+hots/02_ui/menu_eq_full.png> <../../docs/screenshots/02_ui/menu_quests.png> <..
+/../docs/screenshots/02_ui/menu_stats.png>] [76 <../../docs/screenshots/02_ui/m
+enu_pages.png> <../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png> <../..
+/docs/screenshots/02_ui/menu_settings.png> <../../docs/screenshots/02_ui/toast_
+saved.png>] [77 <../../docs/screenshots/03_dungeon/dungeon_entrance.png> <../..
+/docs/screenshots/03_dungeon/dungeon_variant1.png> <../../docs/screenshots/03_d
+ungeon/modifier_rich_coins.png> <../../docs/screenshots/03_dungeon/modifier_hea
+vy_elites.png> <../../docs/screenshots/03_dungeon/modifier_gloom.png>] [78 <../
+../docs/screenshots/03_dungeon/boss_room.png> <../../docs/screenshots/03_dungeo
+n/treasure_chest.png> <../../docs/screenshots/03_dungeon/boss_fight.png>]
+[79 <../../docs/screenshots/03_dungeon/invisible_revealed.png> <../../docs/scre
+enshots/03_dungeon/radar_hemisphere.png>] [80 <../../docs/screenshots/03_dungeo
+n/minimap_demo.png> <../../docs/screenshots/04_ai_debug/ai_flank_tactic.png> <.
+./../docs/screenshots/04_ai_debug/ai_rush_tactic.png> <../../docs/screenshots/0
+4_ai_debug/ai_kite_tactic.png>] [81 <../../docs/screenshots/04_ai_debug/ai_cont
+ext_lowhp.png> <../../docs/screenshots/04_ai_debug/ai_context_manyelites.png>])
+[82 <../../docs/screenshots/05_puzzles/puzzle_blockfit.png> <../../docs/screens
+hots/05_puzzles/puzzle_blockmaze.png>] (Chapters/Appendix_B.tex
+Dodatek B.
+[83] [84]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 143.
+
+[85] [86] [87] [88] [89] [90] [91] [92]) [93] (Chapters/AI_Statement.tex
+[94] [95])
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.aux
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_B.aux)) )
+(\end occurred when \ifx on line 164 was incomplete)
+(see the transcript file for additional information)<C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/foxto/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/foxto/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/foxto/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/foxto/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/foxto/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degre
+e_Project\build\MBZUAI-main.pdf (113 pages, 38168750 bytes).
+Transcript written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_D
+egree_Project\build\MBZUAI-main.log.
+==[ pdflatex (pass 3) ]==
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex.fmt)
+ \write18 enabled.
+entering extended mode
+(MBZUAI-main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty)
+(thesis-preamble.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pl\babel
+-polish.tex)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/babel-polish\polish.ldf
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+))) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg))
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/nomentbl\nomentbl.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/nomencl\nomencl.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex)
+))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\tocbasic.st
+y
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.st
+y
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-ho
+ok.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
+)))))) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty)))
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))) (private/thesis-margins-and-spaces.tex)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.aux
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_B.aux))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg))
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.out)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.out) (private/frontpage.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+[1{C:/Users/foxto/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/fo
+xto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] [2])
+(private/declarationpage.tex [3]) (Chapters/Abstract.tex
+(C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd) [4{C:/Use
+rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Use
+rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/f
+oxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [5])
+(Chapters/Abstract_eng.tex [6] [7]) (Chapters/Acknowledgements.tex [8])
+(Chapters/Dedication.tex [9]) (private/toc-lot-lof.tex
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.toc [10] [11] [12] [13]) [14]
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.lof [15]) [16]) (Chapters/List_of_Abbreviations.tex [17]) [18]
+(Chapters/Chapter_00.tex
+Rozdzia\l  1.
+[1] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+[2{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
+[3] [4]) [5] (Chapters/Chapter_01.tex
+Rozdzia\l  2.
+[6] [7] [8 <./images/bat-design.png>] [9 <./images/labra_knight.png>] [10 <../.
+./docs/screenshots/enemie_art_skeatch.png>] [11 <./images/npcs.png>] [12 <../..
+/docs/screenshots/07_animations/anim_player.png (PNG copy)>] [13 <../../docs/sc
+reenshots/07_animations/anim_enemy.png (PNG copy)>] [14]) [15] [16 <../../docs/
+screenshots/1st_concept_fight.jpg>] [17 <../../docs/screenshots/1st_concept_gam
+eplay_hud.jpg>] [18 <../../docs/screenshots/1st_concept_menu_hud.jpg>]
+(Chapters/Chapter_02.tex
+Rozdzia\l  3.
+[19] [20] [21] [22{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
+/lm/lm-mathex.enc}]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+[23] [24] [25] [26]) [27] [28] (Chapters/Chapter_03.tex
+Rozdzia\l  4.
+[29] [30] [31] [32] [33] [34]
+Overfull \hbox (9.15767pt too wide) in paragraph at lines 201--202
+[]\T1/lmr/bx/n/12 Starcie z elití \T1/lmr/m/n/12 - \T1/lmtt/m/n/12 EnemyChaseSt
+ate \T1/lmr/m/n/12 wo¬a \T1/lmtt/m/n/12 EliteBrain.NotifyEliteChaseStarted()\T1
+/lmr/m/n/12 ;
+) [35] (Chapters/Chapter_04.tex
+Rozdzia\l  5.
+[36] [37] [38] [39] [40] [41 <../../docs/screenshots/04_ai_debug/ai_hud_fresh.p
+ng> <../../docs/screenshots/04_ai_debug/ai_hud_after_fights.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 170.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 170.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 170.
+
+[42] [43 <../../docs/screenshots/04_ai_debug/rl_epsilon.png>] [44 <../../docs/s
+creenshots/04_ai_debug/rl_reward.png>] [45 <../../docs/screenshots/04_ai_debug/
+rl_qvalues.png>] [46 <../../docs/screenshots/04_ai_debug/rl_params.png>]
+[47] [48 <../../docs/screenshots/04_ai_debug/brain_json_example.png>]
+Overfull \hbox (6.3646pt too wide) in paragraph at lines 343--343
+\T1/lmtt/m/n/10.95 preferred_distance\T1/lmr/m/n/10.95 ,
+[49] [50] [51] [52 <../../docs/screenshots/03_dungeon/dungeon_variant0.png> <..
+/../docs/screenshots/03_dungeon/dungeon_variant2.png>] [53] [54 <../../docs/scr
+eenshots/05_puzzles/puzzle_lockpick.png> <../../docs/screenshots/05_puzzles/puz
+zle_pipe.png> <../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>]
+[55] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd)
+[56] [57] [58] [59] [60]) [61] (Chapters/Chapter_05.tex
+Rozdzia\l  6.
+[62] [63] [64]) [65]
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex [68]
+Dodatek A.
+[69] [70] [71] [72] [73] [74 <../../docs/screenshots/01_gameplay/start_screen.p
+ng> <../../docs/screenshots/01_gameplay/player_hub.png>] [75 <../../docs/screen
+shots/01_gameplay/player_combat.png> <../../docs/screenshots/01_gameplay/hud_ov
+erlay.png> <../../docs/screenshots/02_ui/menu_eq_empty.png> <../../docs/screens
+hots/02_ui/menu_eq_full.png> <../../docs/screenshots/02_ui/menu_quests.png> <..
+/../docs/screenshots/02_ui/menu_stats.png>] [76 <../../docs/screenshots/02_ui/m
+enu_pages.png> <../../docs/screenshots/02_ui/menu_pages_unlocked_p1.png> <../..
+/docs/screenshots/02_ui/menu_settings.png> <../../docs/screenshots/02_ui/toast_
+saved.png>] [77 <../../docs/screenshots/03_dungeon/dungeon_entrance.png> <../..
+/docs/screenshots/03_dungeon/dungeon_variant1.png> <../../docs/screenshots/03_d
+ungeon/modifier_rich_coins.png> <../../docs/screenshots/03_dungeon/modifier_hea
+vy_elites.png> <../../docs/screenshots/03_dungeon/modifier_gloom.png>] [78 <../
+../docs/screenshots/03_dungeon/boss_room.png> <../../docs/screenshots/03_dungeo
+n/treasure_chest.png> <../../docs/screenshots/03_dungeon/boss_fight.png>]
+[79 <../../docs/screenshots/03_dungeon/invisible_revealed.png> <../../docs/scre
+enshots/03_dungeon/radar_hemisphere.png>] [80 <../../docs/screenshots/03_dungeo
+n/minimap_demo.png> <../../docs/screenshots/04_ai_debug/ai_flank_tactic.png> <.
+./../docs/screenshots/04_ai_debug/ai_rush_tactic.png> <../../docs/screenshots/0
+4_ai_debug/ai_kite_tactic.png>] [81 <../../docs/screenshots/04_ai_debug/ai_cont
+ext_lowhp.png> <../../docs/screenshots/04_ai_debug/ai_context_manyelites.png>])
+[82 <../../docs/screenshots/05_puzzles/puzzle_blockfit.png> <../../docs/screens
+hots/05_puzzles/puzzle_blockmaze.png>] (Chapters/Appendix_B.tex
+Dodatek B.
+[83] [84]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\varepsilon' on input line 143.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 143.
+
+[85] [86] [87] [88] [89] [90] [91] [92]) [93] (Chapters/AI_Statement.tex
+[94] [95])
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
+BZUAI-main.aux
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
+hapters/Appendix_B.aux)) )
+(\end occurred when \ifx on line 164 was incomplete)
+(see the transcript file for additional information)<C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/foxto/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/foxto/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/foxto/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/foxto/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/foxto/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/foxto/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/foxto/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/foxto/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degre
+e_Project\build\MBZUAI-main.pdf (113 pages, 38168750 bytes).
+Transcript written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_D
+egree_Project\build\MBZUAI-main.log.

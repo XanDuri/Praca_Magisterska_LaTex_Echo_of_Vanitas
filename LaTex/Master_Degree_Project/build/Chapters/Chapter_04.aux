@@ -1,0 +1,113 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Implementacja Mechanik Gry}{36}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:implementacja}{{5}{36}{Implementacja Mechanik Gry}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}System Postaci Gracza}{36}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Stany Gracza}{36}{subsection.5.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Statystyki i Ekwipunek}{37}{subsection.5.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}System Inventory i Ekwipunku}{37}{subsection.5.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.4}Ulepszanie Przedmiotów}{37}{subsection.5.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}System Przeciwników}{38}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Stany Przeciwnika}{38}{subsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Logika Śmierci Wroga}{38}{subsection.5.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}System Dropów}{39}{subsection.5.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.4}Elity i Shader Podświetlenia}{39}{subsection.5.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.5}Boss (\texttt  {BossEnemy})}{39}{subsection.5.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.6}Niewidzialni (\texttt  {InvisibleEnemy})}{39}{subsection.5.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.7}Radar (\texttt  {Radar})}{40}{subsection.5.2.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.7.1}Spawn Radarów}{41}{subsubsection.5.2.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Adaptacyjna AI Elitarnych Przeciwników (\texttt  {EliteBrain})}{41}{section.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Źródło własne: Debug HUD (\texttt  {F3}) - stan po starcie gry (jednolite $Q$, wysokie $\varepsilon $) oraz po kilkunastu starciach (rozstęp wartości $Q$, niższe $\varepsilon $). Te same liczby trafiają do wykresów na rys.~\ref {fig:rl-epsilon}-\ref {fig:rl-qvalues}.}}{41}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:ai-hud-compare}{{5.1}{41}{Źródło własne: Debug HUD (\texttt {F3}) - stan po starcie gry (jednolite $Q$, wysokie $\varepsilon $) oraz po kilkunastu starciach (rozstęp wartości $Q$, niższe $\varepsilon $). Te same liczby trafiają do wykresów na rys.~\ref {fig:rl-epsilon}-\ref {fig:rl-qvalues}}{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Taktyki}{42}{subsection.5.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Kontekst Bandyty}{42}{subsection.5.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Wybór Taktyki ($\varepsilon $-greedy)}{42}{subsection.5.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Źródło własne: zanik $\varepsilon $ w funkcji numeru starcia (dane z \texttt  {user://brain\_log.csv}, kolumna \texttt  {epsilon}).}}{43}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:rl-epsilon}{{5.2}{43}{Źródło własne: zanik $\varepsilon $ w funkcji numeru starcia (dane z \texttt {user://brain\_log.csv}, kolumna \texttt {epsilon})}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Sygnał Nagrody}{43}{subsection.5.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Źródło własne: znormalizowana nagroda \texttt  {reward\_norm} (szara) i średnia krocząca (czerwona) w funkcji numeru starcia.}}{44}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:rl-reward}{{5.3}{44}{Źródło własne: znormalizowana nagroda \texttt {reward\_norm} (szara) i średnia krocząca (czerwona) w funkcji numeru starcia}{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}Aktualizacja Wartości Akcji}{44}{subsection.5.3.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Źródło własne: $Q$ czterech taktyk dla kontekstu bieżącego starcia (\texttt  {q\_flank}-\texttt  {q\_ambush}).}}{45}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:rl-qvalues}{{5.4}{45}{Źródło własne: $Q$ czterech taktyk dla kontekstu bieżącego starcia (\texttt {q\_flank}-\texttt {q\_ambush})}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}Model Gracza}{45}{subsection.5.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.7}Adaptacja Parametrów}{45}{subsection.5.3.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Źródło własne: adaptacja \texttt  {PreferredDistance}, \texttt  {Aggression}, \texttt  {Caution}, \texttt  {LeadTime} w czasie sesji.}}{46}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:rl-params}{{5.5}{46}{Źródło własne: adaptacja \texttt {PreferredDistance}, \texttt {Aggression}, \texttt {Caution}, \texttt {LeadTime} w czasie sesji}{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.8}Predykcja i Cel Ruchu}{46}{subsection.5.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.9}Cykl Życia Starcia}{47}{subsection.5.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.10}Persystencja}{47}{subsection.5.3.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Fragment pliku \texttt  {user://brain.json}}}{48}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:brain-json-ch4}{{5.6}{48}{Fragment pliku \texttt {user://brain.json}}{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.11}Debug HUD (F3)}{48}{subsection.5.3.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.12}Analiza Procesu Uczenia - Metodyka i Zestawienie}{49}{subsection.5.3.12}\protected@file@percent }
+\newlabel{sec:rl-analiza}{{5.3.12}{49}{Analiza Procesu Uczenia - Metodyka i Zestawienie}{subsection.5.3.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{Metodyka.}{49}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Znaczenie kolumn logu.}{49}{section*.27}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Źródło własne: kolumny pliku \texttt  {user://brain\_log.csv} i ich interpretacja.}}{49}{table.caption.28}\protected@file@percent }
+\newlabel{tab:brain-log-cols}{{5.1}{49}{Źródło własne: kolumny pliku \texttt {user://brain\_log.csv} i ich interpretacja}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {paragraph}{Wnioski łączne.}{49}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Proceduralna Generacja Lochu}{50}{section.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Algorytm}{50}{subsection.5.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Modyfikatory Runu}{50}{subsection.5.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Spawny, Skrzynie, Klucz i Relikt}{51}{subsection.5.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Balans Walki w Lochu}{51}{subsection.5.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.5}Nawigacja}{51}{subsection.5.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.6}Determinizm}{52}{subsection.5.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Źródło własne: Przykład dwóch proceduralnie wygenerowanych lochów (wariant 0 i wariant 2 - różna liczba pokoi i paleta świateł).}}{52}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:dungeon-variants}{{5.7}{52}{Źródło własne: Przykład dwóch proceduralnie wygenerowanych lochów (wariant 0 i wariant 2 - różna liczba pokoi i paleta świateł)}{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}System Questów}{52}{section.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Architektura}{52}{subsection.5.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Quest Główny - \textit  {Pętla Vanitas}}{53}{subsection.5.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}Mechanika Sekwencyjna}{53}{subsection.5.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Mini-Gry (Puzzle Lockboxes)}{53}{section.5.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Źródło własne: Przykłady mini-gier (Lockpick, Pipe, Light Sequence).}}{54}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:puzzles}{{5.8}{54}{Źródło własne: Przykłady mini-gier (Lockpick, Pipe, Light Sequence)}{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}System Zapisu Gry}{54}{section.5.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}Snapshot Ulepszeń}{55}{subsection.5.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Zapis Stanu AI}{55}{subsection.5.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.8}Interfejs Użytkownika i Feedback Walki}{55}{section.5.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.1}Ekran Startowy}{55}{subsection.5.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.2}HUD}{55}{subsection.5.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.3}Menu (klawisz I)}{56}{subsection.5.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.4}Toasty Zdarzeń}{56}{subsection.5.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.5}Podsumowanie Wyprawy}{56}{subsection.5.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.6}Feedback Walki}{56}{subsection.5.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.7}Debug HUD AI (F3)}{57}{subsection.5.8.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.8}Minimapa}{57}{subsection.5.8.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.8.1}Sprite'y Pokoi}{57}{subsubsection.5.8.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.8.2}Dynamiczne Ikony}{58}{subsubsection.5.8.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.8.3}Tryb Mroku}{58}{subsubsection.5.8.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.9}Napotkane Problemy i Rozwiązania}{58}{section.5.9}\protected@file@percent }
+\@setckpt{Chapters/Chapter_04}{
+\setcounter{page}{62}
+\setcounter{equation}{0}
+\setcounter{enumi}{4}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{5}
+\setcounter{section}{9}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{8}
+\setcounter{table}{1}
+\setcounter{caption@flags}{2}
+\setcounter{continuedfloat}{0}
+\setcounter{parentequation}{0}
+\setcounter{LT@tables}{2}
+\setcounter{LT@chunks}{4}
+\setcounter{lstnumber}{1}
+\setcounter{section@level}{1}
+\setcounter{Item}{39}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{114}
+\setcounter{lstlisting}{0}
+}

@@ -1,0 +1,211 @@
+% An appendix
+%======================================================================
+\chapter{Wybrane Fragmenty Kodu Źródłowego}
+\label{ch:Appendix-Code}
+%======================================================================
+
+Niniejszy dodatek zawiera wybrane, kluczowe fragmenty kodu źródłowego projektu \textit{Echoes of Vanitas} z komentarzem objaśniającym ich rolę w architekturze systemu. Pełny kod dostępny jest w repozytorium projektu.
+
+\section{Maszyna Stanów}
+
+Poniższy kod przedstawia implementację kontrolera maszyny stanów oraz klasę bazową stanu postaci.
+
+\begin{verbatim}
+// StateMachine.cs
+public partial class StateMachine : Node
+{
+    private CharacterState _currentState;
+
+    public void SwitchState<T>() where T : CharacterState
+    {
+        _currentState?.ExitState();
+        _currentState = GetOrCreate<T>();
+        _currentState.EnterState();
+    }
+
+    public override void _Process(double delta)
+        => _currentState?.UpdateState(delta);
+
+    public override void _PhysicsProcess(double delta)
+        => _currentState?.PhysicsUpdateState(delta);
+}
+
+// CharacterState.cs - klasa bazowa stanów
+public abstract partial class CharacterState : Node
+{
+    protected Character characterNode;
+
+    public override void _Ready()
+        => characterNode = GetOwner<Character>();
+
+    protected virtual void EnterState()  { }
+    protected virtual void ExitState()   { }
+    public virtual void UpdateState(double delta)       { }
+    public virtual void PhysicsUpdateState(double delta){ }
+}
+\end{verbatim}
+
+\section{Stan Śmierci Przeciwnika}
+
+Fragment implementujący wieloetapową logikę śmierci wroga z obsługą questów i animacji.
+
+\begin{verbatim}
+// EnemyDeathState.cs
+public partial class EnemyDeathState : EnemyState
+{
+    private bool _isDying = false;
+
+    protected override void EnterState()
+    {
+        if (_isDying) return;
+        _isDying = true;
+
+        if (characterNode is Enemy enemy)
+        {
+            enemy.SpawnDrops();
+            if (!string.IsNullOrEmpty(enemy.EnemyId))
+                QuestManager.Instance?.RegisterKill(enemy.EnemyId);
+        }
+
+        characterNode.SetCollisionLayerValue(3, false);
+        characterNode.SetCollisionMaskValue(2, false);
+
+        if (characterNode.AnimationPlayerNode.HasAnimation("Death"))
+        {
+            characterNode.AnimationPlayerNode
+                .AnimationFinished += HandleAnimationFinished;
+            characterNode.AnimationPlayerNode.Play("Death");
+        }
+        else
+        {
+            RemoveEnemy();
+        }
+    }
+
+    private void HandleAnimationFinished(StringName animName)
+    {
+        if (animName == "Death")
+        {
+            characterNode.AnimationPlayerNode
+                .AnimationFinished -= HandleAnimationFinished;
+            RemoveEnemy();
+        }
+    }
+
+    private void RemoveEnemy()
+    {
+        if (characterNode.PathNode != null)
+            characterNode.PathNode.QueueFree();
+        else
+            characterNode.QueueFree();
+    }
+}
+\end{verbatim}
+
+\section{QuestManager – Rejestrowanie Zabójstw}
+
+Fragment systemu questów odpowiedzialny za śledzenie postępu celu Kill.
+
+\begin{verbatim}
+// QuestManager.cs
+public void RegisterKill(string enemyId)
+{
+    var questsToComplete = new List<QuestResource>();
+
+    foreach (var quest in ActiveQuests)
+    {
+        if (quest.Objectives == null) continue;
+
+        foreach (var obj in quest.Objectives)
+        {
+            if (obj == null) continue;
+            if (obj.Type != QuestObjectiveType.Kill) continue;
+            if (obj.TargetId != enemyId) continue;
+
+            if (!_killProgress.ContainsKey(quest.Id))
+                _killProgress[quest.Id] = new Dictionary<string, int>();
+            if (!_killProgress[quest.Id].ContainsKey(enemyId))
+                _killProgress[quest.Id][enemyId] = 0;
+
+            _killProgress[quest.Id][enemyId]++;
+
+            if (_killProgress[quest.Id][enemyId] >= obj.RequiredAmount)
+                if (!questsToComplete.Contains(quest))
+                    questsToComplete.Add(quest);
+        }
+    }
+
+    foreach (var quest in questsToComplete)
+        CompleteQuest(quest);
+}
+\end{verbatim}
+
+\section{System Dropów Przeciwnika}
+
+Metoda losowania przedmiotów z tablicy dropów wroga z algorytmem Fisher-Yates.
+
+\begin{verbatim}
+// Enemy.cs
+public void SpawnDrops()
+{
+    if (DropOrbScene == null || Drops == null || Drops.Length == 0)
+        return;
+
+    var rng = new RandomNumberGenerator();
+    rng.Randomize();
+
+    var potions = new Array<ItemResource>();
+    var others  = new Array<ItemResource>();
+
+    foreach (var it in Drops)
+    {
+        if (it == null) continue;
+        if (it.IsConsumable) potions.Add(it);
+        else others.Add(it);
+    }
+
+    var droppedOther   = RollOneFromList(others,  rng);
+    var droppedPotion  = RollOneFromList(potions, rng);
+
+    if (droppedOther  != null) SpawnOneOrb(sceneRoot, droppedOther,  rng);
+    if (droppedPotion != null) SpawnOneOrb(sceneRoot, droppedPotion, rng);
+}
+
+// Tasowanie Fisher-Yates + sprawdzenie DropChance
+private ItemResource RollOneFromList(Array<ItemResource> list,
+                                     RandomNumberGenerator rng)
+{
+    for (int i = list.Count - 1; i > 0; i--)
+    {
+        int j = rng.RandiRange(0, i);
+        (list[i], list[j]) = (list[j], list[i]);
+    }
+    foreach (var it in list)
+        if (rng.Randf() <= it.DropChance)
+            return it;
+    return null;
+}
+\end{verbatim}
+
+\section{Globalny System Zdarzeń}
+
+\begin{verbatim}
+// GameEvents.cs
+public static class GameEvents
+{
+    public static event Action<ItemResource, int> OnItemCollected;
+    public static event Action<RewardResource>    OnReward;
+    public static event Action<int>               OnNewEnemyCount;
+    public static event Action                    OnVictory;
+    public static event Action                    OnDefeat;
+
+    public static void RaiseItemCollected(ItemResource item, int count)
+        => OnItemCollected?.Invoke(item, count);
+    public static void RaiseReward(RewardResource r)
+        => OnReward?.Invoke(r);
+    public static void RaiseNewEnemyCount(int count)
+        => OnNewEnemyCount?.Invoke(count);
+    public static void RaiseVictory() => OnVictory?.Invoke();
+    public static void RaiseDefeat()  => OnDefeat?.Invoke();
+}
+\end{verbatim}

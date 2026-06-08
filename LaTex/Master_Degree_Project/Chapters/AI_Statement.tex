@@ -1,0 +1,40 @@
+% O Ś W I A D C Z E N I E   O   W Y K O R Z Y S T A N I U   N A R Z Ę D Z I   A I
+% --------------------------------------------------------------------------------
+
+\section*{Oświadczenie o wykorzystaniu narzędzi sztucznej inteligencji}
+\addcontentsline{toc}{chapter}{Oświadczenie o wykorzystaniu narzędzi AI}
+
+W trakcie pracy nad projektem \textit{Echoes of Vanitas} korzystałem z asystentów programistycznych opartych na dużych modelach językowych (\textit{LLM}). Środowiskiem roboczym był \textit{Visual Studio Code}, a obsługę AI zapewniały dwa pluginy: \textit{Cursor} oraz \textit{Claude} (Anthropic). Z uwagi na żywą dyskusję o roli takich narzędzi w pracach dyplomowych chcę poniżej rozgraniczyć, co w niniejszej pracy powstało z udziałem AI, a co stanowi mój samodzielny wkład.
+
+\subsection*{Zakres pomocy AI}
+
+Asystenci AI wspierali mnie w trzech wąskich obszarach.
+
+Po pierwsze: \emph{w pracy z kodem}. Asystent generował szkielety klas i propozycje refaktoryzacji, podpowiadał możliwe przyczyny błędów kompilacji (\texttt{CS0034}, \texttt{CS0219}, \texttt{CS0649}) oraz pomagał w lokalizowaniu źródeł nieoczywistych zachowań silnika Godot (np. ignorowanie \texttt{Modulate} przez sprite'y 3D w trybie \texttt{unshaded}, asymetria renderowania półkuli w \texttt{SphereMesh}, sortowanie głębi sprite'ów bez \texttt{alpha\_cut}). Każdy fragment zaproponowanego kodu czytałem zanim trafił do projektu, modyfikowałem go pod własne nazewnictwo i konwencje, a następnie weryfikowałem w grze.
+
+Po drugie: \emph{w redakcji niniejszego tekstu}. AI poprawiało literówki, składnię i interpunkcję polskich akapitów, sugerowało alternatywne wersje zdań, a w pojedynczych przypadkach proponowało skrócenia rozwlekłych fragmentów. Decyzję, co zostawić, a co odrzucić, podejmowałem sam - również wtedy, gdy formalnie ,,gładsze'' propozycje gubiły personalny ton, który chciałem w pracy utrzymać.
+
+Po trzecie: \emph{w pracy z dokumentacją}. Asystent pomagał odnajdywać konkretne metody w dokumentacji Godot 4 i Microsoft .NET, sygnalizował nieaktualne wpisy bibliograficzne i sprawdzał spójność cytowań.
+
+\subsection*{Czego AI nie wniosło do pracy}
+
+Wszystkie kluczowe decyzje merytoryczne podjąłem samodzielnie i są wynikiem mojej własnej analizy oraz testów wewnątrz gry. Dotyczy to w szczególności:
+
+\begin{itemize}
+    \item wyboru modelu AI dla elit (kontekstowy bandyta wieloramienny zamiast pełnego MDP lub behavior tree),
+    \item doboru przestrzeni akcji (cztery taktyki: \textit{Flank}, \textit{Rush}, \textit{Kite}, \textit{Ambush}) oraz wymiarów kontekstu (HP gracza, liczba żywych elit),
+    \item wartości hiperparametrów uczenia ($\alpha = 0{,}12$, $\varepsilon_0 = 0{,}35$, $\varepsilon_\text{floor} = 0{,}05$, $\alpha_\varepsilon = 0{,}97$, $\beta = 0{,}08$) - wszystkie dobrane empirycznie w mojej własnej sesji testowej,
+    \item architektury systemu zdarzeń \texttt{GameEvents} i wzorca komunikacji bez wzajemnych referencji,
+    \item kształtu zapisów \texttt{AutosaveDto} i \texttt{EliteBrainDto} oraz mechanizmu wersjonowania schematu z migracją wartości priorów,
+    \item układu i mechanik mini-gier, zasad ekwipunku z ulepszaniem A+B, koncepcji modyfikatorów runu,
+    \item algorytmu generacji lochu (wariantów \textit{drunkard's walk} z iniekcją obiektów questowych),
+    \item projektu i implementacji rozszerzeń ostatniego cyklu: bossa, radaru z półkulistą strefą wykrywania, niewidzialnych przeciwników oraz minimapy z maską kołową w \texttt{SubViewport},
+    \item całej warstwy graficznej - ręcznie rysowanych sprite'ów postaci, NPC, ikon ekwipunku i elementów UI w Clip Studio Paint,
+    \item układu i treści niniejszej pracy magisterskiej, w tym sformułowania celów, kierunku analizy, wniosków, świadectw o problemach i ich rozwiązaniach.
+\end{itemize}
+
+\subsection*{Weryfikacja}
+
+Każdy wiersz kodu w projekcie potrafię wyjaśnić i obronić podczas dyskusji nad pracą. Każda decyzja projektowa - również ta, która okazała się nieoptymalna i wymagała poprawki - jest wynikiem mojej własnej analizy, opartej na obserwacji konkretnych zachowań gry w trakcie testów. AI było dla mnie narzędziem analogicznym do dobrego edytora i dobrego linta - przyspieszało pracę i wyłapywało drobne błędy, ale wartość merytoryczna pracy, jej kierunek oraz wszystkie konkretne rozstrzygnięcia inżynierskie pochodzą ode mnie.
+
+\cleardoublepage

@@ -1,0 +1,69 @@
+% An appendix
+%======================================================================
+
+\part*{APPENDICES}
+
+\chapter{Proof of Concept – Prototyp Gry}
+\label{appA}
+
+Niniejszy dodatek zawiera opis funkcjonalnego prototypu gry \textit{Echoes of Vanitas} oraz dokumentację działających mechanik w formie opisowej. W prototypie zaimplementowane są następujące systemy:
+
+\section{Działające Mechaniki Prototypu}
+
+\subsection{Poruszanie się i Walka}
+\begin{itemize}
+    \item Gracz porusza się w czterech kierunkach klawiszami WASD,
+    \item Atak wykonywany jest klawiszem Spacji,
+    \item Dash (unik) dostępny jest klawiszem Shift,
+    \item Trafienie gracza przez wroga zmniejsza punkty życia i może wywołać stan śmierci.
+\end{itemize}
+
+\subsection{System Przeciwników}
+\begin{itemize}
+    \item Przeciwnicy patrolują wyznaczone trasy (Path3D),
+    \item Po wykryciu gracza przechodzą w stan pościgu,
+    \item W zasięgu ataku wykonują obrażenia,
+    \item Po trafieniu przez gracza wchodzą w stan ogłuszenia,
+    \item Po śmierci odtwarzają animację, spawnują orby z przedmiotami i znikają z planszy,
+    \item Licznik wrogów na ekranie HUD aktualizuje się w czasie rzeczywistym.
+\end{itemize}
+
+\subsection{System Questów}
+\begin{itemize}
+    \item NPC dający quest obecny jest w scenie; po wejściu w zasięg i wciśnięciu E quest jest przyjmowany,
+    \item W menu questów (klawisz I → zakładka Questy) wyświetlają się aktywne zadania,
+    \item Kliknięcie na quest wyświetla jego tytuł, opis, informacje o lokacji i nagrodach,
+    \item Po zabiciiu wymaganej liczby wrogów quest jest automatycznie kończony,
+    \item Po ukończeniu nagrody trafiają do inventory gracza.
+\end{itemize}
+
+\subsection{System Ekwipunku}
+\begin{itemize}
+    \item Przedmioty podniesione z podłogi trafiają do inventory (menu I → zakładka Ekwipunek),
+    \item Gracz może przeciągać przedmioty między slotami inventory a slotami wyposażenia,
+    \item Założenie przedmiotu zmienia statystyki postaci (widoczne w HUD),
+    \item Przedmioty można łączyć w slotach Merge A+B i ulepszać przyciskiem UPGRADE,
+    \item Slot Trash pozwala niszczyć niechciane przedmioty.
+\end{itemize}
+
+\section{Parametry Techniczne Prototypu}
+
+\begin{itemize}
+    \item \textbf{Silnik}: Godot 4.x z renderowaniem Forward Plus,
+    \item \textbf{Język}: C\# (.NET 8),
+    \item \textbf{Rozdzielczość}: 1920×1080,
+    \item \textbf{Tryb renderowania}: 3D (środowisko 2.5D),
+    \item \textbf{Platforma docelowa}: Windows (PC),
+    \item \textbf{Liczba zaimplementowanych klas}: 59 plików \texttt{.cs},
+    \item \textbf{Liczba scen Godot}: ponad 20 plików \texttt{.tscn}.
+\end{itemize}
+
+\section{Znane Ograniczenia Prototypu}
+
+\begin{itemize}
+    \item System dźwięku i muzyki nie jest jeszcze zaimplementowany,
+    \item Pełny system rzutów kością opisany w założeniach fabularnych czeka na implementację,
+    \item Dialogi z NPC ograniczają się do przyjmowania questów; system rozbudowanych rozmów (drzewo dialogowe) nie jest gotowy,
+    \item Zapis stanu gry (save/load) nie jest zaimplementowany,
+    \item Tylko jedna lokacja jest dostępna w prototypie.
+\end{itemize}

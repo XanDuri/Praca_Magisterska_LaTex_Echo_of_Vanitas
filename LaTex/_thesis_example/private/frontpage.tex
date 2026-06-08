@@ -1,0 +1,70 @@
+% T I T L E   P A G E
+% -------------------
+% Last updated May 24, 2011, by Stephen Carr, IST-Client Services
+% The title page is counted as page `i' but we need to suppress the
+% page number.  We also don't want any headers or footers.
+\pagestyle{empty}
+\thispagestyle{empty}  % Removes the page number from the title page
+\pagenumbering{roman}
+
+% The contents of the title page are specified in the "titlepage"
+% environment.
+ 
+        \begin{center}
+        \vspace*{1.0cm}
+
+        \Huge
+         
+
+            \begin{center}
+              \Huge  \bfseries
+              \thesistitlecoverpage
+            \end{center}
+            \vskip5pt
+        \vfill
+
+
+        \vspace*{1.0cm}
+
+        \normalsize
+        by \\
+
+        \vspace*{1.0cm}
+
+        \Large
+        \thesisauthor \\
+
+        \vspace*{3.0cm}
+
+        \normalsize
+        Submitted in partial fulfillment of the requirement \\
+        for the degree of\\
+        \degree\\
+        in\\
+        \nameofprogram
+        %\nameofprogram\\
+
+        \vspace*{2.0cm}
+
+       \academicunit\\
+        %\faculty\\
+        University of Warmia and Mazury\\
+        Olsztyn, Poland
+
+        \vspace*{2.0cm}
+        February \the\year\\
+        Copyright \copyright ~\the\year, \thesisauthor\\
+        All Rights Reserved
+        \end{center}
+ 
+
+% September 2024
+% Copyright © 2024, [Student Name]
+% All Rights Reserved
+
+% The rest of the front pages should contain no headers and be numbered using Roman numerals starting with `ii'
+\pagestyle{plain}
+\setcounter{page}{2}
+
+\cleardoublepage % Ends the current page and causes all figures and tables that have so far appeared in the input to be printed.
+% In a two-sided printing style, it also makes the next page a right-hand (odd-numbered) page, producing a blank page if necessary.

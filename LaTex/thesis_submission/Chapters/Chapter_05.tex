@@ -1,0 +1,61 @@
+%======================================================================
+\chapter{Zakończenie}
+%======================================================================
+
+W ramach pracy magisterskiej powstała grywalna od początku do końca gra \textit{Echoes of Vanitas} - dwuipółwymiarowy tytuł RPG zaprojektowany i zaimplementowany od zera w silniku Godot 4 oraz języku C\#. Projekt łączy klasyczne elementy gatunku (eksplorację, system questów, walkę, ekwipunek, mini-gry) z nowoczesnymi technikami inżynierii oprogramowania (architektura sterowana zdarzeniami, wzorce projektowe) oraz z elementami uczenia maszynowego (kontekstowy bandyta wieloramienny dla AI elit). Wszystkie trzy obszary - grę, architekturę i uczenie - traktuję w pracy z porównywalną szczegółowością, a każdy z nich ma konkretne odzwierciedlenie w kodzie źródłowym.
+
+\section{Realizacja Założonych Celów}
+%----------------------------------------------------------------------
+
+W rozdziale wstępnym sformułowałem osiem celów pracy. Zestawiam je teraz z faktycznym stanem realizacji:
+
+\begin{enumerate}
+    \item \textbf{Implementacja funkcjonalnej gry 2.5D RPG w Godot 4 z C\#} - zrealizowany. Hub świata i proceduralny loch tworzą kompletną pętlę rozgrywki, gra uruchamia się i przechodzi przez wszystkie planowane stany.
+    \item \textbf{Architektura oparta na wzorcach (FSM, Singleton, Observer, komponent)} - zrealizowany. Każdy z czterech wzorców znajduje konkretne odzwierciedlenie w klasach: \texttt{StateMachine}, autoloady, \texttt{GameEvents}, hierarchia węzłów Godot.
+    \item \textbf{Mechaniki RPG (questy, ekwipunek z ulepszaniem, statystyki, walka, AI)} - zrealizowane. System questów obsługuje cele \textit{Kill}, \textit{Collect}, \textit{ReachArea}, \textit{Talk} oraz tryb sekwencyjny dla questa głównego.
+    \item \textbf{Proceduralna generacja lochu z wariantami i modyfikatorami runu} - zrealizowane. Trzy warianty (\texttt{layoutVariant} 0-2) modulują liczbę pokoi i klimat wizualny; trzy modyfikatory (\textit{RichCoins}, \textit{HeavyElites}, \textit{Gloom}); automatyczny wypiek nawigacji.
+    \item \textbf{Ucząca się AI dla elit (\texttt{EliteBrain})} - zrealizowany. Kontekstowy bandyta z 36 ramionami ($4 \times 3 \times 3$), $\varepsilon$-zachłanna selekcja, on-line Q-learning EMA, model gracza, predykcja ruchu.
+    \item \textbf{System zapisu obejmujący ulepszone przedmioty i stan AI} - zrealizowany. Autosave w JSON z wersjonowaniem schematu, snapshot ulepszeń w \texttt{InvSlotDto}, osobny plik \texttt{brain.json}.
+    \item \textbf{Mini-gry zintegrowane z hubem} - zrealizowane. Pięć typów: BlockFit, BlockMaze, LightSequence, Lockpick, Pipe; losowane przez \texttt{LockedCabinet} w katakumbach.
+    \item \textbf{Oryginalna grafika 2D postaci i UI} - zrealizowane i traktowane jako jeden z głównych wkładów pracy. Całą oprawę - od szkiców koncepcyjnych po finalne sprite'y postaci (Nietoperz Złodziej, Labrador Rycerz, wrogowie, elity, boss), portrety NPC, ikony ekwipunku i elementy interfejsu - narysowałem samodzielnie w Clip Studio Paint, bez gotowych paczek graficznych.
+\end{enumerate}
+
+Wszystkie osiem celów zostało zrealizowanych w wersji oddanej. W toku pracy pojawiło się także kilka dodatkowych, nieplanowanych wkładów technicznych, których pierwotnie nie zakładałem. Pierwszym jest shaderowy mechanizm tinta elit niezależny od oświetlenia (\texttt{character\_hurt.gdshader}) wraz z bratnim uniformem \texttt{sprite\_visibility} użytym przy \texttt{InvisibleEnemy} - ten sam plik obsługuje teraz trzy zachowania (flash trafienia, tint elit, niewidoczność niewidzialnych). Drugim jest debug HUD AI dostępny pod klawiszem \texttt{F3} - użyteczny zarówno przy testowaniu, jak i przy obronie pracy. Trzecim są trzy odrębne typy przeciwników poza zwykłym wrogiem i elitą: boss (\texttt{BossEnemy} z dashem i bombami obszarowymi), elita z \texttt{EliteBrain} oraz niewidzialny ujawniany przez radar. Czwartym - minimapa renderowana w \texttt{SubViewport} z circular-mask shaderem i dynamicznymi ikonami znajdziek oraz wrogów.
+
+\section{Wnioski Techniczne}
+%----------------------------------------------------------------------
+
+Najistotniejszym wnioskiem płynącym z projektu jest praktyczna weryfikacja, że \textbf{kontekstowy bandyta wieloramienny} jest \emph{wystarczająco bogatym} narzędziem dla AI walki w grze RPG. Klasyczna alternatywa - behavior tree z ręcznie napisanymi gałęziami - daje rezultat statyczny, identyczny dla każdego gracza. Bandyta kontekstowy w mojej grze, mimo prostoty (tablica $Q$ o rozmiarze 36, jedna aktualizacja EMA na starcie), faktycznie różnicuje politykę dla różnych stylów gry. Empirycznie obserwowałem: po kilkunastu starciach gracz agresywny wyzwala u elit przewagę taktyki \textit{Kite}, gracz pasywny - \textit{Rush}. To nie jest wynik zakodowany na sztywno, lecz wyłaniający się z aktualizacji $Q[a,c] \leftarrow Q[a,c] + \alpha(r - Q[a,c])$.
+
+Drugim ważnym wnioskiem jest siła wzorca \textbf{Observer} dla projektów średniej skali. Statyczna klasa \texttt{GameEvents} pozwoliła mi w trakcie pracy podpinać nowe podsystemy (\texttt{EliteBrain} po \texttt{OnDamageDealt}, \texttt{QuestManager} po \texttt{OnEnemyKilled}, później minimapa po \texttt{OnDungeonEntered}/\texttt{OnDungeonExited}) bez modyfikowania istniejącego kodu. Gdyby wszystkie te klasy musiały trzymać wzajemne referencje, koszt każdego nowego modułu rósłby kwadratowo. Z Observerem koszt jest stały - jedna subskrypcja. Wartość tego wzorca odczułem najmocniej, gdy w ostatnim cyklu dorzucałem boss-room, radar i minimapę: każde rozszerzenie wymagało dotknięcia własnych plików oraz dwóch-trzech subskrypcji, bez ingerencji w generator lochu czy podsystem walki.
+
+Trzeci wniosek dotyczy \textbf{wersjonowania schematu zapisu}. Pole \texttt{SaveVersion} w \texttt{AutosaveDto} oraz \texttt{SchemaVersion} w \texttt{EliteBrainDto} okazało się nieocenione, gdy w trakcie pracy zmieniałem strukturę tablicy $Q$ z 1D (proste 4 ramiona) na 3D ($4 \times 3 \times 3$). Bez wersjonowania użytkownicy starszej wersji utraciliby zapis. Dzięki niemu mam kod migracji mózgu, który płaskie wartości propaguje jako priory do wszystkich 9 kontekstów.
+
+Czwarty wniosek, który wykrystalizował się dopiero przy ostatnim cyklu rozszerzeń, dotyczy \textbf{sortowania głębi sprite'ów w 2.5D}. Standardowy \texttt{Sprite3D} z półprzezroczystą teksturą rysuje się w przebiegu transparent bez zapisu do bufora głębi, przez co dwa półprzezroczyste sprite'y sortują się po pozycji środka - a nie po realnym przesłonięciu. W chwili gdy dodałem skrzynię, radar i minimapę, ten szczegół zaczął się objawiać jako ,,gracz zawsze nad obiektami''. Naprawiło to ustawienie \texttt{AlphaCut = OpaquePrepass} dla wszystkich sprite'ów świata (skrzynia, monety, radar, NPC, drzwi, gracz, wrogowie). Wniosek na przyszłość: w projekcie 2.5D \texttt{alpha\_cut} jest tak samo nieodzowny jak \texttt{collision\_layer} - każdy nowy sprite musi go mieć od początku, inaczej Z-sort ujawni się losowo w testach.
+
+\section{Ograniczenia Obecnej Wersji}
+%----------------------------------------------------------------------
+
+Świadomie pozostawione ograniczenia, opisane szczegółowo w Dodatku~\ref{appA}, dotyczą głównie warstwy treści (jedna lokacja-hub zamiast czterech, jeden NPC z questami, brak audio, brak drzewa dialogowego). Po stronie technicznej dwa ograniczenia są warte wskazania jako kierunek rozwoju.
+
+Po pierwsze, AI elit korzysta z \emph{dyskretnej} tablicy $Q$. Skala 36 ramion jest wystarczająca dla obecnej liczby kontekstów, ale przy rozszerzaniu o dodatkowe wymiary (np. ekwipunek gracza, modyfikator runu, fazę starcia) wzrost kombinatoryczny staje się problemem. Naturalnym kolejnym krokiem jest migracja do \emph{Deep RL} - aproksymator $Q(s,a)$ w postaci sieci neuronowej, ze stanem ciągłym. Architektura jest do tego przygotowana: \texttt{EliteBrain.GetCurrentContext()} zwraca obecnie krotkę \texttt{(int, int)}, ale można ją zamienić na wektor cech bez przepisywania reszty mózgu.
+
+Po drugie, kontekst bandyty obejmuje jedynie HP gracza i liczbę żywych elit. Nie uwzględnia tego, czy gracz nosi zbroję ulepszoną do +5 czy bez ulepszeń, ani tego, czy aktywny modyfikator runu to \textit{HeavyElites} czy \textit{Gloom}. Te zmienne mają realny wpływ na trudność starcia, ale ich zignorowanie pozwoliło utrzymać tablicę $Q$ na rozsądnej wielkości i zebrać wystarczająco dużo aktualizacji w typowej sesji testowej.
+
+\section{Kierunki Dalszego Rozwoju}
+%----------------------------------------------------------------------
+
+Praca pozostawia trzy konkretne ścieżki dalszego rozwoju, które chciałbym podjąć po obronie:
+
+\begin{itemize}
+    \item \textbf{Rozbudowa narracji} - pozostałe trzy lokacje świata (las, miasto zwierząt, ruiny ludzkiej cywilizacji) wraz z pełnym drzewem dialogowym dla NPC (typ \textit{Talk} działa już dla questa głównego, lecz bez gałęzi wyboru).
+    \item \textbf{Migracja AI do Deep RL} - zastąpienie tablicy $Q$ siecią neuronową (np. mała MLP w \texttt{TorchSharp}), z eksperymentami nad doborem cech wejściowych. Punktem startowym jest zachowanie obecnego sygnału nagrody i interfejsu \texttt{NotifyEliteChaseStarted} / \texttt{NotifyEliteChaseEnded}; zmieni się tylko warstwa wnętrza \texttt{EliteBrain}.
+    \item \textbf{Warstwa audio} - własna ścieżka dźwiękowa skomponowana w FL Studio, efekty walki i UI. Element planowany od początku, ale świadomie pominięty w bieżącej wersji ze względu na priorytet warstwy technicznej.
+\end{itemize}
+
+\section{Podsumowanie}
+%----------------------------------------------------------------------
+
+\textit{Echoes of Vanitas} powstało jako autorski projekt indie wykonany jednoosobowo: kod, sceny, grafika i dokumentacja techniczna są wynikiem mojej pracy. Z perspektywy pracy magisterskiej wartością nie jest sama gra, lecz to, że przy jej budowie udało się zintegrować trzy zwykle traktowane oddzielnie obszary - projektowanie gier, inżynierię oprogramowania oraz uczenie maszynowe - w spójny, działający, mierzalny system. Plik \texttt{user://brain.json}, zmieniający się z każdą sesją, jest tego najbardziej namacalnym dowodem.
+
+Mam nadzieję, że projekt ten - zarówno w warstwie kodu, jak i niniejszej dokumentacji - stanie się solidną podstawą zarówno do dalszego rozwoju gry, jak i do prowadzenia kolejnych badań nad adaptacyjną AI w środowiskach gier komputerowych.

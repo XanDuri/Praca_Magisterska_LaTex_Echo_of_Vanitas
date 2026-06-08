@@ -1,0 +1,204 @@
+% Pakiety bazowe i lokalizacja polska
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[polish]{babel}
+\frenchspacing
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Marginesy UWM (§4) + stopka z numerem (fancyhdr w thesis-margins-and-spaces.tex).
+\ifthenelse{\boolean{PrintVersion}}{
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=1.5cm,right=1.5cm,bindingoffset=2cm,headheight=16pt,headsep=8mm,footskip=14mm]{geometry}
+}{
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3.5cm,right=1.5cm,headheight=16pt,headsep=8mm,footskip=14mm]{geometry}
+}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{caption}
+
+\usepackage{amsmath,amssymb,amstext} % Lots of math symbols and environments
+\usepackage{graphicx} % For including graphics 
+\usepackage{longtable} % Tabele rozciągające się na wiele stron
+\usepackage{placeins}
+
+% Rozluźnienie łamania linii dla długich \texttt{...} (np. nazwy metod CamelCase).
+% Bez tych ustawień LaTeX wypycha wąskie linie poza prawy margines (overfull \hbox).
+\setlength{\emergencystretch}{3em}
+\tolerance=2000
+\hbadness=10000   % wycisz mało istotne underfull info
+\setlength{\hfuzz}{2pt}   % toleruj drobne overfull (do 2pt) bez warning
+\sloppy
+
+% memoir narzeka, że materiał w nagłówku (15.3pt) jest większy niż \headheight
+% (14.5pt), co generuje seryjne "Overfull \vbox 0.85pt" przy każdym wyjściu strony.
+% Powiększenie \headheight likwiduje te warningi bez wpływu na układ.
+\setlength{\headheight}{16pt}
+
+% Katalogi z grafikami: domyślny images/ oraz zrzuty ekranu z docs/screenshots/
+\graphicspath{%
+    {images/}%
+    {../../docs/screenshots/}%
+    {../../docs/screenshots/01_gameplay/}%
+    {../../docs/screenshots/02_ui/}%
+    {../../docs/screenshots/03_dungeon/}%
+    {../../docs/screenshots/04_ai_debug/}%
+    {../../docs/screenshots/05_puzzles/}%
+    {../../docs/screenshots/06_diagrams/}%
+    {../../docs/screenshots/07_animations/}%
+}
+
+\usepackage{xcolor}      % kolory dla listingów
+\usepackage{listings}    % listingi kodu C#/shader
+
+\newcommand{\optchart}[4]{%
+  \begin{figure}[htbp]%
+    \centering
+    \IfFileExists{../../docs/screenshots/04_ai_debug/#1}%
+      {\includegraphics[width=#2]{#1}}%
+      {\fbox{\parbox[c][45mm][c]{#2}{\centering\itshape
+        Miejsce na wykres uczenia. Zostanie wstawiony po rozegraniu sesji
+        testowej i uruchomieniu skryptu generuj\k{a}cego wykresy z pliku
+        \mbox{brain\string_log.csv}.}}}%
+    \caption{#3}%
+    \label{#4}%
+  \end{figure}%
+}
+
+\newcommand{\optshot}[4]{%
+  \begin{figure}[htbp]%
+    \centering
+    \IfFileExists{../../docs/screenshots/#1}%
+      {\includegraphics[width=#2]{../../docs/screenshots/#1}}%
+      {\fbox{\parbox[c][45mm][c]{#2}{\centering\itshape
+        Miejsce na zrzut ekranu. Zostanie wstawiony po dostarczeniu grafiki
+        do katalogu \mbox{docs/screenshots/}.}}}%
+    \caption{#3}%
+    \label{#4}%
+  \end{figure}%
+}
+
+% Styl listingów C#
+\definecolor{codebg}{rgb}{0.97,0.97,0.97}
+\definecolor{codekw}{rgb}{0.00,0.00,0.55}
+\definecolor{codestr}{rgb}{0.55,0.00,0.00}
+\definecolor{codecom}{rgb}{0.25,0.50,0.25}
+
+\lstdefinelanguage{CSharp}{
+    morekeywords={abstract,as,base,bool,break,byte,case,catch,char,checked,class,const,continue,decimal,default,delegate,do,double,else,enum,event,explicit,extern,false,finally,fixed,float,for,foreach,get,goto,if,implicit,in,int,interface,internal,is,lock,long,namespace,new,null,object,operator,out,override,params,partial,private,protected,public,readonly,ref,return,sbyte,sealed,set,short,sizeof,stackalloc,static,string,struct,switch,this,throw,true,try,typeof,uint,ulong,unchecked,unsafe,ushort,using,var,virtual,void,volatile,while,yield},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]'
+}
+
+\lstset{
+    language=CSharp,
+    basicstyle=\ttfamily\scriptsize,
+    keywordstyle=\bfseries\color{codekw},
+    commentstyle=\itshape\color{codecom},
+    stringstyle=\color{codestr},
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{black!25},
+    framerule=0.3pt,
+    breaklines=true,
+    breakatwhitespace=true,
+    showstringspaces=false,
+    tabsize=2,
+    columns=fullflexible,
+    numbers=none,
+    captionpos=b,
+    xleftmargin=4pt,
+    xrightmargin=4pt,
+    aboveskip=6pt,
+    belowskip=6pt,
+    literate={ą}{{\k a}}1 {ć}{{\'c}}1 {ę}{{\k e}}1 {ł}{{\l }}1 {ń}{{\'n}}1
+             {ó}{{\'o}}1 {ś}{{\'s}}1 {ź}{{\'z}}1 {ż}{{\.z}}1
+             {Ą}{{\k A}}1 {Ć}{{\'C}}1 {Ę}{{\k E}}1 {Ł}{{\L }}1 {Ń}{{\'N}}1
+             {Ó}{{\'O}}1 {Ś}{{\'S}}1 {Ź}{{\'Z}}1 {Ż}{{\.Z}}1
+}
+
+% ---------------------------------------------------------------------
+% Podpisy rysunków i tabel wg wytycznych UWM:
+%   - czcionka 10 pt, kursywa, wyśrodkowanie,
+%   - numeracja w stylu "Rys. 1.2" / "Tabela 1.2" (numer rozdziału + kolejny),
+%   - bez dwukropka po numerze (separator = spacja).
+% Pakiet caption (klasa report).
+% ---------------------------------------------------------------------
+\captionsetup{
+  font=small,
+  labelfont=it,
+  textfont=it,
+  justification=centering,
+  labelsep=space,
+  skip=6pt,
+}
+% Nazwy „Rys.”/„Tabela” ustawiamy przez hook babel, żeby polszczyzna ich
+% nie nadpisała przy \begin{document}.
+\addto\captionspolish{%
+  \renewcommand{\figurename}{Rys.}%
+  \renewcommand{\tablename}{Tabela}%
+}
+
+\usepackage{nomentbl} 
+\makenomenclature 
+
+\usepackage{ifpdf}
+
+\newcommand{\href}[1]{#1} % does nothing, but defines the command so the
+    % print-optimized version will ignore \href tags (redefined by hyperref pkg).
+%\newcommand{\texorpdfstring}[2]{#1} % does nothing, but defines the command
+% Anything defined here may be redefined by packages added below...
+
+
+% Hyperlinks make it very easy to navigate an electronic document.
+% In addition, this is where you should specify the thesis title
+% and author as they appear in the properties of the PDF document.
+% Use the "hyperref" package 
+% N.B. HYPERREF MUST BE THE LAST PACKAGE LOADED; ADD ADDITIONAL PKGS ABOVE
+\usepackage[\ifpdf pdftex,\fi pagebackref=false]{hyperref} % with basic options
+		% N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
+\ifthenelse{\boolean{PrintVersion}}{   % for improved print quality, change some hyperref options
+\hypersetup{	% override some previously defined hyperref options
+%    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black}
+}{} % end of ifthenelse (no else)
+
+\usepackage{etoolbox} % For patching commands
+
+\AtBeginDocument{\pagestyle{uwmfoot}}
+
+\makeatletter
+% Redefine \tableofcontents to use \section*
+\renewcommand{\tableofcontents}{%
+  \section*{\contentsname}%
+  \@mkboth{\contentsname}{\contentsname}% Set headers
+  % \addcontentsline{toc}{section}{\contentsname}% Add section to TOC
+  \@starttoc{toc}% Generate TOC
+
+}
+
+% Redefine \listoffigures to use \section*
+\renewcommand{\listoffigures}{%
+  \section*{\listfigurename}%
+  \@mkboth{\listfigurename}{\listfigurename}% Set headers
+  % \addcontentsline{toc}{section}{\listfigurename}% Add section to TOC
+  \@starttoc{lof}% Generate LOF
+}
+
+% Redefine \listoftables to use \section*
+\renewcommand{\listoftables}{%
+  \section*{\listtablename}%
+  \@mkboth{\listtablename}{\listtablename}% Set headers
+  % \addcontentsline{toc}{section}{\listtablename}% Add section to TOC
+  \@starttoc{lot}% Generate LOT
+}
+
+
+

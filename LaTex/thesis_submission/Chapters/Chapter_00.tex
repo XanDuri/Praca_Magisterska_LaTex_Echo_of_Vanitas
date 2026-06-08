@@ -1,0 +1,100 @@
+%======================================================================
+\chapter{Wstęp}
+%======================================================================
+
+\section{Opis tematyki}
+%----------------------------------------------------------------------
+
+\textit{Echoes of Vanitas} to dwuipółwymiarowa gra RPG, którą zaprojektowałem i napisałem od zera w silniku Godot 4 z użyciem języka C\#. Akcja toczy się w autorskim świecie fantasy, zamieszkałym przez inteligentne, antropomorficzne zwierzęta - ludzkość dawno wymarła i pozostała po niej jedynie pamięć w księgach. Gracz wciela się w rolę Nietoperza Złodzieja, który podczas jednej ze swoich kradzieży trafia na księgę spisaną w zapomnianym, ludzkim języku.
+
+Projekt świadomie łączy klasyczne elementy gatunku - eksplorację, system questów, walkę i ekwipunek - ze współczesnym podejściem do architektury kodu oraz z elementami uczenia maszynowego. Najważniejszym autorskim wkładem technicznym jest \texttt{EliteBrain}: moduł adaptacyjnej sztucznej inteligencji dla elitarnych przeciwników, zaprojektowany jako kontekstowy bandyta wieloramienny. Zamiast korzystać z gotowych skryptów behavior tree, mózg ten obserwuje, jak gra konkretny gracz, i samodzielnie weryfikuje, która z czterech taktyk walki sprawdza się najlepiej w danym kontekście.
+
+\section{Motywacja i cel pracy}
+%----------------------------------------------------------------------
+
+Pomysł na grę narodził się z dwóch potrzeb, które na pierwszy rzut oka się wykluczają. Z jednej strony chciałem zrobić rzecz osobistą - ręcznie rysowane postaci, własną fabułę, własny świat. Z drugiej - napisać projekt, który da się zdefendować technicznie, bez chowania się za ,,jest tu RPG, jest fabuła, jest skrypt''. Dlatego praca jest świadomie interdyscyplinarna: łączy projektowanie gier (\textit{game design}), inżynierię oprogramowania, grafikę 2D oraz uczenie maszynowe.
+
+W trakcie pracy szybko zorientowałem się, że jeden moduł musi być sercem całej tezy. Wybrałem \texttt{EliteBrain}, bo daje konkretny, mierzalny dowód uczenia: po kilkunastu starciach plik \texttt{user://brain.json} ma już zauważalnie zróżnicowane wartości $Q$ pomiędzy taktykami, a parametry takie jak \texttt{LeadTime} czy \texttt{PreferredDistance} odjeżdżają od wartości startowych w przewidywalnym kierunku. Reszta projektu - proceduralny loch, system questów, ekwipunek z ulepszeniami - jest świadomie skonstruowana tak, żeby ten centralny moduł miał z czego się uczyć.
+
+Celami pracy są:
+\begin{itemize}
+    \item zaprojektowanie i implementacja funkcjonalnej gry 2.5D RPG w silniku Godot 4 z użyciem języka C\#,
+    \item opracowanie architektury systemu opartej na wzorcach: maszyny stanów (\textit{State Machine}), singletona, systemu zdarzeń (\textit{Observer}) oraz wzorca komponentowego,
+    \item implementacja kluczowych mechanik RPG: systemu questów (w tym questów sekwencyjnych), ekwipunku z ulepszaniem, statystyk postaci, walki oraz AI przeciwników,
+    \item zaprojektowanie i implementacja proceduralnej generacji lochu z wariantami układu, modyfikatorami runu oraz automatycznym wypiekiem siatki nawigacyjnej,
+    \item zaprojektowanie i implementacja systemu uczącej się AI dla elitarnych przeciwników (kontekstowy bandyta, predykcja ruchu, model gracza),
+    \item implementacja systemu zapisu/wczytania stanu gry obejmującego postać, ekwipunek z ulepszeniami, questy oraz stan AI,
+    \item stworzenie zestawu mini-gier (łamigłówek) integrujących się z \texttt{LockedCabinet} w hubie,
+    \item stworzenie oryginalnej grafiki 2D postaci i elementów interfejsu,
+    \item dokumentacja procesu twórczego i technicznego.
+\end{itemize}
+
+\section{Zakres zrealizowanego systemu}
+%----------------------------------------------------------------------
+
+W projekcie zaimplementowałem następujące elementy:
+
+\begin{itemize}
+    \item \textbf{Hub świata powierzchni (katakumby)} - lokacja startowa z NPC-dawcą questa, bramą lochu, oświetleniem punktowym i nastrojową scenografią 2.5D.
+    \item \textbf{Proceduralny loch} - drunkard's walk na siatce $9 \times 9$, trzy warianty (liczba pokoi i paleta świateł), losowe modyfikatory runu (więcej monet, dodatkowa elita w boss room, zaciemnienie), spawny wrogów z wspólnym balansem HP/siły, elit i bossa, do trzech skrzyń, portal wyjścia w pokoju startowym, automatyczny wypiek nawigacji (\texttt{NavigationAgent3D}).
+    \item \textbf{Postać gracza} - pełna maszyna stanów (idle, ruch, atak, dash, śmierć), statystyki, ekwipunek, dasz dźwiękowy w postaci toastów zdarzeń, szoki kamery, flashe trafień.
+    \item \textbf{Przeciwnicy} - zwykli wrogowie (pełna FSM: idle, patrol, pościg, atak, ogłuszenie, śmierć), \textbf{elity} z \texttt{EliteBrain}, \textbf{boss} (\texttt{BossEnemy}) z mechaniką dash i bomb obszarowych aktywowaną tylko w \texttt{ChaseArea}, oraz \textbf{niewidzialni} (\texttt{InvisibleEnemy}) ukryci do momentu wykrycia radarem. AI elity wybiera taktykę walki (oskrzydlanie, szarża, utrzymywanie dystansu, zasadzka) na podstawie kontekstu (zdrowie gracza, liczba żywych elit) używając $\varepsilon$-zachłannej strategii bandyty kontekstowego.
+    \item \textbf{Radar} (\texttt{Radar}) - urządzenie stawiane na podłodze lochu z półkulistą strefą wykrywania (\texttt{SphereMesh} z \texttt{is\_hemisphere=true} i \texttt{SphereShape3D}). \texttt{InvisibleEnemy} przebywający w polu wykrywania przez 3~s zostaje ujawniony, a obrotowa misa sprite'a obraca się z prędkością \texttt{DishRotationSpeed = 1,2}~rad/s.
+    \item \textbf{Minimapa} - minimapa renderowana w \texttt{SubViewport} z circular-mask shaderem; gracz pozostaje w centrum, mapa przesuwa się pod nim. Pokoje rysowane z osobnych sprite'ów dobieranych na podstawie konfiguracji drzwi, ikony znajdziek (monety, skrzynie, portal startowy), dynamiczne kropki przeciwników (kolory i rozmiary zależne od typu), tryb przyciemnienia dla modyfikatora \textit{Gloom}.
+    \item \textbf{Adaptacja w czasie gry} - AI utrzymuje model gracza (EMA prędkości, wycofywania, DPS), dostosowuje czas predykcji ruchu (\textit{lead-time}), dystans preferowany oraz współczynniki agresji i ostrożności.
+    \item \textbf{Trwałość uczenia} - stan mózgu AI zapisywany do pliku JSON z wersjonowaniem schematu; uczenie pomiędzy sesjami, migracja starszych zapisów.
+    \item \textbf{System zapisu/wczytania} - autosave w formacie JSON obejmujący postać, ekwipunek (ze snapshotem ulepszeń \texttt{UpgradeLevel} oraz bonusów), stan questów oraz stan \texttt{EliteBrain}.
+    \item \textbf{Ekran startowy} - rozróżnienie \textit{Nowa gra} / \textit{Kontynuuj}, reset mózgu AI i postępu przy nowej grze.
+    \item \textbf{System questów} - quest poboczny typu \textit{Kill} oraz sekwencyjny quest główny \textit{Pętla Vanitas} (cele \textit{Collect}, \textit{ReachArea}, \textit{Talk}) z dziennikiem narracyjnym.
+    \item \textbf{Ekwipunek i ulepszenia} - 20 slotów inwentarza, 5 slotów wyposażenia, drag-and-drop, sloty scalania A+B z ulepszaniem (do poziomu \texttt{+MaxUpgradeLevel}), zsumowane bonusy do statystyk.
+    \item \textbf{Mini-gry} - pięć łamigłówek losowanych przez \texttt{LockedCabinet} w hubie: układanie bloków (\textit{BlockFit}), labirynt bloków (\textit{BlockMaze}), sekwencja świateł (\textit{LightSequence}), łamanie zamka (\textit{Lockpick}), łączenie rur (\textit{PipePuzzle}).
+    \item \textbf{Skrzynie i nagrody} - kontenery z puli nagród, ikona znaleziska, integracja z systemem questów.
+    \item \textbf{Interfejs użytkownika} - HUD (paski statystyk, licznik wrogów), menu z zakładkami (Questy, Ekwipunek, Księga, Statystyki, Ustawienia), toasty zdarzeń, debug HUD AI (klawisz F3), overlay ładowania przy pierwszym wejściu do lochu, podsumowanie wyprawy.
+    \item \textbf{Feedback walki} - hit-stop, flashe trafień, drgania kamery, tint shaderowy elit.
+    \item \textbf{Ustawienia} - menu ustawień (głośność, skala UI, pełny ekran, klawisze).
+\end{itemize}
+
+\section{Technologia}
+%----------------------------------------------------------------------
+
+W projekcie wykorzystałem:
+
+\begin{itemize}
+    \item \textbf{Godot Engine 4.x} - wieloplatformowy silnik gier open-source (licencja MIT) z renderowaniem \textit{Forward Plus},
+    \item \textbf{C\# (.NET 8)} - język programowania logiki gry,
+    \item \textbf{Visual Studio Code} - środowisko deweloperskie,
+    \item \textbf{Clip Studio Paint} - tworzenie grafiki 2D postaci i elementów UI,
+    \item \textbf{Git} - kontrola wersji kodu źródłowego,
+    \item \textbf{System.Text.Json} - serializacja zapisu gry i stanu AI.
+\end{itemize}
+
+Narzędzia planowane do użycia w kolejnych etapach projektu (poza zakresem niniejszej pracy):
+\begin{itemize}
+    \item \textbf{Blender} - modele 3D środowiska,
+    \item \textbf{FL Studio} - muzyka i efekty dźwiękowe.
+\end{itemize}
+
+\section{Przegląd podobnych produkcji}
+%----------------------------------------------------------------------
+
+Świadomych inspiracji jest pięć - każda dała mi coś innego, czego sam musiałem się jeszcze nauczyć:
+
+\begin{itemize}
+    \item \textbf{Hollow Knight} (Team Cherry, 2017) - platformówka-RPG 2D, którą studiowałem przede wszystkim pod kątem sposobu, w jaki ich wrogowie ,,oddychają'' rytmem między atakami; idea ta wpłynęła na timing pościgu i ataku w mojej maszynie stanów wroga.
+    \item \textbf{Hades} (Supergiant Games, 2020) - akcja-RPG 2.5D z modelem \textit{rogue-lite}, z którego zapożyczyłem schemat ,,run + powrót do huba + nagrody'' realizowany przez \texttt{DungeonManager.ExitDungeon} i toast podsumowania wyprawy.
+    \item \textbf{Undertale} (Toby Fox, 2015) - RPG 2D z silną interakcją z NPC; w mojej grze jest tylko jeden NPC z questem głównym, ale jego dialogi mają być - docelowo - równie znaczące.
+    \item \textbf{Stardew Valley} (ConcernedApe, 2016) - wzorcowy przykład udanej produkcji solo-indie i argument za tym, że można obronić projekt zrobiony jednoosobowo.
+    \item \textbf{Left 4 Dead} (Valve, 2008) - inspiracja dla adaptacyjnego kierowania trudnością (\textit{AI Director}). To z tej gry wzięła się idea, że jeśli AI obserwuje gracza, może modulować trudność lokalnie zamiast skokowo, i właśnie to robi w mojej grze \texttt{EliteBrain}.
+\end{itemize}
+
+\section{Struktura pracy}
+%----------------------------------------------------------------------
+
+\begin{itemize}
+    \item \textbf{Rozdział 1 - Proces Twórczy:} zarys fabuły, projekt postaci i świata, decyzje artystyczne, zestawienie planu z realizacją.
+    \item \textbf{Rozdział 2 - Przegląd Literatury i Technologii:} teoria projektowania gier, porównanie silników, wzorce projektowe, uczenie wzmocnione (\textit{reinforcement learning}), proceduralna generacja treści, dynamiczne dostosowanie trudności.
+    \item \textbf{Rozdział 3 - Architektura Systemu:} struktura projektu, hierarchia scen Godot, autoloady, zasoby (\texttt{Resource}), warstwy kolizji.
+    \item \textbf{Rozdział 4 - Implementacja Mechanik Gry:} gracz, wrogowie, proceduralna generacja lochu, adaptacyjna AI (matematyka bandyty kontekstowego i predykcji), system questów, ekwipunek, mini-gry, zapis stanu gry, UI i feedback walki.
+    \item \textbf{Dodatek A - Proof of Concept:} aktualny stan gry, galeria zrzutów ekranu, znane ograniczenia.
+    \item \textbf{Dodatek B - Wybrane Fragmenty Kodu:} kluczowe fragmenty z komentarzem - maszyna stanów, śmierć przeciwnika, \texttt{QuestManager}, \texttt{EliteBrain}, \texttt{SaveGameService}, generator lochu.
+\end{itemize}

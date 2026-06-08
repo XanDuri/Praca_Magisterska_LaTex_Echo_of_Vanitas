@@ -1,0 +1,146 @@
+%======================================================================
+\chapter{Architektura Systemu}
+%======================================================================
+
+Niniejszy rozdział opisuje architekturę projektu \textit{Echoes of Vanitas} – strukturę plików, hierarchię scen Godot, organizację kodu C\# oraz zastosowane wzorce projektowe. Celem architektonicznym jest separacja odpowiedzialności, ponowne użycie kodu i łatwość rozszerzania systemu.
+
+\section{Struktura Projektu}
+%----------------------------------------------------------------------
+
+Projekt zorganizowany jest według następującej struktury katalogów:
+
+\begin{verbatim}
+echoes_of_vanitas/
+├── Scripts/
+│   ├── Charactes/
+│   │   ├── Character.cs          # klasa bazowa postaci
+│   │   ├── CharacterState.cs     # bazowy stan maszyny stanów
+│   │   ├── StateMachine.cs       # kontroler maszyny stanów
+│   │   ├── AttackHitBox.cs       # hitbox ataku
+│   │   ├── Player/               # gracz
+│   │   └── Enemy/                # przeciwnicy
+│   ├── UI/
+│   │   ├── EqMenu.cs             # menu ekwipunku
+│   │   ├── EqSlot.cs             # slot ekwipunku/inventory
+│   │   ├── ItemResource.cs       # definicja przedmiotu
+│   │   ├── MenuTabs.cs           # przełączanie zakładek menu
+│   │   └── Quests/               # system questów
+│   ├── General/
+│   │   ├── GameConstants.cs      # stałe gry
+│   │   ├── GameEvents.cs         # globalny system zdarzeń
+│   │   ├── Camera.cs             # kamera
+│   │   ├── DropOrb.cs            # orb nagrody
+│   │   └── NodeExtensions.cs     # rozszerzenia węzłów Godot
+│   ├── Resources/
+│   │   ├── StatResource.cs       # zasób statystyki
+│   │   └── Stat.cs               # enum statystyk
+│   ├── Abilities/                # zdolności (bomba, krew)
+│   ├── Interfaces/               # interfejsy (IHitbox)
+│   ├── Reward/                   # nagrody (skrzynie, RewardResource)
+│   └── Levels/                   # logika poziomów
+├── Scenes/                       # sceny Godot (.tscn)
+├── Resources/                    # pliki zasobów (.tres)
+└── Assets_Bat/                   # grafiki, fonty, sprite'y
+\end{verbatim}
+
+\section{Hierarchia Scen Godot}
+%----------------------------------------------------------------------
+
+Godot organizuje świat gry jako drzewo węzłów (\textit{SceneTree}). Każda scena to plik \texttt{.tscn} – podgraf węzłów, który może być instancjowany wielokrotnie. Główna scena gry (\texttt{main.tscn}) zawiera:
+
+\begin{itemize}
+    \item \textbf{World} – węzeł 3D zawierający środowisko, oświetlenie i teren,
+    \item \textbf{EnemiesContainer} – kontener wszystkich przeciwników, monitorujący ich liczbę,
+    \item \textbf{Player} – instancja sceny gracza,
+    \item \textbf{NPC} – instancje postaci dających questy,
+    \item \textbf{UI} – interfejs użytkownika (HUD, menu, ekwipunek, questy).
+\end{itemize}
+
+\textbf{Autoloady} (singleto­ny globalne Godot) skonfigurowane w projekcie:
+\begin{itemize}
+    \item \texttt{QuestManager} – zarządza aktywnymi i ukończonymi questami,
+    \item \texttt{EliteBrain} – zarządza adaptacyjną AI elitarnych przeciwników.
+\end{itemize}
+
+\section{Klasa Bazowa Postaci}
+%----------------------------------------------------------------------
+
+Centralna klasa \texttt{Character} dziedziczy z \texttt{CharacterBody3D} (klasa Godot dla postaci z fizyką) i stanowi bazę dla zarówno gracza, jak i wszystkich typów przeciwników. Kluczowe pola i metody:
+
+\begin{itemize}
+    \item \textbf{StateMachineNode} – referencja do maszyny stanów,
+    \item \textbf{AnimationPlayerNode} – odtwarzacz animacji,
+    \item \textbf{HurtboxNode} – obszar wykrywający trafienia,
+    \item \textbf{ChaseAreaNode} i \textbf{AttackAreaNode} – obszary AI dla pościgu i ataku,
+    \item \textbf{PathNode} – ścieżka patrolowania (Path3D),
+    \item \textbf{GetStatResource(Stat)} – pobiera zasób statystyki po typie enumeracji.
+\end{itemize}
+
+Hierarchia dziedziczenia klas postaci:
+
+\begin{verbatim}
+CharacterBody3D (Godot)
+    └── Character
+            ├── Player
+            └── Enemy
+                    └── EliteEnemy
+\end{verbatim}
+
+\section{Maszyna Stanów}
+%----------------------------------------------------------------------
+
+Maszyna stanów zaimplementowana jest jako para klas: \texttt{StateMachine} oraz \texttt{CharacterState}.
+
+\texttt{StateMachine} przechowuje aktywny stan i wywołuje na nim metody \texttt{\_Process} i \texttt{\_PhysicsProcess} delegując je do Godot. Metoda \texttt{SwitchState<T>()} pobiera lub tworzy stan danego typu i wywołuje jego \texttt{EnterState()}.
+
+\texttt{CharacterState} to klasa abstrakcyjna z metodami cyklu życia stanu:
+\begin{itemize}
+    \item \texttt{EnterState()} – inicjalizacja przy wejściu w stan,
+    \item \texttt{ExitState()} – sprzątanie przy wyjściu ze stanu,
+    \item \texttt{UpdateState(double delta)} – logika wykonywana co klatkę,
+    \item \texttt{PhysicsUpdateState(double delta)} – logika fizyki.
+\end{itemize}
+
+Maszyna stanów gracza i przeciwnika współdzieli tę samą architekturę, różniąc się jedynie zestawem dostępnych stanów.
+
+\section{System Zdarzeń}
+%----------------------------------------------------------------------
+
+Klasa statyczna \texttt{GameEvents} definiuje zdarzenia globalne używane do komunikacji między niezależnymi systemami gry:
+
+\begin{itemize}
+    \item \texttt{OnItemCollected(ItemResource, int)} – podniesienie przedmiotu z podłogi,
+    \item \texttt{OnReward(RewardResource)} – wypłata nagrody za quest lub skrzynię,
+    \item \texttt{OnNewEnemyCount(int)} – zmiana liczby żywych wrogów na planszy,
+    \item \texttt{OnVictory()} – zwycięstwo (wszyscy wrogowie pokonani),
+    \item \texttt{OnDefeat()} – porażka (śmierć gracza).
+\end{itemize}
+
+Dzięki temu podejściu klasy takie jak \texttt{EnemyDeathState}, \texttt{EnemiesContainer} czy \texttt{UIController} komunikują się bez bezpośrednich referencji, co zwiększa modularność kodu.
+
+\section{System Zasobów (Resources)}
+%----------------------------------------------------------------------
+
+Godot oferuje klasę \texttt{Resource} – serializowalny obiekt danych, który może być edytowany w edytorze i zapisywany jako plik \texttt{.tres}. W projekcie zasoby wykorzystywane są do definiowania:
+
+\begin{itemize}
+    \item \textbf{ItemResource} – pełna definicja przedmiotu (nazwa, ikona, statystyki, kategoria, rzadkość, szansa dropu, maksymalny stack),
+    \item \textbf{StatResource} – pojedyncza statystyka postaci z jej wartością i zdarzeniem \texttt{OnZero},
+    \item \textbf{QuestResource} – definicja questa (ID, tytuł, opisy, portret dawcy, lokacja, nagrody, cele),
+    \item \textbf{QuestObjectiveResource} – pojedynczy cel questa (typ, ID celu, wymagana liczba),
+    \item \textbf{RewardResource} – nagroda za wygraną (typ statystyki, kwota bonusu).
+\end{itemize}
+
+Podejście oparte na zasobach umożliwia projektantom dodawanie nowych questów, przedmiotów i statystyk bez modyfikowania kodu – wystarczy stworzyć nowy plik \texttt{.tres} w edytorze Godot.
+
+\section{Zarządzanie Warstwami Kolizji}
+%----------------------------------------------------------------------
+
+Projekt używa trójwarstwowego systemu kolizji 3D Godot:
+\begin{itemize}
+    \item \textbf{Warstwa 1 – Environment}: statyczne obiekty środowiska (ściany, podłoga),
+    \item \textbf{Warstwa 2 – Player}: ciało fizyczne gracza,
+    \item \textbf{Warstwa 3 – Enemy}: ciała fizyczne przeciwników.
+\end{itemize}
+
+Obszary detekcji (Area3D) mają odpowiednio ustawione maski kolizji – np. \texttt{HurtboxNode} gracza wykrywa wyłącznie hitboxy wrogów, a \texttt{ChaseAreaNode} wroga wykrywa wyłącznie gracza (maska = 2).

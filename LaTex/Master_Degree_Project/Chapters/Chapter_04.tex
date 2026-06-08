@@ -1,0 +1,631 @@
+%======================================================================
+\chapter{Implementacja Mechanik Gry}
+\label{ch:implementacja}
+%======================================================================
+
+To jest rozdział, w którym schodzę z poziomu architektury na poziom konkretnego kodu. Każda mechanika opisana niżej jest faktycznie zaimplementowana, regularnie testowana w hubie katakumb i w proceduralnym lochu, i właśnie w obecnej formie tworzy grywalną pętlę. Kolejność sekcji jest celowa: najpierw gracz, potem wrogowie, dalej najobszerniej AI elit (z pełną matematyką i podaniem wartości stałych, które realnie obowiązują w kodzie), następnie loch, system zapisu, questy, mini-gry i interfejs. Na końcu zebrałem listę problemów, na które natknąłem się przy pisaniu; każdy z nich ma opisane rozwiązanie, które weszło do wersji ostatecznej.
+
+\section{System Postaci Gracza}
+%----------------------------------------------------------------------
+
+\subsection{Stany Gracza}
+
+Gracz (\texttt{Player}) posiada pięć stanów zarządzanych przez maszynę stanów:
+
+\begin{itemize}
+    \item \textbf{PlayerIdleState}: gracz stoi w miejscu i nasłuchuje na wciśnięcie klawiszy ruchu lub ataku,
+    \item \textbf{PlayerMoveState}: poruszanie się klawiszami WASD w czterech kierunkach,
+    \item \textbf{PlayerAttackState}: odtwarza animację ataku, tworzy hitbox i po zakończeniu wraca do Idle,
+    \item \textbf{PlayerDashState}: krótki zryw w kierunku ruchu (klawisz Shift),
+    \item \textbf{PlayerDeathState}: odtwarza animację śmierci i emituje zdarzenie \texttt{OnEndGame}.
+\end{itemize}
+
+Przejście do stanu śmierci następuje, gdy \texttt{StatResource} o typie \texttt{Stat.Health} osiągnie wartość zero (zdarzenie \texttt{OnZero}).
+
+\subsection{Statystyki i Ekwipunek}
+
+Statystyki postaci implementowane są jako zasoby \texttt{StatResource} powiązane z wyliczeniem \texttt{Stat}:
+\begin{itemize}
+    \item \texttt{Stat.Health} - punkty życia,
+    \item \texttt{Stat.Strength} - siła ataku.
+\end{itemize}
+Dodatkowo obiekt \texttt{Player} przechowuje pola \texttt{Gold}, \texttt{Experience} i tablicę inwentarza.
+
+Bonusy z wyposażonych przedmiotów obliczane są metodą \texttt{ApplyEquipmentBonuses()} jako delta względem poprzedniego stanu ekwipunku. Dzięki temu bazowe wartości statystyk nie są nadpisywane. Bonusy przedmiotów są dodatkowo skalowane przez \texttt{UpgradeLevel} (ulepszenie kumuluje się z scaleniem A+B).
+
+\subsection{System Inventory i Ekwipunku}
+
+Gracz posiada tablicę \texttt{Inventory[]} (20 slotów \texttt{InventoryItemStack}) oraz pięć slotów wyposażenia. Metoda \texttt{AddItemToInventory()} implementuje logikę stackowania: uzupełnia istniejące stacki aż do \texttt{MaxStack} i przy ich braku szuka pustego slotu. Po każdej zmianie UI synchronizacja z \texttt{Player.Inventory} odbywa się przez metodę \texttt{SyncInventoryToPlayer()}.
+
+\subsection{Ulepszanie Przedmiotów}
+
+W \texttt{EqMenu} dostępne są dwa sloty scalania (\texttt{SlotA}, \texttt{SlotB}) oraz przycisk \textit{UPGRADE}. Algorytm scalania:
+\begin{enumerate}
+    \item Walidacja: oba sloty muszą zawierać \emph{identyczny} przedmiot (ten sam \texttt{Id} oraz \texttt{UpgradeLevel}).
+    \item Tworzona jest \emph{kopia} zasobu (\texttt{ItemResource.Duplicate()}), aby nie modyfikować pliku \texttt{.tres}.
+    \item Pole \texttt{UpgradeLevel} kopii jest inkrementowane; bonusy do statystyk rosną proporcjonalnie.
+    \item Sloty A i B są czyszczone, a ulepszona kopia trafia do inwentarza lub slotu wyposażenia.
+    \item Toast \emph{Ulepszono: X} informuje gracza; ograniczenie \texttt{MaxUpgradeLevel} blokuje dalsze scalanie.
+\end{enumerate}
+
+Kluczowy w tym podejściu jest \emph{Duplicate}. Bez niego ulepszenie pierwszego sztyletu w grze zmodyfikowałoby plik \texttt{.tres} na dysku - co po pierwsze popsułoby kolejne instancje tego samego przedmiotu, a po drugie ,,zacementowałoby'' nieodwracalnie ulepszenie nawet po nowej grze. Dzięki kopiowaniu jeden plik bazowy może być źródłem wielu różnie ulepszonych instancji, a snapshot ich statystyk wpada do autosave (\texttt{InvSlotDto.ItemAttackBonus} i pokrewne pola). Tę pułapkę wyłapałem dopiero po pierwszym pełnym cyklu zapis-wczytaj, w którym ulepszony sztylet po wczytaniu znikał - stąd osobna sekcja w autosave i osobne pole \texttt{ItemUpgradeLevel}.
+
+\section{System Przeciwników}
+%----------------------------------------------------------------------
+
+\subsection{Stany Przeciwnika}
+
+Każdy przeciwnik (\texttt{Enemy}) posiada sześć podstawowych stanów oraz stan powrotu do patrolowania:
+
+\begin{itemize}
+    \item \textbf{EnemyIdleState}: bezczynność i nasłuchiwanie wejścia gracza w obszar detekcji,
+    \item \textbf{EnemyPatrolState}: ruch wzdłuż ścieżki \texttt{Path3D} i cykliczna zmiana punktów,
+    \item \textbf{EnemyChaseState}: śledzenie gracza przez \texttt{NavigationAgent3D} z algorytmem A*,
+    \item \textbf{EnemyAttackState}: atak w zasięgu \texttt{AttackAreaNode},
+    \item \textbf{EnemyStunState}: ogłuszenie po trafieniu przez gracza,
+    \item \textbf{EnemyReturnState}: powrót do patrolowania, gdy gracz opuści \texttt{ChaseAreaNode},
+    \item \textbf{EnemyDeathState}: wyłączenie kolizji, animacja śmierci, usunięcie z planszy i rejestracja w questach.
+\end{itemize}
+
+\subsection{Logika Śmierci Wroga}
+
+\texttt{EnemyDeathState} realizuje wieloetapowy proces zakończenia życia przeciwnika:
+
+\begin{enumerate}
+    \item Flaga \texttt{\_isDying} blokuje wielokrotne wejście w stan,
+    \item Wywołanie \texttt{SpawnDrops()} - losowanie i spawnowanie orbów z przedmiotami,
+    \item Emisja zdarzenia \texttt{GameEvents.RaiseEnemyKilled(EnemyId)} - \texttt{QuestManager} aktualizuje postęp celów \textit{Kill}; elity dodatkowo raportują wynik starcia przez \texttt{EliteBrain.ReportEliteDeath()},
+    \item Wyłączenie kolizji (warstwa 3, maska 2),
+    \item Odtworzenie animacji \texttt{Death}; po jej zakończeniu \texttt{PathNode.QueueFree()} usuwa cały obiekt - co aktualizuje licznik wrogów w \texttt{EnemiesContainer}.
+\end{enumerate}
+
+\subsection{System Dropów}
+
+Metoda \texttt{SpawnDrops()} losuje przedmioty z tablicy \texttt{Drops[]} z podziałem na konsumable i pozostałe. Z każdej grupy losowany jest co najwyżej jeden przedmiot algorytmem Fisher-Yates z weryfikacją \texttt{DropChance}.
+
+\subsection{Elity i Shader Podświetlenia}
+
+Klasa \texttt{EliteEnemy} dziedziczy z \texttt{Enemy}. Rozszerza ją o:
+\begin{itemize}
+    \item podwyższone statystyki (HP, Strength),
+    \item rozszerzoną pulę dropów,
+    \item integrację z singletonem \texttt{EliteBrain} (\texttt{NotifyEliteChaseStarted}, \texttt{NotifyEliteChaseEnded}),
+    \item \emph{shaderowe podświetlenie} - shader \texttt{character\_\allowbreak hurt.\allowbreak gdshader} rozszerzony o dwa uniformy: \texttt{elite\_\allowbreak tint\_\allowbreak strength} oraz \texttt{elite\_\allowbreak tint\_\allowbreak color}. Dzięki modyfikacji wewnątrz samego shadera tint działa nawet w trybie \texttt{unshaded} (sprite'y 3D pomijają standardowe oświetlenie), czego nie zapewniał \texttt{Sprite3D.\allowbreak Modulate}.
+\end{itemize}
+
+\subsection{Boss (\texttt{BossEnemy})}
+
+Pokój oznaczony jako \texttt{RoomType.Boss} otrzymuje przy spawnie pojedynczą instancję \texttt{BossEnemy}. Klasa dziedziczy z \texttt{Enemy} i rozszerza ją w trzech miejscach. Po pierwsze: skala węzła to $1{,}5$ - jednoznacznie odróżnia bossa od pozostałych wrogów już przy pierwszym kontakcie wzrokowym. Po drugie: tint shaderowy ustawiony w \texttt{\_Ready} przekazuje do \texttt{character\_hurt.gdshader} czerwony wektor \texttt{BossTint}, zamiast fioletowego u elit - to ten sam mechanizm uniformu, ale inna paleta. Po trzecie: maszyna stanów uzupełniona jest o pole \texttt{BombScene} oraz cykl spawnu bomb obszarowych co \texttt{BombInterval} sekund.
+
+Subtelną pułapką okazało się to, że \texttt{BossEnemy} w trakcie ładowania lochu mógłby zacząć rzucać bomby w kierunku gracza, który jeszcze nie zdążył wylądować na podłodze po teleportacji do startowego pokoju. Stąd dwie ochrony: \emph{spawn grace} 2,5~s, w którym bombowanie jest wyłączone, warunek aktywności bomb tylko wtedy, gdy gracz wszedł do \texttt{ChaseArea}, oraz flaga \texttt{TargetsPlayerOnly} na bombach bossa (obrażenia 14, zasięg około 2,5-11~m) - bomby nie trafiają w pozostałych wrogów w pokoju.
+
+\subsection{Niewidzialni (\texttt{InvisibleEnemy})}
+
+\texttt{InvisibleEnemy} dziedziczy z \texttt{Enemy} i w zwykłej rozgrywce jest niewidoczny. Zaimplementowanie tego okazało się trudniejsze niż się początkowo wydawało - standardowe \texttt{Sprite3D.Modulate.A = 0} nie wystarcza, bo overlay na sprite'ach 3D pracuje w trybie \texttt{unshaded} i czyta teksturę niezależnie od \texttt{Modulate}. W rezultacie po prostym wyzerowaniu kanału alpha sprite dalej rysował się w pełnej widoczności, tracąc jedynie kolor (jak przezroczysta szyba). Rozwiązanie wymagało rozszerzenia \texttt{character\_hurt.gdshader} o uniform \texttt{sprite\_visibility} i dodanie w fragmencie warunku \texttt{discard} dla wartości bliskich zera. Wtedy sprite \emph{nie istnieje} w obrazie wynikowym, a nie tylko jest \emph{przezroczysty}.
+
+Sam fakt niewidoczności jednak nie wystarczy - gracz musi mieć dyskretną informację, że ,,coś tu jest''. Dlatego do węzła wroga doczepiony jest \texttt{FloorShadow}: płaski dysk \texttt{CylinderMesh} o promieniu $0{,}55$~m i wysokości $0{,}012$~m, narysowany czarnym \texttt{Unshaded} z alphą $0{,}2$. Dysk leży tuż przy podłodze, jego pozycja \texttt{Y} liczona jest od dolnej krawędzi kapsuły kolizji wroga, dzięki czemu zawsze przylega do gruntu niezależnie od tego, gdzie ustawiony jest pivot Sprite'a. Po ujawnieniu (przez radar) dysk znika, a sprite wraca w cień szlachetną niebieską tonacją - ustawioną przez \texttt{RevealedTint} jako wektor \texttt{(0,35; 0,70; 1,35)}.
+
+\subsection{Radar (\texttt{Radar})}
+
+Radar jest scenariuszem \texttt{Node3D} zawierającym trzy podwęzły: \texttt{DetectionArea} (\texttt{Area3D} z \texttt{SphereShape3D}), \texttt{Pivot} z obrotowym \texttt{Sprite3D} oraz \texttt{RangeHemisphere} (\texttt{MeshInstance3D} z \texttt{SphereMesh} skonfigurowaną w trybie półkuli). Promień strefy ustawiłem na 8~m - mniej więcej połowa szerokości pokoju, więc niewidzialny przeciwnik patrolujący wzdłuż ściany trafi w stożek wykrywania, gdy gracz wejdzie z radarem do tego samego pomieszczenia.
+
+Półkula wymagała kilku iteracji. Pierwsza próba miała pełną sferę z wyłączonym depth-testem - zasięg ,,świecił'' przez sufity i podłogi, co było nieczytelne. Druga próba używała \texttt{SphereMesh} z \texttt{is\_hemisphere=true}, ale błędnie obniżyłem mesh o $-r/2$, przez co podstawa półkuli zanurzała się pod podłogę. Trzecia wersja, ta która została w kodzie, trzyma mesh w pozycji $(0,0,0)$ względem korzenia radaru i ustawia korzeń na \texttt{FLOOR\_SURFACE\_Y} z marginesem $-0{,}05$ - tyle, ile wynosi wzniesienie płytki podłogi w \texttt{AABB} jej mesha. Bez tego ostatniego marginesu między płaską podstawą półkuli a teksturą podłogi było widać szczelinę.
+
+Logika ujawnienia korzysta z odpytywania \texttt{Area3D.\allowbreak Get\allowbreak Overlapping\allowbreak Bodies()} co klatkę fizyki, a nie z sygnałów \texttt{BodyEntered}/\texttt{BodyExited}. To ważna decyzja - sygnały Godota czasem nie odpalały dla \texttt{InvisibleEnemy} przy szybkim przechodzeniu przez próg półkuli, prawdopodobnie z powodu interakcji z fazą fizyki w której wróg był przemieszczany przez \texttt{NavigationAgent3D}. Co klatkę fizyki radar zbiera wszystkie kolidujące ciała, filtruje po typie i sprawdza dodatkowo \texttt{local.Y >= -0{,}35} (górna półkula, z drobną tolerancją na drobne nieregularności podłogi). Niewidzialni, którzy przebywają w półkuli, dostają wezwanie \texttt{Accumulate\allowbreak RadarTime(\allowbreak delta)}; ci, którzy z niej wyszli, dostają \texttt{Reset\allowbreak Radar\allowbreak Accumulation()}. Po przekroczeniu progu \texttt{REVEAL\_\allowbreak REQUIRED\_\allowbreak SECONDS = 3} wróg woła \texttt{Reveal()} - przełącza shader na pełną widoczność, podpina cień Sprite3D i emituje toast.
+
+\subsubsection{Spawn Radarów}
+
+\texttt{DungeonGenerator.SpawnRadars} wybiera 1-2 losowych pokojów typu \texttt{Normal} lub \texttt{Treasure} (Fisher-Yates na liście kandydatów) i stawia w każdym po jednym radarze w losowej pozycji odsuniętej o 2~m od krawędzi pokoju. Tę liczbę dobrałem empirycznie - jeden radar na loch sprawiał, że niewidzialnych dawało się zignorować, trzy - że stawały się rutyną. Dwa to próg, przy którym mechanika wymaga decyzji ,,który radar opłaca się zajść i poczekać 3~s''.
+
+\section{Adaptacyjna AI Elitarnych Przeciwników (\texttt{EliteBrain})}
+%----------------------------------------------------------------------
+
+To jest najbardziej skomplikowany podsystem w grze i temu właśnie poświęciłem największą uwagę przy pisaniu pracy. \texttt{EliteBrain} jest singletonem-autoloadem, który łączy cztery technicznie samodzielne klocki:
+\begin{enumerate}
+    \item kontekstowy bandyta $\varepsilon$-zachłanny - wybiera taktykę przed starciem,
+    \item on-line Q-learning z aktualizacją EMA - uczy się z wyniku starcia,
+    \item model gracza (EMA prędkości, wycofywania, DPS) - moduluje parametry ruchu elit,
+    \item persystencja między sesjami - plik \texttt{user://brain.json} z wersjonowaniem schematu.
+\end{enumerate}
+Pierwsze trzy działają cały czas, podczas każdego starcia. Czwarte uruchamia się tylko po zakończeniu starcia, raz na walkę. Razem dają system, który po kilkunastu walkach z każdym kolejnym graczem zachowuje się \emph{innaczej}, a po ponownym uruchomieniu gry kontynuuje naukę z miejsca, w którym ją zostawił.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{ai_hud_fresh.png}
+    \includegraphics[width=0.48\textwidth]{ai_hud_after_fights.png}
+    \caption{Źródło własne: Debug HUD (\texttt{F3}) - stan po starcie gry (jednolite $Q$, wysokie $\varepsilon$) oraz po kilkunastu starciach (rozstęp wartości $Q$, niższe $\varepsilon$). Te same liczby trafiają do wykresów na rys.~\ref{fig:rl-epsilon}-\ref{fig:rl-qvalues}.}
+    \label{fig:ai-hud-compare}
+\end{figure}
+
+\subsection{Taktyki}
+
+Zdefiniowano cztery taktyki (\texttt{enum Tactic}):
+\begin{itemize}
+    \item \textbf{Flank} - oskrzydlanie; elita próbuje zajść gracza z boku, dystrybuując pozycje równomiernie wokół gracza,
+    \item \textbf{Rush} - szarża; elita biegnie \emph{do pozycji gracza} lub lekko przed nią (maks.\ predykcja),
+    \item \textbf{Kite} - utrzymywanie dystansu; elita cofa się przed agresywnym graczem w celu zadawania trafień z zasięgu,
+    \item \textbf{Ambush} - zasadzka; elita rusza się rzadziej, ale uderza w momentach, kiedy gracz jest wycofany lub stoi w miejscu.
+\end{itemize}
+
+\subsection{Kontekst Bandyty}
+
+Kontekst $(h, e)$ jest parą indeksów dyskretyzujących stan gry:
+
+\[
+    h = \begin{cases}
+        0 & \text{jeśli } \text{HP}_\text{gracza} / \text{HP}_\text{max} < 0.33, \\
+        1 & \text{jeśli } 0.33 \le \dots < 0.66, \\
+        2 & \text{w przeciwnym razie}.
+    \end{cases}
+\qquad
+    e = \begin{cases}
+        0 & \text{jeśli liczba żyw.\ elit} \le 1, \\
+        1 & \text{jeśli liczba żyw.\ elit} = 2, \\
+        2 & \text{jeśli liczba żyw.\ elit} \ge 3.
+    \end{cases}
+\]
+
+W rezultacie tablica $Q$ ma rozmiar $|\mathcal{A}| \times |\mathcal{H}| \times |\mathcal{E}| = 4 \times 3 \times 3 = 36$ wartości (tzw.\ \emph{ramion bandyty}) uczonych równolegle.
+
+\subsection{Wybór Taktyki ($\varepsilon$-greedy)}
+
+Przy rozpoczęciu starcia (\texttt{StartEncounter}) mózg oblicza aktualny kontekst $(h_t, e_t)$ i wybiera taktykę:
+
+\[
+    a_t = \begin{cases}
+        \arg\max_a Q[a, h_t, e_t] & \text{z prawdop.\ } 1-\varepsilon_t, \\
+        \text{akcja losowa} & \text{z prawdop.\ } \varepsilon_t.
+    \end{cases}
+\]
+
+W implementacji $\varepsilon_0 = 0{,}35$ (duża eksploracja na starcie), $\varepsilon_\text{floor} = 0{,}05$, $\alpha_\varepsilon = 0{,}97$. Po każdym zakończonym starciu $\varepsilon_{t+1} = \max(\varepsilon_\text{floor},\, \varepsilon_t \cdot \alpha_\varepsilon)$. Te trzy wartości też dobrałem doświadczalnie. $\varepsilon_0 = 0{,}5$ dawał chaotyczne pierwsze 10 walk - gracz nie zdążył wyrobić sobie odczucia, że AI ,,coś robi celowo''. $\varepsilon_0 = 0{,}2$ odwrotnie - AI od pierwszych walk powtarzała tę samą taktykę, niczego się nie ucząc. 0,35 plasuje się pośrodku.
+
+Na rysunku~\ref{fig:rl-epsilon} widać tę samą regułę w danych z gry: oś pozioma to numer starcia (kolumna \texttt{encounter} w logu - skumulowana liczba aktualizacji $N$), oś pionowa to $\varepsilon$ \emph{po} zakończeniu starcia i zapisie do \texttt{brain\_log.csv}. Spadek jest w przybliżeniu geometryczny: na początku sesji agent często losuje taktykę (wysokie $\varepsilon$), a po kilkunastu starciach w większości przypadków wybiera $\arg\max Q$ dla bieżącego kontekstu $(h,e)$. W praktyce oznacza to, że pierwsze walki z elitami wyglądają chaotyczniej, a późniejsze - bardziej przewidywalnie względem stylu gracza, bo eksploatacja dominuje nad eksploracją.
+
+\optchart{rl_epsilon.png}{0.82\textwidth}{Źródło własne: zanik $\varepsilon$ w funkcji numeru starcia (dane z \texttt{user://brain\_log.csv}, kolumna \texttt{epsilon}).}{fig:rl-epsilon}
+
+\subsection{Sygnał Nagrody}
+
+Podczas starcia mózg akumuluje nagrodę $r$ na podstawie raportów z walki (metody \texttt{ReportEliteHitPlayer}, \texttt{ReportEliteTookHit}, \texttt{ReportEliteDeath}):
+
+\begin{itemize}
+    \item trafienie elity w gracza: $r \mathrel{+}= \text{damage}$ (suma obrażeń),
+    \item trafienie gracza w elitę: $r \mathrel{-}= 0{,}6 \cdot \text{damage}$,
+    \item śmierć elity w trakcie starcia: $r \mathrel{-}= 3{,}0$ (stała kara).
+\end{itemize}
+
+Równolegle te same zdarzenia dostrajają \texttt{Aggression}, \texttt{Caution} i \texttt{PreferredDistance} jeszcze \emph{w trakcie} pościgu - nie czekam do końca starcia, żeby elita zareagowała na styl gracza.
+
+Przed aktualizacją $Q$ nagroda jest normalizowana długością starcia:
+
+\[
+    \hat r = \text{clamp}\!\left(\frac{r}{\max(1{,}5,\, T_\text{starcia})},\, -5,\, 5\right),
+\]
+
+co zapobiega dominacji długich starć nad krótkimi.
+
+Wykres na rys.~\ref{fig:rl-reward} pokazuje właśnie $\hat r$ (kolumna \texttt{reward\_norm}) dla kolejnych starć. Pojedyncze punkty bywają ujemne - np. gdy gracz szybko zabija elity (kara \texttt{elite\_deaths}) albo gdy starcie trwa krótko i normalizator dzieli małą sumę przez $T_\text{starcia}$. Szara linia to surowa nagroda z jednego starcia; czerwona to średnia krocząca: jeśli jej trend rośnie wraz z numerem starcia, oznacza to, że polityka elit coraz częściej realizuje cel (trafienia w gracza przeważają nad karami). Spadek średniej po długiej serii wygranych walk jest też możliwy - gracz uczy się unikać elit, więc starcia kończą się szybciej z mniejszą skumulowaną nagrodą; to nie błąd ucznia, lecz zmiana kontekstu rozgrywki.
+
+\optchart{rl_reward.png}{0.82\textwidth}{Źródło własne: znormalizowana nagroda \texttt{reward\_norm} (szara) i średnia krocząca (czerwona) w funkcji numeru starcia.}{fig:rl-reward}
+
+\subsection{Aktualizacja Wartości Akcji}
+
+Dla wybranej taktyki $a_t$ i kontekstu $(h_t, e_t)$ mózg stosuje klasyczną aktualizację EMA:
+
+\[
+    Q[a_t, h_t, e_t] \leftarrow Q[a_t, h_t, e_t] + \alpha \cdot \bigl(\hat r - Q[a_t, h_t, e_t]\bigr),
+\]
+
+gdzie $\alpha = 0{,}12$ to \texttt{LearningRate}. Licznik odwiedzin $N[a_t, h_t, e_t]$ jest inkrementowany i służy do debugowania (widoczny w HUD F3).
+
+Rysunek~\ref{fig:rl-qvalues} zestawia cztery serie zapisane w logu po każdym starciu: \texttt{q\_flank}, \texttt{q\_rush}, \texttt{q\_kite}, \texttt{q\_ambush}. Są to wartości $Q[a, h, e]$ dla \emph{tego} kontekstu $(h,e)$, w którym toczyło się właśnie zakończone starcie - nie globalne maksimum po wszystkich kubełkach. Na starcie sesji wszystkie cztery linie zbiegają się przy zerze (inicjalizacja w \texttt{ResetForNewGame}). W miarę starć krzywe się rozchodzą: taktyka, która częściej dostaje dodatnie $\hat r$, rośnie szybciej (aktualizacja EMA ciągnie $Q$ w górę), a słabsze ramiona pozostają niżej. To bezpośredni obraz tego, co w rozdziale~\ref{sec:rl-analiza} nazywam dowodem uczenia - różnica między \textit{Flank} a \textit{Rush} nie jest wpisana na sztywno, tylko wynika z historii walk z tym graczem.
+
+\optchart{rl_qvalues.png}{0.82\textwidth}{Źródło własne: $Q$ czterech taktyk dla kontekstu bieżącego starcia (\texttt{q\_flank}-\texttt{q\_ambush}).}{fig:rl-qvalues}
+
+\subsection{Model Gracza}
+
+Równolegle z selekcją taktyki AI utrzymuje model gracza oparty o EMA z różnymi współczynnikami wygładzania:
+
+\[
+    \bar v_{t+1} = (1-0{,}08)\,\bar v_t + 0{,}08\, \|v^\text{gracz}_t\|,
+\]
+\[
+    r^\text{back}_{t+1} = (1-0{,}04)\, r^\text{back}_t + 0{,}04\,\mathbb{1}[v^\text{gracz} \cdot (\text{elita}-\text{gracz}) < 0],
+\]
+\[
+    \bar d_{t+1} = (1-0{,}3)\, \bar d_t + 0{,}3\, \frac{\text{obrażenia w oknie}}{T_\text{okno}},
+\]
+
+gdzie $T_\text{okno} = 2$~s dla DPS-u (\texttt{PlayerDps}).
+
+\subsection{Adaptacja Parametrów}
+
+Po każdym starciu (\texttt{AdaptParametersFromPlayerModel}) mózg dostraja parametry ruchu elit:
+
+\begin{itemize}
+    \item \textbf{LeadTime $\tau$} rośnie, gdy gracz często wycofuje się (\texttt{PlayerBackpedalRate} $> 0{,}35$), i maleje przy graczu agresywnym; clamp do $[0; 0{,}55]$~s,
+    \item \textbf{PreferredDistance} rośnie, gdy \texttt{PlayerDps} przekracza około 3,5 (clamp $[2; 12]$~m); w trakcie walki rośnie też po trafieniach elit przez gracza,
+    \item \textbf{Aggression} rośnie, gdy elita trafia gracza (\texttt{ReportEliteHitPlayer}), i spada po otrzymaniu obrażeń lub śmierci elit (clamp $[0; 1]$),
+    \item \textbf{Caution} zmienia się odwrotnie do agresji w tych samych raportach (clamp $[0; 1]$).
+\end{itemize}
+
+Te parametry trafiają do logu w kolumnach \texttt{aggression}, \texttt{caution}, \texttt{preferred\_distance}, \texttt{lead\_time}. Wykres na rys.~\ref{fig:rl-params} pokazuje ich trajektorie w czasie (oś $X$ jak wcześniej, numer starcia). \texttt{PreferredDistance} (zielona skala lewa) reaguje na DPS gracza: przy agresywnym graczu dystans rośnie, więc elity częściej realizują taktykę \textit{Kite}. \texttt{Aggression} i \texttt{Caution} (prawa oś) oscylują wokół wartości startowych $0{,}55$ / $0{,}45$, ale ich trend jest spójny z raportami z walki. Po serii trafień gracza \texttt{Caution} rośnie, po serii trafień elit w gracza rośnie \texttt{Aggression}. \texttt{LeadTime} (cyjan) odpowiada prędkości gracza: szybszy bieg $\Rightarrow$ większe wyprzedzenie celu pościgu. Razem z wykresem $Q$ i $\varepsilon$ daje to pełny obraz \emph{dwóch} pętli adaptacji: bandyty (wybór taktyki) oraz modelu gracza (parametry ruchu).
+
+\optchart{rl_params.png}{0.82\textwidth}{Źródło własne: adaptacja \texttt{PreferredDistance}, \texttt{Aggression}, \texttt{Caution}, \texttt{LeadTime} w czasie sesji.}{fig:rl-params}
+
+\subsection{Predykcja i Cel Ruchu}
+
+Metoda \texttt{ComputeChaseDestination(eliteIndex, totalElites, elitePos)} oblicza cel ruchu elity na podstawie:
+\[
+    \hat p_\text{gracz}(t + \tau) = p_\text{gracz}(t) + \tau \cdot v_\text{gracz}(t),
+\]
+
+a następnie moduluje ten punkt zależnie od taktyki:
+\begin{itemize}
+    \item \textbf{Rush} - cel to $\hat p$,
+    \item \textbf{Flank} - cel to $\hat p + \mathbf{R}(\theta_i) \cdot \mathbf{d}$, gdzie $\theta_i = i \cdot 2\pi/n$ dla $n$ elit,
+    \item \textbf{Kite} - cel to $\hat p + \text{PreferredDistance} \cdot (\text{elita} - \hat p)/\|\dots\|$,
+    \item \textbf{Ambush} - elita zatrzymuje się, gdy gracz zbliża się frontalnie (\texttt{approaching} $> 0{,}2$), w przeciwnym razie idzie w punkt predykcji.
+\end{itemize}
+
+\subsection{Cykl Życia Starcia}
+
+\begin{enumerate}
+    \item \texttt{EnemyChaseState.EnterState} - jeśli \texttt{characterNode} to \texttt{EliteEnemy}, wołana jest \texttt{EliteBrain.NotifyEliteChaseStarted()}. Licznik aktywnych pościgów rośnie; jeśli to pierwszy, wołane jest wewnętrzne \texttt{StartEncounter()} (wybór taktyki, reset akumulatorów).
+    \item \texttt{\_PhysicsProcess} - model gracza aktualizowany co klatkę; trafienia raportowane przez \texttt{ReportEliteHitPlayer} / \texttt{ReportEliteTookHit}.
+    \item \texttt{ReportEliteDeath} - gdy elita ginie w trakcie pościgu, inkrementacja licznika śmierci i kary w nagrodzie.
+    \item \texttt{EnemyChaseState.ExitState} - \texttt{NotifyEliteChaseEnded()}. Gdy licznik aktywnych pościgów spada do 0, wołane \texttt{EndEncounter()}: normalizacja nagrody, aktualizacja $Q$, kurczenie $\varepsilon$, adaptacja parametrów, dopisanie wiersza do \texttt{user://brain\_log.csv} (metoda \texttt{LogEncounter}), \texttt{SaveBrain()}.
+\end{enumerate}
+
+Starcie kończy się więc wtedy, gdy \emph{żadna} elita nie jest już w stanie pościgu - niekoniecznie po śmierci wszystkich elit (gracz może uciec z zasięgu).
+
+Wiersz logu to migawka stanu \emph{po} jednym starciu - dokładnie te same wielkości, które widać w HUD \texttt{F3}, ale zebrane w czasie. Dzięki temu wykresy na rys.~\ref{fig:rl-epsilon}-\ref{fig:rl-params} można zestawić z opisem matematycznym powyżej: każda kolumna CSV odpowiada jednej zmiennej z implementacji.
+
+\subsection{Persystencja}
+
+Stan mózgu serializowany jest do JSON w strukturze \texttt{EliteBrainDto}:
+\begin{itemize}
+    \item \texttt{SchemaVersion} - wersja schematu (aktualnie 2),
+    \item \texttt{TacticCount}, \texttt{HpBuckets}, \texttt{EliteBuckets} - kształt tablicy $Q$,
+    \item \texttt{QFlat}, \texttt{NFlat} - spłaszczone tablice 3D (JSON nie obsługuje \texttt{float[,,]} natywnie),
+    \item \texttt{Epsilon}, \texttt{Aggression}, \texttt{Caution}, \texttt{PreferredDistance}, \texttt{LeadTime},
+    \item \texttt{MaxObservedPlayerHp} - do kalibracji progów \texttt{HpBucket}.
+\end{itemize}
+
+Przy wczytaniu starszego zapisu (v1 - płaskie 1D $Q$) mózg wykonuje \emph{migrację}: wartości z flat-bandyty są propagowane jako \emph{priory} do wszystkich 9 kontekstów bandyty kontekstowego.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth,height=0.62\textheight,keepaspectratio]{brain_json_example.png}
+    \caption[Fragment pliku \texttt{user://brain.json}]{Źródło własne: fragment pliku \texttt{user://brain.json} po kilkunastu starciach z elitami. Widoczne m.in.\ \texttt{SchemaVersion}, parametry adaptowalne (\texttt{Epsilon}, \texttt{Aggression}, \texttt{Caution}, \texttt{PreferredDistance}, \texttt{LeadTime}), spłaszczone tablice \texttt{QFlat}/\texttt{NFlat} oraz metryki modelu gracza - te same wartości co w debug HUD (\texttt{F3}) i w logu CSV (tabela~\ref{tab:brain-log-cols}).}
+    \label{fig:brain-json-ch4}
+\end{figure}
+
+\subsection{Debug HUD (F3)}
+
+\texttt{UIController} tworzy nakładkę \texttt{Label} aktywowaną klawiszem \texttt{F3}. Etykieta renderowana jest w prawym-górnym rogu i odświeżana co klatkę tekstem zwracanym przez metodę \texttt{EliteBrain.\allowbreak DescribeState()}, który zawiera:
+
+\begin{itemize}
+    \item aktualną taktykę, kontekst $(h,e)$, $\varepsilon$, \texttt{LeadTime},
+    \item wiersz $Q[a, h, e]$ dla aktywnego kontekstu z licznikami $N$,
+    \item modelu gracza ($\bar v$, $r^\text{back}$, $\bar d$, \texttt{MaxObservedPlayerHp}),
+    \item statystyki starcia (trafienia, śmierci elit).
+\end{itemize}
+
+\subsection{Analiza Procesu Uczenia - Metodyka i Zestawienie}
+\label{sec:rl-analiza}
+
+Debugowy podgląd (\texttt{F3}, rys.~\ref{fig:ai-hud-compare}) pokazuje stan AI w jednej chwili. Wykresy na rys.~\ref{fig:rl-epsilon}-\ref{fig:rl-params} pokazują to samo w czasie - po jednym punkcie na zakończone starcie. Wstawiłem je bezpośrednio przy podsekcjach, które opisują odpowiednie wzory, żeby czytelnik mógł przejść od równania do krzywej bez przewracania kart.
+
+\paragraph{Metodyka.} Dane zbierałem w jednej, ciągłej sesji: \textit{Nowa gra} (reset \texttt{brain.json} i \texttt{brain\_log.csv}), wielokrotne wejścia do lochu, walki z elitami aż do zamknięcia aplikacji. Każdy wiersz CSV = jedno wywołanie \texttt{EndEncounter()}. Skrypt \texttt{tools/plot\_brain\_log.py} czyta plik z \texttt{user://} i zapisuje PNG do \texttt{docs/screenshots/04\_ai\_debug/}. Nie uśredniam wielu graczy - chodzi o trajektorię uczenia w realnej rozgrywce jednej osoby.
+
+\paragraph{Znaczenie kolumn logu.} Tabela~\ref{tab:brain-log-cols} mapuje pola CSV na zmienne z kodu i na wykresy.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{|p{0.22\textwidth}|p{0.68\textwidth}|}
+\hline
+\textbf{Kolumna CSV} & \textbf{Znaczenie i powiązanie z wykresem} \\
+\hline
+\texttt{encounter} & Skumulowana suma $N$ po wszystkich kubełkach - numer punktu na osi $X$ wszystkich wykresów. \\
+\hline
+\texttt{hp\_ctx}, \texttt{elites\_ctx} & Kontekst $(h,e)$ starcia (Low/Mid/High, 1/2/3+). \\
+\hline
+\texttt{tactic} & Taktyka $a_t$ wybrana na początku starcia. \\
+\hline
+\texttt{reward\_norm} & $\hat r$ po normalizacji czasowej - rys.~\ref{fig:rl-reward}. \\
+\hline
+\texttt{epsilon} & $\varepsilon$ po \texttt{EndEncounter} - rys.~\ref{fig:rl-epsilon}. \\
+\hline
+\texttt{q\_flank} \ldots \texttt{q\_ambush} & $Q[a,h,e]$ dla kontekstu tego starcia - rys.~\ref{fig:rl-qvalues}. \\
+\hline
+\texttt{aggression}, \texttt{caution}, \texttt{preferred\_distance}, \texttt{lead\_time} & Parametry ruchu po adaptacji - rys.~\ref{fig:rl-params}. \\
+\hline
+\texttt{hits\_on\_player}, \texttt{hits\_from\_player}, \texttt{elite\_deaths} & Składniki surowej nagrody $r$ przed normalizacją (debug). \\
+\hline
+\end{tabular}
+\caption{Źródło własne: kolumny pliku \texttt{user://brain\_log.csv} i ich interpretacja.}
+\label{tab:brain-log-cols}
+\end{table}
+
+\paragraph{Wnioski łączne.} Cztery krzywe razem domykają opis \texttt{EliteBrain}: (1)~$\varepsilon$ - przejście eksploracja $\rightarrow$ eksploatacja; (2)~$Q$ - która taktyka wygrywa w danym stylu walki; (3)~$\hat r$ - czy polityka realnie poprawia wynik starcia; (4)~parametry ruchu - jak AI dostraja pościg niezależnie od bandyty. Ten sam rejestrator posłuży przy porównaniu z planowaną migracją na Deep RL - wystarczy zestawić krzywe przed i po zmianie architektury.
+
+\FloatBarrier
+\section{Proceduralna Generacja Lochu}
+%----------------------------------------------------------------------
+
+\subsection{Algorytm}
+
+\texttt{DungeonGenerator} używa wariantu \textit{drunkard's walk} na siatce $9 \times 9$:
+
+\begin{enumerate}
+    \item Start w komórce $(4,4)$; komórka dodawana do zestawu pokoi,
+    \item Pętla aż do osiągnięcia losowej liczby pokoi z przedziału \texttt{[MinRooms, MaxRooms]} (domyślnie 8-12, modulowana wariantem):
+    \begin{itemize}
+        \item losowy kierunek z czterech,
+        \item jeśli nowa komórka mieści się w granicach $0\ldots 8$, dodana do listy pokoi,
+        \item kursor przesuwa się na nową komórkę (nawet jeśli pokój już istniał - stąd ,,zaplątane'' korytarze),
+    \end{itemize}
+    \item BFS wyznacza odległości od startu; najdalszy pokój staje się \texttt{RoomType.Boss}, martwe końcówki mogą dostać \texttt{RoomType.Treasure},
+    \item \emph{Warianty układu} (\texttt{layoutVariant} $\in \{0,1,2\}$) modulują liczbę pokoi, paletę ścian/świateł, promień patrolowania wrogów i limit spawnów w boss room - nie preferencje kierunkowe spaceru:
+    \begin{itemize}
+        \item 0 - domyślny (brązowe mury, chłodniejsze światło),
+        \item 1 - mniej pokoi, fioletowa paleta, szerszy promień patrolu,
+        \item 2 - więcej pokoi, zielono-niebieska paleta, wyższy cap wrogów w pokoju.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Modyfikatory Runu}
+
+Przy wejściu do lochu losowany jest jeden z \texttt{DungeonRunModifierKind}:
+\begin{itemize}
+    \item \textbf{RichCoins} - więcej monet leżących na podłodze w pokojach (mnożnik około 1,45),
+    \item \textbf{HeavyElites} - dodatkowa elita w pokoju \texttt{Boss} (drugi slot spawnu),
+    \item \textbf{Gloom} - energia świateł pomnożona przez 0,58; minimapa dostaje przyciemniony \texttt{Modulate}.
+\end{itemize}
+
+Modyfikator pokazywany jest w hintcie celu przy wejściu (\texttt{RaiseObjectiveHint}) razem z opisem wariantu układu. Nie zapisuję go w autosave - każdy run ma świeży los modyfikatora i ziarna layoutu.
+
+\subsection{Spawny, Skrzynie, Klucz i Relikt}
+
+Po wygenerowaniu geometrii pokoi generator:
+\begin{itemize}
+    \item spawnuje zwykłych wrogów w pokojach \texttt{Normal} i \texttt{Boss} (liczba skalowana wariantem layoutu),
+    \item spawnuje elity \emph{wyłącznie w pokoju bossa} (pierwszy slot przy wariantach 1/2, drugi dodatkowo przy \textit{HeavyElites}),
+    \item stawia \texttt{BossEnemy} w \texttt{RoomType.Boss},
+    \item wstrzykuje do trzech skrzyń nagród w losowych pokojach (pule przedmiotów różnej rzadkości),
+    \item stawia 1-2 radary w pokojach \texttt{Normal}/\texttt{Treasure} oraz opcjonalnie niewidzialnych wrogów (szansa około 32\%/45\%),
+    \item stawia \textbf{portal wyjścia} (\texttt{DungeonExitDoor}) w pokoju \texttt{RoomType.Start} - tym samym, w którym gracz ląduje po wejściu do lochu. Interakcja \texttt{E} wywołuje \texttt{ExitDungeon()} i toast podsumowujący run (złoto, zabici, skrzynie, czas). Portal nie jest w pokoju bossa; to świadoma decyzja projektowa (powrót do huba z miejsca startu wyprawy).
+\end{itemize}
+
+\subsection{Balans Walki w Lochu}
+
+Metoda \texttt{ApplyDungeonCombatStats} ustawia wspólne HP i siłę ataku dla wszystkich wrogów w danym runie, zależnie od rangi:
+\begin{itemize}
+    \item zwykły wróg: HP 40, siła 4,
+    \item elita: HP 55, siła 5,5,
+    \item boss: HP 88, siła 7.
+\end{itemize}
+Wartości skalowane są mnożnikiem $1 + 0{,}05 \cdot \texttt{DungeonRunsCompleted}$, więc kolejne wyprawy są nieco trudniejsze, ale przewidywalne - gracz nie trafia na elitę ,,papierową'' przy twardym gruncie.
+
+\subsection{Nawigacja}
+
+Po zbudowaniu geometrii wywoływane jest \texttt{NavigationServer3D}'owe przeliczenie siatki nawigacyjnej. \texttt{NavigationAgent3D} wrogów może wtedy wytyczać ścieżki A* do gracza. Podczas wypieku wyświetlany jest overlay \textit{Ładowanie\ldots} (sterowany przez \texttt{GameEvents.\allowbreak RaiseDungeonLoading(\allowbreak true)}).
+
+\subsection{Determinizm}
+
+Wariant układu wynika z \texttt{DungeonRunsCompleted \% 3}, a ziarno layoutu losowane jest przy każdym \texttt{EnterDungeon()}. Dla tej samej pary (wariant, seed) generator zawsze zbuduje identyczny graf pokoi - co wykorzystuję przy debugowaniu, podając seed ręcznie w kodzie testowym. W normalnej rozgrywce każda wyprawa ma inny layout; powtarzalność między sesjami nie była celem - ważniejsze było, żeby kolejne runy \emph{odczuwały} się inaczej dzięki losowemu seedowi i modyfikatorowi.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.45\textwidth]{dungeon_variant0.png}
+    \includegraphics[width=0.45\textwidth]{dungeon_variant2.png}
+    \caption{Źródło własne: Przykład dwóch proceduralnie wygenerowanych lochów (wariant 0 i wariant 2 - różna liczba pokoi i paleta świateł).}
+    \label{fig:dungeon-variants}
+\end{figure}
+
+\section{System Questów}
+%----------------------------------------------------------------------
+
+\subsection{Architektura}
+
+System questów składa się z czterech klas:
+
+\begin{itemize}
+    \item \textbf{QuestResource} - definicja questa: ID, tytuł, opisy, portret i lokacja dawcy, flagi \texttt{IsMainQuest} i \texttt{SequentialObjectives}, nagrody i lista celów,
+    \item \textbf{QuestObjectiveResource} - cel questa: typ (\texttt{QuestObjectiveType}), \texttt{TargetId}, wymagana liczba, wpis do dziennika po ukończeniu,
+    \item \textbf{QuestManager} (autoload) - singleton zarządzający \texttt{ActiveQuests}, \texttt{CompletedQuests}, słownikiem postępu zabójstw \texttt{\_killProgress}, indeksem aktywnego celu dla questów sekwencyjnych (\texttt{\_seqNextIndex}) oraz rejestracją celów \textit{Collect} i \textit{Talk} przez zdarzenia i metody pomocnicze,
+    \item \textbf{QuestGiverNPC} - wykrywa gracza w \texttt{Area3D}, po wciśnięciu klawisza E pokazuje panel dialogu i dodaje quest.
+\end{itemize}
+
+Zaimplementowane typy celów:
+\begin{itemize}
+    \item \textbf{Kill} - zabicie określonej liczby wrogów o danym \texttt{EnemyId} (śledzone przez \texttt{OnEnemyKilled}),
+    \item \textbf{Collect} - zebranie określonej liczby przedmiotów o danym \texttt{ItemId} (śledzone przez \texttt{OnItemCollected}),
+    \item \textbf{ReachArea} - dotarcie do oznaczonej strefy (śledzone przez \texttt{OnReachArea}),
+    \item \textbf{Talk} - rozmowa z NPC o danym \texttt{TargetId} (śledzone przez \texttt{RegisterTalk} po interakcji \texttt{E} u \texttt{QuestGiverNPC}).
+\end{itemize}
+
+\subsection{Quest Główny - \textit{Pętla Vanitas}}
+
+\texttt{vanitas\_main\_cycle.tres} jest sekwencyjnym questem z czterema celami (zgodnie z opisem w samym zasobie questa):
+\begin{enumerate}
+    \item \textbf{Zdobądź klucz lochu} (\textit{Collect}, \texttt{dungeon\_key}) - klucz wypada z \texttt{LockedCabinet} w hubie po mini-grze,
+    \item \textbf{Dotrzyj do głębi} (\textit{ReachArea}, \texttt{vanitas\_depths}) - rejestrowane przy wejściu do lochu,
+    \item \textbf{Wydobądź relikt z głębin} (\textit{Collect}, \texttt{dungeon\_relic}) - przyznawany jednorazowo przy pierwszym \texttt{ExitDungeon()},
+    \item \textbf{Donieś wieść strażnikowi} (\textit{Talk}, \texttt{vanitas\_warden}) - rozmowa z NPC przy bramie katakumb.
+\end{enumerate}
+
+Strażnik w narracji to postać niegrywalna (\texttt{QuestGiverNPC}), nie osobna klasa wroga. W lochu stoi za to \texttt{BossEnemy} w pokoju \texttt{Boss} - to odrębny przeciwnik walki, nie krok questa głównego.
+
+Po ukończeniu każdego z celów emitowane jest zdarzenie \texttt{On\allowbreak Journal\allowbreak Entry} z kolejnym wpisem narracyjnym (toasty pokazują fragment tekstu, pełny wpis jest w zakładce \emph{Księga}).
+
+\subsection{Mechanika Sekwencyjna}
+
+Przy fladze \texttt{SequentialObjectives = true} \texttt{QuestManager} utrzymuje w \texttt{\_seqNextIndex} indeks aktywnego celu. Postęp pozostałych celów jest ignorowany; jedynie aktualny cel akumuluje progres. Po jego ukończeniu indeks jest inkrementowany i emitowane jest \texttt{On\allowbreak Journal\allowbreak Entry}. Gdy indeks przekracza liczbę celów, quest przechodzi do \texttt{CompletedQuests} i wypłacane są nagrody.
+
+\section{Mini-Gry (Puzzle Lockboxes)}
+%----------------------------------------------------------------------
+
+W hubie katakumb stoi \emph{szafka} (\texttt{LockedCabinet}), która wymaga rozwiązania losowej mini-gry, aby zdobyć nagrodę (m.in. klucz lochu):
+
+\begin{itemize}
+    \item \textbf{LockpickPuzzle} - łamanie zamka: wskaźnik porusza się po łuku, gracz klawiszem zaznacza punkt trafienia; trzy udane trafienia otwierają zamek.
+    \item \textbf{PipePuzzle} - łączenie rur: obrót segmentów, aby woda dotarła z wejścia do wyjścia. Poziomy trudności różnią się wielkością siatki.
+    \item \textbf{BlockFitPuzzle} - układanie kształtów w formie Tetrisa; gracz dopasowuje bloki do wzoru.
+    \item \textbf{BlockMazePuzzle} - labirynt: przesuwanie klocka po ścieżce, unikanie przeszkód.
+    \item \textbf{LightSequencePuzzle} - zapamiętywanie sekwencji kolorów świateł i jej odtworzenie.
+\end{itemize}
+
+Każda mini-gra integruje się z systemem zdarzeń przez \texttt{OnPuzzleStarted}, \texttt{OnPuzzleSolved}, \texttt{OnPuzzleCancelled}; po rozwiązaniu nagroda trafia do inwentarza, a toast informuje gracza.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.32\textwidth]{puzzle_lockpick.png}
+    \includegraphics[width=0.32\textwidth]{puzzle_pipe.png}
+    \includegraphics[width=0.32\textwidth]{puzzle_lightsequence.png}
+    \caption{Źródło własne: Przykłady mini-gier (Lockpick, Pipe, Light Sequence).}
+    \label{fig:puzzles}
+\end{figure}
+
+\section{System Zapisu Gry}
+%----------------------------------------------------------------------
+
+\texttt{SaveGameService} (autoload) serializuje stan gry do pliku JSON w katalogu \texttt{user://} Godota. Struktura \texttt{AutosaveDto} (SaveVersion = 2):
+
+\begin{itemize}
+    \item \textbf{Postać}: pozycja \texttt{Px/Py/Pz}, \texttt{BaseHealth}, \texttt{BaseStrength}, \texttt{Gold}, \texttt{Experience},
+    \item \textbf{Inwentarz}: lista \texttt{InvSlotDto} z polami:
+    \begin{itemize}
+        \item \texttt{Path} - ścieżka do \texttt{.tres} zasobu bazowego,
+        \item \texttt{Count} - liczba w slocie,
+        \item \texttt{ItemUpgradeLevel} - poziom ulepszenia,
+        \item \texttt{ItemDisplayName}, \texttt{ItemAttackBonus}, \texttt{ItemDefenseBonus}, \texttt{ItemSpeedBonus} - snapshot statystyk,
+    \end{itemize}
+    \item \textbf{Ekwipunek}: słownik \texttt{Equipment} (v1) oraz \texttt{EquipmentSlots} - lista \texttt{EquipSlotSaveDto},
+    \item \textbf{Questy}: \texttt{ActiveQuestPaths}, \texttt{CompletedQuestPaths}, \texttt{KillProgress}, \texttt{QuestSeqProgress},
+    \item \textbf{Loch}: \texttt{DungeonRunsCompleted}, \texttt{DungeonRelicEverGranted}.
+\end{itemize}
+
+\subsection{Snapshot Ulepszeń}
+
+Kluczowym rozwiązaniem jest zapis \emph{snapshotu} bonusów w \texttt{InvSlotDto}. Gdyby w autosave była jedynie ścieżka zasobu, po wczytaniu przedmioty z odziedziczonym \texttt{UpgradeLevel} utraciłyby ulepszenia (\texttt{.tres} nie zawiera informacji o poziomie). Wczytanie przebiega:
+\begin{enumerate}
+    \item Pobranie bazowego zasobu z \texttt{Path},
+    \item Wywołanie \texttt{Duplicate()} na zasobie,
+    \item Przypisanie \texttt{UpgradeLevel} i bonusów ze snapshotu,
+    \item Dodanie do inwentarza.
+\end{enumerate}
+
+\subsection{Zapis Stanu AI}
+
+Po każdym ukończonym starciu \texttt{EliteBrain.SaveBrain()} zapisuje \texttt{EliteBrainDto} do \texttt{user://brain.json}. Plik ten jest niezależny od \texttt{autosave.json}, ale \texttt{SaveAutosave()} również go odświeża dla spójności. Przy nowej grze (\texttt{UIController.HandleNewGamePressed}) oba pliki są usuwane, a \texttt{EliteBrain.ResetForNewGame()} zeruje tablice $Q$ oraz przywraca wartości początkowe parametrów.
+
+\section{Interfejs Użytkownika i Feedback Walki}
+%----------------------------------------------------------------------
+
+\subsection{Ekran Startowy}
+
+\texttt{UIController} prezentuje przyciski \textit{Nowa gra} i \textit{Kontynuuj}. \textit{Kontynuuj} jest widoczny tylko, gdy \texttt{SaveGameService.HasAutosave()} zwraca \texttt{true}. \textit{Nowa gra} od razu usuwa istniejący autosave i \texttt{brain.json} (bez osobnego okna potwierdzenia - ustawienia dostępne są w menu gry pod klawiszem \texttt{I}).
+
+\subsection{HUD}
+
+HUD wyświetla w czasie rzeczywistym: punkty życia, siłę ataku, liczbę pozostałych wrogów, aktywny modyfikator runu (w lochu) oraz nakładkę ładowania przy wejściu do lochu. Licznik aktualizowany jest przez zdarzenie \texttt{OnNewEnemyCount}.
+
+\subsection{Menu (klawisz I)}
+
+Menu główne zawiera pięć zakładek obsługiwanych przez \texttt{MenuTabs}: Questy, Ekwipunek, Księga, Statystyki, Ustawienia.
+
+\subsection{Toasty Zdarzeń}
+
+\texttt{HitFeedbackService} (autoload \texttt{CanvasLayer}) renderuje toasty informacyjne w dolnej części ekranu. Zdarzenia wywołujące toast:
+\begin{itemize}
+    \item \texttt{GameEvents.OnToast(msg, duration)} - ogólne toasty z kodu (zapis, błędy, ulepszenia),
+    \item \texttt{OnItemCollected} - dla przedmiotów rzadkich i questowych,
+    \item \texttt{OnJournalEntry} / \texttt{OnDungeonMilestone} - narracja questów i osiągnięcia lochu.
+\end{itemize}
+
+\subsection{Podsumowanie Wyprawy}
+
+Po wyjściu z lochu \texttt{DungeonManager.ExitDungeon()} buduje podsumowanie wyprawy i wywołuje \texttt{GameEvents.RaiseToast(..., 6f)} oraz \texttt{CallDeferred(ShowRunSummaryToast)}. \texttt{HitFeedbackService.ShowProminentToast} pokazuje je na środku ekranu w panelu z tłem (\texttt{PanelContainer}, warstwa \texttt{CanvasLayer} 128), żeby nie znikało pod HUD-em po powrocie do huba.
+\begin{quote}
+\texttt{Wyprawa: +\{X\} zl · \{Y\} zabitych · \{Z\} skrzyn · \{hh:mm:ss\}}
+\end{quote}
+Równolegle ten sam tekst trafia do hintu celu (\texttt{RaiseObjectiveHint}), więc gracz widzi podsumowanie nawet przy przeoczeniu toastu.
+
+\subsection{Feedback Walki}
+
+\texttt{HitFeedbackService} obsługuje:
+\begin{itemize}
+    \item \textbf{Hit-stop} - przy trafieniu gracza \texttt{Engine.TimeScale} spada do 0{,}04 na 4 klatki; przy zadaniu obrażeń wrogowi - na 2 klatki (lżejszy impuls),
+    \item \textbf{Flash ekranu} - czerwony, gdy gracz dostaje obrażenia; zielony, gdy zbiera rzadki przedmiot,
+    \item \textbf{Drżenie kamery} - \texttt{Camera.cs} subskrybuje \texttt{OnCameraShake} i aplikuje losowe przesunięcia z wykładniczym wygasaniem,
+    \item \textbf{Shader podświetlenia elit} - omówiony w sekcji o wrogach.
+\end{itemize}
+
+\subsection{Debug HUD AI (F3)}
+
+Omówiony w sekcji \texttt{EliteBrain}. Konfiguracja etykiety: prawy-górny róg, font 14pt z cieniem i konturem, aktualizacja co klatkę z \texttt{EliteBrain.\allowbreak DescribeState()}.
+
+\subsection{Minimapa}
+
+Minimapa zbiera w jeden moduł problemy, których pojedynczo nie wyróżniłbym specjalnie - ale razem dały interesujący przekrój przez to, jak Godot pracuje z renderowaniem 2D. Klasa \texttt{Minimap} dziedziczy z \texttt{Control}, a jej treść buduje cztery warstwy: tło (\texttt{TextureRect}), \texttt{SubViewport} z mapą świata, \texttt{TextureRect} wyświetlający tę mapę przez shader maskujący oraz dekoracyjna ramka. Gracz pozostaje w centrum, a mapa przesuwa się pod nim - to klasyczne ,,gra centrowana, świat ruchomy'', wybrane z prozaicznego powodu: postać w centrum jest stałym punktem odniesienia, a mapa ma rozmiar znany z góry.
+
+Najciekawsza okazała się sprawa maski kołowej. Pierwsza próba używała \texttt{Material} na zwykłym \texttt{Control} z odcinaniem pikseli przez \texttt{discard} - nie zadziałała, bo \texttt{Control} bez własnej tekstury nie generuje fragmentów dla obszaru poza dziećmi. Druga próba: \texttt{ColorRect} z shaderem na całej powierzchni, mieszanie alfa zawartości - ten z kolei nadpisywał kolor, ale nie ucinał ikon wystających poza koło. Wersja, która została w kodzie, renderuje całą mapę w \texttt{SubViewport} (rozmiar \texttt{MinimapSize}~$\times$~\texttt{MinimapSize} pikseli), a następnie wyświetla wynikową teksturę przez osobny \texttt{TextureRect} ze shaderem typu \texttt{canvas\_item}, który mnoży alphę przez \texttt{1 - smoothstep(0.395, 0.412, |UV - 0.5|)}. Twardy gradient maskuje wszystko poza pierścieniem ramki, niezależnie od tego, co w środku narysuje świat.
+
+\subsubsection{Sprite'y Pokoi}
+
+Pokoje generowane przez \texttt{DungeonGenerator} mają flagi \texttt{DoorNorth/South/East/West}. Minimapa dobiera sprite na podstawie liczby drzwi:
+
+\begin{itemize}
+    \item 1 drzwi - \texttt{room\_right.png} obrócony co 90$^\circ$ w zależności od kierunku,
+    \item 2 drzwi naprzeciwko (poziomo/pionowo) - \texttt{room\_right\_left.png},
+    \item 2 drzwi w narożniku - \texttt{room\_right\_top.png} obrócony co 90$^\circ$,
+    \item 3 drzwi - \texttt{room\_right\_top\_bottom.png},
+    \item 4 drzwi - \texttt{room\_right\_left\_top\_bottom.png}.
+\end{itemize}
+
+Pięć grafik źródłowych daje 16 kombinacji drzwi - wynik obrotów. Wcześniej miałem 16 osobnych plików; po pierwszym przebudowaniu lochu z większą liczbą wariantów uznałem, że obroty są wygodniejsze, mimo że pixel-art przy obrocie 90$^\circ$ wymaga sprzętowego nearest-filtering, żeby nie rozmazać krawędzi.
+
+\subsubsection{Dynamiczne Ikony}
+
+Skrzynie, monety i portal startowy są \emph{żywymi} ikonami - minimapa odpytuje co klatkę kontenery skrzyń i monet w lochu i odświeża warstwę \texttt{\_pickupMarkers}. Po otwarciu skrzyni jej \texttt{Monitoring} przechodzi na \texttt{false} i ikona znika z minimapy bez pisanego specjalnie zdarzenia. Rozmiar ikon jest proporcjonalny do rozmiaru pokoju na minimapie: \texttt{CellPx * 0.28} - nieco ponad jedną czwartą boku pokoju. Wartość mniejszą niż 0,25 przy testach okazała się zbyt drobna, żeby gracz odczytał położenie w skrótowym spojrzeniu na HUD.
+
+Kropki przeciwników dobierają teksturę i rozmiar po grupie Godot: \texttt{invisible\_enemies} (kolor niebieski, niezależnie od ujawnienia w świecie - minimapa zawsze pokazuje, że są), \texttt{boss\_enemies} (16~px, większa), \texttt{elite\_enemies} (13~px) oraz zwykli wrogowie (12~px). To rozróżnienie wziąłem stąd, że bez niego gracz w pełnym pokoju z elitą, dwoma niewidzialnymi i sześcioma zwykłymi nie potrafił po minimapie ocenić, w którą stronę uciekać.
+
+\subsubsection{Tryb Mroku}
+
+Minimapa nie jest częścią świata gry - to warstwa \texttt{CanvasLayer}, więc nie reaguje na oświetlenie 3D. Modyfikator runu \textit{Gloom} przyciemnia świat o około 42\%, ale bez specjalnej obsługi minimapa świeciłaby pełnym kontrastem - mocno odbiegając klimatycznie od reszty obrazu. Stąd metoda \texttt{ApplyRunModifierStyle()}: przy aktywnym \textit{Gloom} ustawia \texttt{Modulate} mapy na \texttt{(0,48; 0,50; 0,56)}, dokładnie odpowiadając mnożnikowi $0,58$ przy energii świateł lochu. Ramka i kropka gracza są lekko przygaszone, żeby spójność wizualna była utrzymana.
+
+\texttt{UIController} chowa minimapę, gdy otwarte jest menu (\texttt{I}), mini-gra lub debug AI (\texttt{F3}), żeby nie zasłaniała zakładek ekwipunku ani etykiety stanu mózgu.
+
+\section{Napotkane Problemy i Rozwiązania}
+%----------------------------------------------------------------------
+
+Większość pracy nad grą poszła nie na pisanie ,,szczęśliwych ścieżek'', tylko na łatanie sytuacji, w których coś nie zadziałało zgodnie z oczekiwaniem. Poniżej wybrałem problemy najbardziej charakterystyczne - każdy z nich nauczył mnie czegoś o silniku, języku albo o tym, jak źle zaprojektowałem coś za pierwszym razem. Dla każdego podaję krótki opis i konkretne rozwiązanie, które wszedło do kodu.
+
+\begin{itemize}
+    \item \textbf{Dwa niezależne systemy inventory} - \texttt{EqMenu} posiadał własną listę \texttt{\_inventory} niezależną od \texttt{Player.Inventory}, co powodowało gubienie przedmiotów przy odświeżaniu UI. Rozwiązano przez wyeliminowanie duplikatu i wprowadzenie metody \texttt{SyncInventoryToPlayer()}.
+    \item \textbf{Przeciwnik nie znikał po śmierci} - usuwano \texttt{characterNode}, lecz \texttt{PathNode} (bezpośrednie dziecko \texttt{EnemiesContainer}) pozostawał w drzewie. Naprawiono przez usuwanie \texttt{PathNode}.
+    \item \textbf{Wielokrotne wejście w stan śmierci} - brak ochrony powodował duplikowanie nagród. Naprawiono flagą \texttt{\_isDying}.
+    \item \textbf{Quest kończony podczas iteracji} - \texttt{CompleteQuest()} wywoływane wewnątrz pętli po \texttt{ActiveQuests} mogło modyfikować kolekcję. Naprawiono przez zebranie questów do ukończenia do osobnej listy.
+    \item \textbf{Sprite3D ignoruje \texttt{Modulate}} - podświetlenie elit na fiolet przez \texttt{Modulate} nie działało przy shaderze \texttt{unshaded} (wymagane dla sprite'ów 3D z oświetleniem 2D). Rozwiązano rozszerzeniem \texttt{character\_\allowbreak hurt.\allowbreak gdshader} o uniformy \texttt{elite\_\allowbreak tint\_\allowbreak strength} i \texttt{elite\_\allowbreak tint\_\allowbreak color}.
+    \item \textbf{Toast podsumowania wyprawy niewidoczny} - \texttt{Label} z presetem \texttt{CenterBottom} był punktem (anchor 0{,}5-1), więc nie miał szerokości dla długiego tekstu. Naprawiono zmianą na \texttt{BottomWide} z odpowiednimi offsetami i włączeniem autowrapu.
+    \item \textbf{Ambiguity \texttt{long}/\texttt{ulong} w hashu seed-a} (\texttt{DungeonManager.cs}) - CS0034. Naprawiono przez kastowanie do stałej \texttt{const ulong} i multiplikacje unsigned.
+    \item \textbf{Utrata ulepszeń po wczytaniu save'a} - \texttt{.tres} nie zapisuje \texttt{UpgradeLevel}. Rozwiązano przez rozszerzenie \texttt{InvSlotDto} o snapshot statystyk i \texttt{UpgradeLevel}.
+    \item \textbf{Migracja schematu mózgu} - po wprowadzeniu bandyty kontekstowego stare zapisy (v1) miały tablicę 1D. Naprawiono dodaniem pola \texttt{SchemaVersion} i propagacją starych wartości jako priorów do wszystkich 9 kontekstów bandyty kontekstowego w v2.
+    \item \textbf{Warningi kompilacji} - \texttt{CS0219} w \texttt{StatsMenu.cs} (nieużywane \texttt{eqAtk/eqDef/eqSpd}) oraz \texttt{CS0649} w \texttt{EqMenu.cs} (nieużywane \texttt{\_inventory}). Usunięto martwy kod; osiągnięto 0 warningów, 0 errorów.
+    \item \textbf{\texttt{InvisibleEnemy} widoczny mimo \texttt{Modulate.A = 0}} - materiał \texttt{character\_\allowbreak hurt.\allowbreak gdshader} działa w trybie \texttt{unshaded} i czyta teksturę niezależnie od \texttt{Modulate} sprite'a. Po prostym wyzerowaniu alfy sprite tracił kolor, ale nadal był widoczny. Rozwiązano dodaniem uniformu \texttt{sprite\_\allowbreak visibility} oraz instrukcji \texttt{discard} dla wartości bliskich zera.
+    \item \textbf{Cień niewidzialnego jako pionowy kwadrat} - pierwsza wersja używała \texttt{PlaneMesh} z półprzezroczystą czarną teksturą; w 3D wyglądało to jak unoszący się prostopadłościan zamiast plamy na podłodze. Wymieniono na \texttt{CylinderMesh} z proporcją $r = 0{,}55$~m, $h = 0{,}012$~m i pozycją wyliczaną z dolnej krawędzi kapsuły kolizji.
+    \item \textbf{Lewitujący zasięg radaru} - początkowo \texttt{RangeHemisphere} obniżałem o $-r/2$, w przekonaniu że \texttt{is\_hemisphere=true} renderuje całą sferę. W rzeczywistości Godot generuje już tylko górną połowę z bazą w $Y = 0$, więc dodatkowe przesunięcie wpychało zasięg pod podłogę. Naprawiono ustawieniem mesha na $(0,0,0)$ i lekkim cofnięciem korzenia radaru o $-0{,}05$ pod wzniesienie płytki podłogi.
+    \item \textbf{Postać zawsze nad sprite'ami skrzyń, monet i radaru} - brakujące \texttt{alpha\_cut = 2} na \texttt{Sprite3D} skrzyni i radaru sprawiało, że renderowały się w przebiegu transparent bez zapisu do bufora głębi. Gracz i przeciwnicy (z poprawnym \texttt{OpaquePrepass}) zawsze wygrywali sortowanie, nawet stojąc za skrzynią. Dodano \texttt{alpha\_cut = 2} w trzech scenach (\texttt{treasure\_chest.tscn}, \texttt{Radar.tscn}, \texttt{InteractiveIcon}).
+    \item \textbf{Wykrywanie radaru gubione przez sygnały Godota} - pierwsza wersja używała sygnałów \texttt{BodyEntered}/\texttt{BodyExited}, które przy szybkim przechodzeniu niewidzialnego przez próg półkuli czasem nie odpalały. Naprawiono iteracją po \texttt{Area3D.\allowbreak Get\allowbreak Overlapping\allowbreak Bodies()} w \texttt{\_PhysicsProcess} z osobnym \texttt{HashSet}-em ,,kto był w środku w poprzedniej klatce".
+    \item \textbf{Minimapa wychodząca poza pierścień ramki} - próby z \texttt{Control.Material} i \texttt{ColorRect} nie ucinały dzieci kontrolki. Naprawiono przez renderowanie całej mapy w \texttt{SubViewport} i przekazanie jej tekstury przez \texttt{TextureRect} ze shaderem \texttt{canvas\_item} liczącym maskę \texttt{1 - smoothstep(0.395, 0.412, d)}.
+    \item \textbf{Boss bombiący gracza w trakcie ładowania lochu} - \texttt{BossEnemy} startując w pokoju Boss potrafił rzucić bombę zanim gracz wylądował na podłodze po teleportacji. Dodano \emph{spawn grace} 2,5~s oraz warunek aktywności bomb tylko wtedy, gdy gracz wszedł do \texttt{ChaseArea}.
+    \item \textbf{Utknięcie gracza w geometrii 3D} - przy szybkim \emph{slide} postać potrafi wjechać w narożnik ściany lub wąski ,,piksel'' kolizji i utknąć. Podobnie na części elementów tła (nierówności podłogi, krawędzie płytek) kapsuła gracza traci kontakt z podłogą i animacja przechodzi w bieg ,,w powietrzu''. Wymaga dopracowania warstw kolizji i ewentualnie krótkiego \texttt{unstuck} po wykryciu zerowej prędkości przy trzymanym wejściu.
+    \item \textbf{Elity kręcące się w kółko przy taktyce \textit{Kite}} - gdy \texttt{PreferredDistance} jest blisko maksimum ($\approx 10$-12~m), cel pościgu (\texttt{NavigationAgent3D}) i pozycja gracza zmieniają się co klatkę tak, że agent oscyluje wokół promienia zamiast stabilnie trzymać dystans. Objaw widoczny głównie przy dwóch elitach i w wąskich pokojach. Planowane: martwa strefa na odległości i rzadsza aktualizacja celu dla \textit{Kite}.
+    \item \textbf{Portal wyjścia z lochu mało widoczny} - \texttt{DungeonExitDoor} stoi w centrum pokoju startowego (\texttt{RoomType.Start}), nie w pokoju bossa; gracze często szukali go przy bossie. Poprawiono podpowiedzią w hintcie celu (\texttt{E}) oraz wyraźnym toastem podsumowania po \texttt{ExitDungeon()}.
+    \item \textbf{Toast podsumowania wyprawy niewidoczny} - komunikat był emitowany, ale cienka etykieta na dole ekranu ginęła pod warstwą UI. Rozwiązano przez panel z tłem (\texttt{PanelContainer}), wyższy \texttt{CanvasLayer} oraz \texttt{ShowProminentToast} wywoływane deferred po powrocie do huba.
+    \item \textbf{Minimapa zasłania menu i debug AI} - \texttt{Minimap} w prawym górnym rogu nachodziła na zakładki ekwipunku/questów oraz na etykietę \texttt{F3}. Rozwiązano ukrywaniem minimapy przy otwartym menu (\texttt{I}), mini-grze oraz przy aktywnym debug HUD.
+\end{itemize}

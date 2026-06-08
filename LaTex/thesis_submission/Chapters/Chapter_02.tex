@@ -1,0 +1,201 @@
+% Some LaTeX commands I define for my own nomenclature.
+\newcommand{\package}[1]{\textbf{#1}}
+\newcommand{\cmmd}[1]{\textbackslash\texttt{#1}}
+
+%======================================================================
+\chapter{Przegląd Literatury i Technologii}
+%======================================================================
+
+Pisząc kod \textit{Echoes of Vanitas} w wielu miejscach trafiałem na problem ,,wymyśliłem to sam, ale na pewno ktoś już o tym pisał''. Ten rozdział jest mapą tych powrotów do literatury. Zaczynam od podstaw projektowania gier i krótkiego porównania silników, przechodzę przez wzorce projektowe (które są lekkim filtrem stosowanej architektury), a punkt ciężkości stawiam w trzech miejscach: uczenie wzmocnione, proceduralna generacja zawartości oraz dynamiczne dostosowanie trudności. Każda z tych trzech rzeczy została w grze użyta i każda ma w niej swój konkretny ślad w kodzie.
+
+\section{Projektowanie Gier - Game Design}
+%----------------------------------------------------------------------
+
+Projektowanie gier to dyscyplina z pogranicza inżynierii oprogramowania, psychologii i narracji. Salen i Zimmerman \cite{salen2004rules} definiują grę jako system, w którym gracze angażują się w sztuczny konflikt regulowany regułami i prowadzący do mierzalnego wyniku. Gry RPG są jednym z najstarszych gatunków komputerowych - ich znakiem rozpoznawczym jest system statystyk postaci, wybory narracyjne i stopniowy rozwój bohatera.
+
+Crawford \cite{crawford2003chris} dodaje do tej definicji ważne uzupełnienie: interaktywność. To ona odróżnia gry od filmu czy literatury - gracz nie jest obserwatorem, tylko sprawcą. W \textit{Echoes of Vanitas} interaktywność realizuję na czterech poziomach jednocześnie: questy reagują na zabite typy wrogów, ekwipunek - na decyzje craftowe, walka - na timing ataków i uniku, a sama AI elit - na styl gry mierzony w EMA prędkości i wycofywania. Ostatni poziom jest tym, który nie istniał w pierwotnym projekcie i który najbardziej zmienił charakter pracy.
+
+\section{Silniki Gier - Przegląd}
+%----------------------------------------------------------------------
+
+Silnik gry to zestaw bibliotek i narzędzi deweloperskich pozwalający pisać grę bez ręcznego implementowania renderera, fizyki czy systemu dźwięku \cite{gregory2018game}. Przed rozpoczęciem pracy stanąłem przed wyborem między trzema opcjami; najwięcej czasu zajęło mi porównanie pierwszej i trzeciej z nich.
+
+\subsection{Unity}
+
+Unity jest najpopularniejszym silnikiem indie. Wspiera 2D, 3D oraz VR/AR, używa C\# i potrafi eksportować grę na ponad 25 platform. Jego siłą jest Asset Store i bardzo bogata dokumentacja \cite{haas2014history}. Słabością - z perspektywy pracy naukowej - jest zamknięty kod samego silnika; nie da się zacytować źródła konkretnej funkcji ani zweryfikować, jak naprawdę zachowuje się jakiś podsystem.
+
+\subsection{Unreal Engine}
+
+Unreal Engine 5 to rozwijany przez Epic Games silnik znany z fotorealistycznego renderingu (Nanite, Lumen). Używa C++ oraz wizualnego skryptowania (Blueprints), a stosowany jest głównie w produkcjach AAA, choć coraz częściej trafia także do studiów indie \cite{sherrod2007game}. Dla pracy o adaptacyjnej AI w 2.5D RPG byłby to silnik mocno przewymiarowany - dlatego zrezygnowałem już na etapie wyboru.
+
+\subsection{Godot Engine}
+
+Wybrałem Godota i to świadoma decyzja. Silnik jest open-source na licencji MIT (zero opłat, pełna własność kodu), a wersja 4 - użyta w projekcie - wprowadza renderer \textit{Forward Plus}, obsługę C\# przez .NET 6+, nowy system nawigacji (\texttt{NavigationAgent3D}, \texttt{NavigationRegion3D} z wypiekiem siatki w trakcie wykonywania) oraz GDExtension do rozszerzeń natywnych \cite{godot4docs}. Architektura oparta na drzewie węzłów (\textit{SceneTree}) i konfigurowalne autoloady okazały się idealnym dopasowaniem do mojego stylu pracy - każdy mój autoload (\texttt{EliteBrain}, \texttt{QuestManager}, \texttt{SaveGameService}) to po prostu jeden węzeł u korzenia drzewa. Dla pracy magisterskiej najistotniejsza była jednak ostatnia cecha: pełna przejrzystość kodu silnika, dzięki której mogę cytować w tej pracy konkretne metody Godot, a nie tylko ich dokumentację.
+
+\section{Wzorce Projektowe w Grach}
+%----------------------------------------------------------------------
+
+Wzorce projektowe to sprawdzone, opisane w literaturze odpowiedzi na powtarzające się problemy inżynierii oprogramowania \cite{gamma1994design}. W kontekście gier kilka z nich pojawia się tak często, że stają się językiem domyślnym - i w mojej grze również są podstawą.
+
+\subsection{Maszyna Stanów (State Machine)}
+
+Skończona maszyna stanów (FSM) to jeden z fundamentów AI dla gier \cite{millington2009ai}. Idea jest prosta: obiekt znajduje się w jednym z kilku zdefiniowanych stanów, a przejścia między nimi rządzą się regułami. W \textit{Echoes of Vanitas} FSM-em sterowane są obie strony walki. Gracz ma pięć stanów (idle, ruch, atak, dash, śmierć), wróg sześć podstawowych (idle, patrol, pościg, atak, ogłuszenie, śmierć) oraz stan powrotu do patrolowania, gdy gracz wychodzi z zasięgu pościgu. Ciekawszym przypadkiem jest elita: jej FSM jest \emph{zorientowana} przez warstwę nadrzędną. W momencie wejścia w stan pościgu nie wybiera kierunku samodzielnie, tylko pyta singletona \texttt{EliteBrain} o docelową pozycję, która uwzględnia bieżącą taktykę i predykcję ruchu gracza. Dzięki temu klasyczny wzorzec FSM (statyczny) udało mi się złączyć z warstwą uczącą się (dynamiczną) bez ich ze sobą mieszania.
+
+\subsection{Singleton}
+
+Singleton gwarantuje istnienie dokładnie jednej instancji klasy oraz globalny dostęp do niej \cite{gamma1994design}. W literaturze ma kiepską prasę - bywa nadużywany, daje pokusę globalnego stanu. Mimo to, w grze, gdy potrzebujemy ,,jednego \texttt{QuestManagera} dla wszystkich questów'' albo ,,jednego \texttt{EliteBrain} dla wszystkich elit'', singleton jest najmniej kosztownym rozwiązaniem. W projekcie mam osiem globalnych punktów dostępu w tym sensie: sześć autoloadów w \texttt{project.godot} (\texttt{QuestManager}, \texttt{EliteBrain}, \texttt{SaveGameService}, \texttt{GameStats}, \texttt{GameSettings}, \texttt{HitFeedbackService}) oraz trzy singletony scenowe ze statycznym \texttt{Instance}: \texttt{Player}, \texttt{DungeonManager} i \texttt{UIController}. Autoloady silnik tworzy przy starcie; pozostałe trzy powstają dopiero w głównej scenie gry.
+
+\subsection{System Zdarzeń (Event System)}
+
+Wzorzec Observer pozwala obiektom komunikować się bez wiedzy o tym, kto je słucha \cite{nystrom2014game}. U mnie realizowany jest przez statyczną klasę \texttt{GameEvents} ze zdarzeniami typu \texttt{event Action<...>}. Wybór ,,statyczna klasa zamiast singletona'' był celowy - emitowanie zdarzenia nie wymaga referencji do żadnego węzła Godot, więc subskrybować można nawet z czystego skryptu testowego. Zdarzenia w obecnej wersji obejmują trafienia, ulepszanie przedmiotów, zdobycie klucza lochu, ukończenie etapu questa, wejścia w strefy, przyznanie reliktu, kamienie milowe lochu oraz toasty.
+
+\subsection{Wzorzec Komponent (Component Pattern)}
+
+Architektura komponentowa polega na składaniu obiektów gry z niezależnych, wymiennych elementów \cite{nystrom2014game}. W Godocie wzorzec ten jest natywny - każdy węzeł \texttt{Node} może mieć dołączony skrypt, kolizje, animacje, itd. Przykładowo postać gracza w mojej grze to \texttt{CharacterBody3D} + \texttt{Sprite3D} + \texttt{AnimationPlayer} + \texttt{StateMachine} (własny węzeł) + \texttt{Hurtbox} (\texttt{Area3D}) + \texttt{AttackArea}. Każda warstwa odpowiada za co innego - i każda jest tym samym budulcem, który wykorzystuję u wrogów, bossa czy nawet w skrzyniach nagród.
+
+\section{Sztuczna Inteligencja w Grach}
+%----------------------------------------------------------------------
+
+To rozróżnienie warto sobie utrzymać w głowie przez całą resztę pracy: AI w grach to nie ta sama dyscyplina co AI w sensie klasycznym. Celem nie jest tu optymalne rozwiązanie problemu, tylko zachowanie, które gracz \emph{czuje} jako wiarygodne i angażujące \cite{millington2009ai}. Czasem oznacza to celowe pogarszanie skuteczności AI, żeby gracz miał szansę reagować - i czasem oznacza coś dokładnie odwrotnego, jak u mnie, gdy AI elit ma być na tyle inteligentna, żeby dobrze dobrać taktykę pod konkretnego gracza.
+
+W \textit{Echoes of Vanitas} bazą AI przeciwników jest hierarchiczna maszyna stanów. Każdy wróg ma:
+
+\begin{itemize}
+    \item \textbf{Stan patrolowania} - ruch wzdłuż zdefiniowanej ścieżki (\texttt{Path3D}),
+    \item \textbf{Stan pościgu} - śledzenie gracza w zasięgu wykrycia poprzez \texttt{NavigationAgent3D},
+    \item \textbf{Stan ataku} - wykonywanie ataków w zasięgu walki,
+    \item \textbf{Stan ogłuszenia} - reakcja na trafienie przez gracza,
+    \item \textbf{Stan śmierci} - animacja i usunięcie z planszy.
+\end{itemize}
+
+Dla elitarnych przeciwników (\textit{Elite Enemies}) zaimplementowano dodatkowy, uczący się system \textit{EliteBrain} - szczegółowo opisany w rozdziale~4.
+
+\section{Uczenie Wzmocnione - Reinforcement Learning}
+%----------------------------------------------------------------------
+
+To jest sekcja, która stanowi teoretyczne tło dla \texttt{EliteBrain}. Zaczynam od ogólnej definicji RL, schodzę do bandyty wieloramiennego, dochodzę do wariantu kontekstowego, którego w grze faktycznie używam. Każdą warstwę staram się skomentować pod kątem decyzji, które trzeba było podjąć w kodzie - wartości stałych, wzorów, sposobu aktualizacji.
+
+Uczenie wzmocnione jest paradygmatem, w którym agent uczy się polityki decyzyjnej, wchodząc w interakcję ze środowiskiem i otrzymując sygnały nagrody \cite{sutton2018rl}. Formalnie: w kroku $t$ agent obserwuje stan $s_t \in \mathcal{S}$, wybiera akcję $a_t \in \mathcal{A}$ i otrzymuje nagrodę $r_t \in \mathbb{R}$. Celem jest maksymalizacja oczekiwanej skumulowanej, zdyskontowanej nagrody:
+\[
+    J(\pi) = \mathbb{E}_\pi \!\left[\sum_{t=0}^{\infty} \gamma^t\, r_t\right],
+\]
+gdzie $\pi: \mathcal{S} \to \mathcal{A}$ to polityka, a $\gamma \in [0,1)$ współczynnik dyskontowania, sterujący tym, jak bardzo agent dba o przyszłe nagrody w stosunku do natychmiastowych.
+
+\subsection{Problem Bandyty Wieloramiennego}
+
+Bandyta wieloramienny (multi-armed bandit, MAB) to uproszczony przypadek RL, w którym \emph{nie ma} stanów - agent po prostu wybiera jedną z $K$ akcji i widzi nagrodę. Zadanie sprowadza się do znalezienia ramienia o najwyższej średniej wypłaty przy jednoczesnym minimalizowaniu \emph{żalu} (regret). To uproszczenie ujawnia w czystej postaci dylemat, do którego sprowadza się większość RL: \textbf{eksploracja kontra eksploatacja} - czy wybrać ramię, które wydaje się dziś najlepsze, czy spróbować nieznanego, ryzykując wynik bieżący w nadziei na lepszą informację \cite{sutton2018rl}.
+
+\subsection{Strategia $\varepsilon$-zachłanna}
+
+Najprostsze rozwiązanie tego dylematu jest też najpopularniejsze. Polityka $\varepsilon$-zachłanna z prawdopodobieństwem $1-\varepsilon$ wybiera akcję o aktualnie najwyższym $Q$, a z prawdopodobieństwem $\varepsilon$ losuje:
+\[
+    \pi(s) = \begin{cases}
+        \arg\max_{a} Q(s, a) & \text{z prawdopodobieństwem } 1-\varepsilon,\\
+        \text{akcja losowa}  & \text{z prawdopodobieństwem } \varepsilon.
+    \end{cases}
+\]
+Typowo $\varepsilon$ kurczy się w czasie (decay), żeby agent z biegiem nauki coraz rzadziej eksplorował. U mnie obowiązuje rozkład:
+\[
+    \varepsilon_{t+1} = \max(\varepsilon_\text{floor}, \; \varepsilon_t \cdot \alpha_\varepsilon),
+\]
+ze stałymi $\alpha_\varepsilon = 0{,}97$ i $\varepsilon_\text{floor} = 0{,}05$. Te dwie wartości nie są przypadkowe - dolny próg gwarantuje, że nawet po kilkudziesięciu starciach AI utrzymuje 5\% szansy na eksperyment. Bez tego mózg z czasem zamarzłby na jednej taktyce, co testowo widziałem przy próbach z $\varepsilon_\text{floor} = 0$.
+
+\subsection{Contextual Bandit}
+
+Bandyta kontekstowy rozszerza klasyczny MAB o obserwację kontekstu $c \in \mathcal{C}$ przed wyborem akcji. Można go traktować jak RL bez przejść stanu \cite{sutton2018rl}. Agent utrzymuje tablicę $Q(c, a)$ wartości akcji dla każdej pary kontekst-akcja i wybiera:
+\[
+    a^* = \arg\max_{a} Q(c, a) \quad \text{z prawdopodobieństwem } 1-\varepsilon.
+\]
+W mojej grze kontekst to krotka $(h, e)$, gdzie $h$ to zdyskretyzowany stan zdrowia gracza (niskie/średnie/wysokie), a $e$ - liczba żywych elit (1/2/3+). To daje siatkę 9 kontekstów po 4 akcje każdy, czyli 36 ,,ramion'' uczonych niezależnie. Wybór akurat tych dwóch zmiennych wziął się z obserwacji własnych: taktyka, która dobrze sprawdza się na pełnym HP gracza i jednej elicie, niemal nigdy nie jest optymalna na niskim HP w grupie trzech elit. Bez kontekstu gracz po prostu nauczyłby się jednej, uśrednionej odpowiedzi.
+
+\subsection{Q-learning z Wykładniczym Uśrednianiem (EMA)}
+
+Klasyczna aktualizacja Q-learning \cite{sutton2018rl} dla pełnego MDP wygląda tak:
+\[
+    Q(s, a) \leftarrow Q(s, a) + \alpha \bigl[r + \gamma\, \max_{a'} Q(s', a') - Q(s, a)\bigr].
+\]
+W bandycie kontekstowym nie ma stanu następnego ($s'$ nie istnieje), więc wzór redukuje się do wykładniczo ważonego uśredniania nagród (EMA):
+\[
+    Q(c, a) \leftarrow Q(c, a) + \alpha\, \bigl[r - Q(c, a)\bigr].
+\]
+Przyjąłem $\alpha = 0{,}12$. To wartość, którą wybrałem nie z literatury, tylko empirycznie. Dla $\alpha = 0{,}3$ (testowane) AI miała tendencję do szarpania - jedna nieudana taktyka spadała w rankingu zbyt szybko, jeden szczęśliwy strzał zbyt szybko ją promował. Dla $\alpha = 0{,}05$ uczenie było tak powolne, że gracz nie zdążyłby zauważyć adaptacji w realistycznej sesji. $\alpha = 0{,}12$ daje czas półtrwania aktualizacji $\log(0{,}5)/\log(1-\alpha) \approx 5{,}4$ starcia - AI zauważalnie zmienia profil w ciągu kilku walk, ale jedno pechowe starcie nie wywraca polityki.
+
+\subsection{Modelowanie Gracza i Predykcja}
+
+Równolegle z selekcją taktyki AI utrzymuje \emph{model gracza} oparty o EMA obserwowanych cech \cite{yannakakis2013playermodeling}:
+\begin{itemize}
+    \item średnia prędkość ruchu $\bar{v}$,
+    \item stosunek czasu wycofywania do łącznego czasu $r_\text{back}$,
+    \item aktualne DPS (obrażenia na sekundę) $\bar{d}$.
+\end{itemize}
+Te wielkości modulują parametry elit: czas predykcji $\tau$ (lead-time) wzrasta dla szybkich graczy, dystans preferowany zwiększa się dla graczy agresywnych, a agresja elit rośnie dla graczy często wycofujących się. Predykcja pozycji gracza po czasie $\tau$ (Kalmanowskie \textit{lead shot}):
+\[
+    \hat{p}(t + \tau) = p(t) + \tau \cdot v(t),
+\]
+służy jako cel ruchu elit w stanie pościgu.
+
+\section{Proceduralna Generacja Treści}
+%----------------------------------------------------------------------
+
+Proceduralna generacja treści (PCG) to zbiór technik automatycznego tworzenia poziomów, przedmiotów, czasem nawet fabuły, przy pomocy algorytmu zamiast ręcznej pracy projektanta \cite{shaker2016pcg}. W lochach rogue-like szczególnie często wraca jedno rozwiązanie: błądzenie losowe (\textit{drunkard's walk}). Punkt startowy wykonuje serię losowych kroków w czterech kierunkach, oznaczając kolejne pokoje. Algorytm jest brzydko prosty - i właśnie dlatego dobrze nadaje się jako baza, którą można obrastać dodatkami.
+
+\subsection{Drunkard's Walk w \textit{Echoes of Vanitas}}
+
+Mój wariant błądzenia losowego ma kilka rozszerzeń, które dodawałem stopniowo, gdy okazywało się, że ,,gołe'' błądzenie produkuje plansze nieczytelne dla gracza:
+
+\begin{itemize}
+    \item \textbf{Siatka $9 \times 9$} - punkter startowy leży w komórce $(4,4)$, a spacer ograniczony jest do indeksów $0\ldots 8$. To mniejsza plansza niż w pierwotnych szkicach, ale w testach dawała czytelniejsze pokoje bez długich martwych odcinków.
+    \item \textbf{Warianty układu} - parametr \texttt{layoutVariant} $\in \{0, 1, 2\}$ nie zmienia samego algorytmu spaceru, lecz liczbę docelowych pokoi, kolory ścian i świateł, promień patrolowania wrogów oraz limit spawnów w pokoju bossa. Wariant wybierany jest cyklicznie z liczby ukończonych runów (\texttt{DungeonRunsCompleted \% 3}), a ziarno losowe losowane jest przy każdym wejściu do lochu.
+    \item \textbf{Pokoje specjalne} - po spacerze BFS wyznacza odległości od startu; najdalszy pokój staje się \texttt{RoomType.Boss}, a wybrane martwe końcówki mogą dostać typ \texttt{Treasure} z dodatkowymi monetami.
+    \item \textbf{Iniekcja obiektów} - w lochu spawnują się wrogowie (zwykli, elity w pokoju bossa, \texttt{BossEnemy}), do trzech skrzyń, 1-2 radary, portal wyjścia w pokoju startowym. Klucz questowy zdobywa się w hubie po mini-grze (\texttt{LockedCabinet}), a relikt lochu przyznawany jest przy pierwszym wyjściu z lochu.
+    \item \textbf{Wypiek nawigacji} - po stworzeniu geometrii wywołuję przeliczenie siatki nawigacyjnej, dzięki czemu \texttt{NavigationAgent3D} potrafi natychmiast wytyczać A*. Na słabszym sprzęcie ten krok wywołuje około 1,8~s zwolnienia - dlatego dodałem overlay ,,Ładowanie\ldots''.
+\end{itemize}
+
+\section{Dynamiczne Dostosowanie Trudności}
+%----------------------------------------------------------------------
+
+Dynamiczne dostosowanie trudności (DDA) to ogólne pojęcie na każdy mechanizm, który zmienia parametry gry w odpowiedzi na umiejętności gracza \cite{hunicke2005dda}. Klasycznym celem DDA jest utrzymanie gracza w stanie przepływu (flow) - nie za łatwo, nie za trudno, idealnie tuż na granicy frustracji.
+
+Najczęściej cytowanym przykładem jest \textit{AI Director} z \textit{Left 4 Dead} firmy Valve \cite{booth2009left4dead}. Director patrzy na stan drużyny - zdrowie, amunicję, czas od ostatniego boju - i dynamicznie aranżuje scenerię: czasem zsyła hordę zombie, czasem daje minutę spokoju, czasem podstawia zestaw medyczny tuż przed kryzysem. To dlatego dwie osoby grające w tę samą kampanię L4D dostają zupełnie inny rytm rozgrywki.
+
+W \textit{Echoes of Vanitas} sięgam po DDA na dwóch poziomach jednocześnie:
+\begin{itemize}
+    \item \textbf{Modyfikatory runu} - losowany przy wejściu do lochu (\textit{RichCoins}, \textit{HeavyElites}, \textit{Gloom}) zmienia ekonomię i klimat: więcej monet na podłodze, dodatkowa elita w pokoju bossa albo ciemniejsze oświetlenie (w tym przyciemniona minimapa). Nazwa modyfikatora trafia do hintu celu przy wejściu - gracz od razu wie, czego się spodziewać.
+    \item \textbf{Adaptacja AI elit} - \texttt{EliteBrain} dostraja \texttt{PreferredDistance}, \texttt{Aggression} i \texttt{Caution} na podstawie obserwowanego DPS gracza i tendencji do wycofywania. To DDA cienkie, lokalne - trudność nie zmienia się skokowo, tylko ,,oddycha'' z każdym starciem. Wybrałem hybrydę tych dwóch podejść właśnie po to, żeby praca pokazywała oba spektra.
+\end{itemize}
+
+\section{Systemy RPG - Ekwipunek, Questy i Progresja}
+%----------------------------------------------------------------------
+
+Ekwipunek i questy to fundament gatunku RPG. Schell \cite{schell2008art} opisuje ekwipunek jako mechanikę, dzięki której gracz personalizuje postać i odczuwa progres. Questy z kolei są nośnikiem narracji i nadają działaniom kierunek \cite{salen2004rules}. Te dwa systemy zaprojektowałem w mojej grze tak, żeby były wymienne - mogę wymienić definicję questa albo dodać nowy przedmiot bez ruszania kodu C\#.
+
+\begin{itemize}
+    \item \textbf{Ekwipunek} - bazuje na zasobach Godot (\texttt{Resource}), przedmioty są plikami \texttt{.tres} edytowalnymi w edytorze. Każdy zawiera bonusy do ataku, obrony i prędkości oraz pole \texttt{UpgradeLevel} rosnące przy scalaniu dwóch identycznych instancji.
+    \item \textbf{Questy} - używają Observera. \texttt{QuestManager} subskrybuje zdarzenia (\texttt{OnEnemyKilled}, \texttt{OnItemCollected}, \texttt{OnDungeonKeyObtained}, \texttt{OnReachArea}) i aktualizuje postęp celów. Dla questów sekwencyjnych manager prowadzi indeks aktywnego celu i ignoruje postęp pozostałych, dopóki bieżący nie zostanie ukończony.
+    \item \textbf{Cele questowe} - \textit{Kill}, \textit{Collect}, \textit{ReachArea} i \textit{Talk} są w pełni zaimplementowane. \textit{Talk} obsługuje rozmowę z NPC po wciśnięciu \texttt{E} (np. strażnik przy bramie w ostatnim kroku questa głównego); pełne drzewo dialogowe pozostaje w planach.
+    \item \textbf{Progresja} - złoto, ukończone questy, liczba ukończonych runów oraz pełny stan ekwipunku trafiają do autosave w formacie JSON z polem \texttt{SaveVersion}.
+\end{itemize}
+
+\section{Serializacja i Trwałość}
+%----------------------------------------------------------------------
+
+Do zapisu stanu gry wybrałem bibliotekę \texttt{System.Text.Json} z platformy .NET. Wybór nie był oczywisty - Godot ma własny mechanizm \texttt{ConfigFile} i drugi mechanizm via \texttt{Resource}. Pierwszy jest niewygodny dla zagnieżdżonych struktur, drugi w \emph{żaden} łatwy sposób nie pozwala wersjonować schematu między wydaniami gry. JSON w \texttt{System.Text.Json} dał mi obie rzeczy w pakiecie: ludzkim okiem czytelny zapis (\texttt{WriteIndented = true}) oraz proste pole wersji (\texttt{SaveVersion} w autosave, \texttt{SchemaVersion} w \texttt{brain.json}), które obsłużyłem własnym kodem migracji.
+
+Pliki lądują w \texttt{user://}, czyli na Windows w katalogu:
+\begin{quote}
+\texttt{\%APPDATA\%\textbackslash{}Godot\textbackslash{}app\_userdata\textbackslash{}\linebreak<nazwa\_projektu>}.
+\end{quote}
+Po stronie schematu \texttt{AutosaveDto} przechowuje pole \texttt{SaveVersion}, a \texttt{EliteBrainDto} - \texttt{SchemaVersion} oraz \texttt{TacticCount}, \texttt{HpBuckets} i \texttt{EliteBuckets}. Tych trzech ostatnich używam przy wczytywaniu mózgu, żeby zweryfikować, czy aktualny kod oczekuje tego samego kształtu tablicy $Q$. Jeśli nie - wykonuję migrację (propagację płaskich $Q$ do 9 kontekstów bandyty kontekstowego jako \emph{priorów}). Tę migrację wymyśliłem dopiero po pierwszym wprowadzeniu kontekstu, gdy stare \texttt{brain.json} nagle przestały być wczytywalne.
+
+\section{Środowisko 2.5D}
+%----------------------------------------------------------------------
+
+Termin 2.5D opisuje gry, w których trójwymiarowe obiekty renderowane są w sposób dający efekt płaskiej, bocznej perspektywy \cite{toftedahl2019taxonomy}. Decyzja, by pójść w 2.5D zamiast w czyste 2D, wzięła się u mnie z trzech rzeczy jednocześnie:
+
+\begin{itemize}
+    \item większa głębia wizualna niż w 2D, którą daje system oświetlenia 3D,
+    \item prostsze projektowanie poziomów niż w pełnym 3D (w 3D każda ściana wymaga modelu),
+    \item zachowanie klasycznej mechaniki platformowej 2D przy bogatszej oprawie.
+\end{itemize}
+
+W praktyce kamera jest ortogonalna, a postać gracza porusza się w 3D z ograniczoną swobodą - efektywnie na płaszczyźnie 2D. Renderer \textit{Forward Plus} w Godot 4 zapewnia wysoką jakość oświetlenia i cieni, co dla klimatu katakumb okazało się kluczowe. Gdyby cała gra była w 2D, modyfikator runu \textit{Gloom} byłby nudnym filtrem koloru - w 2.5D realnie przyciemnia scenę przez obniżenie energii świateł punktowych (oraz minimapy), co daje wrażenie mroczniejszych katakumb.

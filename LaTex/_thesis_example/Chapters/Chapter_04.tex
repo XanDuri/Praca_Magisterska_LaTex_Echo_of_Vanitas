@@ -1,0 +1,183 @@
+%======================================================================
+\chapter{Implementacja Mechanik Gry}
+%======================================================================
+
+Niniejszy rozdział szczegółowo opisuje implementację kluczowych mechanik gry \textit{Echoes of Vanitas}. Każda sekcja omawia architekturę, przepływ danych oraz szczegóły techniczne danego systemu.
+
+\section{System Postaci Gracza}
+%----------------------------------------------------------------------
+
+\subsection{Stany Gracza}
+
+Gracz (\texttt{Player}) posiada siedem stanów zarządzanych przez maszynę stanów:
+
+\begin{itemize}
+    \item \textbf{PlayerIdleState} – gracz stoi w miejscu; nasłuchuje na wciśnięcie klawiszy ruchu lub ataku,
+    \item \textbf{PlayerMoveState} – poruszanie się WSAD; postać przesuwa się w czterech kierunkach,
+    \item \textbf{PlayerAttackState} – odtwarza animację ataku; tworzy hitbox; po zakończeniu wraca do Idle,
+    \item \textbf{PlayerDashState} – krótki zryw w kierunku ruchu; tymczasowa nietykalność,
+    \item \textbf{PlayerDeathState} – odtwarza animację śmierci; emituje zdarzenie \texttt{OnDefeat}.
+\end{itemize}
+
+Przejścia między stanami inicjowane są przez: wejście wrogich pocisków w \texttt{HurtboxNode} (przejście do stanu śmierci po spadku HP do 0) lub wciśnięcie klawiszy akcji przez gracza.
+
+\subsection{Statystyki Postaci}
+
+Statystyki implementowane są jako zasoby \texttt{StatResource}, każdy powiązany z konkretnym wyliczeniem \texttt{Stat}:
+
+\begin{itemize}
+    \item \texttt{Stat.Health} – punkty życia,
+    \item \texttt{Stat.Strength} – siła ataku.
+\end{itemize}
+
+Zdarzenie \texttt{StatResource.OnZero} wywoływane jest gdy wartość spadnie do zera – używane do wykrywania śmierci postaci i wrogów. Bonusy z ekwipunku dodawane są jako delty do bazowych wartości statystyk za pomocą metody \texttt{Player.ApplyEquipmentBonuses()}.
+
+\subsection{System Inventory i Ekwipunku}
+
+Gracz posiada tablicę \texttt{Inventory[]} (20 slotów \texttt{InventoryItemStack}) przechowującą podniesione przedmioty. Ekwipunek (założone przedmioty) reprezentowany jest przez pięć pól właściwości: \texttt{HelmetItem}, \texttt{NecklaceItem}, \texttt{DaggerItem}, \texttt{BootsItem}, \texttt{PageItem}.
+
+Metoda \texttt{AddItemToInventory(ItemResource, int)} implementuje logikę stackowania:
+\begin{enumerate}
+    \item Szuka istniejącego stacku tego samego przedmiotu i uzupełnia go do \texttt{MaxStack},
+    \item Jeśli nie ma miejsca w istniejących stackach, szuka pustego slotu,
+    \item Po udanym dodaniu emituje zdarzenie \texttt{InventoryChanged}.
+\end{enumerate}
+
+\section{System Przeciwników}
+%----------------------------------------------------------------------
+
+\subsection{Stany Przeciwnika}
+
+Każdy przeciwnik (\texttt{Enemy}) posiada sześć stanów:
+
+\begin{itemize}
+    \item \textbf{EnemyIdleState} – bezczynność; nasłuchuje na wejście gracza w \texttt{ChaseAreaNode},
+    \item \textbf{EnemyPatrolState} – poruszanie się wzdłuż ścieżki \texttt{Path3D}; zmiana punktu docelowego po dotarciu,
+    \item \textbf{EnemyChaseState} – śledzenie gracza przez \texttt{NavigationAgent3D}; powrót do stanu Idle gdy gracz opuści zasięg,
+    \item \textbf{EnemyAttackState} – wykonanie ataku gdy gracz w zasięgu \texttt{AttackAreaNode},
+    \item \textbf{EnemyStunState} – ogłuszenie po trafieniu przez gracza; tymczasowe zatrzymanie AI,
+    \item \textbf{EnemyDeathState} – wyłączenie kolizji, odtworzenie animacji \texttt{Death}, usunięcie węzła.
+\end{itemize}
+
+\subsection{Logika Śmierci Wroga}
+
+Stan śmierci \texttt{EnemyDeathState} implementuje wieloetapowy proces:
+
+\begin{enumerate}
+    \item Flaga \texttt{\_isDying} zapobiega wielokrotnemu wejściu w stan,
+    \item Wywoływane jest \texttt{SpawnDrops()} – losowanie i spawnowanie orbów z przedmiotami,
+    \item Wywołane jest \texttt{QuestManager.RegisterKill(EnemyId)} – aktualizacja postępu questów,
+    \item Wyłączane są warstwy kolizji (warstwa 3 i maska 2),
+    \item Odtwarzana jest animacja \texttt{Death}; po jej zakończeniu \texttt{PathNode.QueueFree()} usuwa cały obiekt z drzewa scen,
+    \item Usunięcie \texttt{PathNode} (rodzica wroga w \texttt{EnemiesContainer}) wywołuje zdarzenie \texttt{ChildExitingTree}, aktualizując licznik wrogów.
+\end{enumerate}
+
+\subsection{Elitarny Przeciwnik i EliteBrain}
+
+\texttt{EliteEnemy} dziedziczy z \texttt{Enemy} i przy śmierci wywołuje \texttt{EliteBrain.ReportEliteDeath()}. \texttt{EliteBrain} jest singletonem (\textit{Autoload}) monitorującym śmierci elit i adaptacyjnie zmieniającym parametry AI kolejnych: odległość preferencji (\texttt{PreferredDistance}), agresywność (\texttt{Aggression}) i ostrożność (\texttt{Caution}).
+
+\subsection{System Dropów}
+
+Metoda \texttt{SpawnDrops()} w klasie \texttt{Enemy} implementuje system losowania przedmiotów z tablicy \texttt{Drops[]}:
+
+\begin{enumerate}
+    \item Przedmioty dzielone są na konsumable (mikstury) i pozostałe,
+    \item Z każdej grupy losowany jest co najwyżej jeden przedmiot,
+    \item Losowanie odbywa się przez przetasowanie listy (algorytm Fisher-Yates) i sprawdzenie \texttt{DropChance} każdego elementu,
+    \item Trafiony przedmiot spawnowany jest jako \texttt{DropOrb} w miejscu śmierci wroga.
+\end{enumerate}
+
+\section{System Questów}
+%----------------------------------------------------------------------
+
+\subsection{Architektura Systemu Questów}
+
+System questów składa się z czterech głównych klas:
+
+\begin{itemize}
+    \item \textbf{QuestResource} – definicja questa: ID, tytuł, opisy, portret i lokacja dawcy, flaga \texttt{IsMainQuest}, tablica nagród \texttt{QuestReward[]}, lista celów \texttt{QuestObjectiveResource[]},
+    \item \textbf{QuestObjectiveResource} – cel questa: typ (\texttt{Kill / Collect / Talk / ReachArea}), \texttt{TargetId} oraz wymagana liczba \texttt{RequiredAmount},
+    \item \textbf{QuestManager} – singleton zarządzający listami \texttt{ActiveQuests} i \texttt{CompletedQuests} oraz słownikiem postępu \texttt{\_killProgress},
+    \item \textbf{QuestGiverNPC} – węzeł 3D wykrywający gracza w zasięgu Area3D i po interakcji (klawisz E) dodający quest do managera.
+\end{itemize}
+
+\subsection{Przepływ Quest Kill}
+
+Poniżej opisano przepływ danych dla questa z celem zabicia wrogów:
+
+\begin{enumerate}
+    \item Gracz wchodzi w zasięg NPC i wciska klawisz \texttt{Interact} (E),
+    \item \texttt{QuestGiverNPC} wywołuje \texttt{QuestManager.AddQuest(quest)},
+    \item Manager dodaje quest do \texttt{ActiveQuests} i emituje \texttt{QuestsChanged},
+    \item \texttt{QuestMenu} odbiera zdarzenie i odświeża listę questów,
+    \item Gracz zabija wroga posiadającego \texttt{EnemyId} pasujące do \texttt{QuestObjectiveResource.TargetId},
+    \item \texttt{EnemyDeathState} wywołuje \texttt{QuestManager.RegisterKill(EnemyId)},
+    \item Manager inkrementuje \texttt{\_killProgress[questId][enemyId]},
+    \item Po osiągnięciu \texttt{RequiredAmount} wywoływane jest \texttt{CompleteQuest(quest)},
+    \item Quest przechodzi z \texttt{ActiveQuests} do \texttt{CompletedQuests}, wypłacane są nagrody.
+\end{enumerate}
+
+\subsection{System Nagród}
+
+Nagrody zdefiniowane są w \texttt{QuestReward[]} w pliku \texttt{.tres} questa. Każda nagroda może zawierać:
+\begin{itemize}
+    \item \textbf{Gold} – złoto dodawane metodą \texttt{Player.AddGold()},
+    \item \textbf{Experience} – doświadczenie dodawane metodą \texttt{Player.AddExperience()},
+    \item \textbf{ItemReward} + \textbf{ItemCount} – przedmiot dodawany do inventory gracza.
+\end{itemize}
+
+\section{Interfejs Użytkownika}
+%----------------------------------------------------------------------
+
+\subsection{UIController}
+
+\texttt{UIController} zarządza widocznością wszystkich paneli UI, reagując na zdarzenia globalne:
+\begin{itemize}
+    \item \texttt{OnVictory} → panel \texttt{Victory},
+    \item \texttt{OnDefeat} → panel \texttt{Defeat},
+    \item Klawisz \texttt{Pause} → panel \texttt{Pause},
+    \item Klawisz \texttt{Menu} (I) → panel \texttt{Menu}.
+\end{itemize}
+
+\subsection{MenuTabs}
+
+\texttt{MenuTabs} obsługuje zakładki menu głównego: Questy, Ekwipunek, Księga, Statystyki, Ustawienia. Przy aktywacji zakładki pokazywany jest odpowiedni panel \texttt{Control}, pozostałe są ukrywane.
+
+\subsection{QuestMenu}
+
+\texttt{QuestMenu} subskrybuje zdarzenie \texttt{QuestManager.QuestsChanged} i odświeża listy questów głównych i pobocznych. Po kliknięciu na quest wyświetla w prawym panelu: portret dawcy, tytuł, informacje o lokalizacji, pełen opis oraz nagrody w formacie BBCode.
+
+\subsection{EqMenu – Menu Ekwipunku}
+
+\texttt{EqMenu} implementuje zaawansowany system drag-and-drop do zarządzania ekwipunkiem:
+\begin{itemize}
+    \item \textbf{20 dynamicznych slotów inventory} tworzonych proceduralne w \texttt{GridContainer},
+    \item \textbf{5 slotów equip} (hełm, naszyjnik, sztylet, buty, strona) z typowym ograniczeniem przedmiotów,
+    \item \textbf{Slot trash} – zniszczenie przedmiotu przez upuszczenie,
+    \item \textbf{Sloty merge A+B} – łączenie dwóch przedmiotów w ulepszony egzemplarz,
+    \item Synchronizacja dwustronna z \texttt{Player.Inventory} przez metody \texttt{RefreshInventoryFromPlayer()} i \texttt{SyncInventoryToPlayer()}.
+\end{itemize}
+
+\section{System Skrzynek ze Skarbami}
+%----------------------------------------------------------------------
+
+\texttt{TreasureChest} to interaktywny obiekt w świecie gry. Po wejściu w zasięg i interakcji gracza:
+\begin{enumerate}
+    \item Sprawdzane są wymagane warunki (obszar i klawisz interakcji),
+    \item Emitowane jest zdarzenie \texttt{GameEvents.OnReward(RewardResource)},
+    \item Gracz odbiera bonus do statystyki (np. +5 siły),
+    \item Skrzynka zostaje oznaczona jako otwarta (blokada ponownego otwarcia).
+\end{enumerate}
+
+\section{Testy i Napotkane Problemy}
+%----------------------------------------------------------------------
+
+W trakcie implementacji napotkano i rozwiązano następujące problemy:
+
+\begin{itemize}
+    \item \textbf{Dwa systemy inventory} – \texttt{EqMenu} posiadał własną listę \texttt{\_inventory} niezależną od \texttt{Player.Inventory}, co powodowało gubienie przedmiotów przy odświeżaniu UI. Rozwiązano przez wyeliminowanie duplikatu i wprowadzenie metody \texttt{SyncInventoryToPlayer()}.
+    \item \textbf{Wróg nie znikał po śmierci} – pierwotnie usuwano \texttt{characterNode.QueueFree()}, co nie obejmowało węzła \texttt{PathNode} będącego bezpośrednim dzieckiem \texttt{EnemiesContainer}. Naprawiono przez usunięcie \texttt{PathNode} zamiast samej postaci.
+    \item \textbf{Wielokrotne wejście w stan śmierci} – brak ochrony przed wielokrotnym wywołaniem \texttt{EnterState()} powodował duplikowanie nagród. Naprawiono przez flagę \texttt{\_isDying}.
+    \item \textbf{Collision Mask NPC} – Area3D postaci NPC nie miała ustawionej maski kolizji na warstwę gracza (2), przez co nie wykrywała gracza. Naprawiono przez ustawienie \texttt{collision\_mask = 2}.
+    \item \textbf{Layout questów w UI} – \texttt{ScrollContainer} i \texttt{VBoxContainer} nie miały ustawionych \texttt{size\_flags\_vertical = 3}, przez co miały rozmiar 0 i były niewidoczne. Naprawiono przez dodanie odpowiednich flag i \texttt{custom\_minimum\_size}.
+\end{itemize}

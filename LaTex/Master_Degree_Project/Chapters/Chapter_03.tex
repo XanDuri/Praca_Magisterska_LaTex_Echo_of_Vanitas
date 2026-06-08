@@ -1,0 +1,217 @@
+%======================================================================
+\chapter{Architektura Systemu}
+%======================================================================
+
+Zanim opiszę pojedyncze mechaniki, chcę pokazać jak ze sobą pasują. Ten rozdział jest mapą projektu od strony kodu: jakie są katalogi, gdzie zaczyna się scena gry, które klasy żyją jako pojedyncze instancje przez całą sesję, a które pojawiają się dopiero przy wejściu do lochu. Naczelną zasadą, którą sobie postawiłem, była separacja odpowiedzialności (jeden plik, jedna odpowiedzialność) oraz luźne powiązania, dzięki którym mogłem wymieniać podsystemy bez przepisywania połowy reszty kodu.
+
+\section{Struktura Projektu}
+%----------------------------------------------------------------------
+
+Projekt zorganizowany jest według następującej struktury katalogów:
+
+{\small
+\begin{verbatim}
+echoes_of_vanitas/
++-- Scripts/
+|   +-- Charactes/
+|   |   +-- Character.cs               # bazowa klasa postaci
+|   |   +-- CharacterState.cs          # bazowy stan maszyny
+|   |   +-- StateMachine.cs            # kontroler stanow
+|   |   +-- AttackHitBox.cs            # hitbox ataku
+|   |   +-- Player/                    # gracz (5 stanow FSM)
+|   |   +-- Enemy/                     # zwykli, elity, boss, invisible
+|   +-- Dungeon/
+|   |   +-- DungeonManager.cs          # wejscie/wyjscie (singleton sceny)
+|   |   +-- DungeonGenerator.cs        # drunkard's walk i warianty
+|   |   +-- DungeonRunModifierKind.cs  # enum modyfikatorow
+|   |   +-- DungeonDoor.cs             # brama wejsciowa
+|   |   +-- DungeonExitDoor.cs         # brama wyjsciowa
+|   |   +-- Radar.cs                   # polkula wykrywania
+|   +-- Puzzles/                       # 5 mini-gier
+|   |   +-- BlockFitPuzzle.cs
+|   |   +-- BlockMazePuzzle.cs
+|   |   +-- LightSequencePuzzle.cs
+|   |   +-- LockpickPuzzle.cs
+|   |   +-- PipePuzzle.cs
+|   +-- UI/
+|   |   +-- UIController.cs            # UI + debug HUD AI
+|   |   +-- EqMenu.cs                  # menu ekwipunku
+|   |   +-- EqSlot.cs                  # slot ekwipunku
+|   |   +-- ItemResource.cs            # definicja przedmiotu
+|   |   +-- MenuTabs.cs                # przelaczanie zakladek
+|   |   +-- StatsMenu.cs               # zakladka statystyk
+|   |   +-- SettingsMenu.cs            # ustawienia
+|   |   +-- Minimap.cs                 # SubViewport + maska
+|   |   +-- Quests/                    # system questow
+|   +-- General/
+|   |   +-- GameConstants.cs           # stale gry
+|   |   +-- GameEvents.cs              # globalne zdarzenia
+|   |   +-- GameStats.cs               # autoload: statystyki
+|   |   +-- GameSettings.cs            # autoload: ustawienia
+|   |   +-- SaveGameService.cs         # autoload: save/load
+|   |   +-- HitFeedbackService.cs      # toasty, flash, hit-stop
+|   |   +-- Camera.cs                  # kamera (follow + shake)
+|   |   +-- DropOrb.cs                 # orb nagrody
+|   |   +-- NodeExtensions.cs          # rozszerzenia wezlow
+|   +-- Levels/
+|   |   +-- SafeZone.cs                # strefy bezpieczne
+|   +-- Resources/                     # zasoby statystyk
+|   +-- Abilities/                     # zdolnosci
+|   +-- Interfaces/                    # interfejsy (IHitbox)
+|   +-- Reward/                        # nagrody (skrzynie)
+|   +-- Collectibles/                  # przedmioty
++-- Scenes/                            # sceny Godot (.tscn)
++-- Resources/                         # .tres - questy, itemy
++-- Shaders/                           # shadery
++-- Assets_Bat/                        # grafiki, fonty, sprite
++-- docs/                              # dokumentacja
++-- LaTex/Master_Degree_Project/       # praca dyplomowa
+\end{verbatim}
+}
+
+\section{Hierarchia Scen Godot}
+%----------------------------------------------------------------------
+
+Godot organizuje świat gry jako drzewo węzłów (\textit{SceneTree}) \cite{godot4docs}. Każda scena to plik \texttt{.tscn}, czyli podgraf węzłów, który może być instancjowany wielokrotnie. Główna scena gry (plik \texttt{Scenes/\allowbreak Levels/\allowbreak main.tscn}) zawiera następujące węzły:
+
+\begin{itemize}
+    \item \textbf{World}: węzeł 3D z hubem powierzchni (katakumby) oraz pojemnikiem na dynamicznie tworzony loch,
+    \item \textbf{Enemies}: kontener wrogów w aktywnej lokacji (skrypt \texttt{EnemiesContainer.cs}), monitorujący ich liczbę,
+    \item \textbf{Player}: instancja sceny gracza,
+    \item \textbf{NPC}: instancje postaci dających questy,
+    \item \textbf{DungeonContainer}: tworzony w czasie wykonywania przez \texttt{DungeonGenerator}; zawiera wygenerowane pokoje, wrogów, bossa, skrzynie, radary i portal wyjścia,
+    \item \textbf{UI}: interfejs użytkownika (HUD, menu, ekwipunek, questy, toasty, loading overlay).
+\end{itemize}
+
+\subsection{Autoloady (Singletons Globalne)}
+
+Sześć singletonów skonfigurowanych w \texttt{project.godot}:
+
+\begin{center}
+\begin{tabular}{|p{0.32\textwidth}|p{0.60\textwidth}|}
+\hline
+\textbf{Autoload} & \textbf{Odpowiedzialność} \\
+\hline
+\texttt{EliteBrain} & Singleton AI elit: kontekstowy bandyta, model gracza, predykcja, serializacja stanu. \\
+\hline
+\texttt{QuestManager} & Lista aktywnych/ukończonych questów, postęp celów sekwencyjnych i równoległych, subskrypcja zdarzeń \texttt{OnEnemyKilled}, \texttt{OnItemCollected}, \texttt{OnReachArea}. \\
+\hline
+\texttt{GameStats} & Globalne statystyki pomiędzy runami (łączne złoto, zabici, ukończone runy). \\
+\hline
+\texttt{GameSettings} & Ustawienia gracza (głośność, skala UI, pełny ekran). \\
+\hline
+\texttt{SaveGameService} & Serializacja i wczytanie autosave'a JSON, pole \texttt{SaveVersion} oraz obsługa ulepszeń przedmiotów. \\
+\hline
+\texttt{HitFeedbackService} & Warstwa UI \texttt{CanvasLayer} z toastami, flashem ekranu, hit-stopem i obsługą zdarzeń \texttt{OnToast}, \texttt{OnDamageTaken}, \texttt{OnJournalEntry}. \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+Dwa kolejne singletony nie są autoloadami: \texttt{DungeonManager} i \texttt{UIController}. Mają statyczne pole \texttt{Instance}, ale ich instancje powstają dopiero przy wejściu do głównej sceny. Pierwotnie były autoloadami, lecz w trakcie pracy okazało się, że obydwa odwołują się do węzłów istniejących tylko w scenie głównej. Przy starcie aplikacji nie miały więc z czym się powiązać. Przeniesienie ich do sceny rozwiązało problem, kosztem jednego dodatkowego \texttt{null-check}.
+
+\section{Klasa Bazowa Postaci}
+%----------------------------------------------------------------------
+
+Centralna klasa \texttt{Character} dziedziczy z \texttt{CharacterBody3D} (klasa Godot dla postaci z fizyką) i stanowi bazę dla gracza oraz wszystkich typów przeciwników. Kluczowe pola:
+
+\begin{itemize}
+    \item \textbf{StateMachineNode}: referencja do maszyny stanów,
+    \item \textbf{AnimationPlayerNode}: odtwarzacz animacji,
+    \item \textbf{Sprite3DNode}: sprite 3D postaci (z shaderem \texttt{character\_hurt}),
+    \item \textbf{HurtboxNode}: obszar wykrywający trafienia (\texttt{Area3D}),
+    \item \textbf{ChaseAreaNode} i \textbf{AttackAreaNode}: obszary AI dla pościgu i ataku,
+    \item \textbf{PathNode}: ścieżka patrolowania (\texttt{Path3D}),
+    \item \textbf{NavigationAgentNode}: agent A* dla poruszania się w lochu.
+\end{itemize}
+
+Hierarchia dziedziczenia klas postaci:
+
+{\small
+\begin{verbatim}
+CharacterBody3D (Godot)
+    +-- Character
+            +-- Player
+            +-- Enemy
+                    +-- EliteEnemy        (MaterialOverlay + tint shader)
+                    +-- BossEnemy         (dash + bomby w ChaseArea)
+                    +-- InvisibleEnemy    (wykrywany radarem ~3 s)
+\end{verbatim}
+}
+
+\section{Maszyna Stanów}
+%----------------------------------------------------------------------
+
+Maszyna stanów zaimplementowana jest jako para klas: \texttt{StateMachine} oraz \texttt{CharacterState}.
+
+\texttt{StateMachine} przechowuje aktywny stan i wywołuje na nim metody cyklu życia, delegując je do Godota. Metoda \texttt{SwitchState<T>()} pobiera lub tworzy stan danego typu i wywołuje jego \texttt{EnterState()}.
+
+\texttt{CharacterState} to klasa abstrakcyjna z metodami cyklu życia stanu:
+\begin{itemize}
+    \item \texttt{EnterState()} - inicjalizacja przy wejściu w stan,
+    \item \texttt{ExitState()} - sprzątanie przy wyjściu ze stanu,
+    \item \texttt{UpdateState(double delta)} - logika wykonywana co klatkę,
+    \item \texttt{PhysicsUpdateState(double delta)} - logika fizyki.
+\end{itemize}
+
+Maszyna stanów gracza i przeciwnika dzielą tę samą architekturę, a różnią się jedynie zestawem stanów. Gdy w połowie pracy dodawałem \texttt{BossEnemy} z własnym cyklem bomb, wystarczyło rozszerzyć klasę bazową \texttt{Enemy} bez przepisywania całej maszyny. \texttt{EnemyChaseState} dla elit komunikuje się dodatkowo z \texttt{EliteBrain}: zawiadamia singletona o rozpoczęciu i zakończeniu pościgu oraz pyta go o docelową pozycję zgodną z wybraną taktyką. Reszta logiki pościgu pozostaje identyczna jak u zwykłego wroga.
+
+\section{System Zdarzeń}
+%----------------------------------------------------------------------
+
+Klasa statyczna \texttt{GameEvents} definiuje zdarzenia globalne używane do komunikacji między niezależnymi systemami gry. Aktualny zestaw zdarzeń obejmuje:
+
+\begin{itemize}
+    \item \textbf{Cykl życia gry}: \texttt{OnStartGame}, \texttt{OnEndGame}, \texttt{OnVictory},
+    \item \textbf{Wrogowie i walka}: \texttt{OnNewEnemyCount}, \texttt{OnEnemyKilled}, \texttt{OnDamageDealt}, \texttt{OnDamageTaken}, \texttt{OnHealthHealed},
+    \item \textbf{Przedmioty i nagrody}: \texttt{OnItemCollected}, \texttt{OnReward},
+    \item \textbf{Loch}: \texttt{OnDungeonEntered}, \texttt{OnDungeonExited}, \texttt{OnDungeonLoading}, \texttt{OnDungeonMilestone},
+    \item \textbf{Questy i narracja}: \texttt{OnObjectiveHint}, \texttt{OnJournalEntry},
+    \item \textbf{Mini-gry}: \texttt{OnPuzzleStarted}, \texttt{OnPuzzleSolved}, \texttt{OnPuzzleCancelled},
+    \item \textbf{Feedback}: \texttt{OnCameraShake}, \texttt{OnToast}.
+\end{itemize}
+
+Dzięki temu \texttt{EnemyDeathState}, \texttt{EnemiesContainer}, \texttt{QuestManager}, \texttt{HitFeedbackService} czy \texttt{UIController} komunikują się \emph{bez bezpośrednich referencji}. Dla dewelopera oznacza to konkretną korzyść: gdy w połowie pracy dodawałem \texttt{EliteBrain}, mogłem go po prostu podpiąć pod \texttt{OnEnemyKilled} i \texttt{OnDamageDealt} bez modyfikowania ani jednej linijki w \texttt{EnemyDeathState} czy \texttt{Player}. Dla pracy magisterskiej oznacza to, że każdy nowy moduł będzie miał gotowy kanał komunikacji z resztą gry.
+
+\section{System Zasobów (Resources)}
+%----------------------------------------------------------------------
+
+Godot oferuje klasę \texttt{Resource}, czyli serializowalny obiekt danych edytowalny w edytorze i zapisywany jako plik \texttt{.tres} \cite{godot4docs}. W projekcie zasoby wykorzystywane są do definiowania:
+
+\begin{itemize}
+    \item \textbf{ItemResource} - pełna definicja przedmiotu: nazwa, ikona, statystyki, kategoria, rzadkość, szansa dropu, maksymalny stack, bonusy do ataku, obrony i prędkości. Dochodzą do tego pola odpowiedzialne za ulepszanie (\texttt{UpgradeLevel}, \texttt{MaxUpgradeLevel}, koszt ulepszenia),
+    \item \textbf{StatResource} - pojedyncza statystyka postaci z jej wartością i zdarzeniem \texttt{OnZero},
+    \item \textbf{QuestResource} - definicja questa (ID, tytuł, opisy, portret dawcy, lokacja, flaga \texttt{IsMainQuest}, flaga \texttt{SequentialObjectives}, nagrody, lista celów),
+    \item \textbf{QuestObjectiveResource} - pojedynczy cel questa (typ z \texttt{QuestObjectiveType}, \texttt{TargetId}, wymagana liczba, wpis do dziennika),
+    \item \textbf{RewardResource} - nagroda za wygraną (typ statystyki, kwota bonusu, opcjonalny item drop),
+    \item \textbf{Zasoby questów} - każdy quest siedzi we własnym pliku \texttt{.tres}, m.in.\ \texttt{vanitas\_main\_cycle.tres} (główna pętla), \texttt{vanitas\_obj\_key.tres} i \texttt{vanitas\_obj\_depths.tres} (cele questowe), a także \texttt{vanitas\_obj\_warden.tres}, \texttt{vanitas\_obj\_relic.tres}, \texttt{vanitas\_main\_reward.tres} i \texttt{dungeon\_relic.tres}.
+\end{itemize}
+
+Architektura oparta na zasobach pozwala dodawać nowe questy, przedmioty i statystyki bez ruszania kodu C\#. Wystarczy w edytorze Godot stworzyć nowy plik \texttt{.tres}, wypełnić jego pola i wskazać go w scenie lub w innym zasobie. Z perspektywy projektanta jest to prawie tak wygodne jak edytowanie tabel w arkuszu kalkulacyjnym - testowo dodałem w ten sposób relikt (\texttt{dungeon\_relic.tres}) bez kompilacji projektu, co potwierdziło, że ścieżka edytor → gra rzeczywiście działa.
+
+\section{Cykl Życia Sesji}
+%----------------------------------------------------------------------
+
+\begin{enumerate}
+    \item \textbf{Start aplikacji} - Godot tworzy autoloady w kolejności zdefiniowanej w \texttt{project.godot}. \texttt{EliteBrain.\allowbreak\_EnterTree} ustawia statyczną referencję \texttt{Instance}; \texttt{SaveGameService.\allowbreak\_Ready} robi to samo dla serwisu zapisu.
+    \item \textbf{Ekran startowy} - \texttt{UIController} renderuje przyciski \textit{Nowa gra} / \textit{Kontynuuj}; widoczność \textit{Kontynuuj} zależy od wyniku \texttt{SaveGameService.HasAutosave()} (sprawdzanego przy wejściu do menu).
+    \item \textbf{Rozpoczęcie sesji} (Nowa gra): reset \texttt{EliteBrain}, usunięcie autosave'a i \texttt{brain.json}, załadowanie sceny głównej; (Kontynuuj): wczytanie autosave'a, przywrócenie statystyk, ekwipunku i questów.
+    \item \textbf{W hubie} - gracz może rozmawiać z NPC (questy), podnosić przedmioty, otwierać menu, rozwiązywać mini-grę przy \texttt{LockedCabinet} (nagroda: klucz lochu).
+    \item \textbf{Wejście do lochu} - \texttt{DungeonDoor} wywołuje \texttt{DungeonManager.EnterDungeon()}; generator tworzy pokoje, losuje modyfikator runu (\texttt{DungeonRunModifierKind}), spawnuje wrogów, elity w pokoju bossa, \texttt{BossEnemy}, skrzynie i radary.
+    \item \textbf{Starcie z elitą} - \texttt{EnemyChaseState} woła \texttt{EliteBrain.NotifyEliteChaseStarted()}; mózg wybiera taktykę dla aktualnego kontekstu, a stan pościgu używa jej w \texttt{ComputeChaseDestination()}.
+    \item \textbf{Koniec pościgu elit} - gdy ostatnia elita opuszcza stan pościgu, \texttt{NotifyEliteChaseEnded()} woła \texttt{EndEncounter()}: aktualizacja $Q$, kurczenie $\varepsilon$, adaptacja parametrów, log CSV, zapis \texttt{brain.json}.
+    \item \textbf{Wyjście z lochu} - \texttt{DungeonExitDoor} wywołuje \texttt{DungeonManager.ExitDungeon()}; toast podsumowania wyprawy, jednorazowe przyznanie reliktu lochu, powrót do huba, autosave.
+    \item \textbf{Koniec gry} - \texttt{PlayerDeathState} emituje \texttt{OnEndGame}; ekran końca bez automatycznego zapisu (gracz może wczytać ostatni autosave z menu startowego).
+\end{enumerate}
+
+\section{Zarządzanie Warstwami Kolizji}
+%----------------------------------------------------------------------
+
+Projekt używa trójwarstwowego systemu kolizji 3D Godot:
+\begin{itemize}
+    \item \textbf{Warstwa 1 - Environment}: statyczne obiekty środowiska (ściany, podłoga),
+    \item \textbf{Warstwa 2 - Player}: ciało fizyczne gracza,
+    \item \textbf{Warstwa 3 - Enemy}: ciała fizyczne przeciwników.
+\end{itemize}
+
+Obszary detekcji (\texttt{Area3D}) mają odpowiednio ustawione maski kolizji \cite{godot4docs}; np. \texttt{HurtboxNode} gracza wykrywa wyłącznie hitboxy wrogów, a \texttt{ChaseAreaNode} wroga wykrywa wyłącznie gracza (maska = 2).

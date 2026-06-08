@@ -1,0 +1,84 @@
+% =====================================================================
+%  S T R O N A   T Y T U Ł O W A   ( P L   +   E N G )
+%  Format zgodny z wytycznymi UWM w Olsztynie
+% =====================================================================
+
+% Tylko strony tytułowe bez numeru (UWM §9); reszta materiałów wstępnych dostaje numer.
+\thispagestyle{empty}
+\pagenumbering{roman}
+
+% ----------- POLSKA STRONA TYTUŁOWA -----------
+\begin{center}
+    \vspace*{0.5cm}
+
+    {\Large\textsc{Uniwersytet Warmińsko-Mazurski w~Olsztynie}\par}
+    \vspace{0.3cm}
+    {\Large\textsc{\thesisFacultyPL}\par}
+
+    \vfill
+
+    {\Large\bfseries \thesisauthor\par}
+    \vspace{0.3cm}
+    {\large kierunek: \thesisFieldPL\par}
+
+    \vfill
+
+    {\LARGE\bfseries \thesistitlePL\par}
+
+    \vfill\vfill
+
+    \begin{minipage}{0.85\textwidth}
+        \centering
+        \large
+        Praca \thesisDegreePL\\[0.3cm]
+        wykonana w \thesisChairPL\\[0.3cm]
+        pod kierunkiem\\
+        \thesisAdvisorPL
+    \end{minipage}
+
+    \vfill
+
+    {\large Olsztyn, \graduationyear\ rok\par}
+    \vspace*{0.5cm}
+\end{center}
+
+\cleardoublepage
+\thispagestyle{empty}
+
+% ----------- ANGIELSKA STRONA TYTUŁOWA -----------
+\begin{center}
+    \vspace*{0.5cm}
+
+    {\Large\textsc{University of Warmia and Mazury in Olsztyn}\par}
+    \vspace{0.3cm}
+    {\Large\textsc{\thesisFacultyEN}\par}
+
+    \vfill
+
+    {\Large\bfseries \thesisauthor\par}
+    \vspace{0.3cm}
+    {\large Field of Study: \thesisFieldEN\par}
+
+    \vfill
+
+    {\LARGE\bfseries \thesistitleEN\par}
+
+    \vfill\vfill
+
+    \begin{minipage}{0.85\textwidth}
+        \centering
+        \large
+        \thesisDegreeEN\ Thesis\\[0.3cm]
+        prepared at \thesisChairEN\\[0.3cm]
+        under supervision of\\
+        \thesisAdvisorEN
+    \end{minipage}
+
+    \vfill
+
+    {\large Olsztyn, \graduationyear\par}
+    \vspace*{0.5cm}
+\end{center}
+
+\cleardoublepage
+\pagestyle{uwmfoot}

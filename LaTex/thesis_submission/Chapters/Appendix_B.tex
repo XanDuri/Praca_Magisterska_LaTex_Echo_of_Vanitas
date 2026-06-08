@@ -1,0 +1,516 @@
+% An appendix
+%======================================================================
+\chapter{Wybrane Fragmenty Kodu Źródłowego}
+\label{ch:Appendix-Code}
+%======================================================================
+
+Listingi w tym dodatku to fragmenty mojego kodu wybrane pod kątem obrony. Każdy z nich pokazuje konkretny, samodzielny kawałek logiki, do którego odsyła główna część pracy - od maszyny stanów, przez śmierć wroga, po serce \texttt{EliteBrain}. Pełne pliki znajdują się w repozytorium projektu, ale aby zachować czytelność na papierze, w niektórych miejscach skróciłem mniej istotne gałęzie kodu (komentarz \texttt{// ...} oznacza takie skrócenie).
+
+\section{Maszyna Stanów}
+
+Poniższy kod przedstawia implementację kontrolera maszyny stanów oraz klasę bazową stanu postaci.
+
+\begin{lstlisting}[caption={StateMachine.cs oraz CharacterState.cs},label={lst:sm}]
+// StateMachine.cs
+public partial class StateMachine : Node
+{
+    private CharacterState _currentState;
+
+    public void SwitchState<T>() where T : CharacterState
+    {
+        _currentState?.ExitState();
+        _currentState = GetOrCreate<T>();
+        _currentState.EnterState();
+    }
+
+    public override void _Process(double delta)
+        => _currentState?.UpdateState(delta);
+
+    public override void _PhysicsProcess(double delta)
+        => _currentState?.PhysicsUpdateState(delta);
+}
+
+// CharacterState.cs - klasa bazowa stanow
+public abstract partial class CharacterState : Node
+{
+    protected Character characterNode;
+
+    public override void _Ready()
+        => characterNode = GetOwner<Character>();
+
+    protected virtual void EnterState()  { }
+    protected virtual void ExitState()   { }
+    public virtual void UpdateState(double delta)       { }
+    public virtual void PhysicsUpdateState(double delta){ }
+}
+\end{lstlisting}
+
+\section{Stan Śmierci Przeciwnika}
+
+Fragment implementujący wieloetapową logikę śmierci wroga z obsługą questów i animacji.
+
+\begin{lstlisting}[caption={EnemyDeathState.cs - wieloetapowa smierc wroga},label={lst:death}]
+public partial class EnemyDeathState : EnemyState
+{
+    private bool _isDying = false;
+
+    protected override void EnterState()
+    {
+        if (_isDying) return;
+        _isDying = true;
+
+        if (characterNode is Enemy enemy)
+        {
+            enemy.SpawnDrops();
+            if (!string.IsNullOrEmpty(enemy.EnemyId))
+                GameEvents.RaiseEnemyKilled(enemy.EnemyId);
+        }
+
+        characterNode.SetCollisionLayerValue(3, false);
+        characterNode.SetCollisionMaskValue(2, false);
+
+        if (characterNode.AnimationPlayerNode.HasAnimation("Death"))
+        {
+            characterNode.AnimationPlayerNode
+                .AnimationFinished += HandleAnimationFinished;
+            characterNode.AnimationPlayerNode.Play("Death");
+        }
+        else
+        {
+            RemoveEnemy();
+        }
+    }
+
+    private void RemoveEnemy()
+    {
+        if (characterNode.PathNode != null)
+            characterNode.PathNode.QueueFree();
+        else
+            characterNode.QueueFree();
+    }
+}
+\end{lstlisting}
+
+\section{QuestManager - Rejestrowanie Zabójstw}
+
+Fragment systemu questów odpowiedzialny za śledzenie postępu celu Kill. Pełna wersja obsługuje także questy sekwencyjne (pomija cele poza aktywnym indeksem).
+
+\begin{lstlisting}[caption={QuestManager.cs - RegisterKill},label={lst:qm-kill}]
+public void RegisterKill(string enemyId)
+{
+    var questsToComplete = new List<QuestResource>();
+
+    foreach (var quest in ActiveQuests)
+    {
+        if (quest.Objectives == null) continue;
+
+        for (int i = 0; i < quest.Objectives.Length; i++)
+        {
+            var obj = quest.Objectives[i];
+            if (obj == null) continue;
+            if (obj.Type != QuestObjectiveType.Kill) continue;
+            if (obj.TargetId != enemyId) continue;
+
+            // Questy sekwencyjne: aktualizuj tylko aktywny cel
+            if (quest.SequentialObjectives
+                && _seqNextIndex.TryGetValue(quest.Id, out int idx)
+                && idx != i) continue;
+
+            if (!_killProgress.ContainsKey(quest.Id))
+                _killProgress[quest.Id] = new Dictionary<string, int>();
+            if (!_killProgress[quest.Id].ContainsKey(enemyId))
+                _killProgress[quest.Id][enemyId] = 0;
+
+            _killProgress[quest.Id][enemyId]++;
+
+            if (_killProgress[quest.Id][enemyId] >= obj.RequiredAmount)
+            {
+                if (quest.SequentialObjectives)
+                    AdvanceSequentialObjective(quest);
+                else if (!questsToComplete.Contains(quest))
+                    questsToComplete.Add(quest);
+            }
+        }
+    }
+
+    foreach (var quest in questsToComplete)
+        CompleteQuest(quest);
+}
+\end{lstlisting}
+
+\section{EliteBrain - Bandyta Kontekstowy}
+
+\subsection{Wybór Taktyki ($\varepsilon$-greedy)}
+
+\begin{lstlisting}[caption={EliteBrain.SelectTactic},label={lst:eb-select}]
+// Wybor taktyki: e-greedy z uwzglednieniem kontekstu (HP, liczba elit)
+private Tactic SelectTactic(int hpBucket, int eliteBucket)
+{
+    if (_rng.Randf() < Epsilon)
+        return (Tactic)_rng.RandiRange(0, TacticCount - 1);
+
+    int best = 0;
+    float bestVal = QTable[0, hpBucket, eliteBucket];
+    for (int i = 1; i < TacticCount; i++)
+    {
+        float v = QTable[i, hpBucket, eliteBucket];
+        if (v > bestVal)
+        {
+            bestVal = v;
+            best = i;
+        }
+    }
+    return (Tactic)best;
+}
+\end{lstlisting}
+
+\subsection{Aktualizacja Wartości Akcji (Q-learning EMA)}
+
+\begin{lstlisting}[caption={EliteBrain.UpdateTacticValue},label={lst:eb-update}]
+private void UpdateTacticValue(Tactic t, int hpBucket, int eliteBucket, float reward)
+{
+    int idx = (int)t;
+    NTable[idx, hpBucket, eliteBucket]++;
+    float oldQ = QTable[idx, hpBucket, eliteBucket];
+    QTable[idx, hpBucket, eliteBucket] =
+        oldQ + LearningRate * (reward - oldQ);
+}
+\end{lstlisting}
+
+\subsection{Dyskretyzacja Kontekstu}
+
+\begin{lstlisting}[caption={EliteBrain.GetCurrentContext - kubelki HP i liczby elit},label={lst:eb-ctx}]
+public (int hp, int elites) GetCurrentContext()
+{
+    int hp = 2; // High
+    var player = Player.Instance;
+    if (player != null)
+    {
+        var hpStat = player.GetStatResource(Stat.Health);
+        if (hpStat != null)
+        {
+            if (hpStat.StatValue > MaxObservedPlayerHp)
+                MaxObservedPlayerHp = hpStat.StatValue;
+
+            float ratio = MaxObservedPlayerHp > 0.001f
+                ? hpStat.StatValue / MaxObservedPlayerHp : 1f;
+
+            if (ratio < 0.33f)      hp = 0; // Low
+            else if (ratio < 0.66f) hp = 1; // Mid
+            else                    hp = 2; // High
+        }
+    }
+
+    int elites;
+    int alive = GetTree().GetNodesInGroup("elite_enemies").Count;
+    if (alive <= 1)      elites = 0; // 1 elita
+    else if (alive == 2) elites = 1; // 2 elity
+    else                 elites = 2; // 3+ elit
+
+    return (hp, elites);
+}
+\end{lstlisting}
+
+\subsection{Cykl Życia Starcia}
+
+\begin{lstlisting}[caption={EliteBrain.StartEncounter / EndEncounter},label={lst:eb-encounter}]
+private void StartEncounter()
+{
+    _encounterActive   = true;
+    _encounterReward   = 0f;
+    _encounterDuration = 0f;
+
+    (CurrentCtxHp, CurrentCtxElites) = GetCurrentContext();
+    CurrentTactic = SelectTactic(CurrentCtxHp, CurrentCtxElites);
+}
+
+private void EndEncounter()
+{
+    _encounterActive = false;
+
+    float norm = Mathf.Clamp(
+        _encounterReward / Mathf.Max(1.5f, _encounterDuration),
+        -5f, 5f);
+
+    UpdateTacticValue(CurrentTactic,
+                      CurrentCtxHp, CurrentCtxElites, norm);
+
+    Epsilon = Mathf.Max(EpsilonFloor, Epsilon * EpsilonDecay);
+    AdaptParametersFromPlayerModel();
+    SaveBrain();
+}
+\end{lstlisting}
+
+\subsection{Predykcja Pozycji Gracza i Cel Ruchu Elity}
+
+\begin{lstlisting}[caption={EliteBrain.ComputeChaseDestination (fragment)},label={lst:eb-chase}]
+public Vector3 ComputeChaseDestination(int index, int total, Vector3 elitePos)
+{
+    var player = Player.Instance;
+    if (player == null) return elitePos;
+
+    Vector3 pPos = player.GlobalPosition;
+    Vector3 pVel = _havePrevPlayer
+        ? (pPos - _prevPlayerPos) / Mathf.Max(0.016f, (float)_lastDelta)
+        : Vector3.Zero;
+
+    // lead-shot: przewidywana pozycja za LeadTime sekund
+    Vector3 predicted = pPos + LeadTime * pVel;
+
+    switch (CurrentTactic)
+    {
+        case Tactic.Rush:
+            return predicted;
+
+        case Tactic.Kite:
+        {
+            Vector3 away = (elitePos - predicted).Normalized();
+            return predicted + PreferredDistance * away;
+        }
+
+        case Tactic.Flank:
+        {
+            float theta = (index * Mathf.Tau) / Mathf.Max(1, total);
+            Vector3 offset = new Vector3(
+                Mathf.Cos(theta), 0, Mathf.Sin(theta))
+                * PreferredDistance * 0.7f;
+            return predicted + offset;
+        }
+
+        default: // Ambush - wolniejsza aktualizacja celu
+            if ((predicted - _lastAmbushTarget).Length() > 3f)
+                _lastAmbushTarget = predicted;
+            return _lastAmbushTarget;
+    }
+}
+\end{lstlisting}
+
+\section{Zapis Stanu Mózgu AI}
+
+\begin{lstlisting}[caption={EliteBrain.SaveBrain (fragment) - serializacja do JSON},label={lst:eb-save}]
+public void SaveBrain()
+{
+    var dto = new EliteBrainDto
+    {
+        SchemaVersion       = 2,
+        TacticCount         = TacticCount,
+        HpBuckets           = HpBuckets,
+        EliteBuckets        = EliteBuckets,
+        QFlat               = FlattenFloats(QTable),
+        NFlat               = FlattenInts(NTable),
+        Epsilon             = Epsilon,
+        Aggression          = Aggression,
+        Caution             = Caution,
+        PreferredDistance   = PreferredDistance,
+        LeadTime            = LeadTime,
+        MaxObservedPlayerHp = MaxObservedPlayerHp,
+    };
+
+    string json = JsonSerializer.Serialize(dto,
+        new JsonSerializerOptions { WriteIndented = true });
+
+    using var f = FileAccess.Open(BrainPath, FileAccess.ModeFlags.Write);
+    f?.StoreString(json);
+}
+\end{lstlisting}
+
+\section{System Dropów Przeciwnika}
+
+\begin{lstlisting}[caption={Enemy.SpawnDrops - losowanie z Fisher-Yates},label={lst:drops}]
+public void SpawnDrops()
+{
+    if (DropOrbScene == null || Drops == null || Drops.Length == 0)
+        return;
+
+    var rng = new RandomNumberGenerator();
+    rng.Randomize();
+
+    var potions = new Array<ItemResource>();
+    var others  = new Array<ItemResource>();
+
+    foreach (var it in Drops)
+    {
+        if (it == null) continue;
+        if (it.IsConsumable) potions.Add(it);
+        else                 others.Add(it);
+    }
+
+    var droppedOther  = RollOneFromList(others,  rng);
+    var droppedPotion = RollOneFromList(potions, rng);
+
+    if (droppedOther  != null) SpawnOneOrb(sceneRoot, droppedOther,  rng);
+    if (droppedPotion != null) SpawnOneOrb(sceneRoot, droppedPotion, rng);
+}
+
+// Tasowanie Fisher-Yates + sprawdzenie DropChance
+private ItemResource RollOneFromList(Array<ItemResource> list,
+                                     RandomNumberGenerator rng)
+{
+    for (int i = list.Count - 1; i > 0; i--)
+    {
+        int j = rng.RandiRange(0, i);
+        (list[i], list[j]) = (list[j], list[i]);
+    }
+    foreach (var it in list)
+        if (rng.Randf() <= it.DropChance)
+            return it;
+    return null;
+}
+\end{lstlisting}
+
+\section{Globalny System Zdarzeń}
+
+\begin{lstlisting}[caption={GameEvents.cs - wybrane zdarzenia},label={lst:events}]
+public class GameEvents
+{
+    public static event Action<ItemResource, int> OnItemCollected;
+    public static event Action<RewardResource>    OnReward;
+    public static event Action<int>               OnNewEnemyCount;
+    public static event Action<string>            OnEnemyKilled;
+    public static event Action<float>             OnDamageDealt;
+    public static event Action<float>             OnDamageTaken;
+    public static event Action                    OnDungeonEntered;
+    public static event Action                    OnDungeonExited;
+    public static event Action<string>            OnJournalEntry;
+    public static event Action<string, float>     OnToast;
+    public static event Action<float>             OnCameraShake;
+
+    public static void RaiseToast(string msg, float seconds = 2.5f)
+        => OnToast?.Invoke(msg, seconds);
+    public static void RaiseJournalEntry(string text)
+        => OnJournalEntry?.Invoke(text);
+    public static void RaiseEnemyKilled(string id)
+        => OnEnemyKilled?.Invoke(id);
+    // ... pozostale Raise-ery analogicznie
+}
+\end{lstlisting}
+
+\section{Shader Postaci - Tint, Flash i Niewidoczność}
+
+Pełny shader \texttt{character\_\allowbreak hurt.\allowbreak gdshader} obsługuje trzy zachowania: flash trafienia, tint elit i bossa oraz niewidoczność niewidzialnych przeciwników. Ostatni uniform (\texttt{sprite\_\allowbreak visibility}) jest tu kluczowy - \texttt{Sprite3D.\allowbreak Modulate} nie wystarcza w trybie \texttt{unshaded}, bo overlay czyta teksturę niezależnie od \texttt{Modulate}. Instrukcja \texttt{discard} eliminuje fragment z obrazu wynikowego, a nie tylko go przezroczyśli.
+
+\begin{lstlisting}[caption={Shaders/character\_hurt.gdshader - fragment() z tintem i niewidocznoscia},label={lst:shader},language={}]
+shader_type spatial;
+render_mode unshaded, cull_disabled, depth_draw_opaque;
+
+uniform sampler2D tex;
+uniform float     hurt_flash         : hint_range(0, 1) = 0.0;
+uniform float     elite_tint_strength = 0.0;
+uniform vec3      elite_tint_color    = vec3(0.82, 0.58, 1.12);
+// 0 = niewidzialny sprite (np. InvisibleEnemy), 1 = pelna widocznosc
+uniform float     sprite_visibility   = 1.0;
+
+void fragment() {
+    vec4 color = texture(tex, UV);
+    ALPHA = color.a * sprite_visibility;
+
+    // sprite_visibility blisko zera -> calkowicie usun fragment
+    if (sprite_visibility < 0.01) {
+        discard;
+    }
+
+    // Tint elit / bossa (ten sam mechanizm, inna paleta)
+    if (elite_tint_strength > 0.001) {
+        vec3 tinted = color.rgb * elite_tint_color;
+        color.rgb  = mix(color.rgb, tinted, elite_tint_strength);
+    }
+
+    // Flash czerwieni po trafieniu
+    color.rgb = mix(color.rgb, vec3(1.0, 0.15, 0.15), hurt_flash);
+
+    ALBEDO = color.rgb;
+}
+\end{lstlisting}
+
+\section{Radar - Detekcja Niewidzialnych w Półkuli}
+
+Fragment radaru, w którym co klatkę fizyki zbierane są ciała w \texttt{Area3D}, filtrowane do \texttt{InvisibleEnemy} i sprawdzane warunkiem górnej półkuli. Sygnały \texttt{BodyEntered}/\texttt{BodyExited} przy szybkim przekraczaniu progu okazały się zawodne, stąd przejście na \texttt{Get\allowbreak Overlapping\allowbreak Bodies()} z osobnym \texttt{HashSet}-em ,,kto był w środku w poprzedniej klatce".
+
+\begin{lstlisting}[caption={Radar.cs - akumulacja czasu w polkuli (skrocone)},label={lst:radar}]
+public override void _PhysicsProcess(double delta)
+{
+    if (RotatingDish != null)
+        RotatingDish.RotateY((float)delta * DishRotationSpeed);
+
+    if (DetectionArea == null) return;
+
+    var insideNow = new HashSet<InvisibleEnemy>();
+
+    foreach (var body in DetectionArea.GetOverlappingBodies())
+    {
+        if (body is not InvisibleEnemy inv || inv.IsRevealed) continue;
+        if (!IsInsideHemisphere(inv.GlobalPosition)) continue;
+
+        insideNow.Add(inv);
+        inv.AccumulateRadarTime(delta);  // wewn. trigger Reveal() po 3 s
+    }
+
+    // ci, ktorzy w tej klatce wyszli z polkuli - reset
+    foreach (var inv in _insideLastFrame)
+        if (!insideNow.Contains(inv))
+            inv.ResetRadarAccumulation();
+
+    _insideLastFrame.Clear();
+    foreach (var inv in insideNow)
+        _insideLastFrame.Add(inv);
+}
+
+private bool IsInsideHemisphere(Vector3 worldPos)
+{
+    Vector3 local = worldPos - GlobalPosition;
+    if (local.LengthSquared() > DetectionRadius * DetectionRadius) return false;
+    return local.Y >= -0.35f;  // gorna polowa + tolerancja na nierownosci podlogi
+}
+\end{lstlisting}
+
+\section{Minimapa - Maska Kołowa w \texttt{canvas\_item}}
+
+Mapa renderuje się w \texttt{SubViewport} i przechodzi przez prosty shader na \texttt{TextureRect}-ie wyświetlającym tę teksturę. \texttt{smoothstep} daje miękką krawędź, a wartości progowe dobrałem tak, żeby zawartość pokrywała się z wewnętrznym pierścieniem ramki minimapy.
+
+\begin{lstlisting}[caption={Shaders/minimap\_mask.gdshader - maska kolowa},label={lst:mini-mask},language={}]
+shader_type canvas_item;
+
+uniform sampler2D source;
+
+void fragment() {
+    vec4 c = texture(source, UV);
+    float d = distance(UV, vec2(0.5));
+    float mask = 1.0 - smoothstep(0.395, 0.412, d);
+    COLOR = vec4(c.rgb, c.a * mask);
+}
+\end{lstlisting}
+
+\section{Serializacja Autosave'a}
+
+\begin{lstlisting}[caption={SaveGameService - struktury DTO dla autosave},label={lst:save}]
+public class AutosaveDto
+{
+    public int   SaveVersion         { get; set; }
+    public float Px { get; set; }
+    public float Py { get; set; }
+    public float Pz { get; set; }
+    public float BaseHealth          { get; set; }
+    public float BaseStrength        { get; set; }
+    public int   Gold                { get; set; }
+    public int   Experience          { get; set; }
+    public List<InvSlotDto>          Inventory        { get; set; } = new();
+    public List<EquipSlotSaveDto>    EquipmentSlots   { get; set; }
+    public List<string>              ActiveQuestPaths { get; set; } = new();
+    public List<string>              CompletedQuestPaths { get; set; } = new();
+    public List<KillProgDto>         KillProgress     { get; set; } = new();
+    public List<QuestSeqProgDto>     QuestSeqProgress { get; set; } = new();
+    public int  DungeonRunsCompleted   { get; set; }
+    public bool DungeonRelicEverGranted{ get; set; }
+}
+
+public class InvSlotDto
+{
+    public string Path              { get; set; }
+    public int    Count             { get; set; }
+    public int    ItemUpgradeLevel  { get; set; }
+    public string ItemDisplayName   { get; set; }
+    public int    ItemAttackBonus   { get; set; }
+    public int    ItemDefenseBonus  { get; set; }
+    public int    ItemSpeedBonus    { get; set; }
+}
+\end{lstlisting}

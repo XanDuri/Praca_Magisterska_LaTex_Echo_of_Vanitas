@@ -1,0 +1,87 @@
+% Load your needed packages and other commands of yours here:
+%\usepackage{} % ... note that old .sty files can be included here
+\usepackage[T1]{fontenc} % Enable T1 font encoding for Polish diacritics
+
+% Add your packages here
+\usepackage[firstpage=true]{background}
+\backgroundsetup{scale=1, angle=0, opacity=.1, contents ={
+\includegraphics[width=14cm]{MBZUAI-Blue.eps}
+} }
+
+
+\setsecnumdepth{subsubsection}
+\maxtocdepth{subsubsection}
+
+%--------------------------------------------------------------------------
+% Do NOT edit the rest of the preample UNLESS YOU KNOW WHAT YOU'RE DOING!
+%--------------------------------------------------------------------------
+
+\ifthenelse{\boolean{PrintVersion}}{
+\usepackage[top=1in,bottom=1in,left=0.75in,right=1.25in]{geometry}   % For twoside document
+}{
+\usepackage[top=1in,bottom=1in,left=0.75in,right=1.25in]{geometry}   % For oneside document
+}
+
+\usepackage{amsmath,amssymb,amstext} % Lots of math symbols and environments
+\usepackage{graphicx} % For including graphics 
+
+\usepackage{nomentbl} 
+\makenomenclature 
+
+\usepackage{ifpdf}
+
+\newcommand{\href}[1]{#1} % does nothing, but defines the command so the
+    % print-optimized version will ignore \href tags (redefined by hyperref pkg).
+%\newcommand{\texorpdfstring}[2]{#1} % does nothing, but defines the command
+% Anything defined here may be redefined by packages added below...
+
+
+% Hyperlinks make it very easy to navigate an electronic document.
+% In addition, this is where you should specify the thesis title
+% and author as they appear in the properties of the PDF document.
+% Use the "hyperref" package 
+% N.B. HYPERREF MUST BE THE LAST PACKAGE LOADED; ADD ADDITIONAL PKGS ABOVE
+\usepackage[\ifpdf pdftex,\fi pagebackref=false]{hyperref} % with basic options
+		% N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
+\ifthenelse{\boolean{PrintVersion}}{   % for improved print quality, change some hyperref options
+\hypersetup{	% override some previously defined hyperref options
+%    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black}
+}{} % end of ifthenelse (no else)
+
+
+
+
+\usepackage{etoolbox} % For patching commands
+
+\makeatletter
+% Redefine \tableofcontents to use \section*
+\renewcommand{\tableofcontents}{%
+  \section*{\contentsname}%
+  \@mkboth{\contentsname}{\contentsname}% Set headers
+  % \addcontentsline{toc}{section}{\contentsname}% Add section to TOC
+  \@starttoc{toc}% Generate TOC
+
+}
+
+% Redefine \listoffigures to use \section*
+\renewcommand{\listoffigures}{%
+  \section*{\listfigurename}%
+  \@mkboth{\listfigurename}{\listfigurename}% Set headers
+  % \addcontentsline{toc}{section}{\listfigurename}% Add section to TOC
+  \@starttoc{lof}% Generate LOF
+}
+
+% Redefine \listoftables to use \section*
+\renewcommand{\listoftables}{%
+  \section*{\listtablename}%
+  \@mkboth{\listtablename}{\listtablename}% Set headers
+  % \addcontentsline{toc}{section}{\listtablename}% Add section to TOC
+  \@starttoc{lot}% Generate LOT
+}
+
+
+

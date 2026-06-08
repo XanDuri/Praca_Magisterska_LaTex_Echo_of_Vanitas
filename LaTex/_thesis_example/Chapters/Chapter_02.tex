@@ -1,0 +1,93 @@
+% Some LaTeX commands I define for my own nomenclature.
+\newcommand{\package}[1]{\textbf{#1}}
+\newcommand{\cmmd}[1]{\textbackslash\texttt{#1}}
+
+%======================================================================
+\chapter{Przegląd Literatury i Technologii}
+%======================================================================
+
+Niniejszy rozdział zawiera przegląd literatury oraz technologii związanych z projektowaniem i implementacją gier komputerowych, ze szczególnym uwzględnieniem gier RPG, architektury silników gier oraz wzorców projektowych stosowanych w grach 2.5D.
+
+\section{Projektowanie Gier – Game Design}
+%----------------------------------------------------------------------
+
+Projektowanie gier komputerowych jest dziedziną łączącą elementy inżynierii oprogramowania, psychologii, narracji i sztuki. Salen i Zimmerman \cite{salen2004rules} definiują grę jako system, w którym gracze angażują się w sztuczny konflikt, zdefiniowany przez reguły, skutkujący mierzalnym wynikiem. Gry RPG (\textit{Role-Playing Games}) stanowią jeden z najstarszych i najbardziej rozbudowanych gatunków, cechujący się systemem statystyk postaci, narracyjnymi wyborami oraz stopniowym rozwojem bohatera.
+
+Crawford \cite{crawford2003chris} podkreśla, że interaktywność jest fundamentem gier – odróżnia je od biernych mediów takich jak film czy literatura. W kontekście \textit{Echoes of Vanitas} interaktywność przejawia się w systemie questów, wyborach ekwipunku oraz podejmowaniu decyzji bojowych przez gracza.
+
+\section{Silniki Gier – Przegląd}
+%----------------------------------------------------------------------
+
+Silnik gry to zestaw bibliotek i narzędzi deweloperskich umożliwiający tworzenie gier bez konieczności implementowania niskopoziomowych systemów renderowania, fizyki czy dźwięku od podstaw \cite{gregory2018game}.
+
+\subsection{Unity}
+
+Unity jest jednym z najpopularniejszych silników gier na świecie, wspierającym platformy 2D, 3D oraz VR/AR. Używa języków C\# i pozwala na tworzenie gier na ponad 25 platform. Jego popularność wśród developerów indie wynika z rozbudowanego Asset Store oraz obszernej dokumentacji \cite{haas2014history}.
+
+\subsection{Unreal Engine}
+
+Unreal Engine 5, rozwijany przez Epic Games, jest znany z fotorealistycznego renderowania poprzez technologię Nanite i Lumen. Używa języka C++ oraz systemu wizualnego skryptowania Blueprints. Stosowany głównie w produkcjach AAA, jest jednak coraz częściej używany przez studia indie \cite{sherrod2007game}.
+
+\subsection{Godot Engine}
+
+Godot jest silnikiem open-source wydanym na licencji MIT, co oznacza brak opłat licencyjnych i pełną własność kodu. Wersja 4, użyta w niniejszym projekcie, wprowadza silnik renderowania \textit{Forward Plus}, obsługę C\# przez .NET 6+, nowy system nawigacji oraz GDExtension do rozszerzeń natywnych \cite{godot4docs}. Zaletą Godot jest lekka architektura oparta na drzewie węzłów (\textit{SceneTree}), intuicyjna hierarchia scen oraz wbudowany edytor animacji.
+
+\section{Wzorce Projektowe w Grach}
+%----------------------------------------------------------------------
+
+Wzorce projektowe (\textit{design patterns}) to sprawdzone rozwiązania typowych problemów inżynierii oprogramowania \cite{gamma1994design}. W kontekście gier komputerowych szczególne zastosowanie mają:
+
+\subsection{Maszyna Stanów (State Machine)}
+
+Maszyna stanów (\textit{Finite State Machine, FSM}) to jeden z fundamentalnych wzorców w projektowaniu AI dla gier \cite{millington2009ai}. Definiuje zestaw stanów, w jakich może znajdować się obiekt (np. postać), oraz reguły przejść między nimi. W \textit{Echoes of Vanitas} maszyna stanów jest stosowana zarówno dla gracza (stany: idle, ruch, atak, dash, śmierć), jak i dla każdego przeciwnika (stany: idle, patrol, pościg, atak, ogłuszenie, śmierć).
+
+\subsection{Singleton}
+
+Wzorzec Singleton gwarantuje, że dana klasa ma dokładnie jedną instancję w aplikacji oraz zapewnia globalny punkt dostępu do tej instancji \cite{gamma1994design}. W projekcie singletony wykorzystywane są dla \texttt{QuestManager}, \texttt{Player} oraz \texttt{EliteBrain}, co umożliwia łatwy dostęp do tych systemów z dowolnego miejsca w kodzie.
+
+\subsection{System Zdarzeń (Event System)}
+
+System zdarzeń (wzorzec \textit{Observer}) pozwala na luźne powiązanie komponentów systemu. Zdarzenia emitowane są przez jeden obiekt, a obsługiwane przez wiele subskrybentów bez potrzeby bezpośrednich odwołań \cite{nystrom2014game}. W projekcie system zdarzeń (\texttt{GameEvents}) używany jest do komunikacji między: pokonaniem wroga a licznikiem, zdobyciem przedmiotu a interfejsem, ukończeniem questu a menu questów.
+
+\subsection{Wzorzec Komponent (Component Pattern)}
+
+Architektura komponentowa, natywna dla Godot, polega na składaniu obiektów gry z niezależnych, wymiennych komponentów \cite{nystrom2014game}. Każdy węzeł Godot (Node) może posiadać dołączone skrypty, kolizje, animacje i inne komponenty, co promuje ponowne użycie kodu.
+
+\section{Sztuczna Inteligencja w Grach}
+%----------------------------------------------------------------------
+
+AI w grach różni się od klasycznej AI – celem nie jest optymalne rozwiązanie problemu, lecz tworzenie wiarygodnych, angażujących zachowań postaci \cite{millington2009ai}. W \textit{Echoes of Vanitas} AI przeciwników oparte jest na hierarchicznej maszynie stanów. Każdy wróg posiada:
+
+\begin{itemize}
+    \item \textbf{Stan patrolowania} – ruch wzdłuż zdefiniowanej ścieżki (Path3D),
+    \item \textbf{Stan pościgu} – śledzenie gracza w zasięgu wykrycia,
+    \item \textbf{Stan ataku} – wykonywanie ataków w zasięgu walki,
+    \item \textbf{Stan ogłuszenia} – reakcja na trafienie przez gracza,
+    \item \textbf{Stan śmierci} – animacja i usunięcie z planszy.
+\end{itemize}
+
+Dla elitarnych przeciwników (\textit{Elite Enemies}) zaimplementowano dodatkowy system \textit{EliteBrain} – mechanizm uczenia adaptacyjnego, który monitoruje liczbę pokonanych elit i dostosowuje parametry kolejnych (odległość preferowaną, agresywność, ostrożność).
+
+\section{Systemy RPG – Ekwipunek i Questy}
+%----------------------------------------------------------------------
+
+Systemy ekwipunku i zadań są fundamentem gatunku RPG. Schell \cite{schell2008art} opisuje ekwipunek jako mechanikę, która pozwala graczowi personalizować postać i czuć progresję. System questów natomiast nadaje graczowi cel i strukturę narracyjną \cite{salen2004rules}.
+
+W \textit{Echoes of Vanitas}:
+\begin{itemize}
+    \item \textbf{System ekwipunku} oparty jest na architekturze zasobów Godot (\texttt{Resource}) – przedmioty definiowane są jako pliki \texttt{.tres}, co umożliwia ich edycję bezpośrednio w edytorze,
+    \item \textbf{System questów} używa wzorca Observer – \texttt{QuestManager} subskrybuje zdarzenia z całego świata gry i aktualizuje postęp zadań,
+    \item \textbf{Cel quests Kill} łączy oba systemy: pokonanie wroga z danym \texttt{EnemyId} inkrementuje licznik w odpowiednim queście i automatycznie go kończy po osiągnięciu wymaganej liczby.
+\end{itemize}
+
+\section{Środowisko 2.5D}
+%----------------------------------------------------------------------
+
+Termin \textit{2.5D} odnosi się do gier, w których trójwymiarowe obiekty renderowane są w sposób dający efekt płaskiej perspektywy bocznej lub izometrycznej \cite{toftedahl2019taxonomy}. Umożliwia to:
+\begin{itemize}
+    \item Większą głębię wizualną niż czyste 2D,
+    \item Prostsze projektowanie poziomów niż pełne 3D,
+    \item Zachowanie klasycznej mechaniki platformówki 2D przy bogatej oprawie wizualnej.
+\end{itemize}
+
+W projekcie środowisko 3D renderowane jest przy użyciu kamery ortogonalnej, a postać gracza porusza się w przestrzeni 3D z ograniczoną swobodą – efektywnie na płaszczyźnie 2D. Renderer \textit{Forward Plus} w Godot 4 zapewnia wysoką jakość oświetlenia i cieni, co wzbogaca klimat środowiska 2.5D.

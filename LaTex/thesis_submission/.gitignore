@@ -1,0 +1,17 @@
+﻿build/
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.nlo
+*.nls
+*.synctex.gz
+build.log
+*.import

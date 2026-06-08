@@ -1,0 +1,334 @@
+% An appendix
+%======================================================================
+
+\part*{APPENDICES}
+
+\chapter{Proof of Concept - Stan Gry}
+\label{appA}
+
+Ten dodatek pokazuje, w jakim stanie znajduje się gra w momencie składania pracy. Jest to żywy build, nie projekt na papierze - każdy z opisanych systemów uruchamia się w realnej sesji, a większość zrzutów ekranu pochodzi z mojego rozegrania w trakcie końcowych testów regresji.
+
+\section{Parametry Techniczne}
+
+\begin{itemize}
+    \item \textbf{Silnik}: Godot 4.x, renderer Forward Plus,
+    \item \textbf{Język}: C\# (.NET 8),
+    \item \textbf{Rozdzielczość}: 1920$\times$1080,
+    \item \textbf{Platforma}: Windows (PC),
+    \item \textbf{Pliki kodu}: ponad 70 plików \texttt{.cs} w katalogu \texttt{Scripts/},
+    \item \textbf{Sceny Godot}: ponad 30 plików \texttt{.tscn} w katalogu \texttt{Scenes/},
+    \item \textbf{Serializacja zapisu}: \texttt{System.Text.Json},
+    \item \textbf{Kontrola wersji}: Git (repozytorium lokalne).
+\end{itemize}
+
+\section{Zrealizowane Mechaniki}
+
+\subsection{Hub Świata (Katakumby)}
+Lokacja startowa stanowiąca hub gry. Mroczne korytarze z oświetleniem punktowym, NPC-dawca questa (Labrador Rycerz), brama wejściowa do lochu. Środowisko 3D renderowane w 2.5D.
+
+\subsection{Proceduralny Loch}
+Trzy warianty układu (różna liczba pokoi i paleta świateł) generowane algorytmem \textit{drunkard's walk} na siatce $9 \times 9$. Losowane modyfikatory runu: RichCoins, HeavyElites, Gloom. Spawny wrogów z wspólnym balansem HP/siły, elit i bossa w pokoju \texttt{Boss}, do trzech skrzyń, 1-2 radarów, portal wyjścia w pokoju startowym. Klucz questowy z \texttt{LockedCabinet} w hubie; relikt przy pierwszym wyjściu z lochu.
+
+\subsection{Postać Gracza}
+\begin{itemize}
+    \item Ruch w czterech kierunkach (WASD),
+    \item Atak (Spacja) z hitboxem i obrażeniami,
+    \item Dash/unik (Shift),
+    \item Statystyki: HP, Strength, Gold, EXP,
+    \item System ekwipunku: 20 slotów inventory + 5 slotów wyposażenia,
+    \item Ulepszanie przedmiotów przez scalanie A+B (do \texttt{+MaxUpgradeLevel}),
+    \item Ekran śmierci po utracie HP.
+\end{itemize}
+
+\subsection{Przeciwnicy}
+\begin{itemize}
+    \item \textbf{Zwykły wróg}: pełna maszyna stanów AI (idle, patrol, pościg, atak, ogłuszenie, śmierć),
+    \item \textbf{Elita}: rozszerzona wersja z hive-mindem \texttt{EliteBrain} (kontekstowy bandyta, predykcja ruchu, shaderowy tint fioletu),
+    \item \textbf{Boss}: wróg o skali 1,5$\times$ z czerwonym tintem, dashem i bombami obszarowymi (tylko w \texttt{ChaseArea}, \texttt{TargetsPlayerOnly}) w pokoju \texttt{Boss},
+    \item \textbf{Niewidzialny}: wróg ukryty do momentu ujawnienia przez radar (3~s w polu wykrywania); na podłodze rysuje subtelny okrągły cień,
+    \item System dropów z pulą konsumowalnych i pozostałych przedmiotów,
+    \item Animacja śmierci, usunięcie z planszy, aktualizacja licznika w HUD.
+\end{itemize}
+
+\subsection{Radar i Wykrywanie Niewidzialnych}
+\begin{itemize}
+    \item Półkulista strefa wykrywania (\texttt{SphereMesh} z \texttt{is\_hemisphere=true}, promień 8~m),
+    \item Płaska podstawa półkuli leżąca na podłodze; korzeń radaru zakopany 5~cm pod warstwą tekstury podłogi,
+    \item Detekcja per-klatka fizyki przez \texttt{Area3D.GetOverlappingBodies()} z \texttt{HashSet}-em ,,kto był w środku w poprzedniej klatce",
+    \item Próg ujawnienia 3~s; po przekroczeniu \texttt{Reveal()} przełącza shader na pełną widoczność i emituje toast,
+    \item Spawn 1-2 radarów na loch w losowych pokojach typu \texttt{Normal}/\texttt{Treasure},
+    \item Sprite radaru z obrotową misą (\texttt{DishRotationSpeed = 1{,}2}~rad/s).
+\end{itemize}
+
+\subsection{Minimapa}
+\begin{itemize}
+    \item Renderowanie w \texttt{SubViewport} (\texttt{MinimapSize}~$\times$~\texttt{MinimapSize}~px),
+    \item Wyświetlanie przez \texttt{TextureRect} ze shaderem \texttt{canvas\_item} liczącym maskę kołową \texttt{1 - smoothstep(0.395, 0.412, d)},
+    \item Sprite'y pokoi dobierane na podstawie konfiguracji drzwi (5 grafik źródłowych $\times$ 4 obroty = 16 kombinacji),
+    \item Dynamiczne ikony znajdziek (skrzynie, monety, portal startowy) odświeżane co klatkę,
+    \item Kropki przeciwników z rozróżnieniem typu po grupie Godot (zwykli 12~px, elity 13~px, niewidzialni 13~px, boss 16~px),
+    \item Tryb \textit{Gloom}: \texttt{Modulate (0,48; 0,50; 0,56)} dla mapy i przygaszona kropka gracza.
+\end{itemize}
+
+\subsection{Adaptacyjna AI (\texttt{EliteBrain})}
+\begin{itemize}
+    \item Contextual multi-armed bandit $\varepsilon$-greedy (4 taktyki $\times$ 9 kontekstów = 36 ramion),
+    \item On-line Q-learning z EMA ($\alpha = 0{,}12$, $\varepsilon_0 = 0{,}35$, $\varepsilon_\text{floor} = 0{,}05$),
+    \item Model gracza (EMA prędkości, wycofywania, DPS),
+    \item Predykcja pozycji gracza z adaptacyjnym \texttt{LeadTime},
+    \item Adaptacja \texttt{Aggression}, \texttt{Caution}, \texttt{PreferredDistance},
+    \item Persystencja stanu w \texttt{user://brain.json} z wersjonowaniem schematu,
+    \item Debug HUD (\texttt{F3}) pokazujący aktualny stan AI.
+\end{itemize}
+
+\subsection{System Questów}
+\begin{itemize}
+    \item Quest poboczny \textit{Clean the Storage} (Kill $N$ wrogów \texttt{Roach}) od NPC startowego,
+    \item Sekwencyjny quest główny \textit{Pętla Vanitas} (klucz $\rightarrow$ głębia $\rightarrow$ relikt $\rightarrow$ rozmowa ze strażnikiem),
+    \item Typy celów: Kill, Collect, ReachArea, Talk,
+    \item Menu questów z listą aktywnych/ukończonych i panelem szczegółów,
+    \item Dziennik z narracyjnymi wpisami po każdym kroku questa głównego,
+    \item Nagrody (złoto, EXP, przedmioty) po ukończeniu.
+\end{itemize}
+
+\subsection{Mini-Gry (5 typów)}
+\begin{itemize}
+    \item \textbf{Lockpick} - łamanie zamka przez łapanie ruchomego wskaźnika,
+    \item \textbf{PipePuzzle} - łączenie rur rotacją segmentów,
+    \item \textbf{BlockFit} - układanie kształtów w dopasowania,
+    \item \textbf{BlockMaze} - przesuwanie klocka po labiryncie,
+    \item \textbf{LightSequence} - zapamiętywanie i odtwarzanie sekwencji kolorów.
+\end{itemize}
+
+\subsection{System Zapisu Gry}
+\begin{itemize}
+    \item Autosave w formacie JSON (\texttt{user://autosave.json}),
+    \item Wersjonowanie schematu (\texttt{SaveVersion}),
+    \item Snapshot ulepszeń przedmiotów w \texttt{InvSlotDto},
+    \item Osobny plik stanu AI (\texttt{user://brain.json}) z wersjonowaniem,
+    \item Automatyczny save: po wejściu/wyjściu z lochu, po ukończeniu questa, po zapisie w strefie bezpiecznej,
+    \item Ekran startowy z opcjami \textit{Nowa gra} / \textit{Kontynuuj}.
+\end{itemize}
+
+\subsection{Interfejs Użytkownika}
+\begin{itemize}
+    \item \textbf{HUD}: pasek HP, siła, licznik wrogów, modyfikator runu, loading overlay,
+    \item \textbf{Menu} (\texttt{I}): Questy, Ekwipunek, Księga, Statystyki, Ustawienia,
+    \item \textbf{Drag-and-drop} ekwipunku, sloty scalania i ulepszania,
+    \item \textbf{Toasty zdarzeń}: ulepszenia, zapisy, zdobycia rzadkich przedmiotów, narracja, podsumowanie wyprawy,
+    \item \textbf{Debug HUD AI} (\texttt{F3}),
+    \item \textbf{Ekrany}: Start, Pauza, Wygrana, Przegrana.
+\end{itemize}
+
+\subsection{Feedback Walki}
+\begin{itemize}
+    \item Hit-stop (0{,}04$\times$ czas na 4 klatki przy trafieniu),
+    \item Flash ekranu (czerwony - obrażenia, zielony - rzadki przedmiot),
+    \item Drżenie kamery (\texttt{OnCameraShake}),
+    \item Shader \texttt{character\_hurt} - flash trafienia oraz tint elit.
+\end{itemize}
+
+\section{Galeria Zrzutów Ekranu}
+
+Zrzuty w tym podrozdziale pochodzą z mojej własnej sesji testowej na buildzie składanym razem z pracą. Pogrupowałem je tematycznie: rozgrywka, interfejs, proceduralny loch, debugowy podgląd AI oraz mini-gry. Wszystkie widoczne tu postaci, ikony i elementy interfejsu narysowałem samodzielnie w programie Clip Studio Paint - nie korzystałem z gotowych paczek graficznych ani generatorów. Każdy rysunek opatrzyłem podpisem wyjaśniającym, co dokładnie przedstawia i którą mechanikę ilustruje.
+
+\subsection{Rozgrywka}
+
+Poniższe zrzuty pokazują podstawową pętlę gry: od ekranu startowego, przez hub świata, po walkę w lochu i nakładkę HUD. Sprite postaci gracza (Nietoperz Złodziej) oraz NPC widoczne w tle to moje autorskie grafiki.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{start_screen.png}
+    \caption{Źródło własne: Ekran startowy z opcjami \textit{Nowa gra} i \textit{Kontynuuj}.}
+    \label{fig:start-screen}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{player_hub.png}
+    \caption{Źródło własne: Gracz w hubie świata (katakumby z NPC-dawcą questa).}
+    \label{fig:player-hub}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{player_combat.png}
+    \caption{Źródło własne: Walka z wrogami w lochu. Hitbox ataku, animacje.}
+    \label{fig:player-combat}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{hud_overlay.png}
+    \caption{Źródło własne: HUD z paskami statystyk, licznikiem wrogów i aktywnym modyfikatorem runu.}
+    \label{fig:hud}
+\end{figure}
+
+\subsection{Interfejs Użytkownika}
+
+Interfejs zaprojektowałem tak, aby nie zasłaniał świata gry, a jego ikony i ramki utrzymałem w tym samym ręcznie rysowanym stylu co postaci. Poniżej pokazuję kolejno menu ekwipunku (przed i po wypełnieniu), zakładki questów i statystyk, Księgę z odblokowywaną narracją, ustawienia oraz przykładowy toast zdarzenia.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{menu_eq_empty.png}
+    \includegraphics[width=0.48\textwidth]{menu_eq_full.png}
+    \caption{Źródło własne: Menu ekwipunku - stan pusty i po wypełnieniu. Widoczne sloty wyposażenia i sloty scalania A+B.}
+    \label{fig:menu-eq}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{menu_quests.png}
+    \includegraphics[width=0.48\textwidth]{menu_stats.png}
+    \caption{Źródło własne: Menu questów i statystyk.}
+    \label{fig:menu-quests-stats}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{menu_pages.png}
+    \includegraphics[width=0.48\textwidth]{menu_pages_unlocked_p1.png}
+    \caption{Źródło własne: Zakładka Księga - stan domyślny i po odblokowaniu fragmentów narracji.}
+    \label{fig:menu-book}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{menu_settings.png}
+    \caption{Źródło własne: Menu ustawień (głośność, skala UI, pełny ekran).}
+    \label{fig:menu-settings}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{toast_saved.png}
+    \caption{Źródło własne: Toast informujący o zapisie stanu gry.}
+    \label{fig:toast-saved}
+\end{figure}
+
+\subsection{Proceduralny Loch}
+
+Loch generuje się od nowa przy każdej wyprawie, więc kolejne zrzuty przedstawiają różne przebiegi tego samego algorytmu. Pokazuję wejście do lochu, trzy warianty układu (różna liczba pokoi i kolory świateł), wpływ trzech modyfikatorów runu na wygląd poziomu oraz pokój bossa ze skrzynią nagród.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{dungeon_entrance.png}
+    \caption{Źródło własne: Wejście do proceduralnego lochu.}
+    \label{fig:dungeon-entrance}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.32\textwidth]{dungeon_variant0.png}
+    \includegraphics[width=0.32\textwidth]{dungeon_variant1.png}
+    \includegraphics[width=0.32\textwidth]{dungeon_variant2.png}
+    \caption{Źródło własne: Trzy warianty proceduralnie generowanego lochu (wariant 0, 1 i 2 - różna liczba pokoi i paleta świateł).}
+    \label{fig:dungeon-all-variants}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{modifier_rich_coins.png}
+    \includegraphics[width=0.48\textwidth]{modifier_heavy_elites.png}
+    \caption{Źródło własne: Modyfikatory runu \textit{RichCoins} i \textit{HeavyElites}.}
+    \label{fig:modifiers-1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{modifier_gloom.png}
+    \caption{Źródło własne: Modyfikator runu \textit{Gloom} - redukcja oświetlenia i ograniczenie widoczności.}
+    \label{fig:modifier-gloom}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{boss_room.png}
+    \includegraphics[width=0.48\textwidth]{treasure_chest.png}
+    \caption{Źródło własne: Pokój bossa (\texttt{BossEnemy}) oraz skrzynia nagród.}
+    \label{fig:dungeon-boss-chest}
+\end{figure}
+
+\subsection{Boss, Niewidzialni, Radar i Minimapa}
+
+Ta podsekcja zbiera rozszerzenia dołożone w ostatnim cyklu prac. Boss walczy dashem i bombami obszarowymi w wydzielonym pokoju; niewidzialni przeciwnicy są ukryci shaderem do chwili, gdy radar (półkulista strefa wykrywania) odsłoni ich po trzech sekundach; minimapa renderowana w \texttt{SubViewport} z maską kołową pokazuje pokoje, znajdźki i kropki przeciwników. Mechaniki te opisuję od strony implementacji w rozdziale~\ref{ch:implementacja} (sekcje o bossie, niewidzialnych, radarze i minimapie).
+
+\optshot{03_dungeon/boss_fight.png}{0.8\textwidth}{Źródło własne: walka z bossem - dash i bomby obszarowe aktywne po wejściu gracza w strefę pościgu.}{fig:gal-boss}
+
+\optshot{03_dungeon/invisible_revealed.png}{0.8\textwidth}{Źródło własne: niewidzialny przeciwnik - ukryty (tylko cień na podłodze) oraz ujawniony przez radar.}{fig:gal-invisible}
+
+\optshot{03_dungeon/radar_hemisphere.png}{0.8\textwidth}{Źródło własne: radar z półkulistą strefą wykrywania ustawioną na podłodze lochu.}{fig:gal-radar}
+
+\optshot{03_dungeon/minimap_demo.png}{0.8\textwidth}{Źródło własne: minimapa z maską kołową - pokoje, ikony znajdziek oraz kropki przeciwników z rozróżnieniem typu.}{fig:gal-minimap}
+
+\subsection{Adaptacyjna AI - Debug HUD}
+
+Debugowy podgląd stanu mózgu (klawisz \texttt{F3}) zrobiłem przede wszystkim po to, żeby uczenie AI było widoczne, a nie tylko deklarowane. Zrzuty poniżej zestawiają stan po świeżym uruchomieniu (jednolite wartości $Q$, wysokie $\varepsilon$) ze stanem po kilkunastu starciach, pokazują trzy realizowane taktyki, różne konteksty uczone niezależnie oraz fragment serializowanego pliku \texttt{user://brain.json}. Ilościową analizę tych samych danych w formie krzywych uczenia przedstawiam w sekcji~\ref{sec:rl-analiza}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{ai_hud_fresh.png}
+    \includegraphics[width=0.48\textwidth]{ai_hud_after_fights.png}
+    \caption{Źródło własne: Stan AI (\texttt{F3}) - po uruchomieniu (jednolite wartości Q, wysokie $\varepsilon$) oraz po kilkunastu starciach (zróżnicowane Q, zaadaptowane parametry).}
+    \label{fig:gal-ai-hud-compare}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.32\textwidth]{ai_flank_tactic.png}
+    \includegraphics[width=0.32\textwidth]{ai_rush_tactic.png}
+    \includegraphics[width=0.32\textwidth]{ai_kite_tactic.png}
+    \caption{Źródło własne: AI realizujące taktyki \textit{Flank}, \textit{Rush}, \textit{Kite}. Czwarta taktyka (\textit{Ambush}) ze względu na niskie prawdopodobieństwo wystąpienia w standardowej rozgrywce nie została tu uchwycona w osobnym zrzucie.}
+    \label{fig:ai-tactics}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{ai_context_lowhp.png}
+    \includegraphics[width=0.48\textwidth]{ai_context_manyelites.png}
+    \caption{Źródło własne: Debug HUD dla różnych kontekstów - niskie HP gracza oraz wiele żywych elit. Wartości Q dla tych kontekstów są uczone niezależnie.}
+    \label{fig:ai-contexts}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth,height=0.55\textheight,keepaspectratio]{brain_json_example.png}
+    \caption[Fragment pliku \texttt{user://brain.json}]{Źródło własne: fragment \texttt{user://brain.json} - persystencja stanu AI (\texttt{QFlat}, \texttt{NFlat}, parametry adaptowalne, model gracza).}
+    \label{fig:brain-json}
+\end{figure}
+
+\subsection{Mini-Gry}
+
+Pięć mini-gier osadziłem w interakcjach lochu (skrzynie, zamki, mechanizmy). Każda ma własną grafikę i zasady; poniżej pokazuję wszystkie pięć w trakcie rozwiązywania.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.32\textwidth]{puzzle_lockpick.png}
+    \includegraphics[width=0.32\textwidth]{puzzle_pipe.png}
+    \includegraphics[width=0.32\textwidth]{puzzle_lightsequence.png}
+    \caption{Źródło własne: Mini-gry: Lockpick, Pipe, Light Sequence.}
+    \label{fig:minigames-1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{puzzle_blockfit.png}
+    \includegraphics[width=0.48\textwidth]{puzzle_blockmaze.png}
+    \caption{Źródło własne: Mini-gry: BlockFit, BlockMaze.}
+    \label{fig:minigames-2}
+\end{figure}
+
+\section{Znane Ograniczenia}
+
+Lista poniżej to nie spis wymówek, tylko mapa tego, co mam zamiar dorobić w kolejnej iteracji. Każdy punkt zostawiłem świadomie, kierując się zasadą ,,jedna rzecz mniej, ale ta jedna w pełni'':
+
+\begin{itemize}
+    \item Tylko jedna lokacja-hub (katakumby) plus proceduralny loch. Las, miasto zwierząt, ruiny i pałace zaplanowane w narracji nie weszły do tej wersji.
+    \item Jeden NPC-dawca questów (Labrador Rycerz). Pełnoprawne drzewo dialogowe oraz typ celu \textit{Talk} są przygotowane w architekturze, ale czekają na uzupełnienie treścią.
+    \item System rzutów kością wpływający na rozmowy nie został zaimplementowany - pojawi się razem z drzewem dialogowym.
+    \item Brak warstwy audio (muzyki i efektów). FL Studio jest w planach na kolejny etap.
+    \item AI elit korzysta z dyskretnej tablicy $Q$. Migracja do Deep RL (sieć neuronowa zamiast tablicy, zmienne ciągłe jako kontekst) jest naturalnym kolejnym krokiem.
+    \item Kontekst bandyty ogranicza się do dwóch zmiennych (HP, liczba elit). Świadomie zostawiłem przestrzeń na rozszerzenie o ekwipunek, aktywny modyfikator runu i fazę starcia, gdy zwiększę liczbę przypadków testowych.
+    \item Kolizje gracza z geometrią 3D - sporadyczne utknięcia przy slide i chód ,,w powietrzu'' na nierównościach tła (patrz rozdz.~implementacji, sekcja problemów).
+    \item Elity w taktyce \textit{Kite} przy maksymalnym \texttt{PreferredDistance} mogą kręcić się w miejscu - wymaga martwej strefy na dystansie w \texttt{NavigationAgent3D}.
+\end{itemize}

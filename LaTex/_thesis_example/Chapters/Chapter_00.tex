@@ -1,0 +1,67 @@
+%======================================================================
+\chapter{Wstęp}
+%======================================================================
+
+\section{Opis tematyki}
+%----------------------------------------------------------------------
+
+Celem niniejszej pracy magisterskiej jest zaprojektowanie oraz częściowa implementacja niezależnej gry komputerowej w stylu 2.5D RPG, zatytułowanej \textit{Echoes of Vanitas}. Gra osadzona jest w autorskim świecie fantasy, w którym świat zamieszkują wyłącznie inteligentne, antropomorficzne zwierzęta. Gracz wciela się w rolę Nietoperza Złodzieja – bohatera, który przypadkowo odkrywa tajemniczą księgę zapisaną w zapomnianym, ludzkim języku.
+
+Projekt łączy klasyczne elementy gatunku RPG – takie jak eksploracja, system zadań (questów), walka, ekwipunek oraz interakcja z postaciami niezależnymi – z nowoczesnym podejściem do narracji nieliniowej. Istotną mechaniką rozgrywki jest system nagród i progresji postaci, który wpływa na przebieg interakcji z otoczeniem oraz na statystyki bohatera.
+
+\section{Motywacja i cel pracy}
+%----------------------------------------------------------------------
+
+Projekt ma charakter interdyscyplinarny – łączy zagadnienia z zakresu inżynierii oprogramowania, projektowania gier (\textit{game design}), tworzenia grafiki 2D oraz komponowania narracji interaktywnej. Motywacją do podjęcia tego tematu było pragnienie stworzenia w pełni autorskiej produkcji indie, w której każdy aspekt – od fabuły, przez grafikę, aż po architekturę kodu – wynika z przemyślanych decyzji projektowych autora.
+
+Celami pracy są:
+\begin{itemize}
+    \item Zaprojektowanie i implementacja funkcjonalnego prototypu gry 2.5D RPG w silniku Godot 4 z użyciem języka C\#,
+    \item Opracowanie architektury systemu gry opartej na wzorcach projektowych takich jak maszyna stanów (\textit{State Machine}), wzorzec singleton oraz system zdarzeń,
+    \item Implementacja kluczowych mechanik RPG: systemu questów, ekwipunku, statystyk postaci, AI przeciwników oraz systemu nagród,
+    \item Stworzenie oryginalnej, stylizowanej oprawy graficznej 2D dla środowiska 2.5D,
+    \item Dokumentacja procesu twórczego i technicznego jako podstawa pracy magisterskiej.
+\end{itemize}
+
+\section{Technologia}
+%----------------------------------------------------------------------
+
+W ramach realizacji projektu wykorzystano szereg narzędzi i technologii:
+
+\begin{itemize}
+    \item \textbf{Godot Engine 4.x} – wieloplatformowy silnik gier open-source z obsługą zarówno środowisk 2D, jak i 3D. Wersja 4 wprowadza renderer \textit{Forward Plus} oraz pełną integrację z platformą .NET,
+    \item \textbf{C\# (.NET)} – język programowania użyty do implementacji logiki gry. Umożliwia korzystanie z silnego typowania, klas i interfejsów oraz nowoczesnych wzorców architektonicznych,
+    \item \textbf{Visual Studio Code} – lekkie, rozszerzalne środowisko deweloperskie z wtyczkami dla Godot i C\#,
+    \item \textbf{Clip Studio Paint} – profesjonalne narzędzie do tworzenia grafiki rastrowej i wektorowej, użyte do rysowania postaci, tła i elementów UI,
+    \item \textbf{Blender} – planowane narzędzie do tworzenia modeli 3D środowiska w stylu 2.5D,
+    \item \textbf{FL Studio} – planowane środowisko do produkcji muzyki i efektów dźwiękowych,
+    \item \textbf{Git} – system kontroli wersji użyty do zarządzania kodem źródłowym projektu.
+\end{itemize}
+
+\section{Przegląd podobnych produkcji i narzędzi}
+%----------------------------------------------------------------------
+
+Rynek niezależnych gier RPG 2D i 2.5D jest bogaty w tytuły, które stanowiły inspirację lub punkt odniesienia dla \textit{Echoes of Vanitas}. Do najistotniejszych należą:
+
+\begin{itemize}
+    \item \textbf{Hollow Knight} (Team Cherry, 2017) – platformówka-RPG 2D z bogatym systemem questów, antagonistami o zaawansowanym AI oraz klimatycznym projektem świata,
+    \item \textbf{Hades} (Supergiant Games, 2020) – dynamiczna gra akcji-RPG ze stylizowaną grafiką 2.5D, nagradzana za narrację proceduralną,
+    \item \textbf{Undertale} (Toby Fox, 2015) – RPG 2D ze szczególnym naciskiem na narrację i interakcję z postaciami niezależnymi,
+    \item \textbf{Stardew Valley} (ConcernedApe, 2016) – przykład udanej produkcji solo-indie z kompleksowymi systemami gry.
+\end{itemize}
+
+Spośród silników gier rozważanych w projekcie analizie poddano \textit{Unity} oraz \textit{Unreal Engine 5}. Godot 4 wybrano ze względu na otwartą licencję MIT, brak opłat licencyjnych, lekką architekturę oraz rosnącą społeczność. Do grafiki 2D alternatywami były \textit{Aseprite} (pixel art) oraz \textit{Krita} (malarstwo cyfrowe); wybór padł na Clip Studio Paint z powodu zaawansowanych funkcji rysunku liniowego i zarządzania warstwami.
+
+\section{Struktura pracy}
+%----------------------------------------------------------------------
+
+Niniejsza praca podzielona jest na następujące rozdziały:
+
+\begin{itemize}
+    \item \textbf{Rozdział 1 – Proces Twórczy:} Omawia zarys fabuły, projekt postaci i świata gry, decyzje artystyczne oraz wczesne koncepcje wizualne.
+    \item \textbf{Rozdział 2 – Przegląd Literatury i Technologii:} Zawiera przegląd literatury dotyczącej projektowania gier, architektury silników gier oraz zastosowanych wzorców programistycznych.
+    \item \textbf{Rozdział 3 – Architektura Systemu:} Opisuje strukturę projektu, diagram klas, wzorce projektowe oraz organizację kodu.
+    \item \textbf{Rozdział 4 – Implementacja Mechanik Gry:} Szczegółowo omawia implementację systemu postaci, AI przeciwników, systemu questów, ekwipunku i UI.
+    \item \textbf{Dodatek A – Proof of Concept:} Zrzuty ekranu i demonstracja działającego prototypu.
+    \item \textbf{Dodatek B – Wybrane Fragmenty Kodu:} Kluczowe fragmenty kodu źródłowego z komentarzem.
+\end{itemize}

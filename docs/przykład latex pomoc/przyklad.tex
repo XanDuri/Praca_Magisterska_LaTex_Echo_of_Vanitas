@@ -1,0 +1,317 @@
+%%%% Opcje
+%% wmii --- Wydział Matematyki i informatyki
+%%
+%% Kierunek:
+%%      mat --- Matematyka
+%%      inf --- Informatyka
+%%      fiz Fizyka techniczna
+%%
+%% Poziom studiów (praca):
+%%      mgr --- magisterska
+%%      lic --- licencjacka
+%%      inz --- inżynierska
+
+
+
+
+\documentclass[wmii, inf, mgr]{uwmthesis}
+
+\newcommand{\version}{0.04}
+
+\usepackage[utf8]{inputenc}
+\usepackage[MeX]{polski}
+\usepackage{url}
+
+\date{2018}
+\title{Wykorzystanie Klasy Dokumentu \texttt{uwmthesis} do Pisania Prac Dyplomowych. Wersja~\version}
+\author{Aleksander Denisiuk}
+\etitle{Using the \texttt{uwmthesis} Document Class for Theses. Version~\version}
+\wykonanaw{katedrze Multimediów i Grafiki Komputerowej}
+\ewykonanaw{the Department of Multimedia and Computer Graphics}
+
+\podkierunkiem{prof. zw. dr hab. Wiesławy Promotorskiej-Profesorskiej}
+\epodkierunkiem{prof. zw. dr hab. Wiesława Promotorska-Profesorska}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+\chapter*{Wstęp}
+
+Klasa dokumentów \texttt{uwmthesis} powstała z~myślą dać studentom Wydziału Matematyki i~Informatyki UWM wygodne narzędzie do układania prac dyplomowych. Zakłada się, że użytkownicy nie mają chęci, ani wystarczającej wiedzy dotyczącej składania tekstów, tym nie mniej zależy im na przyzwoitym wyglądzie pracy.
+
+
+Klasa \texttt{uwmthesis} została oparta o~klasę \texttt{mwbk} Marcina Wolińskiego~\cite{Wolinski}, która, z~kolei, jest spolonizowaną wersją klasy standardowej \texttt{book}. W~klasie \texttt{uwmthesis} zostało określono kilka makr, niezbędnych do wygenerowania książki pracy dyplomowej, spełniającej wymagania~\cite{UWM}. Klasy \texttt{uwmthesis}, zarówno jak i~\texttt{mwbk} są w~rozbudowie. To oznacza, między innym, że formatowanie dokumentu z~nową wersją klasy może się zmienić. Jednak zawsze będzie zachowana zgodność z~aktualnymi wymogami na prace dyplomowe.
+
+Klasa~\texttt{mwbk} jest częścią każdej współczesnej popularnej dystrybucji \TeX a, a~więc powinna już być dostępna na komputerze użytkownika. Na przypadek, gdyby to było nie tak, do dystrybucji dołączone są dwa pliki, \texttt{mwbk.cls} oraz \texttt{mwbk12.clo} z~paczki Marcina Wolińskiego, potrzebne dla~\texttt{uwmthesis}. Całość paczki \texttt{mwcls} można legalnie pobrać z~\url{http://marcinwolinski.pl/mwcls.html}.
+
+Celem tego dokumentu jest przedstawienie sposobu wykorzystania klasy~\texttt{uwmthesis} do pisania pracy dyplomowej. Jednocześnie sam dokument został napisany z~użyciem tej klasy i~może być wykorzystany jako szablon dla pracy swojej.
+
+Celem tego dokumentu nie jest wprowadzenie do systemu \TeX. O podstawach \LaTeX a można dowiedzieć się, na przykład, z~\cite{Oetker}.
+
+Zazwyczaj pracę się drukuje jednostronnie na standardowych kartkach rozmiaru~a4. W~szczególnych przypadkach, do wydruku dwustronnego, należy użyć opcji klasy dokumentu~\texttt{twoside}.
+
+
+Niniejsza praca składa się z~trzech rozdziałów. W pierwszym opisane są podstawowe zasady wykorzystania klasy do pisania prac dyplomowych. W drugim rozdziale zostały przedstawione krótkie wnioski oraz pomysły na dalszą rozbudowę tej klasy.
+Ostatni rozdział zawiera historię zmian dokumentu.
+
+Najnowsza wersja tego dokumentu oraz klasy znajduje się na stronie $$\hbox{\url{http://wmii.uwm.edu.pl/~denisjuk/uwm/latex/}}$$
+
+Repozytorium z projektem klasy \texttt{uwmthesis}:
+  $$\hbox{\url{https://bitbucket.org/adenisiuk/uwmthesis/}}$$
+
+Dystrybucja oraz redystrybucja klasy odbywa się na licencji \emph{LaTeX Project Public License,} wersji 1.2 lub późniejszej.
+
+
+\chapter{Wykorzystanie klasy \texttt{uwmthesis}}
+\section{Preambuła}
+
+Typowa preambuła wygląda następująco:
+\begin{verbatim}
+\documentclass[wmii,inf,mgr]{uwmthesis}
+
+\date{2015}
+\title{Wykorzystanie Klasy Dokumentu 
+  do Pisania Prac Dyplomowych}
+\author{Aleksander Denisiuk}
+\etitle{Using of the Document Class for Theses}
+\wykonanaw{katedrze Multimediów i Grafiki Komputerowej}
+\ewykonanaw{the Department of Multimedia and Computer Graphics}
+\podkierunkiem{prof. zw. dr hab. Wiesławy Promotorskiej-Profesorskiej}
+\epodkierunkiem{prof. zw. dr hab. Wiesława Promotorska-Profesorska}
+\end{verbatim}
+
+Klasa dokumentu \texttt{uwmthesis} przyjmuje następujące opcje:
+\begin{enumerate}
+ \item Nazwa wydziału. W tej chwili wspierany jest tylko jeden wydział, \texttt{wmii}, Wydział Matematyki i~Informatyki. Sposoby wykorzystania klasy dla innych wydziałów opisane są w~rozdziale~\ref{inne}.
+ \item Kierunek studiów:
+ \begin{description}
+  \item [\texttt{inf}]--- informatyka,
+  \item [\texttt{mat}]--- matematyka,
+  \item [\texttt{fiz}]--- fizyka techniczna.
+ \end{description}
+\item Rodzaj pracy (poziom studiów):
+ \begin{description}
+  \item [\texttt{mgr}]--- magisterska,
+  \item [\texttt{inz}]--- inżynierska,
+  \item [\texttt{lic}]--- licencjacka.
+ \end{description}
+\item \texttt{twoside}~--- do wydruku dwustronnego.
+\end{enumerate}
+
+\smallbreak
+W następujących obowiązkowych makrach określa się
+\begin{itemize}
+ \item Rok złożenia pracy~--- \verb|\date{}|
+ \item Tytuł pracy~--- \verb|\title{}|
+ \item Tytuł pracy w~języku angielskim~--- \verb|\etitle{}|
+ \item Imię i nazwisko autora pracy~--- \verb|\author{}|
+ \item Nazwa jednostki, w~której praca została wykonana (w~miejscowniku)~--- \verb|\wykonanaw{}|
+ \item Nazwa jednostki, w~której praca została wykonana w języku angielskim~--- \verb|\ewykonanaw{}|
+ \item Tytuł, stopień naukowy a~także imię i~nazwisko promotora pracy (w~dopełniaczu)~--- \verb|\podkierunkiem{}|
+ \item Tytuł, stopień naukowy a~także imię i~nazwisko promotora pracy w~języku angielskim~--- \verb|\epodkierunkiem{}| Zwróćmy uwagę, że w~pracy~\cite{Maslowski} zaleca się nie tłumaczyć tytułów i~stopni naukowych.
+\end{itemize}
+
+
+
+\section{Właściwy dokument}
+Właściwy dokument pisze się zgodnie z~ogólnymi zasadami pisania prac w~\LaTeX u. Największą jednostką podziału logicznego tekstu jest \verb|\chapter|.
+
+\section{Spis treści}
+Spis treści umieszczamy tuż po stronie tytułowej. W taki sposób, początek dokumentu wygląda następująco:
+\begin{verbatim}
+\begin{document}
+\maketitle
+\tableofcontents
+\end{verbatim}
+
+
+\section{Wstęp}
+Każda praca zaczyna się od wstępu. Zazwyczaj rozdziału ,,Wstęp'' się nie numeruje. Odpowiedni kod jest następujący:
+\begin{verbatim}
+\chapter*{Wstęp}
+\end{verbatim}
+
+\section{Bibliografia}
+Zgodnie z~zaleceniami książki~\cite{Osuchowska}, bibliografię umieszczamy po tekście pracy. 
+
+W wymogach~\cite{UWM} nie mówi się o formatowaniu bibliografii. Więc można wprowadzić bibliografię w~zwykły sposób. Na przykład,
+\begin{verbatim}
+\thebibliography{1}
+\bibitem{Oetker}
+  Tobias Oetiker et al., \textit{Nie za krótkie wprowadzenie
+  do systemu \LaTeXe} 2007. 
+  \url{http://www.ctan.org/tex-archive/info/lshort/polish/}
+\bibitem{Osuchowska}
+  Barbara Osuchowska, \textit{Poradnik redaktora i autora.
+  Nauki ścisłe i~technika,} Wydawnictwo PTWK, Warszawa 1988.
+\bibitem{UWM}
+  Uniwersytet Warmińsko-Mazurski. Wydział Matematyki
+  i~Informatyki, \textit{Wytyczne dotyczące pracy dyplomowej,} 2009. 
+\bibitem{Wolinski}
+  Marcin Woliński, \textit{Moje własne klasy dokumentów dla \LaTeXe.
+  Podręcznik użytkownika,} 2009. \url{http://marcinwolinski.pl/mwcls.html}
+\end{verbatim}
+
+Jeżeli chcemy zgrupować literaturę według roczników, używamy polecenia \verb|\bibsep{}|. Powyższy przykład będzie wyglądał w taki sposób:
+\begin{verbatim}
+\thebibliography{1}
+\bibsep{1988}
+\bibitem{Osuchowska}
+  Barbara Osuchowska, \textit{Poradnik redaktora i autora.
+  Nauki ścisłe i~technika,} Wydawnictwo PTWK, Warszawa.
+\bibsep{2007}
+\bibitem{Oetker}
+  Tobias Oetiker et al., \textit{Nie za krótkie wprowadzenie
+  do systemu \LaTeXe}
+  \url{http://www.ctan.org/tex-archive/info/lshort/polish/}
+\bibsep{2009}
+\bibitem{UWM}
+  Uniwersytet Warmińsko-Mazurski. Wydział Matematyki
+  i~Informatyki, \textit{Wytyczne dotyczące pracy dyplomowej.}
+\bibitem{Wolinski}
+  Marcin Woliński, \textit{Moje własne klasy dokumentów dla \LaTeXe.
+  Podręcznik użytkownika,} \url{http://marcinwolinski.pl/mwcls.html}
+\end{verbatim}
+W tym przypadku w~każdej pozycji nie podajemy roku.
+
+
+Należy zwrócić uwagę, że źródła internetowe także powinny mieć autora, nazwę i~datę wydania. Adresy internetowe wygodnie jest wprowadzać za pomocą polecenia \verb|\url{}| z~pakietu~\texttt{url}. Konieczne jest także wskazanie protokołu (\texttt{ftp://}, \texttt{http://}, \texttt{https://}, etc).
+
+Wikipedia jest źródłem wtórnym. Należy unikać odwoływania się do Wikipedii na rzecz źródeł pierwotnych. Przykładowo, zamiast
+\begin{verbatim}
+\bibitem{css}
+  Wikipedia, \tetxit{Kaskadowe arkusze stylów},
+  \url{http://pl.wikipedia.org/wiki/Kaskadowe_arkusze_styl%C3%B3w}
+\end{verbatim}
+należy użyć
+\begin{verbatim}
+\bibitem{css}
+  W3C, \tetxit{Cascading Style Sheets, level 1}, 2008,
+  \url{http://www.w3.org/TR/REC-CSS1/}
+\end{verbatim}
+
+\section{Podziękowania}
+Rozdział',,Podziękowania'' jest opcjonalny. 
+W~razie potrzeby umieszczamy go w~nienumerowanym rozdziale (\verb|\chapter*|) po bibliografii. Na naszym wydziale wszyscy dyplomanci są wdzięczni swoim promotorom za \emph{nieocenioną opiekę merytoryczną i~wskazówki, bez których\dots} Dlatego w~rozdziale ,,Podziękowania'' zazwyczaj nie wymienia się promotora.
+
+\section{Spisy rysunków, tabel, etc}
+Spisy rysunków, tabel, przyjętych oznaczeń, etc umieszczamy po rozdziale ,,Podziękowania'' (po bibliografii).
+
+\section{Streszczenia}
+Praca powinna zawierać streszczenia w~dwóch językach: polskim i~angielskim.  Należy je umieścić po spisach rysunków, tabel, etc. Dla streszczeń zostały określone dwa środowiska: \texttt{streszczenie}~--- dla streszczenia w~języku polskim oraz \texttt{abstract}~--- dla streszczenia w~języku angielskim.
+
+Przykład streszczeń:
+\begin{verbatim}
+\begin{streszczenie}
+Celem pracy jest opisanie klasy dokumentów \texttt{uwmthesis},
+która pozwala na automatyczne generowanie prac dyplomowych,
+zgodnych z~wymogami, przyjętymi na Wydziale Matematyki
+i~Informatyki UWM w Olsztynie.
+\end{streszczenie}
+
+\begin{abstract}
+The purpose of this document is to present the \texttt{uwmthesis}
+\LaTeX\ document class. This document class can be used for generation
+of theses on the Faculty of Mathematics and Computer Science of
+the UWM in Olsztyn.
+\end{abstract}
+\end{verbatim}
+
+
+\section{Załączniki}
+Załączniki (o ile są) umieszczamy na samym końcu dokumentu.
+
+\section{Ogólne wskazówki}
+\subsection{Modularyzacja}
+Przy napisaniu pracy szczególnie zaleca się umieszczenie każdego rozdziału w~oddzielnym pliku. Plik główny (bez preambuły), w~taki sposób, wyglądał by następująco:
+\begin{verbatim}
+\begin{document}
+  \maketitle
+  \tableofcontents
+  \input{wstep.tex}
+  \input{section1.tex}
+  \input{section2.tex}
+  \input{section3.tex}
+  \input{streszczenie.tex}
+  \input{absract.tex}
+  \input{bibliography.tex}
+\end{document}
+\end{verbatim}
+
+Pliki, zawierające poszczególne składowe pracy kończymy poleceniem~\verb|\endinput|.
+
+
+W powyższym przykładzie można także przy napisaniu drugiego rozdziału wykomentować pozostałe części.
+
+\subsection{Wykorzystanie klasy na innych wydziałach}\label{inne}
+Najlepszym rozwiązaniem jest napisanie do mnie maila z~prośbą o~dodanie wydziału oraz (lub) kierunku studiów. 
+
+Innym sposobem jest dodanie do preambuły kodu:
+\begin{verbatim}
+\makeatletter
+\renewcommand{\wydzi@l}{Wydział Bioinżynierii Zwierząt}
+\renewcommand{\kierun@k}{Zootechnika}
+\renewcommand{\ewydzi@l}{Faculty of Animal Bioengineering}
+\renewcommand{\ekierun@k}{Zootechny}
+\makeatother
+\end{verbatim}
+Zaletą pierwszego sposobu jest, oczywiście, to, że nowa wersja klasy dokumentów zostanie dostępna dla wszystkich.
+
+Dobrym pomysłem jest także zrobić \emph{pull request} na
+  \url{https://bitbucket.org/adenisiuk/uwmthesis/}
+
+\chapter{Podsumowanie i dalsza praca}
+Opracowana klasa dokumentów pozwala na generowanie prac dyplomowych, zgodnych z~wymogami~\cite{UWM}.
+
+Jako dalszy rozwój klasy możliwe jest dodanie wsparcia dla innych wydziałów, umieszczenie loga wydziału na okładce lub dodanie opcjonalnej strony z~informacją o~autorze ze zdjęciem.
+
+\chapter{Historia zmian i~wersji}
+\begin{description}
+ \item [6 lipca 2018:] wersja 0.04. Dodane odstępy na bindowanie, poprawiono część literówek w~przykładzie. Wprowadzona możliwość druku dwustronnego. Wycofano wszystkie kodowania znaków oprócz uft8.
+ \item [18 lutego 2015:] wersja 0.03. Dodano okładkę w~języku angielskim.
+ \item [30 stycznia 2015:] wersja 0.02. Poprawiono błąd, związany z~wyrównaniem nazwy uniwersytetu na okładce. Poprawiono kodowanie znaków w~przykładach.
+ \item [14 września 2013:] wersja 0.01.
+\end{description}
+
+
+
+\thebibliography{1}
+\bibitem{Oetker}
+Tobias Oetiker et al., \textit{Nie za krótkie wprowadzenie
+do systemu \LaTeXe}
+2007. \url{http://www.ctan.org/tex-archive/info/lshort/polish/}
+\bibitem{Osuchowska}
+Barbara Osuchowska, \textit{Poradnik redaktora i autora. Nauki ścisłe i~technika,} Wydawnictwo PTWK, Warszawa 1988.
+\bibitem{UWM}
+Uniwersytet Warmińsko-Mazurski.
+Wydział Matematyki
+i~Informatyki, \textit{Wytyczne dotyczące pracy dyplomowej,}
+2009. \url{http://wmii.uwm.edu.pl/studenci/sprawy-dyplomantow/119-wytyczne-dotyczace-pracy-dyplomowej}
+\bibitem{Wolinski}
+Marcin Woliński, \textit{Moje własne klasy dokumentów dla \LaTeXe. Podręcznik użytkownika,}
+2009. \url{http://marcinwolinski.pl/mwcls.html}
+\bibitem{Maslowski}
+Aleksander Masłowski, \textit{Tłumaczenie tytułów i~stopni naukowych,}
+2006. \url{http://besttext.pl/images/stories/tytuly_stopnie.pdf}
+
+
+\chapter*{Podziękowanie}
+
+Jestem wdzięczy profesorowi Maciejowi Wojtkowskiemu, który inicjował dyskusję o~\TeX u wśród wykładowców naszego wydziału.
+
+
+
+\begin{streszczenie}
+Celem pracy jest opisanie klasy dokumentów \texttt{uwmthesis}, która pozwala na automatyczne generowanie prac dyplomowych, zgodnych z~wymogami, przyjętymi na Wydziale Matematyki i~Informatyki UWM w Olsztynie.
+\end{streszczenie}
+
+\begin{abstract}
+The purpose of this document is to present the \texttt{uwmthesis} \LaTeX\ document class. This document class can be used for generation of theses on the Faculty of Mathematics and Computer Science of the UWM in Olsztyn.
+\end{abstract}
+
+\end{document}

@@ -1,0 +1,165 @@
+\babel@toc {polish}{}\relax 
+\contentsline {chapter}{Spis rysunk\'ow}{xv}{section*.7}%
+\contentsline {chapter}{Wykaz skrótów}{xvii}{section*.9}%
+\contentsline {chapter}{\numberline {1}Wstęp}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Opis tematyki}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Motywacja i cel pracy}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Zakres zrealizowanego systemu}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Technologia}{4}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Przegląd podobnych produkcji}{4}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Struktura pracy}{5}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Proces Twórczy}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Zarys Fabuły}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Projekt Świata Gry}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Koncepcje Postaci}{7}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Główny Bohater - Nietoperz Złodziej}{7}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}NPC - Labrador Rycerz}{7}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Przeciwnik - Insekt}{8}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Wstępny Zarys Stylu Postaci}{10}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Decyzje Artystyczne}{10}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Styl Graficzny}{10}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Animacja Klatka po Klatce}{12}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Interfejs Użytkownika}{12}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Planowanie a Realizacja}{13}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Wczesne Koncepcje z Fazy Planowania}{13}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Zestawienie Założeń ze Stanem Realizacji}{13}{subsection.2.5.2}%
+\contentsline {chapter}{\numberline {3}Przegląd Literatury i Technologii}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Projektowanie Gier - Game Design}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Silniki Gier - Przegląd}{19}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Unity}{20}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Unreal Engine}{20}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Godot Engine}{20}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Wzorce Projektowe w Grach}{20}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Maszyna Stanów (State Machine)}{21}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Singleton}{21}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}System Zdarzeń (Event System)}{21}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Wzorzec Komponent (Component Pattern)}{21}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}Sztuczna Inteligencja w Grach}{22}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Uczenie Wzmocnione - Reinforcement Learning}{22}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Problem Bandyty Wieloramiennego}{23}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Strategia $\varepsilon $-zachłanna}{23}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Contextual Bandit}{23}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Q-learning z Wykładniczym Uśrednianiem (EMA)}{24}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}Modelowanie Gracza i Predykcja}{24}{subsection.3.5.5}%
+\contentsline {section}{\numberline {3.6}Proceduralna Generacja Treści}{25}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Drunkard's Walk w \textit {Echoes of Vanitas}}{25}{subsection.3.6.1}%
+\contentsline {section}{\numberline {3.7}Dynamiczne Dostosowanie Trudności}{25}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Systemy RPG - Ekwipunek, Questy i Progresja}{26}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Serializacja i Trwałość}{27}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Środowisko 2.5D}{27}{section.3.10}%
+\contentsline {chapter}{\numberline {4}Architektura Systemu}{29}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Struktura Projektu}{29}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Hierarchia Scen Godot}{31}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Autoloady (Singletons Globalne)}{31}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Klasa Bazowa Postaci}{32}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Maszyna Stanów}{32}{section.4.4}%
+\contentsline {section}{\numberline {4.5}System Zdarzeń}{33}{section.4.5}%
+\contentsline {section}{\numberline {4.6}System Zasobów (Resources)}{34}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Cykl Życia Sesji}{34}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Zarządzanie Warstwami Kolizji}{35}{section.4.8}%
+\contentsline {chapter}{\numberline {5}Implementacja Mechanik Gry}{36}{chapter.5}%
+\contentsline {section}{\numberline {5.1}System Postaci Gracza}{36}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Stany Gracza}{36}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Statystyki i Ekwipunek}{37}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}System Inventory i Ekwipunku}{37}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Ulepszanie Przedmiotów}{37}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}System Przeciwników}{38}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Stany Przeciwnika}{38}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Logika Śmierci Wroga}{38}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}System Dropów}{39}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Elity i Shader Podświetlenia}{39}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Boss (\texttt {BossEnemy})}{39}{subsection.5.2.5}%
+\contentsline {subsection}{\numberline {5.2.6}Niewidzialni (\texttt {InvisibleEnemy})}{39}{subsection.5.2.6}%
+\contentsline {subsection}{\numberline {5.2.7}Radar (\texttt {Radar})}{40}{subsection.5.2.7}%
+\contentsline {subsubsection}{\numberline {5.2.7.1}Spawn Radarów}{41}{subsubsection.5.2.7.1}%
+\contentsline {section}{\numberline {5.3}Adaptacyjna AI Elitarnych Przeciwników (\texttt {EliteBrain})}{41}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Taktyki}{42}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Kontekst Bandyty}{42}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Wybór Taktyki ($\varepsilon $-greedy)}{42}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Sygnał Nagrody}{43}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Aktualizacja Wartości Akcji}{44}{subsection.5.3.5}%
+\contentsline {subsection}{\numberline {5.3.6}Model Gracza}{45}{subsection.5.3.6}%
+\contentsline {subsection}{\numberline {5.3.7}Adaptacja Parametrów}{45}{subsection.5.3.7}%
+\contentsline {subsection}{\numberline {5.3.8}Predykcja i Cel Ruchu}{46}{subsection.5.3.8}%
+\contentsline {subsection}{\numberline {5.3.9}Cykl Życia Starcia}{47}{subsection.5.3.9}%
+\contentsline {subsection}{\numberline {5.3.10}Persystencja}{47}{subsection.5.3.10}%
+\contentsline {subsection}{\numberline {5.3.11}Debug HUD (F3)}{48}{subsection.5.3.11}%
+\contentsline {subsection}{\numberline {5.3.12}Analiza Procesu Uczenia - Metodyka i Zestawienie}{49}{subsection.5.3.12}%
+\contentsline {paragraph}{Metodyka.}{49}{section*.26}%
+\contentsline {paragraph}{Znaczenie kolumn logu.}{49}{section*.27}%
+\contentsline {paragraph}{Wnioski łączne.}{49}{section*.29}%
+\contentsline {section}{\numberline {5.4}Proceduralna Generacja Lochu}{50}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Algorytm}{50}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Modyfikatory Runu}{50}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Spawny, Skrzynie, Klucz i Relikt}{51}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Balans Walki w Lochu}{51}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Nawigacja}{51}{subsection.5.4.5}%
+\contentsline {subsection}{\numberline {5.4.6}Determinizm}{52}{subsection.5.4.6}%
+\contentsline {section}{\numberline {5.5}System Questów}{52}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Architektura}{52}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Quest Główny - \textit {Pętla Vanitas}}{53}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Mechanika Sekwencyjna}{53}{subsection.5.5.3}%
+\contentsline {section}{\numberline {5.6}Mini-Gry (Puzzle Lockboxes)}{53}{section.5.6}%
+\contentsline {section}{\numberline {5.7}System Zapisu Gry}{54}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Snapshot Ulepszeń}{55}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Zapis Stanu AI}{55}{subsection.5.7.2}%
+\contentsline {section}{\numberline {5.8}Interfejs Użytkownika i Feedback Walki}{55}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Ekran Startowy}{55}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}HUD}{55}{subsection.5.8.2}%
+\contentsline {subsection}{\numberline {5.8.3}Menu (klawisz I)}{56}{subsection.5.8.3}%
+\contentsline {subsection}{\numberline {5.8.4}Toasty Zdarzeń}{56}{subsection.5.8.4}%
+\contentsline {subsection}{\numberline {5.8.5}Podsumowanie Wyprawy}{56}{subsection.5.8.5}%
+\contentsline {subsection}{\numberline {5.8.6}Feedback Walki}{56}{subsection.5.8.6}%
+\contentsline {subsection}{\numberline {5.8.7}Debug HUD AI (F3)}{57}{subsection.5.8.7}%
+\contentsline {subsection}{\numberline {5.8.8}Minimapa}{57}{subsection.5.8.8}%
+\contentsline {subsubsection}{\numberline {5.8.8.1}Sprite'y Pokoi}{57}{subsubsection.5.8.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.8.2}Dynamiczne Ikony}{58}{subsubsection.5.8.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.8.3}Tryb Mroku}{58}{subsubsection.5.8.8.3}%
+\contentsline {section}{\numberline {5.9}Napotkane Problemy i Rozwiązania}{58}{section.5.9}%
+\contentsline {chapter}{\numberline {6}Zakończenie}{62}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Realizacja Założonych Celów}{62}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Wnioski Techniczne}{63}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Ograniczenia Obecnej Wersji}{64}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Kierunki Dalszego Rozwoju}{65}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Podsumowanie}{65}{section.6.5}%
+\contentsline {chapter}{\numberline {A}Proof of Concept - Stan Gry}{69}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Parametry Techniczne}{69}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Zrealizowane Mechaniki}{69}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}Hub Świata (Katakumby)}{69}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}Proceduralny Loch}{70}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Postać Gracza}{70}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.2.4}Przeciwnicy}{70}{subsection.A.2.4}%
+\contentsline {subsection}{\numberline {A.2.5}Radar i Wykrywanie Niewidzialnych}{71}{subsection.A.2.5}%
+\contentsline {subsection}{\numberline {A.2.6}Minimapa}{71}{subsection.A.2.6}%
+\contentsline {subsection}{\numberline {A.2.7}Adaptacyjna AI (\texttt {EliteBrain})}{71}{subsection.A.2.7}%
+\contentsline {subsection}{\numberline {A.2.8}System Questów}{72}{subsection.A.2.8}%
+\contentsline {subsection}{\numberline {A.2.9}Mini-Gry (5 typów)}{72}{subsection.A.2.9}%
+\contentsline {subsection}{\numberline {A.2.10}System Zapisu Gry}{72}{subsection.A.2.10}%
+\contentsline {subsection}{\numberline {A.2.11}Interfejs Użytkownika}{73}{subsection.A.2.11}%
+\contentsline {subsection}{\numberline {A.2.12}Feedback Walki}{73}{subsection.A.2.12}%
+\contentsline {section}{\numberline {A.3}Galeria Zrzutów Ekranu}{73}{section.A.3}%
+\contentsline {subsection}{\numberline {A.3.1}Rozgrywka}{73}{subsection.A.3.1}%
+\contentsline {subsection}{\numberline {A.3.2}Interfejs Użytkownika}{73}{subsection.A.3.2}%
+\contentsline {subsection}{\numberline {A.3.3}Proceduralny Loch}{74}{subsection.A.3.3}%
+\contentsline {subsection}{\numberline {A.3.4}Boss, Niewidzialni, Radar i Minimapa}{76}{subsection.A.3.4}%
+\contentsline {subsection}{\numberline {A.3.5}Adaptacyjna AI - Debug HUD}{77}{subsection.A.3.5}%
+\contentsline {subsection}{\numberline {A.3.6}Mini-Gry}{78}{subsection.A.3.6}%
+\contentsline {section}{\numberline {A.4}Znane Ograniczenia}{78}{section.A.4}%
+\contentsline {chapter}{\numberline {B}Wybrane Fragmenty Kodu Źródłowego}{83}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Maszyna Stanów}{83}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Stan Śmierci Przeciwnika}{84}{section.B.2}%
+\contentsline {section}{\numberline {B.3}QuestManager - Rejestrowanie Zabójstw}{85}{section.B.3}%
+\contentsline {section}{\numberline {B.4}EliteBrain - Bandyta Kontekstowy}{86}{section.B.4}%
+\contentsline {subsection}{\numberline {B.4.1}Wybór Taktyki ($\varepsilon $-greedy)}{86}{subsection.B.4.1}%
+\contentsline {subsection}{\numberline {B.4.2}Aktualizacja Wartości Akcji (Q-learning EMA)}{86}{subsection.B.4.2}%
+\contentsline {subsection}{\numberline {B.4.3}Dyskretyzacja Kontekstu}{86}{subsection.B.4.3}%
+\contentsline {subsection}{\numberline {B.4.4}Cykl Życia Starcia}{87}{subsection.B.4.4}%
+\contentsline {subsection}{\numberline {B.4.5}Predykcja Pozycji Gracza i Cel Ruchu Elity}{87}{subsection.B.4.5}%
+\contentsline {section}{\numberline {B.5}Zapis Stanu Mózgu AI}{88}{section.B.5}%
+\contentsline {section}{\numberline {B.6}System Dropów Przeciwnika}{89}{section.B.6}%
+\contentsline {section}{\numberline {B.7}Globalny System Zdarzeń}{90}{section.B.7}%
+\contentsline {section}{\numberline {B.8}Shader Postaci - Tint, Flash i Niewidoczność}{90}{section.B.8}%
+\contentsline {section}{\numberline {B.9}Radar - Detekcja Niewidzialnych w Półkuli}{91}{section.B.9}%
+\contentsline {section}{\numberline {B.10}Minimapa - Maska Kołowa w \texttt {canvas\_item}}{92}{section.B.10}%
+\contentsline {section}{\numberline {B.11}Serializacja Autosave'a}{92}{section.B.11}%
+\contentsline {chapter}{Oświadczenie o wykorzystaniu narzędzi AI}{94}{section*.59}%

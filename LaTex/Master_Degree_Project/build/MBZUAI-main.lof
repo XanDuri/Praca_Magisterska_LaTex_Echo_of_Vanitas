@@ -1,0 +1,50 @@
+\babel@toc {polish}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Źródło własne: Wczesne szkice koncepcyjne i finalny design Nietoperza Złodzieja. Clip Studio Paint.}}{8}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Źródło własne: Szkice koncepcyjne i finalny design Labradora Rycerza. Clip Studio Paint.}}{9}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Źródło własne: projekt przeciwnika-insekta - finalny design, szkice koncepcyjne sylwetki i paleta kolorów. Clip Studio Paint.}}{10}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Źródło własne: Wstępny szkic koncepcyjny postaci niegrywalnych.}}{11}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Źródło własne: wybrane cykle animacji gracza (Nietoperz Złodziej) w formie pasków klatek. Animacja rysowana klatka po klatce w Clip Studio Paint.}}{12}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Źródło własne: wybrane cykle animacji przeciwnika-insekta w formie pasków klatek.}}{13}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Źródło własne: wczesny szkic koncepcji walki (fazy/fale, boss, wypadające przedmioty i serca). Faza planowania.}}{16}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Źródło własne: wczesny szkic HUD rozgrywki (HP, EXP, czary, licznik fal, radar). Faza planowania.}}{17}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Źródło własne: wczesne szkice menu (ekwipunek, mapa, questy, historia) - struktura zakładek przetrwała do finalnej wersji. Faza planowania.}}{18}{figure.caption.19}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Źródło własne: Debug HUD (\texttt {F3}) - stan po starcie gry (jednolite $Q$, wysokie $\varepsilon $) oraz po kilkunastu starciach (rozstęp wartości $Q$, niższe $\varepsilon $). Te same liczby trafiają do wykresów na rys.~\ref {fig:rl-epsilon}-\ref {fig:rl-qvalues}.}}{41}{figure.caption.20}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Źródło własne: zanik $\varepsilon $ w funkcji numeru starcia (dane z \texttt {user://brain\_log.csv}, kolumna \texttt {epsilon}).}}{43}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Źródło własne: znormalizowana nagroda \texttt {reward\_norm} (szara) i średnia krocząca (czerwona) w funkcji numeru starcia.}}{44}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Źródło własne: $Q$ czterech taktyk dla kontekstu bieżącego starcia (\texttt {q\_flank}-\texttt {q\_ambush}).}}{45}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Źródło własne: adaptacja \texttt {PreferredDistance}, \texttt {Aggression}, \texttt {Caution}, \texttt {LeadTime} w czasie sesji.}}{46}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Fragment pliku \texttt {user://brain.json}}}{48}{figure.caption.25}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Źródło własne: Przykład dwóch proceduralnie wygenerowanych lochów (wariant 0 i wariant 2 - różna liczba pokoi i paleta świateł).}}{52}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Źródło własne: Przykłady mini-gier (Lockpick, Pipe, Light Sequence).}}{54}{figure.caption.31}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Źródło własne: Ekran startowy z opcjami \textit {Nowa gra} i \textit {Kontynuuj}.}}{74}{figure.caption.35}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Źródło własne: Gracz w hubie świata (katakumby z NPC-dawcą questa).}}{74}{figure.caption.36}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Źródło własne: Walka z wrogami w lochu. Hitbox ataku, animacje.}}{75}{figure.caption.37}%
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Źródło własne: HUD z paskami statystyk, licznikiem wrogów i aktywnym modyfikatorem runu.}}{75}{figure.caption.38}%
+\contentsline {figure}{\numberline {A.5}{\ignorespaces Źródło własne: Menu ekwipunku - stan pusty i po wypełnieniu. Widoczne sloty wyposażenia i sloty scalania A+B.}}{75}{figure.caption.39}%
+\contentsline {figure}{\numberline {A.6}{\ignorespaces Źródło własne: Menu questów i statystyk.}}{75}{figure.caption.40}%
+\contentsline {figure}{\numberline {A.7}{\ignorespaces Źródło własne: Zakładka Księga - stan domyślny i po odblokowaniu fragmentów narracji.}}{76}{figure.caption.41}%
+\contentsline {figure}{\numberline {A.8}{\ignorespaces Źródło własne: Menu ustawień (głośność, skala UI, pełny ekran).}}{76}{figure.caption.42}%
+\contentsline {figure}{\numberline {A.9}{\ignorespaces Źródło własne: Toast informujący o zapisie stanu gry.}}{76}{figure.caption.43}%
+\contentsline {figure}{\numberline {A.10}{\ignorespaces Źródło własne: Wejście do proceduralnego lochu.}}{77}{figure.caption.44}%
+\contentsline {figure}{\numberline {A.11}{\ignorespaces Źródło własne: Trzy warianty proceduralnie generowanego lochu (wariant 0, 1 i 2 - różna liczba pokoi i paleta świateł).}}{77}{figure.caption.45}%
+\contentsline {figure}{\numberline {A.12}{\ignorespaces Źródło własne: Modyfikatory runu \textit {RichCoins} i \textit {HeavyElites}.}}{77}{figure.caption.46}%
+\contentsline {figure}{\numberline {A.13}{\ignorespaces Źródło własne: Modyfikator runu \textit {Gloom} - redukcja oświetlenia i ograniczenie widoczności.}}{77}{figure.caption.47}%
+\contentsline {figure}{\numberline {A.14}{\ignorespaces Źródło własne: Pokój bossa (\texttt {BossEnemy}) oraz skrzynia nagród.}}{78}{figure.caption.48}%
+\contentsline {figure}{\numberline {A.15}{\ignorespaces Źródło własne: walka z bossem - dash i bomby obszarowe aktywne po wejściu gracza w strefę pościgu.}}{78}{figure.caption.49}%
+\contentsline {figure}{\numberline {A.16}{\ignorespaces Źródło własne: niewidzialny przeciwnik - ukryty (tylko cień na podłodze) oraz ujawniony przez radar.}}{79}{figure.caption.50}%
+\contentsline {figure}{\numberline {A.17}{\ignorespaces Źródło własne: radar z półkulistą strefą wykrywania ustawioną na podłodze lochu.}}{79}{figure.caption.51}%
+\contentsline {figure}{\numberline {A.18}{\ignorespaces Źródło własne: minimapa z maską kołową - pokoje, ikony znajdziek oraz kropki przeciwników z rozróżnieniem typu.}}{80}{figure.caption.52}%
+\contentsline {figure}{\numberline {A.19}{\ignorespaces Źródło własne: Stan AI (\texttt {F3}) - po uruchomieniu (jednolite wartości Q, wysokie $\varepsilon $) oraz po kilkunastu starciach (zróżnicowane Q, zaadaptowane parametry).}}{80}{figure.caption.53}%
+\contentsline {figure}{\numberline {A.20}{\ignorespaces Źródło własne: AI realizujące taktyki \textit {Flank}, \textit {Rush}, \textit {Kite}. Czwarta taktyka (\textit {Ambush}) ze względu na niskie prawdopodobieństwo wystąpienia w standardowej rozgrywce nie została tu uchwycona w osobnym zrzucie.}}{80}{figure.caption.54}%
+\contentsline {figure}{\numberline {A.21}{\ignorespaces Źródło własne: Debug HUD dla różnych kontekstów - niskie HP gracza oraz wiele żywych elit. Wartości Q dla tych kontekstów są uczone niezależnie.}}{81}{figure.caption.55}%
+\contentsline {figure}{\numberline {A.22}{\ignorespaces Fragment pliku \texttt {user://brain.json}}}{81}{figure.caption.56}%
+\contentsline {figure}{\numberline {A.23}{\ignorespaces Źródło własne: Mini-gry: Lockpick, Pipe, Light Sequence.}}{81}{figure.caption.57}%
+\contentsline {figure}{\numberline {A.24}{\ignorespaces Źródło własne: Mini-gry: BlockFit, BlockMaze.}}{82}{figure.caption.58}%
+\addvspace {10\p@ }

@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper,oneside,openany]{report}
+
+\usepackage{ifthen}
+\newboolean{PrintVersion}
+\setboolean{PrintVersion}{false}
+
+\input{thesis-preamble}
+
+% Marginesy i odstępy
+\input{private/thesis-margins-and-spaces}
+
+% =====================================================================
+%   M E T A D A N E   P R A C Y
+% =====================================================================
+
+\newcommand{\thesisauthor}{Łukasz Moszczyński}
+\newcommand{\graduationyear}{2026}
+
+% Polski tytuł pracy (NIE drukowanymi literami)
+\newcommand{\thesistitlePL}{Echoes of Vanitas - gra typu 2.5D RPG w silniku Godot z adaptacyjną sztuczną inteligencją}
+
+\newcommand{\thesistitleEN}{Echoes of Vanitas - a 2.5D RPG game in the Godot engine with adaptive artificial intelligence}
+
+% Wydział i kierunek (PL/ENG)
+\newcommand{\thesisFacultyPL}{Wydział Matematyki i Informatyki}
+\newcommand{\thesisFacultyEN}{Faculty of Mathematics and Computer Science}
+\newcommand{\thesisFieldPL}{Informatyka}
+\newcommand{\thesisFieldEN}{Computer Science}
+
+% Stopień / rodzaj pracy
+\newcommand{\thesisDegreePL}{magisterska}
+\newcommand{\thesisDegreeEN}{Master's}
+
+% Katedra
+\newcommand{\thesisChairPL}{Katedrze Metod Matematycznych Informatyki}
+\newcommand{\thesisChairEN}{the Chair of Mathematical Methods of Computer Science}
+
+\newcommand{\thesisAdvisorPL}{dra hab Piotra Artiemjewa, prof. UWM}
+\newcommand{\thesisAdvisorEN}{dra hab Piotr Artiemjew, prof. UWM}
+
+% =====================================================================
+
+\begin{document}
+
+\input{private/frontpage}
+
+\input{private/declarationpage}
+
+\input{Chapters/Abstract}
+\input{Chapters/Abstract_eng}
+
+% Podziękowania i dedykacja (opcjonalne, ale dozwolone)
+\input{Chapters/Acknowledgements}
+\input{Chapters/Dedication}
+
+\input{private/toc-lot-lof}
+\input{Chapters/List_of_Abbreviations}
+
+\newpage
+
+% =====================================================================
+%   T R E Ś Ć   G Ł Ó W N A
+% =====================================================================
+\pagenumbering{arabic}
+\pagestyle{uwmfoot}
+
+\include{Chapters/Chapter_00}   % Wstęp
+\include{Chapters/Chapter_01}   % Proces Twórczy
+\include{Chapters/Chapter_02}   % Przegląd Literatury i Technologii
+\include{Chapters/Chapter_03}   % Architektura Systemu
+\include{Chapters/Chapter_04}   % Implementacja Mechanik Gry
+\include{Chapters/Chapter_05}   % Zakończenie
+
+% =====================================================================
+%   B I B L I O G R A F I A
+% =====================================================================
+\bibliographystyle{IEEEtran}
+
+\ifthenelse{\boolean{PrintVersion}}{\cleardoublepage}{\clearpage}
+\phantomsection
+\bibliography{bibliography/keylatex}
+
+\clearpage
+
+% =====================================================================
+%   D O D A T K I
+% =====================================================================
+\appendix
+\clearpage
+
+\include{Chapters/Appendix_A}
+\include{Chapters/Appendix_B}
+
+\clearpage
+\input{Chapters/AI_Statement}
+
+\end{document}

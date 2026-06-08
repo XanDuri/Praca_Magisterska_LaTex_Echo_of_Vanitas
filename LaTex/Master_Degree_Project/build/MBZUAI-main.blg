@@ -1,0 +1,77 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: MBZUAI-main.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: Chapters/Chapter_00.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: Chapters/Chapter_01.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: Chapters/Chapter_02.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: Chapters/Chapter_03.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: Chapters/Chapter_04.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: Chapters/Chapter_05.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: IEEEtran.bst
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: Chapters/Appendix_A.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: Chapters/Appendix_B.aux
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: bibliography/keylatex.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in haas2014history
+Warning--empty journal in toftedahl2019taxonomy
+
+Done.
+You've used 16 entries,
+            4087 wiz_defined-function locations,
+            922 strings with 9753 characters,
+and the built_in function-call counts, 7262 in all, are:
+= -- 510
+> -- 142
+< -- 26
++ -- 66
+- -- 28
+* -- 299
+:= -- 1182
+add.period$ -- 33
+call.type$ -- 16
+change.case$ -- 11
+chr.to.int$ -- 69
+cite$ -- 18
+duplicate$ -- 586
+empty$ -- 783
+format.name$ -- 35
+if$ -- 1687
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 104
+newline$ -- 73
+num.names$ -- 16
+pop$ -- 315
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 552
+stack$ -- 0
+substring$ -- 133
+swap$ -- 342
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 16
+warning$ -- 2
+while$ -- 27
+width$ -- 18
+write$ -- 146
+(There were 2 warnings)
