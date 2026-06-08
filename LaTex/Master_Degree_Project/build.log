@@ -115,24 +115,24 @@ ounter.sty)))) (private/thesis-margins-and-spaces.tex)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.aux
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_00.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_01.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_02.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_03.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_04.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_05.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_A.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_B.aux))
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.aux
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_B.aux))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty)
@@ -144,10 +144,10 @@ ii
 ase.sty
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
 fg))
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.out)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.out) (private/frontpage.tex
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.out)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.out) (private/frontpage.tex
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
@@ -163,11 +163,11 @@ rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/f
 oxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [5])
 (Chapters/Abstract_eng.tex [6] [7]) (Chapters/Acknowledgements.tex [8])
 (Chapters/Dedication.tex [9]) (private/toc-lot-lof.tex
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.toc [10] [11] [12] [13]) [14]
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.lof [15]) [16]) (Chapters/List_of_Abbreviations.tex [17]) [18]
-(Chapters/Chapter_00.tex
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.toc [10] [11] [12] [13]) [14]
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.lof [15]) [16])
+(Chapters/List_of_Abbreviations.tex [17]) [18] (Chapters/Chapter_00.tex
 Rozdzia\l  1.
 [1] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
 [2{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
@@ -232,8 +232,9 @@ zle_pipe.png> <../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>]
 [56] [57] [58] [59] [60]) [61] (Chapters/Chapter_05.tex
 Rozdzia\l  6.
 [62] [63] [64]) [65]
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex [68]
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex
+ [68]
 Dodatek A.
 [69] [70] [71] [72] [73] [74 <../../docs/screenshots/01_gameplay/start_screen.p
 ng> <../../docs/screenshots/01_gameplay/player_hub.png>] [75 <../../docs/screen
@@ -273,28 +274,24 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 [85] [86] [87] [88] [89] [90] [91] [92]) [93] (Chapters/AI_Statement.tex
 [94] [95])
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.aux
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_00.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_01.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_02.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_03.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_04.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_05.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_A.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_B.aux))
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- )
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.aux
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_B.aux)) )
 (\end occurred when \ifx on line 164 was incomplete)
 (see the transcript file for additional information)<C:/Users/foxto/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/foxto/AppData/Loc
@@ -319,10 +316,11 @@ ograms/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/foxto/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degre
-e_Project\build\MBZUAI-main.pdf (113 pages, 38168745 bytes).
-Transcript written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_D
-egree_Project\build\MBZUAI-main.log.
+Output written on C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_
+of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.pdf (113 pages, 381687
+50 bytes).
+Transcript written on C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_E
+cho_of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.log.
 ==[ bibtex ]==
 This is BibTeX, Version 0.99e (MiKTeX 26.2)
 The top-level auxiliary file: MBZUAI-main.aux
@@ -338,7 +336,8 @@ Done.
 (There were 2 warnings)
 ==[ makeindex (nomenclature) ]==
 makeindex : This is makeindex, version 2.18 [MiKTeX 26.2].
-At C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build-thesis.ps1:54 char:47
+At C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\Master_Degree_Project\build-thesis.ps1
+:54 char:47
 + ... clature)" { makeindex "$nloPath" -s nomencl.ist -o "$buildDir/$main.n ...
 +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : NotSpecified: (This is makeind... [MiKTeX 26.2].:String) [], RemoteException
@@ -466,24 +465,24 @@ ounter.sty)))) (private/thesis-margins-and-spaces.tex)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.aux
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_00.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_01.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_02.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_03.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_04.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_05.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_A.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_B.aux))
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.aux
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_B.aux))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty)
@@ -495,10 +494,10 @@ ii
 ase.sty
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
 fg))
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.out)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.out) (private/frontpage.tex
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.out)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.out) (private/frontpage.tex
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
@@ -514,11 +513,11 @@ rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/f
 oxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [5])
 (Chapters/Abstract_eng.tex [6] [7]) (Chapters/Acknowledgements.tex [8])
 (Chapters/Dedication.tex [9]) (private/toc-lot-lof.tex
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.toc [10] [11] [12] [13]) [14]
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.lof [15]) [16]) (Chapters/List_of_Abbreviations.tex [17]) [18]
-(Chapters/Chapter_00.tex
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.toc [10] [11] [12] [13]) [14]
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.lof [15]) [16])
+(Chapters/List_of_Abbreviations.tex [17]) [18] (Chapters/Chapter_00.tex
 Rozdzia\l  1.
 [1] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
 [2{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
@@ -583,8 +582,9 @@ zle_pipe.png> <../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>]
 [56] [57] [58] [59] [60]) [61] (Chapters/Chapter_05.tex
 Rozdzia\l  6.
 [62] [63] [64]) [65]
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex [68]
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex
+ [68]
 Dodatek A.
 [69] [70] [71] [72] [73] [74 <../../docs/screenshots/01_gameplay/start_screen.p
 ng> <../../docs/screenshots/01_gameplay/player_hub.png>] [75 <../../docs/screen
@@ -624,24 +624,24 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 [85] [86] [87] [88] [89] [90] [91] [92]) [93] (Chapters/AI_Statement.tex
 [94] [95])
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.aux
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_00.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_01.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_02.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_03.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_04.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_05.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_A.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_B.aux)) )
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.aux
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_B.aux)) )
 (\end occurred when \ifx on line 164 was incomplete)
 (see the transcript file for additional information)<C:/Users/foxto/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/foxto/AppData/Loc
@@ -666,10 +666,11 @@ ograms/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/foxto/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degre
-e_Project\build\MBZUAI-main.pdf (113 pages, 38168750 bytes).
-Transcript written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_D
-egree_Project\build\MBZUAI-main.log.
+Output written on C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_
+of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.pdf (113 pages, 381687
+50 bytes).
+Transcript written on C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_E
+cho_of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.log.
 ==[ pdflatex (pass 3) ]==
 This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex.fmt)
  \write18 enabled.
@@ -787,24 +788,24 @@ ounter.sty)))) (private/thesis-margins-and-spaces.tex)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.aux
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_00.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_01.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_02.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_03.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_04.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_05.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_A.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_B.aux))
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.aux
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_B.aux))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty)
@@ -816,10 +817,10 @@ ii
 ase.sty
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
 fg))
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.out)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.out) (private/frontpage.tex
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.out)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.out) (private/frontpage.tex
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
 (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
@@ -835,11 +836,11 @@ rs/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/f
 oxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [5])
 (Chapters/Abstract_eng.tex [6] [7]) (Chapters/Acknowledgements.tex [8])
 (Chapters/Dedication.tex [9]) (private/toc-lot-lof.tex
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.toc [10] [11] [12] [13]) [14]
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.lof [15]) [16]) (Chapters/List_of_Abbreviations.tex [17]) [18]
-(Chapters/Chapter_00.tex
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.toc [10] [11] [12] [13]) [14]
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.lof [15]) [16])
+(Chapters/List_of_Abbreviations.tex [17]) [18] (Chapters/Chapter_00.tex
 Rozdzia\l  1.
 [1] (C:\Users\foxto\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
 [2{C:/Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
@@ -904,8 +905,9 @@ zle_pipe.png> <../../docs/screenshots/05_puzzles/puzzle_lightsequence.png>]
 [56] [57] [58] [59] [60]) [61] (Chapters/Chapter_05.tex
 Rozdzia\l  6.
 [62] [63] [64]) [65]
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex [68]
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.bbl [66]) [67] (Chapters/Appendix_A.tex
+ [68]
 Dodatek A.
 [69] [70] [71] [72] [73] [74 <../../docs/screenshots/01_gameplay/start_screen.p
 ng> <../../docs/screenshots/01_gameplay/player_hub.png>] [75 <../../docs/screen
@@ -945,24 +947,24 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 [85] [86] [87] [88] [89] [90] [91] [92]) [93] (Chapters/AI_Statement.tex
 [94] [95])
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.aux
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_00.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_01.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_02.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_03.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_04.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_05.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_A.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_B.aux)) )
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.aux
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_B.aux)) )
 (\end occurred when \ifx on line 164 was incomplete)
 (see the transcript file for additional information)<C:/Users/foxto/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/foxto/AppData/Loc
@@ -987,7 +989,8 @@ ograms/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/foxto/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degre
-e_Project\build\MBZUAI-main.pdf (113 pages, 38168750 bytes).
-Transcript written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_D
-egree_Project\build\MBZUAI-main.log.
+Output written on C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_
+of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.pdf (113 pages, 381687
+50 bytes).
+Transcript written on C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_E
+cho_of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.log.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.21)  8 JUN 2026 13:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.21)  8 JUN 2026 14:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -574,27 +574,27 @@ tex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count332
 )
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.aux
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.aux
 Package babel Info: 'polish' activates 'polish' shorthands.
 (babel)             Reported on input line 8.
 
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_00.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_01.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_02.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_03.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_04.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_05.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_A.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_B.aux))
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_B.aux))
 \openout1 = `MBZUAI-main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
@@ -688,10 +688,10 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package tocbasic Info: setting babel extension for `lol' on input line 43.
 Package hyperref Info: Link coloring OFF on input line 43.
 
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.out)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.out)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.out)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.out)
 \@outlinefile=\write4
 \openout4 = `MBZUAI-main.out'.
 
@@ -772,8 +772,8 @@ Users/foxto/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] [5
 
 
 ]) (private/toc-lot-lof.tex
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.toc [10
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.toc [10
 
 
 ] [11] [12] [13])
@@ -781,24 +781,24 @@ BZUAI-main.toc [10
 \openout5 = `MBZUAI-main.toc'.
 
  [14]
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.lof [15
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.lof [15
 
 
 ])
 \tf@lof=\write6
 \openout6 = `MBZUAI-main.lof'.
 
- [16]) (Chapters/List_of_Abbreviations.tex
-ignored: Infinite glue shrinkage found in box 
-being split [17
+ [16])
+(Chapters/List_of_Abbreviations.tex
+ignored: Infinite glue shrinkage found in box being s
+plit [17
 
 
 ]) [18]
 \openout2 = `Chapters/Chapter_00.aux'.
 
-
-(Chapters/Chapter_00.tex
+ (Chapters/Chapter_00.tex
 Rozdzia\l  1.
 [1
 
@@ -1102,8 +1102,8 @@ Rozdzia\l  6.
 
 
 ] [63] [64]) [65]
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.bbl [66
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.bbl [66
 
 
 
@@ -1455,24 +1455,24 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 ] [95])
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\M
-BZUAI-main.aux
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_00.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_01.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_02.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_03.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_04.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Chapter_05.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_A.aux)
-(C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degree_Project\build\C
-hapters/Appendix_B.aux))
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\MBZUAI-main.aux
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_00.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_01.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_02.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_03.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_04.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Chapter_05.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_A.aux)
+(C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_of_Vanitas\LaTex\
+Master_Degree_Project\build\Chapters/Appendix_B.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1483,7 +1483,7 @@ Package rerunfilecheck Info: File `MBZUAI-main.out' has not changed.
 (\end occurred when \ifx on line 164 was incomplete) 
 Here is how much of TeX's memory you used:
  19601 strings out of 467691
- 339986 string characters out of 5414987
+ 342103 string characters out of 5414987
  928158 words of memory out of 5000000
  47439 multiletter control sequences out of 15000+600000
  743443 words of font info for 116 fonts, out of 8000000 for 9000
@@ -1512,8 +1512,9 @@ ograms/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/foxto/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Users/foxto/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on C:\Users\foxto\Documents\echoes_of_vanitas\LaTex\Master_Degre
-e_Project\build\MBZUAI-main.pdf (113 pages, 38168750 bytes).
+Output written on C:\Users\foxto\Documents\GitHub\Praca_Magisterska_LaTex_Echo_
+of_Vanitas\LaTex\Master_Degree_Project\build\MBZUAI-main.pdf (113 pages, 381687
+50 bytes).
 PDF statistics:
  2379 PDF objects out of 2487 (max. 8388607)
  834 named destinations out of 1000 (max. 500000)
