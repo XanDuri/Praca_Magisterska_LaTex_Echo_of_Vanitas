@@ -9,10 +9,10 @@ Praca_Magisterska_LaTex_Echo_of_Vanitas/
 ├── LaTex/
 │   └── Master_Degree_Project/   ← pliki .tex, kompilacja PDF
 └── docs/
-    └── screenshots/             ← zrzuty i wykresy używane w pracy (patrz README tam)
+    └── screenshots/             ← zrzuty i wykresy używane w pracy
 ```
 
-Grafiki do rozdziałów i dodatków leżą w **`docs/screenshots/`** i są wstawiane do PDF przez `\includegraphics` w `LaTex/Master_Degree_Project/`. Opis folderów: [docs/screenshots/README.md](docs/screenshots/README.md).
+Grafiki do rozdziałów i dodatków leżą w **`docs/screenshots/`** i są wstawiane do PDF przez `\includegraphics` w `LaTex/Master_Degree_Project/`.
 
 ## Kompilacja
 
@@ -24,6 +24,8 @@ cd LaTex\Master_Degree_Project
 ```
 
 Wynik: `MBZUAI-main.pdf` w tym samym katalogu.
+
+Plik do wgrania w APD (magister, specjalność 1704, album 166297): **`MGR_1704_166297.pdf`** — kopia tego samego PDF obok pliku głównego.
 
 ## Autor
 
