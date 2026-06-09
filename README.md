@@ -1,4 +1,4 @@
-# Praca magisterska — Echoes of Vanitas (LaTeX)
+# Praca magisterska - Echoes of Vanitas (LaTeX)
 
 Źródła pracy dyplomowej UWM: *Echoes of Vanitas - gra typu 2.5D RPG w silniku Godot z adaptacyjną sztuczną inteligencją*.
 
@@ -29,4 +29,4 @@ Plik do wgrania w APD (magister, specjalność 1704, album 166297): **`MGR_1704_
 
 ## Autor
 
-Łukasz Moszczyński — Uniwersytet Warmińsko-Mazurski w Olsztynie, 2026.
+Łukasz Moszczyński - Uniwersytet Warmińsko-Mazurski w Olsztynie, 2026.
